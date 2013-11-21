@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="F:\AndroidKoD\AndroidKoD\First_prj\res" >
+            <file
+                name="main"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\layout\main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tabjournalsrc"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\layout\tabjournalsrc.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\values\strings.xml"
+                qualifiers="" >
+                <string name="MoarOptions" >Дополнительные настройки
+                </string>
+                <string name="Remember_me" >Запомнить
+                </string>
+                <string name="User_name" >Имя пользователя
+                </string>
+                <string name="app_name" >First_prj
+                </string>
+                <string name="Edit" >Edit
+                </string>
+                <string name="Random_password" >randomstring
+                </string>
+                <string name="Enter" >Войти
+                </string>
+            </file>
+            <file
+                name="main"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\layout-land\main.xml"
+                qualifiers="land"
+                type="layout" />
+            <file
+                name="background"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\drawable\background.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="test"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\drawable\test.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="test2"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\drawable\test2.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="logoitmo"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\drawable\logoitmo.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="logo"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\drawable\logo.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="blueline"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\drawable\blueline.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="forboldline"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\drawable\forboldline.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="loginmenu"
+                path="F:\AndroidKoD\AndroidKoD\First_prj\res\menu\loginmenu.xml"
+                qualifiers=""
+                type="menu" />
+        </source>
+        <source path="F:\AndroidKoD\AndroidKoD\First_prj\build\res\rs\release" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="F:\AndroidKoD\AndroidKoD\First_prj\build-types\release\res" />
+    </dataSet>
+
+</merger>
