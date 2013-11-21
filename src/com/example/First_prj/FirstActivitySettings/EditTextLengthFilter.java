@@ -7,20 +7,21 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.view.Gravity;
 import android.widget.EditText;
+import com.example.First_prj.Constants;
 
-public class CustomEditText extends EditText {
+public class EditTextLengthFilter extends EditText {
 
     private float metric = getContext().getResources().getDisplayMetrics().density;
 
-    public CustomEditText(Context context, byte maxSymbolCount) {
+    public EditTextLengthFilter(Context context, byte maxSymbolCount) {
         super(context);
         super.setInputType(InputType.TYPE_CLASS_PHONE);
         super.setBackgroundColor(Color.TRANSPARENT);
         super.setTextColor(Color.WHITE);
         super.setWidth((int) (50 * metric));
         super.setHeight((int) (40 * metric));
-        super.setTextSize(14);
-        super.setGravity(Gravity.CENTER);
+        super.setTextSize(Constants.DEFAULT_TEXT_SIZE);
+        super.setGravity(Gravity.BOTTOM);
         super.setText("");
         super.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxSymbolCount)});
         super.setTypeface(Typeface.SERIF);

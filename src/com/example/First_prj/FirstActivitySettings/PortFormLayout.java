@@ -2,7 +2,6 @@ package com.example.First_prj.FirstActivitySettings;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -11,45 +10,33 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.First_prj.Constants;
+import com.example.First_prj.ForAllCode.SerifTextView;
 
-public class PortForm extends LinearLayout implements TextWatcher, View.OnClickListener {
+public class PortFormLayout extends LinearLayout implements TextWatcher, View.OnClickListener {
 
-    private CustomEditText portForm;
+    private EditTextLengthFilter portForm;
     private String bufferStr;
     private Context context;
     private TextView clearAll;
 
-    public PortForm(Context context) {
+    public PortFormLayout(Context context) {
         super(context);
-
-        this.context = context;
-
         super.setOrientation(HORIZONTAL);
         super.setBackgroundColor(Color.TRANSPARENT);
-        super.setGravity(Gravity.LEFT);
+        this.context = context;
 
-        byte maxSymbolCount = 5;
-        portForm = new CustomEditText(context, maxSymbolCount);
-        TextView portText = new TextView(context);
+        portForm = new EditTextLengthFilter(context, (byte) 5); // 5 количество символов
+        clearAll = new SerifTextView(context, "Очистить прокси", Constants.DEFAULT_TEXT_SIZE);
+
         View cork = new View(context);
-        clearAll = new TextView(context);
+        cork.setLayoutParams(new ViewGroup.LayoutParams((int) (20 * getContext().getResources().getDisplayMetrics()
+                .density), ViewGroup.LayoutParams.FILL_PARENT));
 
-        float metric = getContext().getResources().getDisplayMetrics().density;
-        int width = (int) (20 * metric);
-
-        cork.setLayoutParams(new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.FILL_PARENT));
-
-        portText.setText("\tPort : ");
-        portText.setTextSize(15);
-        portText.setTypeface(Typeface.SERIF);
         portForm.setWidth(80);
         portForm.addTextChangedListener(this);
 
-        clearAll.setText("Очистить прокси");
-        clearAll.setTypeface(Typeface.SERIF);
-        clearAll.setTextSize(15);
-
-        super.addView(portText);
+        super.addView(new SerifTextView(context, "\tPort : ", Constants.DEFAULT_TEXT_SIZE));
         super.addView(portForm);
         super.addView(cork);
         super.addView(clearAll);
@@ -60,7 +47,7 @@ public class PortForm extends LinearLayout implements TextWatcher, View.OnClickL
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        IPForm.setCheckBox(false);
+        IPFiledLayout.setCheckBox(false);
         bufferStr = charSequence.toString();
     }
 
@@ -71,15 +58,14 @@ public class PortForm extends LinearLayout implements TextWatcher, View.OnClickL
 
     @Override
     public void afterTextChanged(Editable editable) {
-        try{
-        if (!editable.toString().equals(""))
-            if (Integer.parseInt(editable.toString()) > 65536) {
-                portForm.setText("");
-                Toast.makeText(context, "Порт не может быть больше 65536", Toast.LENGTH_LONG).show();
-            }
-        if (!FormWorkFunctions.isNumber(editable))
-            portForm.setText(bufferStr);
-        }catch (Exception ex){
+        try {
+            if (!editable.toString().equals(""))
+                if (Integer.parseInt(editable.toString()) > 65536) {
+                    portForm.setText("");
+                    Toast.makeText(context, "Порт не может быть больше 65536", Toast.LENGTH_LONG).show();
+                }
+            if (!IPAddressFormLayout.isNumber(editable)) portForm.setText(bufferStr);
+        } catch (Exception ex) {
             portForm.setText(bufferStr);
         }
     }
@@ -90,7 +76,7 @@ public class PortForm extends LinearLayout implements TextWatcher, View.OnClickL
             portForm.requestFocus();
         if (clearAll.equals(view)) {
             clearForms();
-            IPForm.inIPFocus();
+            IPFiledLayout.inIPFocus();
         }
     }
 
@@ -108,6 +94,6 @@ public class PortForm extends LinearLayout implements TextWatcher, View.OnClickL
 
     private void clearForms() {
         portForm.setText("");
-        IPForm.clearIPForm();
+        IPFiledLayout.clearIPForm();
     }
 }
