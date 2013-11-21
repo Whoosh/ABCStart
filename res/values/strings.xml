@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">First_prj</string>
+    <string name="Remember_me">Запомнить</string>
+    <string name="Random_password">randomstring</string>
+    <string name="User_name">Имя пользователя</string>
+    <string name="Enter">Войти</string>
+    <string name="Edit">Edit</string>
+
+    <string name="MoarOptions">Дополнительные настройки</string>
+</resources>

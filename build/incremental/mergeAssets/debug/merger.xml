@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="F:\AndroidKoD\AndroidKoD\First_prj\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="F:\AndroidKoD\AndroidKoD\First_prj\build-types\debug\assets" />
+    </dataSet>
+
+</merger>
