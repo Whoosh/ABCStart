@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.First_prj.FirstActivitySettings.SettingsForFirstActivity;
+import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
 import com.example.First_prj.R;
 import com.example.First_prj.MenuLogicStarter.MenuLogicStarter;
 
@@ -38,7 +38,6 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
-
         setIDForAllElement();
         setListenerForAllElement();
         loadInfoFromStorage();
@@ -73,7 +72,7 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.loginSettingsMenu: {
-                startActivity(new Intent(this, SettingsForFirstActivity.class));
+                startActivity(new Intent(this, LoginFormSettingsActivity.class));
                 break;
             }
         }

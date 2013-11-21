@@ -1,22 +1,21 @@
 package com.example.First_prj.FirstActivitySettings;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Window;
 import android.widget.*;
+import com.example.First_prj.Constants;
 import com.example.First_prj.ForAllCode.BlueLine;
 import com.example.First_prj.ForAllCode.BoldLine;
 import com.example.First_prj.ForAllCode.SerifTextView;
 
 
-public class SettingsForFirstActivity extends Activity {
+public class LoginFormSettingsActivity extends Activity {
 
-    private IPForm ipForm;
-    private final byte ONE = 1;
+    private IPFiledLayout ipForm;
     private SharedPreferences keyValueStorage;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,6 @@ public class SettingsForFirstActivity extends Activity {
         outState.putBoolean("ProxyCheckBox", ipForm.isCheckBoxSet());
     }
 
-
     private void addElementInToActivity() {
 
         LinearLayout scrollableLayout = new LinearLayout(this);
@@ -105,17 +103,12 @@ public class SettingsForFirstActivity extends Activity {
 
         combLayout.setGravity(Gravity.CENTER_VERTICAL);
 
-        ipForm = new IPForm(this);
+        ipForm = new IPFiledLayout(this);
 
-        TextView IPSettingText = new TextView(this);
-        IPSettingText.setText("\tнастройка прокси");
-        IPSettingText.setTextSize(18);
-        IPSettingText.setTypeface(Typeface.SANS_SERIF);
-
-        scrollableLayout.addView(IPSettingText);
+        scrollableLayout.addView(new SerifTextView(this,"Настройка прокси",17));
         scrollableLayout.addView(new BlueLine(this, (byte) 5));
         scrollableLayout.addView(ipForm);
-        scrollableLayout.addView(new BlueLine(this, ONE));
+        scrollableLayout.addView(new BlueLine(this, Constants.ONE));
 
         scrollView.addView(scrollableLayout);
 
