@@ -11,10 +11,11 @@ import com.example.First_prj.Constants;
 
 public class EditTextLengthFilter extends EditText {
 
-    private float metric = getContext().getResources().getDisplayMetrics().density;
+    private float metric;
 
     public EditTextLengthFilter(Context context, byte maxSymbolCount) {
         super(context);
+        metric = context.getResources().getDisplayMetrics().density;
         super.setInputType(InputType.TYPE_CLASS_PHONE);
         super.setBackgroundColor(Color.TRANSPARENT);
         super.setTextColor(Color.WHITE);

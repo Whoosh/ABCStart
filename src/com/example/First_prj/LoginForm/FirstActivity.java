@@ -5,17 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.*;
 import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
-import com.example.First_prj.R;
+import com.example.First_prj.FirstActivitySettings.SurfaceBackground;
 import com.example.First_prj.MenuLogicStarter.MenuLogicStarter;
-
-
+import com.example.First_prj.R;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
 
@@ -28,21 +25,22 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     private String password = "";
     private String proxyAddress = "";
     private String proxyPort = "";
-    private boolean proxySet = false;
+    private boolean isProxySet = false;
     private SharedPreferences keyValueStorage;
     private int mightCode;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.main);
+
         setIDForAllElement();
         setListenerForAllElement();
         loadInfoFromStorage();
     }
-
 
     @Override
     protected void onPause() {
@@ -53,11 +51,12 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
 
     @Override
     protected void onResume() {
-        loadInfoFromStorage();
+          loadInfoFromStorage();
         super.onResume();
     }
 
@@ -71,33 +70,32 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.loginSettingsMenu: {
+            case R.id.loginSettingsMenu:
                 startActivity(new Intent(this, LoginFormSettingsActivity.class));
                 break;
-            }
         }
         return super.onOptionsItemSelected(item);
     }
 
+
     // @TODO можно запилить обработку форм
     public void onClick(View elements) {
         switch (elements.getId()) {
-            case R.id.enterButton: {
+            case R.id.enterButton:
                 buttonLogic();
                 break;
-            }
-            case R.id.mainLayout: {
+            case R.id.mainLayout:
                 closeVirtualKeyBoard();
                 break;
-            }
         }
     }
+
 
     private void buttonLogic() {
         // TODO сюда проверку подключения перед включением.
         lookingForProxy(); // берём настройки прокси.
-        //if (proxySet) // TODO берём прокси и заходим
-        // стартуем пока тупо как учитель, всегда.
+        //if (isProxySeted) // TODO берём прокси и заходим
+        // стартуем пока как учитель, всегда.
         if (true) {
             Intent intent = new Intent(this, MenuLogicStarter.class);
             //@TODO mightCode = Server.getMightCode(); // код указывающий могущество сущности
@@ -116,7 +114,7 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         if (!proxyInfo.getBoolean("CheckBoxValue", false)) return;
         proxyAddress = proxyInfo.getString("IP", "");
         proxyPort = proxyInfo.getString("Port", "");
-        proxySet = true;
+        isProxySet = true;
     }
 
     private void saveInfoFromForm() {
@@ -148,8 +146,6 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     private void setListenerForAllElement() {
         this.enterButton.setOnClickListener(this);
-        this.passwordEditText.setOnClickListener(this);
-        this.userNameEditText.setOnClickListener(this);
         this.rememberMeCheckBox.setOnClickListener(this);
         this.mainLayout.setOnClickListener(this);
     }

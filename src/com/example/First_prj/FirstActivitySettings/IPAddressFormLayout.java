@@ -22,7 +22,7 @@ public class IPAddressFormLayout extends LinearLayout {
         this.context = context;
         allEdits = new EditTextLengthFilter[numOfEdits];
 
-        final float metric = getContext().getResources().getDisplayMetrics().density;
+        final float metric = context.getResources().getDisplayMetrics().density;
 
         setLayoutParams(new ViewGroup.LayoutParams((int) (220 * metric), (int) (45 * metric)));
 
