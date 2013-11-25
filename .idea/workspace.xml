@@ -26,20 +26,7 @@
     </layouts>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="Auto Commit Test&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/SurfaceBackground.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/Symbols.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/style.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/example/First_prj/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/example/First_prj/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/EditTextLengthFilter.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/EditTextLengthFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressFormLayout.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressFormLayout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/private/launcher.properties" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/private/launcher.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout-land/main.xml" afterPath="$PROJECT_DIR$/res/layout-land/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
@@ -1325,21 +1312,25 @@
       <workItem from="1385195735920" duration="40124000" />
       <workItem from="1385287229645" duration="35422000" />
       <workItem from="1385368367722" duration="6888000" />
-      <workItem from="1385387546860" duration="11644000" />
+      <workItem from="1385387546860" duration="11814000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
       <updated>1385064827207</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fail matrix idea">
+      <created>1385402266453</created>
+      <updated>1385402266453</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="662380000" />
+    <option name="totallyTimeSpent" value="662550000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="776" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1386,7 +1377,8 @@
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
     <MESSAGE value="Auto Commit Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Auto Commit Test" />
+    <MESSAGE value="Fail matrix idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fail matrix idea" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
