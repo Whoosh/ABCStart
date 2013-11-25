@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.First_prj.R;
 
-public class BoldLine extends View {
-    public BoldLine(Context context, int wight) {
+public class BoldGradientLine extends View {
+    public BoldGradientLine(Context context, int wight) {
         super(context);
         super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, wight));
-        super.setBackgroundResource(R.drawable.forboldline);
+        super.setBackgroundResource(R.drawable.boldgradien);
     }
 }

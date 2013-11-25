@@ -1,4 +1,4 @@
-package com.example.First_prj.FirstActivitySettings;
+package com.example.First_prj.Nevermind;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.First_prj.Constants;
+import com.example.First_prj.FirstActivitySettings.EditTextLengthFilter;
 import com.example.First_prj.ForAllCode.SerifTextView;
 
 public class IPAddressFormLayout extends LinearLayout {

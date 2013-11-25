@@ -1,9 +1,4 @@
-package com.example.First_prj.FirstActivitySettings;
-
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Typeface;
+package com.example.First_prj.TestCode.Matrix;
 
 import java.util.Random;
 

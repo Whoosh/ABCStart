@@ -28,7 +28,6 @@ public class EditTextLengthFilter extends EditText {
         super.setTypeface(Typeface.SERIF);
     }
 
-
     @Override
     public void setWidth(int pixels) {
         super.setWidth((int) (pixels * metric));

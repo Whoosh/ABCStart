@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.First_prj.R;
 
-public class BlueLine extends View {
-    public BlueLine(Context context, int wight) {
+public class StyleGradientLine extends View {
+    public StyleGradientLine(Context context, int wight) {
         super(context);
         super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, wight));
-        super.setBackgroundResource(R.drawable.blueline);
+        super.setBackgroundResource(R.drawable.ballgradient);
     }
 }
