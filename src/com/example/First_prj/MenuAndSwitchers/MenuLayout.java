@@ -49,7 +49,7 @@ public class MenuLayout extends LinearLayout implements View.OnTouchListener {
         headLayout.addView(new SerifTextView(context, "\tМеню", 22));
 
         super.addView(headLayout);
-        super.addView(new BoldLine(context, 3));
+        super.addView(new BoldGradientLine(context, 3));
         super.addView(new TransparentEmptyView(context, 15));
     }
 

@@ -1,4 +1,4 @@
-package com.example.First_prj.FirstActivitySettings;
+package com.example.First_prj.TestCode.Matrix;
 
 import android.content.Context;
 import android.graphics.*;

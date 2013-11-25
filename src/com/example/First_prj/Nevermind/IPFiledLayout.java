@@ -1,4 +1,4 @@
-package com.example.First_prj.FirstActivitySettings;
+package com.example.First_prj.Nevermind;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import com.example.First_prj.ForAllCode.BlueLine;
+import com.example.First_prj.ForAllCode.StyleGradientLine;
 import com.example.First_prj.ForAllCode.SerifTextView;
 import com.example.First_prj.Constants;
 
@@ -38,7 +38,7 @@ public class IPFiledLayout extends LinearLayout implements View.OnClickListener 
         iPLayout.addView(onProxyCheck);
 
         super.addView(iPLayout);
-        super.addView(new BlueLine(context, Constants.ONE));
+        super.addView(new StyleGradientLine(context, Constants.ONE));
         super.addView(portForm);
 
         onProxyCheck.setOnClickListener(this);

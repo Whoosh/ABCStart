@@ -2,28 +2,24 @@ package com.example.First_prj.FirstActivitySettings;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.*;
-import com.example.First_prj.Constants;
-import com.example.First_prj.ForAllCode.BlueLine;
-import com.example.First_prj.ForAllCode.BoldLine;
+import com.example.First_prj.ForAllCode.BoldGradientLine;
+import com.example.First_prj.ForAllCode.Icon;
 import com.example.First_prj.ForAllCode.SerifTextView;
 
 
 public class LoginFormSettingsActivity extends Activity {
 
-    private IPFiledLayout ipForm;
+    private IPAddressForm ipAddressForm;
     private SharedPreferences keyValueStorage;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         addElementInToActivity();
         setOldInfoInToForm();
     }
@@ -46,7 +42,6 @@ public class LoginFormSettingsActivity extends Activity {
         super.onPause();
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -60,29 +55,29 @@ public class LoginFormSettingsActivity extends Activity {
     private void saveFormsInfo() {
         keyValueStorage = getSharedPreferences("proxySettings", MODE_PRIVATE);
         SharedPreferences.Editor editor = keyValueStorage.edit();
-        editor.putString("IP", ipForm.getAddress());
-        editor.putString("Port", ipForm.getPort());
-        editor.putBoolean("CheckBoxValue", ipForm.isCheckBoxSet());
+        editor.putString("IP", ipAddressForm.getAddress());
+        editor.putString("Port", ipAddressForm.getPort());
+        editor.putBoolean("CheckBoxValue", ipAddressForm.isProxySet());
         editor.commit();
     }
 
     private void setOldInfoInToForm() {
         keyValueStorage = getSharedPreferences("proxySettings", MODE_PRIVATE);
-        ipForm.loadAddress(keyValueStorage.getString("IP", ""));
-        ipForm.loadPort(keyValueStorage.getString("Port", ""));
-        ipForm.setCheckBox(keyValueStorage.getBoolean("CheckBoxValue", false));
+        ipAddressForm.loadAddress(keyValueStorage.getString("IP", ""));
+        ipAddressForm.loadPort(keyValueStorage.getString("Port", ""));
+        ipAddressForm.setProxyCheckBoxState(keyValueStorage.getBoolean("CheckBoxValue", false));
     }
 
     private void loadProxyState(Bundle savedInstanceState) {
-        ipForm.loadAddress(savedInstanceState.getString("IPAddress"));
-        ipForm.loadPort(savedInstanceState.getString("Port"));
-        ipForm.setCheckBox(savedInstanceState.getBoolean("ProxyCheckBox"));
+        ipAddressForm.loadAddress(savedInstanceState.getString("IPAddress"));
+        ipAddressForm.loadPort(savedInstanceState.getString("Port"));
+        ipAddressForm.setProxyCheckBoxState(savedInstanceState.getBoolean("ProxyCheckBox"));
     }
 
     private void saveProxyState(Bundle outState) {
-        outState.putString("Port", ipForm.getPort());
-        outState.putString("IPAddress", ipForm.getAddress());
-        outState.putBoolean("ProxyCheckBox", ipForm.isCheckBoxSet());
+        outState.putString("Port", ipAddressForm.getPort());
+        outState.putString("IPAddress", ipAddressForm.getAddress());
+        outState.putBoolean("ProxyCheckBox", ipAddressForm.isProxySet());
     }
 
     private void addElementInToActivity() {
@@ -90,36 +85,28 @@ public class LoginFormSettingsActivity extends Activity {
         LinearLayout scrollableLayout = new LinearLayout(this);
         scrollableLayout.setOrientation(LinearLayout.VERTICAL);
 
-        ScrollView scrollView = new ScrollView(this);
-
-        LinearLayout settingsCombinLayout = new LinearLayout(this);
-        settingsCombinLayout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout listOfSettings = new LinearLayout(this);
+        listOfSettings.setOrientation(LinearLayout.VERTICAL);
 
         LinearLayout combLayout = new LinearLayout(this);
         combLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-        ImageView settingNetworkImg = new ImageView(this);
-        settingNetworkImg.setImageResource(android.R.drawable.ic_menu_set_as);
+        ScrollView scrollView = new ScrollView(this);
 
-        combLayout.addView(settingNetworkImg);
-        combLayout.addView(new SerifTextView(this,"\tНастройки",22));
+        combLayout.addView(new Icon(this,android.R.drawable.ic_menu_set_as));
+        combLayout.addView(new SerifTextView(this, "\tНастройки", 22));
 
-        combLayout.setGravity(Gravity.CENTER_VERTICAL);
+        ipAddressForm = new IPAddressForm(this);
 
-        ipForm = new IPFiledLayout(this);
-
-        scrollableLayout.addView(new SerifTextView(this,"Настройка прокси",17));
-        scrollableLayout.addView(new BlueLine(this, (byte) 5));
-        scrollableLayout.addView(ipForm);
-        scrollableLayout.addView(new BlueLine(this, Constants.ONE));
+        scrollableLayout.addView(ipAddressForm);
 
         scrollView.addView(scrollableLayout);
 
-        settingsCombinLayout.addView(combLayout);
-        settingsCombinLayout.addView(new BoldLine(this,4));
-        settingsCombinLayout.addView(scrollView);
+        listOfSettings.addView(combLayout);
+        listOfSettings.addView(new BoldGradientLine(this, 4));
+        listOfSettings.addView(scrollView);
 
-        setContentView(settingsCombinLayout);
+        setContentView(listOfSettings);
     }
 
 

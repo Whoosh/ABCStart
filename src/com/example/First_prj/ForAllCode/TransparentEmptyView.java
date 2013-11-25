@@ -11,6 +11,6 @@ public class TransparentEmptyView extends View {
         super(context);
         super.setBackgroundColor(Color.TRANSPARENT);
         super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, (int) (height *
-                getContext().getResources().getDisplayMetrics().density)));
+                context.getResources().getDisplayMetrics().density)));
     }
 }

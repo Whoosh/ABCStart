@@ -5,12 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
-import com.example.First_prj.FirstActivitySettings.SurfaceBackground;
 import com.example.First_prj.MenuLogicStarter.MenuLogicStarter;
 import com.example.First_prj.R;
 
@@ -33,10 +31,11 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        // setContentView(new IPAddressForm(this));
 
         setContentView(R.layout.main);
-
         setIDForAllElement();
         setListenerForAllElement();
         loadInfoFromStorage();
@@ -56,7 +55,7 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onResume() {
-          loadInfoFromStorage();
+        loadInfoFromStorage();
         super.onResume();
     }
 
