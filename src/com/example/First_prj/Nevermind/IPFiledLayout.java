@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import com.example.First_prj.ForAllCode.StyleGradientLine;
+import com.example.First_prj.ForAllCode.BubleGradientLine;
 import com.example.First_prj.ForAllCode.SerifTextView;
 import com.example.First_prj.Constants;
 
@@ -38,7 +38,7 @@ public class IPFiledLayout extends LinearLayout implements View.OnClickListener 
         iPLayout.addView(onProxyCheck);
 
         super.addView(iPLayout);
-        super.addView(new StyleGradientLine(context, Constants.ONE));
+        super.addView(new BubleGradientLine(context, Constants.ONE));
         super.addView(portForm);
 
         onProxyCheck.setOnClickListener(this);
