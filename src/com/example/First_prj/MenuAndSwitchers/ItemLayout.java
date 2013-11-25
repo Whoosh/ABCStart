@@ -2,7 +2,7 @@ package com.example.First_prj.MenuAndSwitchers;
 
 import android.content.Context;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.StyleGradientLine;
+import com.example.First_prj.ForAllCode.BubleGradientLine;
 
 public class ItemLayout extends LinearLayout {
     private TextFieldLayout textFieldLayout;
@@ -11,9 +11,9 @@ public class ItemLayout extends LinearLayout {
         super(context);
         this.textFieldLayout = textFieldLayout;
         super.setOrientation(VERTICAL);
-        super.addView(new StyleGradientLine(context, 1));
+        super.addView(new BubleGradientLine(context, 1));
         super.addView(textFieldLayout);
-        super.addView(new StyleGradientLine(context, 1));
+        super.addView(new BubleGradientLine(context, 1));
     }
 
     public String getStringText() {

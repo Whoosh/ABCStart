@@ -33,8 +33,6 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // setContentView(new IPAddressForm(this));
-
         setContentView(R.layout.main);
         setIDForAllElement();
         setListenerForAllElement();
@@ -75,7 +73,6 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     // @TODO можно запилить обработку форм
     public void onClick(View elements) {

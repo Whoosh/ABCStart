@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.First_prj.Constants;
 import com.example.First_prj.ForAllCode.BoldGradientLine;
-import com.example.First_prj.ForAllCode.StyleGradientLine;
+import com.example.First_prj.ForAllCode.BubleGradientLine;
 import com.example.First_prj.ForAllCode.SerifTextView;
 import com.example.First_prj.ForAllCode.TransparentEmptyView;
 
@@ -45,13 +45,13 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         super.addView(new SerifTextView(context, "\tНастройка прокси", 17));
         super.addView(new BoldGradientLine(context, 4));
         super.addView(new TransparentEmptyView(context, 10));
-        super.addView(new StyleGradientLine(context, (byte) 2)); //2  - толщина линии между слоями
+        super.addView(new BubleGradientLine(context, (byte) 2)); //2  - толщина линии между слоями
         initAddressLayout();
         super.addView(addressLayout);
-        super.addView(new StyleGradientLine(context, (byte) 2));
+        super.addView(new BubleGradientLine(context, (byte) 2));
         initPort();
         super.addView(portLayout);
-        super.addView(new StyleGradientLine(context, (byte) 2));
+        super.addView(new BubleGradientLine(context, (byte) 2));
         super.addView(new TransparentEmptyView(context, 10));
 
     }
@@ -186,8 +186,10 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         return (result == str.length());
     }
 
-    public void setEmpty() {
+    public void clearForms() {
+        portForm.setText("");
         for (EditTextLengthFilter text : ipOctet) text.setText("");
+        ipOctet[0].requestFocus();
     }
 
     public String getAddress() {
@@ -233,15 +235,10 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         }
     }
 
-    public void inIPFocus() {
-        ipOctet[0].requestFocus();
-    }
-
     @Override
     public void onClick(View view) {
         if (clear.equals(view)) {
             clearForms();
-            inIPFocus();
         } else if (view.equals(proxySet))
             proxyBoxLogic();
     }
@@ -264,11 +261,6 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         } catch (NullPointerException ex) {
             return true;
         }
-    }
-
-    private void clearForms() {
-        portForm.setText("");
-        setEmpty();
     }
 
     private void proxyBoxLogic() {
