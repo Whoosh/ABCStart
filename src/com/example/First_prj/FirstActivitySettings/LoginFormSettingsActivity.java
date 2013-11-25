@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.*;
 import com.example.First_prj.Constants;
 import com.example.First_prj.ForAllCode.BlueLine;
@@ -21,6 +22,8 @@ public class LoginFormSettingsActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         addElementInToActivity();
         setOldInfoInToForm();
     }

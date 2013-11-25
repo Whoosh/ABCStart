@@ -17,14 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FirstActivitySettings.LoginFormSettingsActivity">
+        <activity android:name=".FirstActivitySettings.LoginFormSettingsActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".MenuLogicStarter.MenuLogicStarter">
+        <activity android:name=".MenuLogicStarter.MenuLogicStarter" >
         </activity>
 
         <activity android:name=".Journal.JournalTab">
@@ -34,6 +34,9 @@
         </activity>
 
         <activity android:name=".Journal.EditJournalActivity">
+        </activity>
+
+        <activity android:name=".FirstActivitySettings.FormActivity" android:theme="@style/Theme.Transparent">
         </activity>
 
     </application>
