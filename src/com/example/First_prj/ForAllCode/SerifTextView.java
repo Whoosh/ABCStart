@@ -18,7 +18,7 @@ public class SerifTextView extends TextView {
         super.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.FILL_PARENT));
         super.setTypeface(Typeface.SERIF);
-        super.setGravity(Gravity.CENTER_VERTICAL);
+        super.setGravity(Gravity.CENTER);
     }
 
     public String getStringText() {
