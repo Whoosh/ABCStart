@@ -19,8 +19,8 @@ import com.example.First_prj.ForAllCode.TransparentEmptyView;
 
 public class IPAddressForm extends LinearLayout implements View.OnClickListener {
 
-    private EditTextLengthFilter portForm;
-    private EditTextLengthFilter[] ipOctet;
+    private EditTextWithLengthFilter portForm;
+    private EditTextWithLengthFilter[] ipOctet;
     private LinearLayout addressLayout;
     private LinearLayout portLayout;
     private CheckBox proxySet;
@@ -39,7 +39,7 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         super.setOrientation(VERTICAL);
 
         this.context = context;
-        ipOctet = new EditTextLengthFilter[numOfOctet];
+        ipOctet = new EditTextWithLengthFilter[numOfOctet];
         metric = context.getResources().getDisplayMetrics().density;
 
         super.addView(new SerifTextView(context, "\tНастройка прокси", 17));
@@ -90,13 +90,12 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         portLayout.setOrientation(HORIZONTAL);
         portLayout.setBackgroundColor(Color.TRANSPARENT);
 
-        portForm = new EditTextLengthFilter(context, (byte) 5); // 5 количество символов на порту
-        portForm.setGravity(Gravity.CENTER_HORIZONTAL);
+        portForm = new EditTextWithLengthFilter(context, (byte) 5); // 5 количество символов
+        portForm.setGravity(Gravity.CENTER);
 
         clear = new SerifTextView(context, "Очистить прокси", Constants.DEFAULT_TEXT_SIZE);
 
-        portForm.setWidth((int) (80 * metric));
-
+        portForm.setWidth(80); // в самой форме произойдёт преобразование dp
         portForm.addTextChangedListener(portWatcher);
 
         portLayout.addView(new SerifTextView(context, "\tPort : ", Constants.DEFAULT_TEXT_SIZE));
@@ -167,7 +166,7 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         addressFrame.setGravity(Gravity.BOTTOM);
 
         for (byte i = 0; i < numOfOctet; i++) {
-            ipOctet[i] = new EditTextLengthFilter(context, octetLen);
+            ipOctet[i] = new EditTextWithLengthFilter(context, octetLen);
             ipOctet[i].addTextChangedListener(addressWatcher);
             addressFrame.addView(ipOctet[i]);
             if (i < numOfOctet - Constants.ONE)
@@ -180,7 +179,7 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
     public boolean isNumber(CharSequence str) {
         if (str.length() == 0) return true;
         byte result = 0;
-        for (int symbol = 48; symbol < 58; symbol++) // аски 0(48) - 9(57)
+        for (byte symbol = 48; symbol < 58; symbol++) // аски 0(48) - 9(57)
             for (byte i = 0; i < str.length(); i++)
                 if (str.charAt(i) == (char) symbol) result++;
         return (result == str.length());
@@ -188,13 +187,13 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
 
     public void clearForms() {
         portForm.setText("");
-        for (EditTextLengthFilter text : ipOctet) text.setText("");
+        for (EditTextWithLengthFilter text : ipOctet) text.setText("");
         ipOctet[0].requestFocus();
     }
 
     public String getAddress() {
         StringBuilder ipAddress = new StringBuilder();
-        for (EditTextLengthFilter actet : ipOctet) {
+        for (EditTextWithLengthFilter actet : ipOctet) {
             ipAddress.append(actet.getText());
             ipAddress.append('.');
         }

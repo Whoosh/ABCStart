@@ -10,12 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.First_prj.Constants;
-import com.example.First_prj.FirstActivitySettings.EditTextLengthFilter;
+import com.example.First_prj.FirstActivitySettings.EditTextWithLengthFilter;
 import com.example.First_prj.ForAllCode.SerifTextView;
 
 public class PortFormLayout extends LinearLayout implements TextWatcher, View.OnClickListener {
 
-    private EditTextLengthFilter portForm;
+    private EditTextWithLengthFilter portForm;
     private String bufferStr;
     private Context context;
     private TextView clearAll;
@@ -26,7 +26,7 @@ public class PortFormLayout extends LinearLayout implements TextWatcher, View.On
         super.setBackgroundColor(Color.TRANSPARENT);
         this.context = context;
 
-        portForm = new EditTextLengthFilter(context, (byte) 5); // 5 количество символов
+        portForm = new EditTextWithLengthFilter(context, (byte) 5); // 5 количество символов
         clearAll = new SerifTextView(context, "Очистить прокси", Constants.DEFAULT_TEXT_SIZE);
 
         View cork = new View(context);

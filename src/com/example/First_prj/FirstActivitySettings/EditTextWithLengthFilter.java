@@ -6,14 +6,15 @@ import android.graphics.Typeface;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import com.example.First_prj.Constants;
 
-public class EditTextLengthFilter extends EditText {
+public class EditTextWithLengthFilter extends EditText {
 
     private float metric;
 
-    public EditTextLengthFilter(Context context, byte maxSymbolCount) {
+    public EditTextWithLengthFilter(Context context, byte maxSymbolCount) {
         super(context);
         metric = context.getResources().getDisplayMetrics().density;
         super.setInputType(InputType.TYPE_CLASS_PHONE);

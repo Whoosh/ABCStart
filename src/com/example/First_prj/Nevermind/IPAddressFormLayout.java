@@ -9,19 +9,19 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.First_prj.Constants;
-import com.example.First_prj.FirstActivitySettings.EditTextLengthFilter;
+import com.example.First_prj.FirstActivitySettings.EditTextWithLengthFilter;
 import com.example.First_prj.ForAllCode.SerifTextView;
 
 public class IPAddressFormLayout extends LinearLayout {
 
-    private EditTextLengthFilter[] allEdits;
+    private EditTextWithLengthFilter[] allEdits;
     private final byte numOfEdits = 4;
     private Context context;
 
     public IPAddressFormLayout(Context context) {
         super(context);
         this.context = context;
-        allEdits = new EditTextLengthFilter[numOfEdits];
+        allEdits = new EditTextWithLengthFilter[numOfEdits];
 
         final float metric = context.getResources().getDisplayMetrics().density;
 
@@ -32,7 +32,7 @@ public class IPAddressFormLayout extends LinearLayout {
         super.setGravity(Gravity.BOTTOM);
 
         for (byte i = 0; i < numOfEdits; i++) {
-            allEdits[i] = new EditTextLengthFilter(context,(byte)3);
+            allEdits[i] = new EditTextWithLengthFilter(context,(byte)3);
             allEdits[i].addTextChangedListener(textWatcher);
             super.addView(allEdits[i]);
             super.addView(new SerifTextView(context, ".", 20));
@@ -93,12 +93,12 @@ public class IPAddressFormLayout extends LinearLayout {
     }
 
     public void setEmpty() {
-        for (EditTextLengthFilter text : allEdits) text.setText("");
+        for (EditTextWithLengthFilter text : allEdits) text.setText("");
     }
 
     public String getAddress() {
         StringBuilder ipAddress = new StringBuilder();
-        for (EditTextLengthFilter actet : allEdits) {
+        for (EditTextWithLengthFilter actet : allEdits) {
             ipAddress.append(actet.getText());
             ipAddress.append('.');
         }
