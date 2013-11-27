@@ -6,25 +6,23 @@
     <uses-sdk android:minSdkVersion="7"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-    <application android:label="@string/app_name"
-                 android:icon="@drawable/logo">
-        <activity android:name=".LoginForm.FirstActivity"
-                  android:label="@string/app_name">
+    <application android:icon="@drawable/logo">
+        <activity android:name=".LoginForm.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FirstActivitySettings.LoginFormSettingsActivity" >
+        <activity android:name=".FirstActivitySettings.LoginFormSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".MenuLogicStarter.MenuLogicStarter" >
+        <activity android:name=".MenuLogicStarter.MenuLogicStarter">
         </activity>
 
         <activity android:name=".Journal.JournalTab">
@@ -34,9 +32,6 @@
         </activity>
 
         <activity android:name=".Journal.EditJournalActivity">
-        </activity>
-
-        <activity android:name=".FirstActivitySettings.FormActivity" android:theme="@style/Theme.Transparent">
         </activity>
 
     </application>

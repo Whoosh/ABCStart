@@ -1,6 +1,7 @@
 package com.example.First_prj.LoginForm;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import com.example.First_prj.ForAllCode.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.TransparentEmptyView;
+import com.example.First_prj.MenuLogicStarter.MenuLogicStarter;
 
-public class MainWindow extends LinearLayout implements View.OnClickListener, View.OnTouchListener {
+public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
     private SharedPreferences keyValueStorage;
     private CustomLoginEditText userName;
@@ -50,6 +53,9 @@ public class MainWindow extends LinearLayout implements View.OnClickListener, Vi
         password = new CustomLoginEditText(context);
         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
+        password.setHint("Пароль");
+        userName.setHint("Имя пользователя");
+
         buttonBox.setOrientation(HORIZONTAL);
         buttonBox.setGravity(Gravity.RIGHT);
         buttonBox.setLayoutParams(new ViewGroup.LayoutParams((int) (200 * metric), (int) (40 * metric)));
@@ -62,8 +68,6 @@ public class MainWindow extends LinearLayout implements View.OnClickListener, Vi
         super.addView(new TransparentEmptyView(context, 5));
         super.addView(buttonBox);
 
-        userName.setOnClickListener(this);
-        password.setOnClickListener(this);
         login.setOnTouchListener(this);
     }
 
@@ -81,6 +85,14 @@ public class MainWindow extends LinearLayout implements View.OnClickListener, Vi
         } catch (NullPointerException ex) {
             return "";
         }
+    }
+
+    public void setUserName(String userName) {
+        this.userName.setText(userName);
+    }
+
+    public void setPassword(String password) {
+        this.password.setText(password);
     }
 
     public void saveWindowInfo() {
@@ -102,22 +114,33 @@ public class MainWindow extends LinearLayout implements View.OnClickListener, Vi
     }
 
     @Override
-    public void onClick(View view) {
-        if (view.equals(userName)) {
-            if (getUserName().equals("Имя пользователя"))
-                userName.setText("");
-        } else if (view.equals(password)) {
-            if (getPassword().equals("Long hard password"))
-                password.setText("");
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            login.setBackgroundColor(Color.rgb(0, 255, 0));
+            onButtonPressed();
+        }
+        return true;
+    }
+
+    public void restoreVisualElementState() {
+        login.setBackgroundColor(Color.argb(200, 25, 25, 25));
+    }
+
+    private void onButtonPressed() {
+        //SharedPreferences proxyInfo = context.getSharedPreferences("Proxy", Context.MODE_PRIVATE);
+        //@TODO старт с проси и без когда будет нативный доступ.
+        //if (proxyInfo.getBoolean("CheckBoxValue", false))
+        // TODO сюда проверку подключения перед включением.
+        // стартуем пока как учитель, всегда.
+        if (true) { // @TODO проверка на правильность пароля
+            Intent intent = new Intent(context, MenuLogicStarter.class);
+            //@TODO mightCode = Server.getMightCode(); // код указывающий могущество сущности
+            intent.putExtra("MightCode", MenuLogicStarter.TEACHER);
+            context.startActivity(intent);
+        } else {
+            Toast.makeText(context, "Неверно введён логин или пароль", Toast.LENGTH_SHORT).show();
+            return;
         }
     }
 
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_DOWN)
-            login.setBackgroundColor(Color.rgb(0, 255, 0));
-        else if (view.equals(login))
-            login.setBackgroundColor(Color.argb(200, 25, 25, 25));
-        return true;
-    }
 }

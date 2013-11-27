@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import com.example.First_prj.Constants;
 
-public class CustomLoginEditText extends EditText{
+public class CustomLoginEditText extends EditText {
 
     public CustomLoginEditText(Context context) {
         super(context);
@@ -19,5 +19,6 @@ public class CustomLoginEditText extends EditText{
         super.setTextSize(Constants.DEFAULT_TEXT_SIZE);
         super.setGravity(Gravity.BOTTOM);
         super.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);
+        super.setHintTextColor(Color.rgb(0, 100, 0));
     }
 }

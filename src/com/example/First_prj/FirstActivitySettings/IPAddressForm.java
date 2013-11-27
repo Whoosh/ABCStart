@@ -12,10 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.First_prj.Constants;
-import com.example.First_prj.ForAllCode.BoldGradientLine;
-import com.example.First_prj.ForAllCode.BubleGradientLine;
-import com.example.First_prj.ForAllCode.SerifTextView;
-import com.example.First_prj.ForAllCode.TransparentEmptyView;
+import com.example.First_prj.ForAllCode.*;
 
 public class IPAddressForm extends LinearLayout implements View.OnClickListener {
 
@@ -37,6 +34,7 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         super(context);
         super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         super.setOrientation(VERTICAL);
+
 
         this.context = context;
         ipOctet = new EditTextWithLengthFilter[numOfOctet];
