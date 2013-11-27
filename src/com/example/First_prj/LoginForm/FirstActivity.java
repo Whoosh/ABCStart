@@ -2,21 +2,13 @@ package com.example.First_prj.LoginForm;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
 import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
-import com.example.First_prj.MenuLogicStarter.MenuLogicStarter;
 import com.example.First_prj.R;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
-
-    private String proxyAddress = "";
-    private String proxyPort = "";
-    private boolean isProxySet = false;
-    private int mightCode;
 
     private MainWindow mainWindow;
 
@@ -45,17 +37,22 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onResume() {
         mainWindow.loadWindowInfo();
+        mainWindow.restoreVisualElementState();
         super.onResume();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("UserName", mainWindow.getUserName());
+        outState.putString("Password", mainWindow.getPassword());
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        mainWindow.setUserName(savedInstanceState.get("UserName").toString());
+        mainWindow.setPassword(savedInstanceState.get("Password").toString());
     }
 
     @Override
@@ -75,41 +72,18 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-    private void buttonLogic() {
-        // TODO сюда проверку подключения перед включением.
-        lookingForProxy(); // берём настройки прокси.
-        //if (isProxySeted) // TODO берём прокси и заходим
-        // стартуем пока как учитель, всегда.
-        if (true) {
-            Intent intent = new Intent(this, MenuLogicStarter.class);
-            //@TODO mightCode = Server.getMightCode(); // код указывающий могущество сущности
-            mightCode = MenuLogicStarter.TEACHER;
-            intent.putExtra("MightCode", mightCode);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "Неверно введён логин или пароль", Toast.LENGTH_SHORT).show();
-            return;
-        }
-    }
-
-
-    private void lookingForProxy() {
-        SharedPreferences proxyInfo = getSharedPreferences("proxySettings", MODE_PRIVATE);
-        if (!proxyInfo.getBoolean("CheckBoxValue", false)) return;
-        proxyAddress = proxyInfo.getString("IP", "");
-        proxyPort = proxyInfo.getString("Port", "");
-        isProxySet = true;
-    }
-
-    private void closeVirtualKeyBoard() {
-        ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).
-                hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
     @Override
     public void onClick(View view) {
-        if (view.equals(mainWindow))
-            closeVirtualKeyBoard();
+        if (view.equals(mainWindow)) {
+            try {// закрываем виртуальную клавиатуру по клику на пустое место.
+                ((InputMethodManager)
+                        getSystemService(INPUT_METHOD_SERVICE))
+                        .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                                InputMethodManager.HIDE_NOT_ALWAYS);
+            } catch (NullPointerException ex) {
+                return;
+            }
+        }
+
     }
 }

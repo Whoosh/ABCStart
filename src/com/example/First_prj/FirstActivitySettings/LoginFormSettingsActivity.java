@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.*;
 import com.example.First_prj.ForAllCode.BoldGradientLine;
 import com.example.First_prj.ForAllCode.Icon;
+import com.example.First_prj.ForAllCode.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.SerifTextView;
 
 
@@ -53,7 +54,7 @@ public class LoginFormSettingsActivity extends Activity {
     }
 
     private void saveFormsInfo() {
-        keyValueStorage = getSharedPreferences("proxySettings", MODE_PRIVATE);
+        keyValueStorage = getSharedPreferences("Proxy", MODE_PRIVATE);
         SharedPreferences.Editor editor = keyValueStorage.edit();
         editor.putString("IP", ipAddressForm.getAddress());
         editor.putString("Port", ipAddressForm.getPort());
@@ -87,6 +88,9 @@ public class LoginFormSettingsActivity extends Activity {
 
         LinearLayout listOfSettings = new LinearLayout(this);
         listOfSettings.setOrientation(LinearLayout.VERTICAL);
+
+        //@TODO стоит ли ?
+        //listOfSettings.setBackgroundDrawable(new LiteMatrixDraw(this));
 
         LinearLayout combLayout = new LinearLayout(this);
         combLayout.setOrientation(LinearLayout.HORIZONTAL);
