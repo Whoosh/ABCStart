@@ -76,12 +76,10 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.equals(mainWindow)) {
             try {// закрываем виртуальную клавиатуру по клику на пустое место.
-                ((InputMethodManager)
-                        getSystemService(INPUT_METHOD_SERVICE))
+                ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
                         .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                                 InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (NullPointerException ex) {
-                return;
             }
         }
 

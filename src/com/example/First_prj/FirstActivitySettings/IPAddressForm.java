@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.First_prj.Constants;
+import com.example.First_prj.ForAllCode.Constants;
 import com.example.First_prj.ForAllCode.*;
 
 public class IPAddressForm extends LinearLayout implements View.OnClickListener {
@@ -93,7 +93,7 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
 
         clear = new SerifTextView(context, "Очистить прокси", Constants.DEFAULT_TEXT_SIZE);
 
-        portForm.setWidth(80); // в самой форме произойдёт преобразование dp
+        portForm.setWidth(80); // в самой форме произойдёт преобразование размера
         portForm.addTextChangedListener(portWatcher);
 
         portLayout.addView(new SerifTextView(context, "\tPort : ", Constants.DEFAULT_TEXT_SIZE));

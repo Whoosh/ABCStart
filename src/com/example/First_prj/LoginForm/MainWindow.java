@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -14,9 +13,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import com.example.First_prj.ForAllCode.Constants;
 import com.example.First_prj.ForAllCode.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.TransparentEmptyView;
-import com.example.First_prj.MenuLogicStarter.MenuLogicStarter;
+import com.example.First_prj.MenuAndSwitchers.MenuActivity;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
@@ -41,7 +41,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
         saveMe = new CheckBox(context);
         saveMe.setTextColor(Color.rgb(140, 140, 140));
-        saveMe.setTextSize(14);
+        saveMe.setTextSize(Constants.DEFAULT_TEXT_SIZE);
         saveMe.setText("Запомнить ");
 
         login = new Button(context);
@@ -133,9 +133,9 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         // TODO сюда проверку подключения перед включением.
         // стартуем пока как учитель, всегда.
         if (true) { // @TODO проверка на правильность пароля
-            Intent intent = new Intent(context, MenuLogicStarter.class);
+            Intent intent = new Intent(context, MenuActivity.class);
             //@TODO mightCode = Server.getMightCode(); // код указывающий могущество сущности
-            intent.putExtra("MightCode", MenuLogicStarter.TEACHER);
+            intent.putExtra("MightCode", Constants.TEACHER_CODE); // @TODO может стоит добавить флаг в Data..
             context.startActivity(intent);
         } else {
             Toast.makeText(context, "Неверно введён логин или пароль", Toast.LENGTH_SHORT).show();

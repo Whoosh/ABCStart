@@ -6,9 +6,8 @@ import android.graphics.Typeface;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.Gravity;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import com.example.First_prj.Constants;
+import com.example.First_prj.ForAllCode.Constants;
 
 public class EditTextWithLengthFilter extends EditText {
 
