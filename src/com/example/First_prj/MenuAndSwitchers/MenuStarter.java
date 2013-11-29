@@ -11,7 +11,6 @@ public class MenuStarter {
 
     public MenuStarter(Context context) {
         this.context = context;
-        //@TODO запилить загрузку всех возможных ключей для активити, взять записи из конфига
     }
 
     public int getActivityCounts() {
