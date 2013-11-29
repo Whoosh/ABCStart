@@ -16,7 +16,7 @@ public class MenuActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         mightCode = getIntent().getIntExtra("MightCode", Constants.ERROR_CODE);
         mightCode = Constants.TEACHER_CODE;
-        mainMenu = new Menu(this, getSections());
+        mainMenu = new Menu(this, mightCode);
         setContentView(mainMenu);
     }
 
@@ -26,22 +26,4 @@ public class MenuActivity extends Activity {
         super.onResume();
     }
 
-    public int[] getSections() {
-        switch (mightCode) {
-            case Constants.TEACHER_CODE:
-                return Data.getTeacherSet();
-            case Constants.STUDENT_CODE:
-                return Data.getStudentSet();
-            case Constants.PARENT_CODE:
-                return Data.getParentSet();
-            case Constants.STUDENT_TEACHER_CODE:
-                return Data.getTeacherStudentSet();
-            case Constants.ERROR_CODE: {
-                //@TODO по какойто причине не смогли вытащить значение.. подумать как обработать ошибку.
-            }
-            default:{
-                return new int[]{10,1};
-            }
-        }
-    }
 }

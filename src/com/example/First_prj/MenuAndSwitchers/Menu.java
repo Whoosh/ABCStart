@@ -14,10 +14,11 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
     private int itemsLength;
     private MenuStarter menuStarter;
 
-    public Menu(Context context, int[] sections) {
+    public Menu(Context context, int mightCode) {
         super(context);
         super.setOrientation(VERTICAL);
         this.context = context;
+        int[] sections = getSections(mightCode);
         itemsLength = sections.length;
         menuStarter = new MenuStarter(context);
         LinearLayout scrollableLayout = new LinearLayout(context);
@@ -59,6 +60,25 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
     public void setBack() {
         for (int i = 0; i < itemsLength; i++)
             itemsLayout[i].setBlinkedColorBack();
+    }
+
+    public int[] getSections(int mightCode) {
+        switch (mightCode) {
+            case Constants.TEACHER_CODE:
+                return Data.getTeacherSet();
+            case Constants.STUDENT_CODE:
+                return Data.getStudentSet();
+            case Constants.PARENT_CODE:
+                return Data.getParentSet();
+            case Constants.STUDENT_TEACHER_CODE:
+                return Data.getTeacherStudentSet();
+            case Constants.ERROR_CODE: {
+                //@TODO по какойто причине не смогли вытащить значение.. подумать как обработать ошибку.
+            }
+            default:{
+                return new int[]{1,1};
+            }
+        }
     }
 
     private void setSettingsHead() {
