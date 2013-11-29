@@ -1,4 +1,4 @@
-package com.example.First_prj.MenuAndSwitchers;
+package com.example.First_prj.Journal;
 
 import android.content.Context;
 import android.graphics.Color;

@@ -7,7 +7,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.TabHost;
-import com.example.First_prj.MenuAndSwitchers.TabViewElement;
 import com.example.First_prj.R;
 
 

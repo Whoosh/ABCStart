@@ -5,6 +5,5 @@
             android:id="@+id/loginSettingsMenu"
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="Дополнительные настройки"
-
-            />
+    />
 </menu>

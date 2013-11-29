@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MenuLogicStarter.MenuLogicStarter">
+        <activity android:name=".MenuAndSwitchers.MenuActivity">
         </activity>
 
         <activity android:name=".Journal.JournalTab">

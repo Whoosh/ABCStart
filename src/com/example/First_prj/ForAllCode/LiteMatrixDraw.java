@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.WindowManager;
-import com.example.First_prj.Constants;
 
 import java.util.Random;
 
