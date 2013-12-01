@@ -3,10 +3,10 @@ package com.example.First_prj.MenuAndSwitchers;
 import android.content.Context;
 import android.graphics.Color;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.BubleGradientLine;
+import com.example.First_prj.ForAllCode.Gradients.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.Icon;
 import com.example.First_prj.ForAllCode.SerifTextView;
-import com.example.First_prj.ForAllCode.TransparentEmptyView;
+import com.example.First_prj.ForAllCode.TransparentView;
 
 public class ItemMenu extends LinearLayout {
 
@@ -22,10 +22,10 @@ public class ItemMenu extends LinearLayout {
         itemTextIcon.addView(textView);
 
         super.setOrientation(VERTICAL);
-        super.addView(new BubleGradientLine(context, 1));
+        super.addView(new BubbleHorizontalGradientLine(context, 1));
         super.addView(itemTextIcon);
-        super.addView(new BubleGradientLine(context, 1));
-        super.addView(new TransparentEmptyView(context, 20));
+        super.addView(new BubbleHorizontalGradientLine(context, 1));
+        super.addView(new TransparentView(context, 20));
     }
 
     public String getStringText() {
