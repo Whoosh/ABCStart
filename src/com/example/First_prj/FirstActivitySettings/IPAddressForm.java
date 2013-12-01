@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.First_prj.ForAllCode.Constants;
 import com.example.First_prj.ForAllCode.*;
+import com.example.First_prj.ForAllCode.Gradients.BoldHorizontalGradientLine;
+import com.example.First_prj.ForAllCode.Gradients.BubbleHorizontalGradientLine;
 
 public class IPAddressForm extends LinearLayout implements View.OnClickListener {
 
@@ -41,16 +43,16 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         metric = context.getResources().getDisplayMetrics().density;
 
         super.addView(new SerifTextView(context, "\tНастройка прокси", 17));
-        super.addView(new BoldGradientLine(context, 4));
-        super.addView(new TransparentEmptyView(context, 10));
-        super.addView(new BubleGradientLine(context, (byte) 2)); //2  - толщина линии между слоями
+        super.addView(new BoldHorizontalGradientLine(context, 4));
+        super.addView(new TransparentView(context, 10));
+        super.addView(new BubbleHorizontalGradientLine(context, (byte) 2)); //2  - толщина линии между слоями
         initAddressLayout();
         super.addView(addressLayout);
-        super.addView(new BubleGradientLine(context, (byte) 2));
+        super.addView(new BubbleHorizontalGradientLine(context, (byte) 2));
         initPort();
         super.addView(portLayout);
-        super.addView(new BubleGradientLine(context, (byte) 2));
-        super.addView(new TransparentEmptyView(context, 10));
+        super.addView(new BubbleHorizontalGradientLine(context, (byte) 2));
+        super.addView(new TransparentView(context, 10));
 
     }
 

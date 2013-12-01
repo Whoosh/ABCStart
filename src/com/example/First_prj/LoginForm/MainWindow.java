@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.First_prj.ForAllCode.Constants;
 import com.example.First_prj.ForAllCode.LiteMatrixDraw;
-import com.example.First_prj.ForAllCode.TransparentEmptyView;
+import com.example.First_prj.ForAllCode.TransparentView;
 import com.example.First_prj.MenuAndSwitchers.MenuActivity;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
@@ -63,9 +63,9 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         buttonBox.addView(login);
 
         super.addView(userName);
-        super.addView(new TransparentEmptyView(context, 5));
+        super.addView(new TransparentView(context, 5));
         super.addView(password);
-        super.addView(new TransparentEmptyView(context, 5));
+        super.addView(new TransparentView(context, 5));
         super.addView(buttonBox);
 
         login.setOnTouchListener(this);

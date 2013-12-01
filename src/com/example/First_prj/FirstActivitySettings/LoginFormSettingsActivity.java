@@ -3,12 +3,10 @@ package com.example.First_prj.FirstActivitySettings;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Window;
 import android.widget.*;
-import com.example.First_prj.ForAllCode.BoldGradientLine;
+import com.example.First_prj.ForAllCode.Gradients.BoldHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.Icon;
-import com.example.First_prj.ForAllCode.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.SerifTextView;
 
 
@@ -107,7 +105,7 @@ public class LoginFormSettingsActivity extends Activity {
         scrollView.addView(scrollableLayout);
 
         listOfSettings.addView(combLayout);
-        listOfSettings.addView(new BoldGradientLine(this, 4));
+        listOfSettings.addView(new BoldHorizontalGradientLine(this, 4));
         listOfSettings.addView(scrollView);
 
         setContentView(listOfSettings);
