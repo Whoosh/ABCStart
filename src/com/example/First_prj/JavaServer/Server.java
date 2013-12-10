@@ -36,7 +36,7 @@ public class Server {
     private static final byte DEFAULT_WAIT_RESPONSE_DELAY = 5;
     private static final byte SHORT_RESPONSE_DELAY = 1;
 
-    private static String TOKEN = "";
+    private static String TOKEN = " ";
 
     private static byte indexer;
 
@@ -53,7 +53,7 @@ public class Server {
     }
 
     public static boolean isPasswordOK() {
-        return (TOKEN != null) || !TOKEN.isEmpty();
+        return TOKEN.length() > 5;
     }
 
     private static void startServerConnection(Context context, String name, String password) throws TimeoutException {

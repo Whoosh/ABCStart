@@ -72,15 +72,15 @@ public class LoginFormSettingsActivity extends Activity {
     }
 
     private void loadProxyState(Bundle savedInstanceState) {
-        ipAddressForm.loadAddress(savedInstanceState.getString("IPAddress"));
-        ipAddressForm.loadPort(savedInstanceState.getString("Port"));
-        ipAddressForm.setProxyCheckBoxState(savedInstanceState.getBoolean("ProxyCheckBox"));
+        ipAddressForm.loadAddress(savedInstanceState.getString(IP_KEY));
+        ipAddressForm.loadPort(savedInstanceState.getString(PORT_KEY));
+        ipAddressForm.setProxyCheckBoxState(savedInstanceState.getBoolean(CHECK_BOX_KEY));
     }
 
     private void saveProxyState(Bundle outState) {
-        outState.putString("Port", ipAddressForm.getPort());
-        outState.putString("IPAddress", ipAddressForm.getAddress());
-        outState.putBoolean("ProxyCheckBox", ipAddressForm.isProxySet());
+        outState.putString(PORT_KEY, ipAddressForm.getPort());
+        outState.putString(IP_KEY, ipAddressForm.getAddress());
+        outState.putBoolean(CHECK_BOX_KEY, ipAddressForm.isProxySet());
     }
 
     private void addElementInToActivity() {
