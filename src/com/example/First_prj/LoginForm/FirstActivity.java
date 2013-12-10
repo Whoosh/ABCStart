@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
+import com.example.First_prj.JavaServer.Server;
 import com.example.First_prj.R;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
 
     private MainWindow mainWindow;
+    private ActionMode settings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,8 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         mainWindow = new MainWindow(this);
         mainWindow.setOnClickListener(this);
         setContentView(mainWindow);
+
+        startActionMode(settingsBar);
     }
 
     @Override
@@ -30,12 +34,13 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onDestroy() {
+        Server.disconnect();
         super.onDestroy();
-
     }
 
     @Override
     protected void onResume() {
+        Server.disconnect();
         mainWindow.loadWindowInfo();
         mainWindow.restoreVisualElementState();
         super.onResume();
@@ -55,21 +60,42 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         mainWindow.setPassword(savedInstanceState.get("Password").toString());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.loginmenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+    private ActionMode.Callback settingsBar = new ActionMode.Callback() {
+
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            menu.add("Настройки");
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            mode.finish();
+            startActivity(new Intent(getApplicationContext(), LoginFormSettingsActivity.class));
+            return true;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            settings = null;
+            mode.finish();
+        }
+    };
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.loginSettingsMenu:
-                startActivity(new Intent(this, LoginFormSettingsActivity.class));
-                break;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (settings == null) {
+            settings = startActionMode(settingsBar);
+        } else {
+            settings.finish();
+            settings = null;
         }
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     @Override
@@ -80,6 +106,7 @@ public class FirstActivity extends Activity implements View.OnClickListener {
                         .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                                 InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (NullPointerException ex) {
+                ex.printStackTrace();
             }
         }
 

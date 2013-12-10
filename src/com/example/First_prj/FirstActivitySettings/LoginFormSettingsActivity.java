@@ -12,13 +12,17 @@ import com.example.First_prj.ForAllCode.SerifTextView;
 
 public class LoginFormSettingsActivity extends Activity {
 
+    public static String IP_KEY = "IP";
+    public static String PORT_KEY = "Port";
+    public static String PROXY_KEY = "Proxy";
+    public static String CHECK_BOX_KEY = "CheckBoxValue";
+
     private IPAddressForm ipAddressForm;
     private SharedPreferences keyValueStorage;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         addElementInToActivity();
         setOldInfoInToForm();
     }
@@ -52,19 +56,19 @@ public class LoginFormSettingsActivity extends Activity {
     }
 
     private void saveFormsInfo() {
-        keyValueStorage = getSharedPreferences("Proxy", MODE_PRIVATE);
+        keyValueStorage = getSharedPreferences(PROXY_KEY, MODE_PRIVATE);
         SharedPreferences.Editor editor = keyValueStorage.edit();
-        editor.putString("IP", ipAddressForm.getAddress());
-        editor.putString("Port", ipAddressForm.getPort());
-        editor.putBoolean("CheckBoxValue", ipAddressForm.isProxySet());
+        editor.putString(IP_KEY, ipAddressForm.getAddress());
+        editor.putString(PORT_KEY, ipAddressForm.getPort());
+        editor.putBoolean(CHECK_BOX_KEY, ipAddressForm.isProxySet());
         editor.commit();
     }
 
     private void setOldInfoInToForm() {
-        keyValueStorage = getSharedPreferences("proxySettings", MODE_PRIVATE);
-        ipAddressForm.loadAddress(keyValueStorage.getString("IP", ""));
-        ipAddressForm.loadPort(keyValueStorage.getString("Port", ""));
-        ipAddressForm.setProxyCheckBoxState(keyValueStorage.getBoolean("CheckBoxValue", false));
+        keyValueStorage = getSharedPreferences(PROXY_KEY, MODE_PRIVATE);
+        ipAddressForm.loadAddress(keyValueStorage.getString(IP_KEY, ""));
+        ipAddressForm.loadPort(keyValueStorage.getString(PORT_KEY, ""));
+        ipAddressForm.setProxyCheckBoxState(keyValueStorage.getBoolean(CHECK_BOX_KEY, false));
     }
 
     private void loadProxyState(Bundle savedInstanceState) {

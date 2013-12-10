@@ -9,11 +9,11 @@ public class Constants {
     public static final byte PARENT_CODE = 3;
     public static final byte STUDENT_TEACHER_CODE = 4;
     public static final byte JOURNAL_ACTIVITY_ID = 2;
-
+    public static final byte GROUP_COUNT = 24;
 
     public static enum Month {
 
-        January("Янврь"), February("Февраль"), March("Март"),
+        January("Январь"), February("Февраль"), March("Март"),
         April("Апрель"), May("Май"), June("Июнь"),
         July("Июль"), August("Август"), September("Сентябрь"),
         October("Октябрь"), November("Ноябрь"), December("Декабрь");
