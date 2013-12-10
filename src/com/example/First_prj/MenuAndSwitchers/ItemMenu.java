@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import com.example.First_prj.ForAllCode.Gradients.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.Icon;
 import com.example.First_prj.ForAllCode.SerifTextView;
-import com.example.First_prj.ForAllCode.TransparentView;
+import com.example.First_prj.ForAllCode.TransparentHorizontalView;
 
 public class ItemMenu extends LinearLayout {
 
@@ -25,7 +25,7 @@ public class ItemMenu extends LinearLayout {
         super.addView(new BubbleHorizontalGradientLine(context, 1));
         super.addView(itemTextIcon);
         super.addView(new BubbleHorizontalGradientLine(context, 1));
-        super.addView(new TransparentView(context, 20));
+        super.addView(new TransparentHorizontalView(context, 20));
     }
 
     public String getStringText() {

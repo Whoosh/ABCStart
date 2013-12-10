@@ -5,9 +5,9 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TransparentView extends View {
+public class TransparentHorizontalView extends View {
 
-    public TransparentView(Context context, int height) {
+    public TransparentHorizontalView(Context context, int height) {
         super(context);
         super.setBackgroundColor(Color.TRANSPARENT);
         super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, (int) (height *

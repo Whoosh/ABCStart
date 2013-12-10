@@ -17,7 +17,8 @@ public class CustomLoginEditText extends EditText {
         super.setBackgroundColor(Color.argb(200, 25, 25, 25));
         super.setTextColor(Color.rgb(0, 100, 0));
         super.setTextSize(Constants.DEFAULT_TEXT_SIZE);
-        super.setGravity(Gravity.BOTTOM);
+        super.setText("");
+        super.setGravity(Gravity.CENTER_VERTICAL);
         super.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);
         super.setHintTextColor(Color.rgb(0, 100, 0));
     }

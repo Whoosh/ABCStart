@@ -12,27 +12,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleVerticalGradientLine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DataHeadSelector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DataSector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/HorizontalLine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/InfoHead.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MainConstructor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/VerticalLine.java" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\MenuAndSwitchers\MenuStarter.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/DateLessonsLine.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MainTable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Server.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/TableWithMarks.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/UserInfo.java" />
+      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\.idea\libraries\android_support_v4.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\Journal\DataHead\DataHeadSelector.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\Journal\DataHead\DataSector.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\Journal\DataHead\InfoHead.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\Journal\MainTable\MainConstructor.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\TestCode\SomeAdapterExample.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Constants.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/EditJournalActivity.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/EditJournalActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/CustomLoginEditText.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/CustomLoginEditText.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/First_prj.iml" afterPath="$PROJECT_DIR$/First_prj.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressForm.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressForm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/ItemMenu.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/ItemMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/JournalTab.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/JournalTab.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-Debug.mk" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-Debug.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-Release.mk" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-Release.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-impl.mk" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-impl.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-variables.mk" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Makefile-variables.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/private/Makefile-variables.mk" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/private/Makefile-variables.mk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Menu.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Menu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Package-Debug.bash" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Package-Debug.bash" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Package-Release.bash" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/Package-Release.bash" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/SerifTextView.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/SerifTextView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/jni/Server/ServerComutation/nbproject/private/private.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\ForAllCode\BoldGradientLine.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BoldHorizontalGradientLine.java" />
-      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\ForAllCode\BubleGradientLine.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleHorizontalGradientLine.java" />
-      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\ForAllCode\TransparentEmptyView.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/TransparentView.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\ForAllCode\TransparentView.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/TransparentHorizontalView.java" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
     <ignored path="First_prj.iws" />
@@ -97,53 +115,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DataHeadSelector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DataHeadSelector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="0" selection-start="4538" selection-end="4538" vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="1802">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setFocusToActualMonth#0;class#DataHeadSelector#0" expanded="false" />
-                <element signature="e#2575#3245#0" expanded="true" />
-                <element signature="e#2757#3195#0" expanded="true" />
-                <element signature="e#3164#3165#0" expanded="true" />
-                <element signature="e#3222#3223#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JournalTab.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/JournalTab.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="7" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1054">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TabViewElement.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/TabViewElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="56" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LookingJournalActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="38" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+            <state line="28" column="20" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2057">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainConstructor.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MainConstructor.java">
+      <file leaf-file-name="FirstActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="39" selection-start="586" selection-end="586" vertical-scroll-proportion="0.39451477" vertical-offset="0" max-vertical-offset="474">
+            <state line="42" column="28" selection-start="1146" selection-end="1146" vertical-scroll-proportion="-1.2795138" vertical-offset="1332" max-vertical-offset="1921">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="25" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="3043">
               <folding />
             </state>
           </provider>
@@ -162,46 +155,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressFormLayout.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/addressForm.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/Cork.java" />
-        <option value="$PROJECT_DIR$/res/drawable/blueline.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/forboldline.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/TransparentEmptyView.java" />
-        <option value="$PROJECT_DIR$/build/res/all/debug/drawable/blueline.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/ballgradient.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/boldgradien.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/TestCode/Matrix/Symbols.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/EditTextLengthFilter.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/TestCode/DrawableTest.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/LoginPasswordEditText.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/LiteMatrixDraw.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/res/menu/loginmenu.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/SerifTextView.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressForm.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/CustomLoginEditText.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/TextFieldLayout.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuLayout.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/menuItem.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/ItemLayout.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuItem.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/ItemMenu.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuSwitcherActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuSwitcher.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuLogicStarter.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Data.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/Constants.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuActivity.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuStarter.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Menu.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/HorizontalLine.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/VerticalLine.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MainConstructor.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DataSector.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/InfoHead.java" />
@@ -211,8 +168,44 @@
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleVerticalGradientLine.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleHorizontalGradientLine.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/TabViewElement.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/JournalTab.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DataHeadSelector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/TableWithMarks.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/ScrollTest.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/DateNumbersView.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MianTable.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/Head.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DateGroupSetter.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MainTable.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/ServerManager.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DateSector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/GroupSelector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DateSelector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DateElement.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Constants.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateElement.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/SerifTextView.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/TransparentVerticalView.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/lessonSelector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelector.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/JournalTab.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/SliderMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/AddonSlider.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelectorMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelectorTransperentActivityMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelectorTransparentActivityMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/TransparentActivityMenu.java" />
+        <option value="$PROJECT_DIR$/res/drawable/transparent.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/UserInfo.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressForm.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/LoginForm/CustomLoginEditText.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java" />
       </list>
     </option>
   </component>
@@ -719,28 +712,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MenuAndSwitchers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="LoginForm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -763,81 +734,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MainTable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataHead" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ForAllCode" />
+              <option name="myItemId" value="JavaServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -876,46 +773,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="First_prj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -933,7 +790,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.WIDTH" value="251" />
     <property name="FullScreen" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
@@ -971,11 +828,11 @@
       <recent name="nativeLibs" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\MainBranch\ABCStart\src\com\example\First_prj" />
+      <recent name="F:\MainBranch\ABCStart\src" />
+      <recent name="F:\MainBranch\ABCStart\src\com\example\First_prj\Journal\DateHead" />
+      <recent name="F:\MainBranch\ABCStart\libs" />
       <recent name="F:\AndroidKoD\AndroidKoD\First_prj" />
-      <recent name="F:\AndroidKoD\AndroidKoD\First_prj\src" />
-      <recent name="F:\AndroidKoD\First_prj\libs" />
-      <recent name="F:\AndroidKoD\First_prj\res\drawable" />
-      <recent name="F:\AndroidKoD\First_prj\res\layout-land" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\MainBranch\ABCStart\res\drawable" />
@@ -1199,7 +1056,7 @@
       <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="R2D2" />
+      <option name="PREFERRED_AVD" value="SR" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
@@ -1280,7 +1137,17 @@
       <workItem from="1385558572123" duration="5844000" />
       <workItem from="1385638690818" duration="20791000" />
       <workItem from="1385727863170" duration="19238000" />
-      <workItem from="1385854700945" duration="21828000" />
+      <workItem from="1385854700945" duration="21914000" />
+      <workItem from="1385952659661" duration="345000" />
+      <workItem from="1385974438776" duration="2483000" />
+      <workItem from="1386025272161" duration="16188000" />
+      <workItem from="1386074980117" duration="1675000" />
+      <workItem from="1386121074256" duration="41311000" />
+      <workItem from="1386207500350" duration="36854000" />
+      <workItem from="1386299696336" duration="6370000" />
+      <workItem from="1386317133572" duration="9198000" />
+      <workItem from="1386623870400" duration="1321000" />
+      <workItem from="1386671515251" duration="12679000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1318,11 +1185,15 @@
       <created>1385691395606</created>
       <updated>1385691395606</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ujdyjrjl ! &#10;">
+      <created>1385877968438</created>
+      <updated>1385877968438</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="779491000" />
+    <option name="totallyTimeSpent" value="908001000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="776" extended-state="0" />
@@ -1331,15 +1202,15 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22693998" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3524229" sideWeight="0.47657394" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2657856" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35095447" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1350,12 +1221,12 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21961933" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2657856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17862372" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.116005875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22693998" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1381,7 +1252,8 @@
     <MESSAGE value="MainWindow and Matrix Style" />
     <MESSAGE value="Menu refactoring" />
     <MESSAGE value="!" />
-    <option name="LAST_COMMIT_MESSAGE" value="!" />
+    <MESSAGE value="ujdyjrjl ! &#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="ujdyjrjl ! &#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1391,66 +1263,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/app/AlertDialog.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="39" selection-start="7753" selection-end="7753" vertical-scroll-proportion="0.70498914" vertical-offset="1698" max-vertical-offset="2159" />
-      </provider>
-    </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/java/lang/Thread.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="22" selection-start="2722" selection-end="2722" vertical-scroll-proportion="0.34273317" vertical-offset="1032" max-vertical-offset="2193" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/res/all/debug/drawable/blueline.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="22" selection-start="61" selection-end="103" vertical-scroll-proportion="0.025954198" vertical-offset="0" max-vertical-offset="655" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/TestCode/Matrix/Symbols.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="797" selection-end="797" vertical-scroll-proportion="0.7526718" vertical-offset="0" max-vertical-offset="655" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nativeLibs/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="1" selection-start="141" selection-end="141" vertical-scroll-proportion="0.20763358" vertical-offset="0" max-vertical-offset="655" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/TestCode/SomeAdapterExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="280" selection-end="280" vertical-scroll-proportion="0.10381679" vertical-offset="0" max-vertical-offset="663" />
-      </provider>
-    </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/graphics/Bitmap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="39" selection-start="4427" selection-end="4427" vertical-scroll-proportion="0.48373103" vertical-offset="1477" max-vertical-offset="1938" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/TestCode/Matrix/SurfaceBackground.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="36" selection-start="1238" selection-end="1238" vertical-scroll-proportion="0.9683544" vertical-offset="0" max-vertical-offset="2125" />
-      </provider>
-    </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/graphics/Canvas.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="159" selection-end="159" vertical-scroll-proportion="0.18438178" vertical-offset="0" max-vertical-offset="3638" />
-      </provider>
-    </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/graphics/Color.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="28" selection-start="692" selection-end="692" vertical-scroll-proportion="0.33333334" vertical-offset="131" max-vertical-offset="816" />
-      </provider>
-    </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/text/method/PasswordTransformationMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="67" selection-start="537" selection-end="537" vertical-scroll-proportion="0.36876357" vertical-offset="0" max-vertical-offset="461" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/EditTextWithLengthFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="45" selection-start="842" selection-end="842" vertical-scroll-proportion="0.3185654" vertical-offset="104" max-vertical-offset="578">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/content/Context.class">
@@ -1463,282 +1278,294 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="27" selection-start="847" selection-end="847" vertical-scroll-proportion="0.6455696" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="26" selection-start="3215" selection-end="3215" vertical-scroll-proportion="0.1793249" vertical-offset="1309" max-vertical-offset="1938">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/loginmenu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="9" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0778626" vertical-offset="0" max-vertical-offset="655">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/SerifTextView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="45" selection-start="278" selection-end="278" vertical-scroll-proportion="0.14345992" vertical-offset="0" max-vertical-offset="476">
-          <folding>
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/CustomLoginEditText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="64" selection-start="535" selection-end="536" vertical-scroll-proportion="0.3227848" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/NewJournalActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="83" selection-end="83" vertical-scroll-proportion="0.14345992" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="109" selection-start="5241" selection-end="5241" vertical-scroll-proportion="0.610687" vertical-offset="1657" max-vertical-offset="2312">
-          <folding />
-        </state>
+        <state line="3" column="9" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0778626" vertical-offset="0" max-vertical-offset="655" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/EditJournalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="54" selection-start="359" selection-end="359" vertical-scroll-proportion="0.25105485" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="419" selection-end="419" vertical-scroll-proportion="0.3586498" vertical-offset="0" max-vertical-offset="680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/ItemMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="11" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="8" selection-start="1310" selection-end="1370" vertical-scroll-proportion="0.812362" vertical-offset="108" max-vertical-offset="4845">
-          <folding />
-        </state>
+        <state line="9" column="54" selection-start="359" selection-end="359" vertical-scroll-proportion="0.25105485" vertical-offset="0" max-vertical-offset="474" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MenuActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="42" selection-start="497" selection-end="497" vertical-scroll-proportion="0.46624473" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
+        <state line="16" column="42" selection-start="497" selection-end="497" vertical-scroll-proportion="0.46624473" vertical-offset="0" max-vertical-offset="544" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/LiteMatrixDraw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="7" selection-start="771" selection-end="1000" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1513">
-          <folding />
-        </state>
+        <state line="28" column="7" selection-start="771" selection-end="1000" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1513" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Icon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="159" selection-end="159" vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="52" selection-start="825" selection-end="825" vertical-scroll-proportion="0.57383966" vertical-offset="0" max-vertical-offset="1785">
-          <folding />
-        </state>
+        <state line="7" column="11" selection-start="159" selection-end="159" vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="474" />
       </provider>
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/provider/ContactsContract.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="400" column="30" selection-start="22674" selection-end="22674" vertical-scroll-proportion="14.713666" vertical-offset="0" max-vertical-offset="9911">
-          <folding />
-        </state>
+        <state line="400" column="30" selection-start="22674" selection-end="22674" vertical-scroll-proportion="14.713666" vertical-offset="0" max-vertical-offset="9911" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/HorizontalLine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="25" selection-start="250" selection-end="498" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="9" column="25" selection-start="250" selection-end="498" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/VerticalLine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="62" selection-start="417" selection-end="417" vertical-scroll-proportion="0.46624473" vertical-offset="0" max-vertical-offset="474">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="13" column="62" selection-start="417" selection-end="417" vertical-scroll-proportion="0.46624473" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/view/ViewTreeObserver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="13" selection-start="2095" selection-end="2095" vertical-scroll-proportion="0.56962025" vertical-offset="529" max-vertical-offset="1003" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/ballgradient.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="40" selection-start="255" selection-end="255" vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/boldgradien.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="39" selection-start="291" selection-end="291" vertical-scroll-proportion="0.25105485" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BoldHorizontalGradientLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="188" selection-end="214" vertical-scroll-proportion="0.14345992" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleHorizontalGradientLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="70" selection-start="302" selection-end="302" vertical-scroll-proportion="0.1793249" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleVerticalGradientLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="63" selection-start="390" selection-end="390" vertical-scroll-proportion="0.39451477" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/tabjournalsrc.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="50" selection-start="473" selection-end="473" vertical-scroll-proportion="0.317757" vertical-offset="51" max-vertical-offset="561" />
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/widget/TabHost.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="144" selection-end="269" vertical-scroll-proportion="0.18438178" vertical-offset="0" max-vertical-offset="1343" />
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/view/MotionEvent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="19" selection-start="161" selection-end="161" vertical-scroll-proportion="0.18438178" vertical-offset="0" max-vertical-offset="2125" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/NewJournalActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="83" selection-end="83" vertical-scroll-proportion="0.14345992" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/TableWithMarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="86" selection-start="959" selection-end="1038" vertical-scroll-proportion="0.6814346" vertical-offset="0" max-vertical-offset="986" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/DateLessonsLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="28" selection-start="635" selection-end="635" vertical-scroll-proportion="0.22516556" vertical-offset="204" max-vertical-offset="782" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MainTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="17" selection-start="595" selection-end="616" vertical-scroll-proportion="0.40563992" vertical-offset="102" max-vertical-offset="1224" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/TabViewElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="588" selection-end="588" vertical-scroll-proportion="0.5021097" vertical-offset="0" max-vertical-offset="474" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="21" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/view/View.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="348" column="16" selection-start="15493" selection-end="15493" vertical-scroll-proportion="0.33188722" vertical-offset="5746" max-vertical-offset="11424">
-          <folding />
-        </state>
+        <state line="314" column="21" selection-start="14223" selection-end="14223" vertical-scroll-proportion="0.33188722" vertical-offset="5168" max-vertical-offset="11424" />
       </provider>
     </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/view/ViewTreeObserver.class">
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="13" selection-start="2095" selection-end="2095" vertical-scroll-proportion="0.56962025" vertical-offset="529" max-vertical-offset="1003">
-          <folding />
-        </state>
+        <state line="47" column="25" selection-start="1783" selection-end="1783" vertical-scroll-proportion="0.96413505" vertical-offset="240" max-vertical-offset="884" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/InfoHead.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="40" selection-start="786" selection-end="786" vertical-scroll-proportion="0.51265824" vertical-offset="80" max-vertical-offset="595">
+        <state line="73" column="0" selection-start="2996" selection-end="2996" vertical-scroll-proportion="2.1476793" vertical-offset="223" max-vertical-offset="1717">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#setFocusToDate#0;class#DateSelector#0" expanded="false" />
+            <element signature="method#onClick#0;class#DateSelector#0" expanded="false" />
+            <element signature="method#getOldDatePosition#0;class#DateSelector#0" expanded="false" />
+            <element signature="method#refresh#0;class#DateSelector#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DataSector.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/TransparentHorizontalView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="2" selection-start="435" selection-end="435" vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="578">
-          <folding />
-        </state>
+        <state line="9" column="11" selection-start="228" selection-end="228" vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="474" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/TransparentView.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="11" selection-start="220" selection-end="220" vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="487" selection-end="487" vertical-scroll-proportion="0.5021097" vertical-offset="0" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/ballgradient.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="40" selection-start="255" selection-end="255" vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/boldgradien.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="39" selection-start="291" selection-end="291" vertical-scroll-proportion="0.25105485" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BoldHorizontalGradientLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="188" selection-end="214" vertical-scroll-proportion="0.14345992" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleHorizontalGradientLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="70" selection-start="302" selection-end="302" vertical-scroll-proportion="0.1793249" vertical-offset="0" max-vertical-offset="474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Gradients/BubbleVerticalGradientLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="63" selection-start="390" selection-end="390" vertical-scroll-proportion="0.39451477" vertical-offset="0" max-vertical-offset="474">
+        <state line="17" column="60" selection-start="670" selection-end="670" vertical-scroll-proportion="0.6097046" vertical-offset="0" max-vertical-offset="1581">
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/tabjournalsrc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="50" selection-start="473" selection-end="473" vertical-scroll-proportion="0.317757" vertical-offset="51" max-vertical-offset="561">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-7/android.jar!/android/widget/TabHost.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="144" selection-end="269" vertical-scroll-proportion="0.18438178" vertical-offset="0" max-vertical-offset="1343">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="5" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.96413505" vertical-offset="495" max-vertical-offset="1479">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DataHead/DataHeadSelector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="0" selection-start="4538" selection-end="4538" vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="1802">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setFocusToActualMonth#0;class#DataHeadSelector#0" expanded="false" />
-            <element signature="e#2575#3245#0" expanded="true" />
-            <element signature="e#2757#3195#0" expanded="true" />
-            <element signature="e#3164#3165#0" expanded="true" />
-            <element signature="e#3222#3223#0" expanded="true" />
+            <element signature="e#2274#2275#0" expanded="true" />
+            <element signature="e#2309#2310#0" expanded="true" />
+            <element signature="e#2369#2370#0" expanded="true" />
+            <element signature="e#2417#2418#0" expanded="true" />
+            <element signature="method#setFocusToDate#0;class#GroupSelector#0" expanded="false" />
+            <element signature="e#2636#3050#0" expanded="true" />
+            <element signature="e#3027#3028#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/JournalTab.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="7" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1054">
+        <state line="18" column="7" selection-start="577" selection-end="577" vertical-scroll-proportion="0.43037975" vertical-offset="0" max-vertical-offset="1054" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/SerifTextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="11" selection-start="342" selection-end="342" vertical-scroll-proportion="0.26103646" vertical-offset="0" max-vertical-offset="544" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="45" selection-start="455" selection-end="455" vertical-scroll-proportion="0.32629558" vertical-offset="0" max-vertical-offset="748">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/TabViewElement.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Data.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="56" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+        <state line="10" column="0" selection-start="419" selection-end="419" vertical-scroll-proportion="0.32629558" vertical-offset="0" max-vertical-offset="680" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/ItemMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="11" selection-start="530" selection-end="530" vertical-scroll-proportion="0.09788868" vertical-offset="102" max-vertical-offset="714" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="52" selection-start="846" selection-end="846" vertical-scroll-proportion="0.4894434" vertical-offset="0" max-vertical-offset="1785" />
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/view/View.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="669" column="16" selection-start="28300" selection-end="28300" vertical-scroll-proportion="0.33333334" vertical-offset="11142" max-vertical-offset="14501" />
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/app/Activity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="331" column="35" selection-start="15379" selection-end="15379" vertical-scroll-proportion="0.65576327" vertical-offset="5189" max-vertical-offset="5831" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nativeLibs/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="34" selection-end="34" vertical-scroll-proportion="0.051908396" vertical-offset="0" max-vertical-offset="655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/EditTextWithLengthFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="45" selection-start="868" selection-end="868" vertical-scroll-proportion="0.41526717" vertical-offset="0" max-vertical-offset="655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/view/ActionMode.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="25" selection-start="594" selection-end="594" vertical-scroll-proportion="0.33205375" vertical-offset="167" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/IPAddressForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="290" column="5" selection-start="10477" selection-end="10477" vertical-scroll-proportion="0.7934028" vertical-offset="4235" max-vertical-offset="4845">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/JavaServer/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="16" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.33333334" vertical-offset="556" max-vertical-offset="1190">
+          <folding>
+            <element signature="method#setDataFromJson#0;class#UserInfo#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/CustomLoginEditText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="23" selection-start="776" selection-end="776" vertical-scroll-proportion="0.38368055" vertical-offset="0" max-vertical-offset="576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.11805555" vertical-offset="0" max-vertical-offset="576">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="38" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+        <state line="28" column="20" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="2057">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/MainConstructor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/LoginFormSettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="39" selection-start="586" selection-end="586" vertical-scroll-proportion="0.39451477" vertical-offset="0" max-vertical-offset="474">
+        <state line="74" column="76" selection-start="2458" selection-end="2458" vertical-scroll-proportion="1.9774306" vertical-offset="0" max-vertical-offset="2006">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="35" selection-start="1928" selection-end="1928" vertical-scroll-proportion="0.29166666" vertical-offset="614" max-vertical-offset="3825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="25" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="28" selection-start="1146" selection-end="1146" vertical-scroll-proportion="-1.2795138" vertical-offset="1332" max-vertical-offset="1921">
           <folding />
         </state>
       </provider>
@@ -1783,7 +1610,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Android API 7 Platform</last-edited>
+          <last-edited>Android API 11 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1800,7 +1627,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.4" />
               </list>
             </option>
           </splitter-proportions>
@@ -1808,6 +1634,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>android-support-v4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
