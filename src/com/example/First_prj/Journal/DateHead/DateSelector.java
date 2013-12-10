@@ -36,8 +36,8 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     }
 
     private void setCurrentDateInfo() {
-        // -1 потому что с 0. -3 потому, что +2 даты вперёд +1 от размера с 0ля.
-        indexOfSelectedDate = numOfMonth - 4;
+        // -1 потому что с 0. -3 потому, что +2 даты вперёд.
+        indexOfSelectedDate = numOfMonth - 3;
         dateElements[indexOfSelectedDate].setBackgroundColor(Color.DKGRAY);
         currentSelectedDate = dateElements[indexOfSelectedDate].getYear()
                 + " " + dateElements[indexOfSelectedDate].getMonth();

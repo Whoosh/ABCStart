@@ -22,11 +22,17 @@ import org.jetbrains.annotations.Nullable;
 
 public class LookingJournalActivity extends Activity implements View.OnClickListener {
 
+    private final String DATA_KEY = "Date";
+    private final String INDEX_OF_DATA_KEY = "IndexOfDate";
+    private final String SCROLL_KEY = "Scroll Position";
+    private final String GROUP_KEY = "Group";
+
+
     private ActionMode mActionMode;
     private LinearLayout mainLay;
     private GroupSelector groupSelector;
     private DateSelector dateSelector;
-    private LessonSelector lessonSelector; // @TODO пока классы не слил, будет так.
+    private LessonSelector lessonSelector;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,23 +101,23 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
 
     private void saveStateOnRotateEvent(Bundle outState) {
         // сохранение параметров выбора даты
-        outState.putString("Date", dateSelector.getSelectedDate());
-        outState.putInt("IndexOfDate", dateSelector.getIndexOfCurrentSelectedDate());
-        outState.putInt("Scroll Position", dateSelector.getOldDatePosition());
+        outState.putString(DATA_KEY, dateSelector.getSelectedDate());
+        outState.putInt(INDEX_OF_DATA_KEY, dateSelector.getIndexOfCurrentSelectedDate());
+        outState.putInt(SCROLL_KEY, dateSelector.getOldDatePosition());
 
         // сохранение параметров выбора группы
-        outState.putString("Group", groupSelector.getSelectedGroup());
+        outState.putString(GROUP_KEY, groupSelector.getSelectedGroup());
     }
 
     private void loadStateOnRotateEvent(Bundle savedInstanceState) {
         // загрузка параметров выбора даты
-        dateSelector.setOldSelectedDate(savedInstanceState.getString("Date"));
-        dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt("IndexOfDate"));
-        dateSelector.setOldDatePosition(savedInstanceState.getInt("Scroll Position"));
+        dateSelector.setOldSelectedDate(savedInstanceState.getString(DATA_KEY));
+        dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(INDEX_OF_DATA_KEY));
+        dateSelector.setOldDatePosition(savedInstanceState.getInt(SCROLL_KEY));
         dateSelector.refresh(); // обновили данные.
 
         // загрузка параметров выбора группы
-        groupSelector.setOldSelectedGroup(savedInstanceState.getString("Group"));
+        groupSelector.setOldSelectedGroup(savedInstanceState.getString(GROUP_KEY));
         groupSelector.refresh();
     }
 

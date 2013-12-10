@@ -32,6 +32,11 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     private final String LOGIN_OR_PASSWORD_ERROR = "Неверный логин или пароль";
     private final String SERVER_TTL_QUERY_ERROR = "Сервер не отвечает, проверьте подлючение и попробуйте ещё раз";
 
+    private static final String SETTINGS_KEY = "User Settings";
+    private static final String USER_NAME_KEY = "User Name";
+    private static final String PASSWORD_KEY = "Password";
+    private static final String SAVE_KEY = "Save me";
+
     private SharedPreferences keyValueStorage;
     private CustomLoginEditText userName;
     private CustomLoginEditText password;
@@ -110,19 +115,19 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     public void saveWindowInfo() {
-        keyValueStorage = context.getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
+        keyValueStorage = context.getSharedPreferences(SETTINGS_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = keyValueStorage.edit();
-        editor.putString("UserName", getUserName());
-        editor.putString("Password", getPassword());
-        editor.putBoolean("SaveMe", saveMe.isChecked());
+        editor.putString(USER_NAME_KEY, getUserName());
+        editor.putString(PASSWORD_KEY, getPassword());
+        editor.putBoolean(SAVE_KEY, saveMe.isChecked());
         editor.commit();
     }
 
     public void loadWindowInfo() {
-        keyValueStorage = context.getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
-        if (keyValueStorage.getBoolean("SaveMe", false)) {
-            userName.setText(keyValueStorage.getString("UserName", ""));
-            password.setText(keyValueStorage.getString("Password", ""));
+        keyValueStorage = context.getSharedPreferences(SETTINGS_KEY, Context.MODE_PRIVATE);
+        if (keyValueStorage.getBoolean(SAVE_KEY, false)) {
+            userName.setText(keyValueStorage.getString(USER_NAME_KEY, ""));
+            password.setText(keyValueStorage.getString(PASSWORD_KEY, ""));
             saveMe.setChecked(true);
         }
     }
