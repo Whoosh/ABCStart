@@ -19,23 +19,24 @@ import com.example.First_prj.ForAllCode.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.SerifTextView;
 import com.example.First_prj.ForAllCode.TransparentHorizontalView;
 import com.example.First_prj.JavaServer.Server;
-import com.example.First_prj.JavaServer.UserInfo;
 import com.example.First_prj.MenuAndSwitchers.MenuActivity;
 
 import java.util.concurrent.TimeoutException;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
-    public static String MIGHT_CODE_KEY = "MightCode";
+    public static final String MIGHT_CODE_KEY = "MightCode";
 
     private final String SERVER_IS_DOWN = "Нет соеденения с сервером, попробуйте ещё раз";
     private final String LOGIN_OR_PASSWORD_ERROR = "Неверный логин или пароль";
     private final String SERVER_TTL_QUERY_ERROR = "Сервер не отвечает, проверьте подлючение и попробуйте ещё раз";
 
-    private static final String SETTINGS_KEY = "User Settings";
-    private static final String USER_NAME_KEY = "User Name";
-    private static final String PASSWORD_KEY = "Password";
-    private static final String SAVE_KEY = "Save me";
+    private final String SETTINGS_KEY = "User Settings";
+    private final String USER_NAME_KEY = "User Name";
+    private final String PASSWORD_KEY = "Password";
+    private final String SAVE_KEY = "Save me";
+
+    private final int DEFAULT_COLOR_ELEMENT = Color.argb(200, 25, 25, 25);
 
     private SharedPreferences keyValueStorage;
     private CustomLoginEditText userName;
@@ -64,7 +65,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
         login = new SerifTextView(context, "Войти", 15);
         login.setLayoutParams(new ViewGroup.LayoutParams((int) (80 * metric), (int) (40 * metric)));
-        login.setBackgroundColor(Color.argb(200, 25, 25, 25));
+        login.setBackgroundColor(DEFAULT_COLOR_ELEMENT);
         login.setTextColor(Color.rgb(0, 100, 0));
 
         password = new CustomLoginEditText(context);
@@ -134,15 +135,21 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
+        startMainMenu(); // @TODO убрать
         if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            login.setBackgroundColor(Color.rgb(0, 255, 0));
             onButtonPressed();
-        }
+            setButtonInPressColor();
+        } else if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_UP)
+            setButtonInUpColor();
         return true;
     }
 
-    public void restoreVisualElementState() {
-        login.setBackgroundColor(Color.argb(200, 25, 25, 25));
+    private void setButtonInPressColor(){
+        login.setBackgroundColor(Color.GREEN);
+    }
+
+    private void setButtonInUpColor() {
+        login.setBackgroundColor(DEFAULT_COLOR_ELEMENT);
     }
 
     private void onButtonPressed() {
@@ -165,6 +172,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         } catch (TimeoutException e) {
             messageOnScreen(SERVER_TTL_QUERY_ERROR);
         }
+
     }
 
     private void startMainMenu() {

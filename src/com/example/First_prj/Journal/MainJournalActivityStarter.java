@@ -9,17 +9,17 @@ import com.example.First_prj.ForAllCode.TransparentHorizontalView;
 import com.example.First_prj.R;
 
 
-public class JournalTab extends TabActivity {
+public class MainJournalActivityStarter extends TabActivity {
 
     private final String LOOKING_TAB = "Просмотр";
     private final String EDIT_TAB = "Редактирование";
     private final String CHECK_STUDENT = "Отметить студентов";
     private final String SOME_MORE = "Что то ещё";
 
-    private final byte LOOKING_TAB_ID = 1;
-    private final byte EDIT_TAB_ID = 2;
-    private final byte CHECK_STUDENT_ID = 3;
-    private final byte SOME_MORE_ID = 4;
+    private final byte LOOKING_TAB_ID = 0;
+    private final byte EDIT_TAB_ID = 1;
+    private final byte CHECK_STUDENT_ID = 2;
+    private final byte SOME_MORE_ID = 3;
 
 
     private TabHost tabsSwitcher;
@@ -107,7 +107,7 @@ public class JournalTab extends TabActivity {
         tabsElement = tabsSwitcher.newTabSpec(CHECK_STUDENT);
         tabsElement.setIndicator(new TransparentHorizontalView(this, 0));
         //TODO
-        tabsElement.setContent(new Intent(this, EditJournalActivity.class));
+        tabsElement.setContent(new Intent(this, StudentCheckerActivity.class));
         tabsSwitcher.addTab(tabsElement);
 
         tabsElement = tabsSwitcher.newTabSpec(SOME_MORE);

@@ -1,62 +1,85 @@
 package com.example.First_prj.Journal;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.*;
-import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import com.example.First_prj.FirstActivitySettings.IPAddressForm;
+import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.*;
 import com.example.First_prj.Journal.DateHead.DateSelector;
 import com.example.First_prj.Journal.DateHead.GroupSelector;
 import com.example.First_prj.Journal.DateHead.LessonSelector;
-import com.example.First_prj.R;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.example.First_prj.Journal.MainTable.DateList;
+import com.example.First_prj.Journal.MainTable.StudentList;
+import com.example.First_prj.Journal.MainTable.TableWithMarks;
 
-public class LookingJournalActivity extends Activity implements View.OnClickListener {
+public class LookingJournalActivity extends Activity implements View.OnClickListener, View.OnTouchListener {
 
     private final String DATA_KEY = "Date";
     private final String INDEX_OF_DATA_KEY = "IndexOfDate";
     private final String SCROLL_KEY = "Scroll Position";
     private final String GROUP_KEY = "Group";
 
-
     private ActionMode mActionMode;
     private LinearLayout mainLay;
     private GroupSelector groupSelector;
     private DateSelector dateSelector;
-    private LessonSelector lessonSelector;
+    private LessonSelector lessonSelector; // TODO
+    private DateList dateList; // TODO
+    private StudentList studentList; // TODO
+    private TableWithMarks tableWithMarks; // TODO
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainLay = new LinearLayout(this);
-
-        groupSelector = new GroupSelector(this);
-        dateSelector = new DateSelector(this);
-        LinearLayout dateGroup = new LinearLayout(this);
-        lessonSelector = new LessonSelector(this);
-
-        mainLay.setOrientation(LinearLayout.VERTICAL);
-
-        dateGroup.addView(groupSelector);
-        dateGroup.addView(new VerticalLine(this, Color.DKGRAY, 5));
-        dateGroup.addView(dateSelector);
-
-        mainLay.addView(dateGroup);
-        mainLay.addView(new HorizontalLine(this, Color.DKGRAY, 5));
-        mainLay.addView(lessonSelector);
-        mainLay.addView(new HorizontalLine(this, Color.DKGRAY, 5));
-
+        initElements();
         setContentView(mainLay);
 
         lessonSelector.setOnClickListener(this);
+    }
+
+    private void initElements() {
+        mainLay = new LinearLayout(this);
+        LinearLayout datePlusGroup = new LinearLayout(this);
+        LinearLayout dateListPlusLessonSelector = new LinearLayout(this);
+        LinearLayout studentsPlusTableLayout = new LinearLayout(this);
+        ScrollView studentsPlusTableView = new ScrollView(this);
+
+        groupSelector = new GroupSelector(this);
+        dateSelector = new DateSelector(this);
+        lessonSelector = new LessonSelector(this);
+        dateList = new DateList(this, 30); // @TODO
+        studentList = new StudentList(this);
+        tableWithMarks = new TableWithMarks(this, 50, 30);
+
+        studentList.addStudents(50);
+
+        mainLay.setOrientation(LinearLayout.VERTICAL);
+
+        studentsPlusTableLayout.addView(studentList);
+        studentsPlusTableLayout.addView(new VerticalLine(this, Color.CYAN, 1));
+        studentsPlusTableLayout.addView(tableWithMarks);
+
+        studentsPlusTableView.addView(studentsPlusTableLayout);
+
+        dateListPlusLessonSelector.addView(lessonSelector);
+        dateListPlusLessonSelector.addView(new VerticalLine(this, Color.CYAN, 1));
+        dateListPlusLessonSelector.addView(dateList);
+
+        datePlusGroup.addView(groupSelector);
+        datePlusGroup.addView(new VerticalLine(this, Color.CYAN, 1));
+        datePlusGroup.addView(dateSelector);
+
+        mainLay.setBackgroundDrawable(new LiteMatrixDraw(this));
+        mainLay.addView(datePlusGroup);
+        mainLay.addView(new HorizontalLine(this, Color.CYAN, 1));
+        mainLay.addView(dateListPlusLessonSelector);
+        mainLay.addView(new HorizontalLine(this, Color.CYAN, 1));
+        mainLay.addView(studentsPlusTableView);
+
+        dateList.setOnTouchListener(this);
+        tableWithMarks.setOnTouchListener(this);
     }
 
     private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
@@ -133,7 +156,21 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
             mActionMode = startActionMode(mActionModeCallback);
             view.setSelected(true);
         }
+    }
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+            if (view.equals(tableWithMarks))
+                dateList.scrollTo(tableWithMarks.getScrollX(), 0);
+            if (view.equals(dateList))
+                tableWithMarks.scrollTo(dateList.getScrollX(), 0);
+            return false;
+        }
+        tableWithMarks.scrollTo(dateList.getScrollX(), 0);
+        dateList.scrollTo(tableWithMarks.getScrollX(), 0);
+
+        return true;
     }
 }
 

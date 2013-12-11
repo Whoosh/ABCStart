@@ -21,7 +21,7 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
 
     public GroupSelector(Context context) {
         super(context);
-
+        super.setBackgroundColor(Color.argb(100,1,81,90));
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         LinearLayout groupsBuffer = new LinearLayout(context);
         super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2,
