@@ -7,7 +7,6 @@ import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
 import com.example.First_prj.JavaServer.Server;
-import com.example.First_prj.R;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
 
@@ -42,7 +41,6 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     protected void onResume() {
         Server.disconnect();
         mainWindow.loadWindowInfo();
-        mainWindow.restoreVisualElementState();
         super.onResume();
     }
 

@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.*;
 import com.example.First_prj.ForAllCode.Gradients.BoldHorizontalGradientLine;
-import com.example.First_prj.Journal.JournalTab;
+import com.example.First_prj.Journal.MainJournalActivityStarter;
 
 public class Menu extends LinearLayout implements View.OnTouchListener {
 
@@ -87,7 +87,7 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
     public void startActivity(int indexOfValue) {
         switch (indexOfValue) {
             case Constants.JOURNAL_ACTIVITY_ID: {
-                context.startActivity(new Intent(context, JournalTab.class));
+                context.startActivity(new Intent(context, MainJournalActivityStarter.class));
                 break;
             }
         }

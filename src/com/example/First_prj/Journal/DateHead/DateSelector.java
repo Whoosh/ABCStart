@@ -15,14 +15,15 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     private DateElement[] dateElements;
     private Context context;
     private String currentSelectedDate = "";
-    private int oldPosition = 0;
+    private int oldPosition;
     private int indexOfSelectedDate = -1;
-    private int numOfMonth = 0;
+    private int numOfMonth;
 
 
     public DateSelector(Context context) {
         super(context);
         this.context = context;
+        super.setBackgroundColor(Color.argb(100,1,81,90));
         super.setHorizontalScrollBarEnabled(false);
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2
@@ -42,7 +43,7 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
         currentSelectedDate = dateElements[indexOfSelectedDate].getYear()
                 + " " + dateElements[indexOfSelectedDate].getMonth();
         oldPosition = (((new Date().getYear() - 112) * 12) + new Date().
-                getMonth() - Constants.ONE) * dateElements[0].getDefaultWidth();
+                getMonth()) * dateElements[0].getDefaultWidth();
     }
 
 
@@ -129,12 +130,12 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     }
 
     public void refresh() {
-        setFocusToDate();
         for (int i = 0; i < dateElements.length; i++)
             dateElements[i].setBackgroundColor(Color.TRANSPARENT);
         if (indexOfSelectedDate == -1)
             setCurrentDateInfo();
         dateElements[indexOfSelectedDate].setBackgroundColor(Color.DKGRAY);
+        setFocusToDate();
     }
 
 }
