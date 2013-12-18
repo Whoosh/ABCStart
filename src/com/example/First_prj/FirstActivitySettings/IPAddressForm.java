@@ -2,57 +2,79 @@ package com.example.First_prj.FirstActivitySettings;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.example.First_prj.ForAllCode.Constants;
-import com.example.First_prj.ForAllCode.*;
-import com.example.First_prj.ForAllCode.Gradients.BoldHorizontalGradientLine;
-import com.example.First_prj.ForAllCode.Gradients.BubbleHorizontalGradientLine;
+import android.widget.*;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.LeftToRightHorizontalBoldGradientLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
+import com.example.First_prj.ForAllCode.GlobalInformer;
+import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 
 public class IPAddressForm extends LinearLayout implements View.OnClickListener {
 
+    private static final int MAX_PORT_VALUE = 65536;
+    private static final char MAX_IP_VALUE = 255;
+    private static final byte OCTETS_COUNT = 4;
+    private static final byte OCTET_LEN = 3;
+    private static final byte PORT_LEN = 5;
+
+    private static final byte EMPTY_VIEW_HEIGHT = 10;
+    private static final char PORT_WIDTH = 130;
+
+    private static final short ADDRESS_FRAME_WIDTH = 340;
+    private static final byte ADDRESS_FRAME_HEIGHT = 45;
+
+    private static final String DOT = ".";
+    private static final String IP_TITLE = " IP :";
+    private static final String PORT_TITLE = " Port :";
+    private static final String PROXY_TITLE = "\tНастройка прокси";
+    private static final String PROXY_MESSAGE_ON = "Прокси включена";
+    private static final String CLEAR_PROXY_TITLE = "Очистить прокси";
+    private static final String PROXY_MESSAGE_OFF = "Прокси отключена";
+    private static final String IP_ERROR_MESSAGE = "Число не может быть больше ";
+    private static final String PORT_ERROR_MESSAGE = "Порт не может быть больше ";
+    private static final String EMPTY_FIELD_ERROR_MESSAGE = "Поля не должны быть пустыми";
+    private static final String FIRST_OCTET_ERROR_MESSAGE = "Адрес не может начинаться с нуля или быть пустым";
+
     private EditTextWithLengthFilter portForm;
     private EditTextWithLengthFilter[] ipOctet;
-    private LinearLayout addressLayout;
+    private LinearLayout addressFrame;
     private LinearLayout portLayout;
+    private SerifTextView clear;
     private CheckBox proxySet;
     private Context context;
-    private TextView clear;
 
     private String bufferStr;
 
-    private final byte numOfOctet = 4;
-    private final byte octetLen = 3;
-    private float metric;
-
     public IPAddressForm(Context context) {
         super(context);
-        super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        super.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.FILL_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
         super.setOrientation(VERTICAL);
 
-
         this.context = context;
-        ipOctet = new EditTextWithLengthFilter[numOfOctet];
-        metric = context.getResources().getDisplayMetrics().density;
+        ipOctet = new EditTextWithLengthFilter[OCTETS_COUNT];
 
-        super.addView(new SerifTextView(context, "\tНастройка прокси", 17));
-        super.addView(new BoldHorizontalGradientLine(context, 4));
-        super.addView(new TransparentHorizontalView(context, 10));
-        super.addView(new BubbleHorizontalGradientLine(context, (byte) 2)); //2  - толщина линии между слоями
-        initAddressLayout();
-        super.addView(addressLayout);
-        super.addView(new BubbleHorizontalGradientLine(context, (byte) 2));
+        super.addView(new SerifTextView(context, PROXY_TITLE));
+        super.addView(new LeftToRightHorizontalBoldGradientLine(context));
+        super.addView(new TransparentHorizontalLine(context, EMPTY_VIEW_HEIGHT));
+        super.addView(new BubbleHorizontalGradientLine(context));
+        initAddress();
+        super.addView(addressFrame);
+        super.addView(new BubbleHorizontalGradientLine(context));
         initPort();
         super.addView(portLayout);
-        super.addView(new BubbleHorizontalGradientLine(context, (byte) 2));
-        super.addView(new TransparentHorizontalView(context, 10));
+        super.addView(new BubbleHorizontalGradientLine(context));
+        super.addView(new TransparentHorizontalLine(context, EMPTY_VIEW_HEIGHT));
 
     }
 
@@ -73,10 +95,10 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
             public void afterTextChanged(Editable editable) {
                 proxySet.setChecked(false);
                 try {
-                    if (!editable.toString().equals(""))
-                        if (Integer.parseInt(editable.toString()) > 65536) {
-                            portForm.setText("");
-                            Toast.makeText(context, "Порт не может быть больше 65536", Toast.LENGTH_LONG).show();
+                    if (!editable.toString().equals(GlobalConstants.EMPTY_STRING))
+                        if (Integer.parseInt(editable.toString()) > MAX_PORT_VALUE) {
+                            portForm.setText(GlobalConstants.EMPTY_STRING);
+                            Toast.makeText(context, (PORT_ERROR_MESSAGE + MAX_PORT_VALUE), Toast.LENGTH_LONG).show();
                         }
                     if (!isNumber(editable)) portForm.setText(bufferStr);
                 } catch (Exception ex) {
@@ -90,15 +112,15 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         portLayout.setOrientation(HORIZONTAL);
         portLayout.setBackgroundColor(Color.TRANSPARENT);
 
-        portForm = new EditTextWithLengthFilter(context, (byte) 5); // 5 количество символов
+        portForm = new EditTextWithLengthFilter(context, PORT_LEN);
         portForm.setGravity(Gravity.CENTER);
 
-        clear = new SerifTextView(context, "Очистить прокси", Constants.DEFAULT_TEXT_SIZE);
+        clear = new SerifTextView(context, CLEAR_PROXY_TITLE);
 
-        portForm.setWidth(80); // в самой форме произойдёт преобразование размера
+        portForm.setWidth(PORT_WIDTH);
         portForm.addTextChangedListener(portWatcher);
 
-        portLayout.addView(new SerifTextView(context, "\tPort : ", Constants.DEFAULT_TEXT_SIZE));
+        portLayout.addView(new SerifTextView(context, PORT_TITLE));
         portLayout.addView(portForm);
         portLayout.addView(clear);
 
@@ -106,10 +128,10 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         proxySet.setOnClickListener(this);
     }
 
-    private void initAddressLayout() {
+    private void initAddress() {
 
         TextWatcher addressWatcher = new TextWatcher() {
-            private byte indexer = 1;
+            private byte indexer = GlobalConstants.ONE;
             private boolean errorFlag;
             private String bufferedStr;
 
@@ -126,27 +148,27 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
             public void afterTextChanged(Editable s) {
                 proxySet.setChecked(false);
                 errorFlag = true;
-                for (byte i = 0; i < numOfOctet; i++) {
+                for (byte i = 0; i < OCTETS_COUNT; i++) {
                     if (ipOctet[i].isFocused()) {
                         indexer = i;
                         break;
                     }
                 }
                 try {
-                    if (Integer.parseInt(s.toString()) > 255) {
-                        ipOctet[indexer].setText("");
+                    if (Integer.parseInt(s.toString()) > MAX_IP_VALUE) {
+                        ipOctet[indexer].setText(GlobalConstants.EMPTY_STRING);
                         indexer--;
-                        Toast.makeText(context, "Число не может быть больше 255", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, IP_ERROR_MESSAGE + MAX_IP_VALUE, Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception e) {
-                    //Log.d("IP", "ex"+e);
+                } catch (NumberFormatException e) {
+                    //
                 }
-                if (!s.toString().equals("") && !isNumber(s)) {
+                if (!s.toString().equals(GlobalConstants.EMPTY_STRING) && !isNumber(s)) {
                     ipOctet[indexer].setText(bufferedStr);
                     errorFlag = false;
                 }
-                if (s.length() == octetLen && errorFlag) {
-                    if (indexer != ipOctet.length - Constants.ONE) indexer++;
+                if (s.length() == OCTET_LEN && errorFlag) {
+                    if (indexer != ipOctet.length - GlobalConstants.ONE) indexer++;
                     ipOctet[indexer].requestFocus();
                 }
             }
@@ -154,26 +176,23 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
 
         proxySet = new CheckBox(context);
 
-        addressLayout = new LinearLayout(context);
-        addressLayout.setOrientation(HORIZONTAL);
-        addressLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        addressLayout.addView(new SerifTextView(context, "\tIP : ", Constants.DEFAULT_TEXT_SIZE));
-
-        LinearLayout addressFrame = new LinearLayout(context);
-        addressFrame.setLayoutParams(new ViewGroup.LayoutParams((int) (220 * metric), (int) (45 * metric)));
+        addressFrame = new LinearLayout(context);
+        addressFrame.addView(new SerifTextView(context, IP_TITLE));
+        addressFrame.setLayoutParams(new ViewGroup.LayoutParams((int)
+                (ADDRESS_FRAME_WIDTH * GlobalInformer.getPixelDensity()),
+                (int) (ADDRESS_FRAME_HEIGHT * GlobalInformer.getPixelDensity())));
         addressFrame.setOrientation(HORIZONTAL);
         addressFrame.setBackgroundColor(Color.TRANSPARENT);
-        addressFrame.setGravity(Gravity.BOTTOM);
+        addressFrame.setGravity(Gravity.CENTER_VERTICAL);
 
-        for (byte i = 0; i < numOfOctet; i++) {
-            ipOctet[i] = new EditTextWithLengthFilter(context, octetLen);
+        for (byte i = 0; i < OCTETS_COUNT; i++) {
+            ipOctet[i] = new EditTextWithLengthFilter(context, OCTET_LEN);
             ipOctet[i].addTextChangedListener(addressWatcher);
             addressFrame.addView(ipOctet[i]);
-            if (i < numOfOctet - Constants.ONE)
-                addressFrame.addView(new SerifTextView(context, ".", 20)); // 20 - размер точки
+            if (i < OCTETS_COUNT - GlobalConstants.ONE)
+                addressFrame.addView(new SerifTextView(context, DOT));
         }
-        addressLayout.addView(addressFrame);
-        addressLayout.addView(proxySet);
+        addressFrame.addView(proxySet);
     }
 
     public boolean isNumber(CharSequence str) {
@@ -186,8 +205,8 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
     }
 
     public void clearForms() {
-        portForm.setText("");
-        for (EditTextWithLengthFilter text : ipOctet) text.setText("");
+        portForm.setText(GlobalConstants.EMPTY_STRING);
+        for (EditTextWithLengthFilter text : ipOctet) text.setText(GlobalConstants.EMPTY_STRING);
         ipOctet[0].requestFocus();
     }
 
@@ -195,16 +214,16 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         StringBuilder ipAddress = new StringBuilder();
         for (EditTextWithLengthFilter actet : ipOctet) {
             ipAddress.append(actet.getText());
-            ipAddress.append('.');
+            ipAddress.append(DOT);
         }
-        ipAddress.deleteCharAt(ipAddress.length() - Constants.ONE);
+        ipAddress.deleteCharAt(ipAddress.length() - GlobalConstants.ONE);
         return ipAddress.toString();
     }
 
     public boolean ipIsEmpty() {
-        for (byte i = 0; i < numOfOctet; i++)
+        for (byte i = 0; i < OCTETS_COUNT; i++)
             try {
-                if (ipOctet[i].getText().toString().equals(""))
+                if (ipOctet[i].getText().toString().equals(GlobalConstants.EMPTY_STRING))
                     return true;
             } catch (NullPointerException ex) {
                 return true;
@@ -214,22 +233,22 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
 
     public boolean fistActetEqualsZero() {
         try {
-            return (Integer.parseInt(ipOctet[0].getText().toString()) < Constants.ONE);
+            return (Integer.parseInt(ipOctet[0].getText().toString()) < GlobalConstants.ONE);
         } catch (NullPointerException ex) {
             return true;
         }
     }
 
     public void loadAddress(String kit) {
-        StringBuilder buff = new StringBuilder().append("");
+        StringBuilder buff = new StringBuilder().append(GlobalConstants.EMPTY_STRING);
         for (byte i = 0, k = 0; i < kit.length(); i++) {
-            if (kit.charAt(i) == '.') {
+            if (kit.charAt(i) == DOT.charAt(0)) {
                 ipOctet[k++].setText(buff);
                 buff = new StringBuilder();
-                buff.append("");
+                buff.append(GlobalConstants.EMPTY_STRING);
             } else
                 buff.append(kit.charAt(i));
-            if (kit.length() - Constants.ONE == i)
+            if (kit.length() - GlobalConstants.ONE == i)
                 ipOctet[k].setText(buff);
         }
     }
@@ -250,13 +269,13 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         try {
             return portForm.getText().toString();
         } catch (NullPointerException ex) {
-            return "";
+            return GlobalConstants.EMPTY_STRING;
         }
     }
 
     public boolean portIsEmpty() {
         try {
-            return portForm.getText().toString().equals("");
+            return portForm.getText().toString().equals(GlobalConstants.EMPTY_STRING);
         } catch (NullPointerException ex) {
             return true;
         }
@@ -265,18 +284,18 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
     private void proxyBoxLogic() {
         if (proxySet.isChecked()) {
             if (noErrorsOnForms()) {
-                Toast.makeText(context, "Прокси включена", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, PROXY_MESSAGE_ON, Toast.LENGTH_SHORT).show();
             } else proxySet.setChecked(false);
         } else
-            Toast.makeText(context, "Прокси отключена", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, PROXY_MESSAGE_OFF, Toast.LENGTH_SHORT).show();
     }
 
     private boolean noErrorsOnForms() {
         if (ipIsEmpty() || portIsEmpty()) {
-            Toast.makeText(context, "Поля не должны быть пустыми", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, EMPTY_FIELD_ERROR_MESSAGE, Toast.LENGTH_SHORT).show();
             return false;
         } else if (fistActetEqualsZero()) {
-            Toast.makeText(context, "Адрес не может начинаться с нуля или быть пустым", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, FIRST_OCTET_ERROR_MESSAGE, Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -290,4 +309,31 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         proxySet.setChecked(state);
     }
 
+    private class EditTextWithLengthFilter extends EditText {
+
+        private static final byte DEFAULT_WIDTH = 63;
+        private static final byte DEFAULT_HEIGHT = 50;
+
+        public EditTextWithLengthFilter(Context context, byte maxSymbolCount) {
+            super(context);
+            super.setInputType(InputType.TYPE_CLASS_PHONE);
+            super.setBackgroundColor(Color.TRANSPARENT);
+            super.setGravity(Gravity.CENTER);
+            super.setTextColor(Color.WHITE);
+            super.setLayoutParams(new ViewGroup.LayoutParams(
+                    (int) (DEFAULT_WIDTH * GlobalInformer.getPixelDensity()),
+                    (int) (DEFAULT_HEIGHT * GlobalInformer.getPixelDensity())));
+            super.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
+            super.setText(GlobalConstants.EMPTY_STRING);
+            super.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxSymbolCount)});
+            super.setTypeface(Typeface.SERIF);
+        }
+
+        @Override
+        public void setWidth(int pixels) {
+            super.setLayoutParams(new ViewGroup.LayoutParams(
+                    (int) (pixels * GlobalInformer.getPixelDensity()),
+                    (int) (DEFAULT_HEIGHT * GlobalInformer.getPixelDensity())));
+        }
+    }
 }

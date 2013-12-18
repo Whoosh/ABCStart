@@ -1,13 +1,13 @@
-package com.example.First_prj.ForAllCode;
+package com.example.First_prj.ForAllCode.DesigneElements.Lines;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TransparentHorizontalView extends View {
+public class TransparentHorizontalLine extends View {
 
-    public TransparentHorizontalView(Context context, int height) {
+    public TransparentHorizontalLine(Context context, int height) {
         super(context);
         super.setBackgroundColor(Color.TRANSPARENT);
         super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, (int) (height *

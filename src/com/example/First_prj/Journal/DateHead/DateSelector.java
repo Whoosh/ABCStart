@@ -5,8 +5,8 @@ import android.graphics.Color;
 import android.view.*;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.Constants;
-import com.example.First_prj.ForAllCode.VerticalLine;
+import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 
 import java.util.Date;
 
@@ -67,7 +67,7 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
 
         for (DateElement element : dateElements) {
             viewDate.addView(element);
-            viewDate.addView(new VerticalLine(context, Color.DKGRAY, Constants.ONE));
+            viewDate.addView(new VerticalLine(context, Color.DKGRAY, GlobalConstants.ONE));
         }
 
         super.addView(viewDate);

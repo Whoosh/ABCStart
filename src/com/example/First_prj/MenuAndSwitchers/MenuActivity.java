@@ -3,20 +3,18 @@ package com.example.First_prj.MenuAndSwitchers;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
-import com.example.First_prj.ForAllCode.Constants;
+import com.example.First_prj.JavaServer.Server;
 
 public class MenuActivity extends Activity {
-
+    // TODO private class to Menu
     private Menu mainMenu;
-    private int mightCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mightCode = getIntent().getIntExtra("MightCode", Constants.ERROR_CODE);
-        mightCode = Constants.TEACHER_CODE;
-        mainMenu = new Menu(this, mightCode);
+
+        mainMenu = new Menu(this, Server.getMightCode());
         setContentView(mainMenu);
     }
 

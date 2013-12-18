@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.*;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import com.example.First_prj.ForAllCode.*;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.Backgrounds.LiteMatrixDraw;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 import com.example.First_prj.Journal.DateHead.DateSelector;
 import com.example.First_prj.Journal.DateHead.GroupSelector;
 import com.example.First_prj.Journal.DateHead.LessonSelector;
@@ -26,7 +27,7 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
     private LinearLayout mainLay;
     private GroupSelector groupSelector;
     private DateSelector dateSelector;
-    private LessonSelector lessonSelector; // TODO
+    private LessonSelector lessonSelector;
     private DateList dateList; // TODO
     private StudentList studentList; // TODO
     private TableWithMarks tableWithMarks; // TODO
@@ -58,24 +59,24 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         mainLay.setOrientation(LinearLayout.VERTICAL);
 
         studentsPlusTableLayout.addView(studentList);
-        studentsPlusTableLayout.addView(new VerticalLine(this, Color.CYAN, 1));
+        studentsPlusTableLayout.addView(new VerticalLine(this, Color.CYAN));
         studentsPlusTableLayout.addView(tableWithMarks);
 
         studentsPlusTableView.addView(studentsPlusTableLayout);
 
         dateListPlusLessonSelector.addView(lessonSelector);
-        dateListPlusLessonSelector.addView(new VerticalLine(this, Color.CYAN, 1));
+        dateListPlusLessonSelector.addView(new VerticalLine(this, Color.CYAN));
         dateListPlusLessonSelector.addView(dateList);
 
         datePlusGroup.addView(groupSelector);
-        datePlusGroup.addView(new VerticalLine(this, Color.CYAN, 1));
+        datePlusGroup.addView(new VerticalLine(this, Color.CYAN));
         datePlusGroup.addView(dateSelector);
 
         mainLay.setBackgroundDrawable(new LiteMatrixDraw(this));
         mainLay.addView(datePlusGroup);
-        mainLay.addView(new HorizontalLine(this, Color.CYAN, 1));
+        mainLay.addView(new HorizontalLine(this, Color.CYAN));
         mainLay.addView(dateListPlusLessonSelector);
-        mainLay.addView(new HorizontalLine(this, Color.CYAN, 1));
+        mainLay.addView(new HorizontalLine(this, Color.CYAN));
         mainLay.addView(studentsPlusTableView);
 
         dateList.setOnTouchListener(this);

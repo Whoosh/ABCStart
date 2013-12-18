@@ -1,11 +1,11 @@
-package com.example.First_prj.ForAllCode;
+package com.example.First_prj.ForAllCode.DesigneElements;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.example.First_prj.ForAllCode.GlobalConstants;
 
 public class SerifTextView extends TextView {
     private String text;
@@ -13,6 +13,15 @@ public class SerifTextView extends TextView {
 
     public SerifTextView(Context context, String text, int textSize) {
         super(context);
+        initCode(text,textSize);
+    }
+
+    public SerifTextView(Context context, String text) {
+        super(context);
+        initCode(text,GlobalConstants.DEFAULT_TEXT_SIZE);
+    }
+
+    private void initCode(String text, int textSize){
         this.text = text;
         this.textSize = textSize;
         super.setText(text);
@@ -23,8 +32,10 @@ public class SerifTextView extends TextView {
         super.setGravity(Gravity.CENTER);
     }
 
+
     public int getCurrentWight() {
-        return ((text.length() - Constants.ONE) * (textSize - textSize / 5));
+        final byte downGradeK = 5;
+        return ((text.length() - GlobalConstants.ONE) * (textSize - textSize / downGradeK));
     }
 
     public String getStringText() {

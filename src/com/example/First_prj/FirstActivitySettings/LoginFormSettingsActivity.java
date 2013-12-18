@@ -5,17 +5,22 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.*;
-import com.example.First_prj.ForAllCode.Gradients.BoldHorizontalGradientLine;
-import com.example.First_prj.ForAllCode.Icon;
-import com.example.First_prj.ForAllCode.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.LeftToRightHorizontalBoldGradientLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConstants;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
 public class LoginFormSettingsActivity extends Activity {
 
-    public static String IP_KEY = "IP";
-    public static String PORT_KEY = "Port";
-    public static String PROXY_KEY = "Proxy";
-    public static String CHECK_BOX_KEY = "CheckBoxValue";
+    public static final String IP_KEY = "IP";
+    public static final String PORT_KEY = "Port";
+    public static final String PROXY_KEY = "Proxy";
+    public static final String CHECK_BOX_KEY = "CheckBoxValue";
+
+    private static final String SETTINGS_TITLE = "\tНастройки";
 
     private IPAddressForm ipAddressForm;
     private SharedPreferences keyValueStorage;
@@ -28,13 +33,13 @@ public class LoginFormSettingsActivity extends Activity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
         saveProxyState(outState);
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         loadProxyState(savedInstanceState);
     }
@@ -66,8 +71,8 @@ public class LoginFormSettingsActivity extends Activity {
 
     private void setOldInfoInToForm() {
         keyValueStorage = getSharedPreferences(PROXY_KEY, MODE_PRIVATE);
-        ipAddressForm.loadAddress(keyValueStorage.getString(IP_KEY, ""));
-        ipAddressForm.loadPort(keyValueStorage.getString(PORT_KEY, ""));
+        ipAddressForm.loadAddress(keyValueStorage.getString(IP_KEY, GlobalConstants.EMPTY_STRING));
+        ipAddressForm.loadPort(keyValueStorage.getString(PORT_KEY, GlobalConstants.EMPTY_STRING));
         ipAddressForm.setProxyCheckBoxState(keyValueStorage.getBoolean(CHECK_BOX_KEY, false));
     }
 
@@ -85,34 +90,28 @@ public class LoginFormSettingsActivity extends Activity {
 
     private void addElementInToActivity() {
 
-        LinearLayout scrollableLayout = new LinearLayout(this);
-        scrollableLayout.setOrientation(LinearLayout.VERTICAL);
-
-        LinearLayout listOfSettings = new LinearLayout(this);
-        listOfSettings.setOrientation(LinearLayout.VERTICAL);
-
-        //@TODO стоит ли ?
-        //listOfSettings.setBackgroundDrawable(new LiteMatrixDraw(this));
-
-        LinearLayout combLayout = new LinearLayout(this);
-        combLayout.setOrientation(LinearLayout.HORIZONTAL);
-
-        ScrollView scrollView = new ScrollView(this);
-
-        combLayout.addView(new Icon(this,android.R.drawable.ic_menu_set_as));
-        combLayout.addView(new SerifTextView(this, "\tНастройки", 22));
-
+        LinearLayout scrollableListForSettings = new LinearLayout(this);
+        LinearLayout headViewPlusScrollableListOfSettings = new LinearLayout(this);
+        LinearLayout headNonScrollElements = new LinearLayout(this);
+        ScrollView scrollPackageForSettingsList = new ScrollView(this);
         ipAddressForm = new IPAddressForm(this);
 
-        scrollableLayout.addView(ipAddressForm);
+        scrollableListForSettings.setOrientation(LinearLayout.VERTICAL);
+        headViewPlusScrollableListOfSettings.setOrientation(LinearLayout.VERTICAL);
 
-        scrollView.addView(scrollableLayout);
+        headNonScrollElements.addView(new IconSetter(this, android.R.drawable.ic_menu_set_as));
+        headNonScrollElements.addView(new SerifTextView(this, SETTINGS_TITLE, GlobalConstants.HEADER_TEXT_SIZE));
 
-        listOfSettings.addView(combLayout);
-        listOfSettings.addView(new BoldHorizontalGradientLine(this, 4));
-        listOfSettings.addView(scrollView);
+        scrollableListForSettings.addView(ipAddressForm);
 
-        setContentView(listOfSettings);
+        scrollPackageForSettingsList.addView(scrollableListForSettings);
+
+        headViewPlusScrollableListOfSettings.addView(headNonScrollElements);
+        headViewPlusScrollableListOfSettings.addView(new LeftToRightHorizontalBoldGradientLine(this));
+
+        headViewPlusScrollableListOfSettings.addView(scrollPackageForSettingsList);
+
+        setContentView(headViewPlusScrollableListOfSettings);
     }
 
 

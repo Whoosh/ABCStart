@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.Gradients.BubbleHorizontalGradientLine;
-import com.example.First_prj.ForAllCode.Constants;
-import com.example.First_prj.ForAllCode.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 
 public class DateElement extends LinearLayout {
 
@@ -23,13 +23,13 @@ public class DateElement extends LinearLayout {
                 ViewGroup.LayoutParams.FILL_PARENT));
         super.setGravity(Gravity.CENTER);
 
-        month = new SerifTextView(context, Constants.Month.getMonth(numOfMonth), Constants.DEFAULT_TEXT_SIZE);
+        month = new SerifTextView(context, Month.getMonth(numOfMonth));
         month.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        year = new SerifTextView(context, addDataYear(numOfMonth), Constants.DEFAULT_TEXT_SIZE);
+        year = new SerifTextView(context, addDataYear(numOfMonth));
         year.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         super.addView(month);
-        super.addView(new BubbleHorizontalGradientLine(context, Constants.ONE));
+        super.addView(new BubbleHorizontalGradientLine(context, GlobalConstants.ONE));
         super.addView(year);
     }
 
@@ -47,6 +47,28 @@ public class DateElement extends LinearLayout {
 
     public int getDefaultWidth(){
         return width;
+    }
+
+    private static enum Month {
+
+        January("Январь"), February("Февраль"), March("Март"),
+        April("Апрель"), May("Май"), June("Июнь"),
+        July("Июль"), August("Август"), September("Сентябрь"),
+        October("Октябрь"), November("Ноябрь"), December("Декабрь");
+
+        private final String month;
+
+        private Month(final String month) {
+            this.month = month;
+        }
+
+        public static String getMonth(int number) {
+            return values()[number % 12].thisMonth();
+        }
+
+        private String thisMonth() {
+            return this.month;
+        }
     }
 
 }
