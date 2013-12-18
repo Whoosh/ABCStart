@@ -2,16 +2,11 @@ package com.example.First_prj.Journal.MainTable;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.text.Layout;
 import android.view.*;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
-import android.widget.NumberPicker;
-import android.widget.Scroller;
-import com.example.First_prj.ForAllCode.Constants;
-import com.example.First_prj.ForAllCode.HorizontalLine;
-import com.example.First_prj.ForAllCode.SerifTextView;
-import com.example.First_prj.ForAllCode.VerticalLine;
+import android.widget.*;
+import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 
 public class DateList extends HorizontalScrollView {
 
@@ -19,14 +14,18 @@ public class DateList extends HorizontalScrollView {
     private Context context;
     private LinearLayout[] dateElements;
     private int elementSize;
+
     // TODO add,set,ect...
     public DateList(Context context, int maxDateRange) {
         super(context);
         this.context = context;
         this.maxDateRange = maxDateRange;
         LinearLayout elements = new LinearLayout(context);
-        super.setBackgroundColor(Color.argb(80,1,81,90));
+        super.setBackgroundColor(Color.argb(80, 1, 81, 90));
         dateElements = new LinearLayout[maxDateRange];
+
+        FrameLayout s = new FrameLayout(context);
+
 
         elementSize = (int) (50 * context.getResources().getDisplayMetrics().density);
 
@@ -34,12 +33,23 @@ public class DateList extends HorizontalScrollView {
             dateElements[i] = new LinearLayout(context);
             dateElements[i].setGravity(Gravity.CENTER);
             dateElements[i].setLayoutParams(new ViewGroup.LayoutParams(elementSize, elementSize));
-            dateElements[i].addView(new SerifTextView(context, "" + i, Constants.DEFAULT_TEXT_SIZE));
+            dateElements[i].addView(new SerifTextView(context, "" + i));
             elements.addView(dateElements[i]);
             elements.addView(new VerticalLine(context, Color.CYAN, 1));
         }
 
         super.addView(elements);
     }
+
+    public DateList(Context context, String[] dates) {
+        super(context);
+        super.setBackgroundColor(Color.argb(80, 1, 81, 90));
+        LinearLayout elements = new LinearLayout(context);
+        elementSize = (int) (50 * context.getResources().getDisplayMetrics().density);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(elementSize, elementSize);
+        TextView bufferElement;
+
+    }
+
 
 }

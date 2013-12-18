@@ -3,10 +3,10 @@ package com.example.First_prj.MenuAndSwitchers;
 import android.content.Context;
 import android.graphics.Color;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.Gradients.BubbleHorizontalGradientLine;
-import com.example.First_prj.ForAllCode.Icon;
-import com.example.First_prj.ForAllCode.SerifTextView;
-import com.example.First_prj.ForAllCode.TransparentHorizontalView;
+import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
 
 public class ItemMenu extends LinearLayout {
 
@@ -18,14 +18,14 @@ public class ItemMenu extends LinearLayout {
         textView = new SerifTextView(context, itemText, 20);
         itemTextIcon = new LinearLayout(context);
         itemTextIcon.setOrientation(HORIZONTAL);
-        itemTextIcon.addView(new Icon(context, android.R.drawable.ic_media_play));
+        itemTextIcon.addView(new IconSetter(context, android.R.drawable.ic_media_play));
         itemTextIcon.addView(textView);
 
         super.setOrientation(VERTICAL);
-        super.addView(new BubbleHorizontalGradientLine(context, 1));
+        super.addView(new BubbleHorizontalGradientLine(context));
         super.addView(itemTextIcon);
-        super.addView(new BubbleHorizontalGradientLine(context, 1));
-        super.addView(new TransparentHorizontalView(context, 20));
+        super.addView(new BubbleHorizontalGradientLine(context));
+        super.addView(new TransparentHorizontalLine(context, 20));
     }
 
     public String getStringText() {

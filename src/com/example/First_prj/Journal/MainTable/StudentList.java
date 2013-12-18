@@ -5,9 +5,8 @@ import android.graphics.Color;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import com.example.First_prj.ForAllCode.HorizontalLine;
-import com.example.First_prj.ForAllCode.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 
 public class StudentList extends LinearLayout {
 

@@ -1,5 +1,6 @@
 package com.example.First_prj.JavaServer;
 
+import com.example.First_prj.ForAllCode.GlobalConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -77,12 +78,12 @@ public class UserInfo {
     }
 
     public void setAllParamsEmpty() {
-        status = "";
-        lastName = "";
-        middleName = "";
-        firstName = "";
-        email = "";
-        photoLink = "";
+        status = GlobalConstants.EMPTY_STRING;
+        lastName = GlobalConstants.EMPTY_STRING;
+        middleName = GlobalConstants.EMPTY_STRING;
+        firstName = GlobalConstants.EMPTY_STRING;
+        email = GlobalConstants.EMPTY_STRING;
+        photoLink = GlobalConstants.EMPTY_STRING;
     }
 
     public void setDataFromJson(JSONObject jsonUserInfo) {

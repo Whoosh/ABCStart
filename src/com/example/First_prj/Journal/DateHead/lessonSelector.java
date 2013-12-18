@@ -6,28 +6,32 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.Constants;
-import com.example.First_prj.ForAllCode.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 
 public class LessonSelector extends LinearLayout {
 
-    private SerifTextView name;
+    private SerifTextView nameOfElement;
+    private final String DEFAULT_TEXT = "Выбрать предмет";
 
     public LessonSelector(Context context) {
         super(context);
-        super.setBackgroundColor(Color.argb(100,1,81,90));
+        super.setBackgroundColor(Color.argb(100, 1, 81, 90));
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2,
                 (int) (50 * context.getResources().getDisplayMetrics().density)));
         super.setGravity(Gravity.CENTER);
-        name = new SerifTextView(context, "Список предметов", 20);
-        name.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2
+        nameOfElement = new SerifTextView(context, DEFAULT_TEXT, 20);
+        nameOfElement.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2
                 , ViewGroup.LayoutParams.FILL_PARENT));
-        super.addView(name);
+        super.addView(nameOfElement);
     }
 
     public void setSetterName(String name) {
-        this.name.setText(name);
+        this.nameOfElement.setText(name);
+    }
+
+    public void setDefaultText(){
+       nameOfElement.setText(DEFAULT_TEXT);
     }
 
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
+import com.example.First_prj.ForAllCode.GlobalInformer;
 import com.example.First_prj.JavaServer.Server;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
@@ -13,11 +14,18 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     private MainWindow mainWindow;
     private ActionMode settings;
 
+    private static final String USER_NAME_KEY = "User name";
+    private static final String PASSWORD_KEY = "Password";
+
+    private static final String SETTINGS_TITLE = "Настройки";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        GlobalInformer.setGlobalPixelDensityInfo(this);
+        GlobalInformer.setDefaultPreference();
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         mainWindow = new MainWindow(this);
         mainWindow.setOnClickListener(this);
         setContentView(mainWindow);
@@ -46,23 +54,23 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("UserName", mainWindow.getUserName());
-        outState.putString("Password", mainWindow.getPassword());
+        outState.putString(USER_NAME_KEY, mainWindow.getUserName());
+        outState.putString(PASSWORD_KEY, mainWindow.getPassword());
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        mainWindow.setUserName(savedInstanceState.get("UserName").toString());
-        mainWindow.setPassword(savedInstanceState.get("Password").toString());
+        mainWindow.setUserName(savedInstanceState.get(USER_NAME_KEY).toString());
+        mainWindow.setPassword(savedInstanceState.get(PASSWORD_KEY).toString());
     }
 
     private ActionMode.Callback settingsBar = new ActionMode.Callback() {
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            menu.add("Настройки");
+            menu.add(SETTINGS_TITLE);
             return true;
         }
 
@@ -100,8 +108,10 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.equals(mainWindow)) {
             try {// закрываем виртуальную клавиатуру по клику на пустое место.
-                ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
-                        .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                ((InputMethodManager)
+                        getSystemService(INPUT_METHOD_SERVICE)).
+                        hideSoftInputFromWindow(getCurrentFocus().
+                                getWindowToken(),
                                 InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (NullPointerException ex) {
                 ex.printStackTrace();

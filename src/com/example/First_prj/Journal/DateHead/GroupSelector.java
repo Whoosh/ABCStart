@@ -8,16 +8,18 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.Constants;
-import com.example.First_prj.ForAllCode.SerifTextView;
-import com.example.First_prj.ForAllCode.VerticalLine;
+import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 
 public class GroupSelector extends HorizontalScrollView implements View.OnClickListener {
 
+    private static final byte GROUP_COUNT = 24;
+
     private SerifTextView[] groups;
     private String currentGroup = "113"; // стартовая группа
-    private int oldPosition = 0;
-    private int oldIndexPosition = 0;
+    private int oldPosition;
+    private int oldIndexPosition;
 
     public GroupSelector(Context context) {
         super(context);
@@ -28,13 +30,13 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
                 (int) (50 * context.getResources().getDisplayMetrics().density)));
         super.setHorizontalScrollBarEnabled(false);
 
-        groups = new SerifTextView[Constants.GROUP_COUNT];
+        groups = new SerifTextView[GROUP_COUNT];
         // все группы с 113 по 463
         for (int i = 100, k = 0; i < 401; i += 100)
             for (int j = 10; j < 64; j += 10, k++) {
                 groups[k] = new SerifTextView(context, " " + (i + j + 3) + " ", 20);
                 groupsBuffer.addView(groups[k]);
-                groupsBuffer.addView(new VerticalLine(context, Color.DKGRAY, Constants.ONE));
+                groupsBuffer.addView(new VerticalLine(context, Color.DKGRAY, GlobalConstants.ONE));
                 groups[k].setOnClickListener(this);
             }
         refresh();
@@ -43,10 +45,10 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        for (byte i = 0; i < Constants.GROUP_COUNT; i++) {
+        for (byte i = 0; i < GROUP_COUNT; i++) {
             if (view.equals(groups[i])) {
                 currentGroup = groups[i].getStringText();
-                for (byte j = 0; j < Constants.GROUP_COUNT; j++)
+                for (byte j = 0; j < GROUP_COUNT; j++)
                     groups[j].setBackgroundColor(Color.TRANSPARENT);
                 groups[i].setBackgroundColor(Color.DKGRAY);
                 return;

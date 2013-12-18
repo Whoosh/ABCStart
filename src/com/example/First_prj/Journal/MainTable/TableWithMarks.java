@@ -3,15 +3,13 @@ package com.example.First_prj.Journal.MainTable;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import com.example.First_prj.ForAllCode.Constants;
-import com.example.First_prj.ForAllCode.HorizontalLine;
-import com.example.First_prj.ForAllCode.SerifTextView;
-import com.example.First_prj.ForAllCode.VerticalLine;
+import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 
 public class TableWithMarks extends HorizontalScrollView {
 
@@ -45,9 +43,9 @@ public class TableWithMarks extends HorizontalScrollView {
                 elements[i][j].setGravity(Gravity.CENTER);
                 elements[i][j].setBackgroundColor(Color.argb(200,1,50,90));
                 elements[i][j].setLayoutParams(new ViewGroup.LayoutParams(elementSize, elementSize));
-                elements[i][j].addView(new SerifTextView(context, "+", Constants.DEFAULT_TEXT_SIZE));
+                elements[i][j].addView(new SerifTextView(context, "+"));
                 rows[i].addView(elements[i][j]);
-                rows[i].addView(new VerticalLine(context,Color.CYAN,Constants.ONE));
+                rows[i].addView(new VerticalLine(context,Color.CYAN, GlobalConstants.ONE));
             }
         }
 
@@ -56,7 +54,7 @@ public class TableWithMarks extends HorizontalScrollView {
 
         for (int i = 0; i < numOfPeople; i++) {
                 results.addView(rows[i]);
-                results.addView(new HorizontalLine(context, Color.CYAN, Constants.ONE));
+                results.addView(new HorizontalLine(context, Color.CYAN, GlobalConstants.ONE));
         }
         super.addView(results);
     }

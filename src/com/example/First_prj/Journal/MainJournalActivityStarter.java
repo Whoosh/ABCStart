@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.TabHost;
-import com.example.First_prj.ForAllCode.TransparentHorizontalView;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
 import com.example.First_prj.R;
 
 
@@ -94,24 +94,24 @@ public class MainJournalActivityStarter extends TabActivity {
         TabHost.TabSpec tabsElement;
 
         tabsElement = tabsSwitcher.newTabSpec(LOOKING_TAB);
-        tabsElement.setIndicator(new TransparentHorizontalView(this, 0));
+        tabsElement.setIndicator(new TransparentHorizontalLine(this, 0));
         tabsElement.setContent(new Intent(this, LookingJournalActivity.class));
         tabsSwitcher.addTab(tabsElement);
 
         tabsElement = tabsSwitcher.newTabSpec(EDIT_TAB);
-        tabsElement.setIndicator(new TransparentHorizontalView(this, 0));
+        tabsElement.setIndicator(new TransparentHorizontalLine(this, 0));
         //TODO
         tabsElement.setContent(new Intent(this, EditJournalActivity.class));
         tabsSwitcher.addTab(tabsElement);
 
         tabsElement = tabsSwitcher.newTabSpec(CHECK_STUDENT);
-        tabsElement.setIndicator(new TransparentHorizontalView(this, 0));
+        tabsElement.setIndicator(new TransparentHorizontalLine(this, 0));
         //TODO
         tabsElement.setContent(new Intent(this, StudentCheckerActivity.class));
         tabsSwitcher.addTab(tabsElement);
 
         tabsElement = tabsSwitcher.newTabSpec(SOME_MORE);
-        tabsElement.setIndicator(new TransparentHorizontalView(this, 0));
+        tabsElement.setIndicator(new TransparentHorizontalLine(this, 0));
         //TODO
         tabsElement.setContent(new Intent(this, LookingJournalActivity.class));
         tabsSwitcher.addTab(tabsElement);
