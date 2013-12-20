@@ -2,20 +2,20 @@ package com.example.First_prj.MenuAndSwitchers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.LeftToRightHorizontalBoldGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
-import com.example.First_prj.JavaServer.Server;
+import com.example.First_prj.JavaServer.MightInfo;
 import com.example.First_prj.Journal.MainJournalActivityStarter;
 
 public class Menu extends LinearLayout implements View.OnTouchListener {
-
-    private static final byte JOURNAL_ACTIVITY_ID = 2;
 
     private static final String MENU_TITLE = "\tМеню";
     private static final byte MENU_TITLE_TEXT_SIZE = 22;
@@ -40,7 +40,7 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
 
         scrollableLayout.setOrientation(VERTICAL);
         for (int i = 0; i < sectionNumbersOfFunction.length; i++) {
-            itemsLayout[i] = new ItemMenu(context, Data.getFunctionName(sectionNumbersOfFunction[i]));
+            itemsLayout[i] = new ItemMenu(context, FunctionsIDAndNames.getFunctionName(sectionNumbersOfFunction[i]));
             scrollableLayout.addView(itemsLayout[i]);
             itemsLayout[i].setOnTouchListener(this);
         }
@@ -51,8 +51,8 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
     }
 
     private void selectNewActivity(int pointToIndex) {
-        for (int i = 0; i < Data.getLength(); i++)
-            if (itemsLayout[pointToIndex].getStringText().equals(Data.getFunctionName(i)))
+        for (int i = 0; i < FunctionsIDAndNames.getLength(); i++)
+            if (itemsLayout[pointToIndex].getStringText().equals(FunctionsIDAndNames.getFunctionName(i)))
                 startActivity(i);
     }
 
@@ -77,16 +77,19 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
 
     public int[] getSections(int mightCode) {
         switch (mightCode) {
-            case Server.TEACHER_CODE:
-                return Data.getTeacherSet();
-            case Server.STUDENT_CODE:
-                return Data.getStudentSet();
-            case Server.PARENT_CODE:
-                return Data.getParentSet();
-            case Server.STUDENT_TEACHER_CODE:
-                return Data.getTeacherStudentSet();
+            case MightInfo.ADMIN_MIGHT_CODE:
+                return FunctionsIDAndNames.getAdminSet();
+            case MightInfo.PARENT_MIGHT_CODE:
+                return FunctionsIDAndNames.getParentSet();
+            case MightInfo.STUDENT_AKA_TEACHER_MIGHT_CODE:
+                return FunctionsIDAndNames.getTeacherAKAStudentSet();
+            case MightInfo.STUDENT_MIGHT_CODE:
+                return FunctionsIDAndNames.getStudentSet();
+            case MightInfo.TEACHER_MIGHT_CODE:
+                return FunctionsIDAndNames.getTeacherSet();
+            case MightInfo.ANONYMOUS_MIGHT_CODE:
             default: {
-                return new int[]{1, 1}; // TODO обработку
+                return FunctionsIDAndNames.getInformerForAnonSet(); // TODO
             }
         }
     }
@@ -94,7 +97,7 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
     //@TODO В каждом кейсе вызов своего активити.
     public void startActivity(int indexOfValue) {
         switch (indexOfValue) {
-            case JOURNAL_ACTIVITY_ID: {
+            case FunctionsIDAndNames.JOURNAL_INDEX_AKA_JOURNAL_ACTIVITY_ID: {
                 context.startActivity(new Intent(context, MainJournalActivityStarter.class));
                 break;
             }
@@ -111,5 +114,36 @@ public class Menu extends LinearLayout implements View.OnTouchListener {
         super.addView(new TransparentHorizontalLine(context, 15));
     }
 
+    private class ItemMenu extends LinearLayout {
 
+        private SerifTextView textView;
+        private LinearLayout itemTextIcon;
+
+        public ItemMenu(Context context, String itemText) {
+            super(context);
+            textView = new SerifTextView(context, itemText, 20);
+            itemTextIcon = new LinearLayout(context);
+            itemTextIcon.setOrientation(HORIZONTAL);
+            itemTextIcon.addView(new IconSetter(context, android.R.drawable.ic_media_play));
+            itemTextIcon.addView(textView);
+
+            super.setOrientation(VERTICAL);
+            super.addView(new BubbleHorizontalGradientLine(context));
+            super.addView(itemTextIcon);
+            super.addView(new BubbleHorizontalGradientLine(context));
+            super.addView(new TransparentHorizontalLine(context, 20));
+        }
+
+        public String getStringText() {
+            return textView.getStringText();
+        }
+
+        public void setBlinkedColor() {
+            itemTextIcon.setBackgroundColor(Color.parseColor("#6BFF66")); // ярко зелёный
+        }
+
+        public void setBlinkedColorBack() {
+            itemTextIcon.setBackgroundColor(Color.TRANSPARENT);
+        }
+    }
 }

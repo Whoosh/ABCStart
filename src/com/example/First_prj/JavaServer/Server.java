@@ -21,18 +21,22 @@ public abstract class Server {
     private static final String HOST_INFO = "Host: ";
     private static final byte DEFAULT_PORT = 80;
 
+    private static final byte TRY_THREE_TIMES = 3;
+    private static final byte THIS_IS_NOT_NULL_AND_TOKEN_LEN = 5;
+    private static byte tryCounts;
+
     private static String HOST;
     private static int PORT;
 
     private static ExecutorService executorService;
-    private static Context activityContext;
 
     private static final byte AUTHORIZATION_QUERY_ID = 0;
     private static final byte EMPTY_QUERY_ID = 1;
     private static final byte EXIT_QUERY_ID = 2;
     private static final byte USER_INFO_QUERY_ID = 3;
+    private static final byte MIGHT_QUERY_ID = 4;
 
-    private static final String QUERY_SUCCEEDED = "Accept-Encoding";
+    private static final String JSON_START_SCOPE = "{";
     private static final String TOKEN_TAG = "ssid";
     private static final String USER_ID_TAG = "user_id";
 
@@ -41,13 +45,6 @@ public abstract class Server {
 
     private static String TOKEN = GlobalConstants.EMPTY_STRING;
     private static String MY_ID = GlobalConstants.EMPTY_STRING;
-
-    private static byte indexer;
-
-    public static final byte TEACHER_CODE = 1;
-    public static final byte STUDENT_CODE = 2;
-    public static final byte PARENT_CODE = 3;
-    public static final byte STUDENT_TEACHER_CODE = 4;
 
     public static void connect(Context context, String name, String password) throws TimeoutException {
         HOST = DEFAULT_HOST;
@@ -62,51 +59,62 @@ public abstract class Server {
     }
 
     public static boolean isPasswordOK() {
-        return TOKEN.length() > 5; // самый быстрый способ проверки на валидность токена. Null = 4;
+        return TOKEN.length() > THIS_IS_NOT_NULL_AND_TOKEN_LEN; // самый быстрый способ проверки на валидность токена. Null = 4;
     }
 
     private static void startServerConnection(Context context, String name, String password) throws TimeoutException {
 
-        if (executorService != null)
-            executorService.shutdown();
-
+        if (executorService != null) executorService.shutdown();
         executorService = Executors.newFixedThreadPool(GlobalConstants.ONE); // 1 поток на исполнение
-        activityContext = context;
-
         Future<String> response = executorService.submit(new Query(AUTHORIZATION_QUERY_ID, name, password));
 
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
 
         String jsonString = getResponseString(response);
-        System.out.println(jsonString);
         try {
             TOKEN = new JSONObject(jsonString).get(TOKEN_TAG).toString();
             MY_ID = new JSONObject(jsonString).get(USER_ID_TAG).toString();
+            setMight();
         } catch (JSONException e) {
             startServerConnection(context, name, password);
             e.printStackTrace();
-            if (3 < indexer++) {
-                indexer = 0;
+            if (TRY_THREE_TIMES < tryCounts++) {
+                tryCounts = 0;
                 throw new TimeoutException();
             }
         }
     }
 
-    public static UserInfo getUserInfo() throws TimeoutException {
-        UserInfo userInfo = new UserInfo();
-
-        Future<String> response = executorService.submit(new Query(USER_INFO_QUERY_ID));
+    private static void setMight() throws TimeoutException, JSONException {
+        Future<String> response = executorService.submit(new Query(MIGHT_QUERY_ID, MY_ID));
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
-
         String jsonString = getResponseString(response);
+        MightInfo.setDataFromJson(new JSONObject(jsonString));
+    }
 
+
+    public static UserInfo getMyProfileInfo() throws TimeoutException {
+        Future<String> response = executorService.submit(new Query(USER_INFO_QUERY_ID, MY_ID));
+        return requestProfile(response);
+    }
+
+    public static UserInfo getUserInfo(String userID) throws TimeoutException {
+        Future<String> response = executorService.submit(new Query(USER_INFO_QUERY_ID, userID));
+        return requestProfile(response);
+    }
+
+    private static UserInfo requestProfile(Future<String> response) throws TimeoutException {
+        UserInfo userInfo = new UserInfo();
+        waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
+        String jsonString = getResponseString(response);
         try {
             userInfo.setDataFromJson(new JSONObject(jsonString));
         } catch (JSONException e) {
+            System.out.println(jsonString);
             userInfo.setAllParamsEmpty();
             e.printStackTrace();
+            System.exit(0);
         }
-
         return userInfo;
     }
 
@@ -128,14 +136,12 @@ public abstract class Server {
     public static boolean isConnect(Context context, String address, int port) throws TimeoutException {
         HOST = address;
         PORT = port;
-        activityContext = context;
         return pushEmptyQuery();
     }
 
     public static boolean isConnect(Context context) throws TimeoutException {
         HOST = DEFAULT_HOST;
         PORT = DEFAULT_PORT;
-        activityContext = context;
         return pushEmptyQuery();
     }
 
@@ -166,11 +172,6 @@ public abstract class Server {
         }
         TOKEN = GlobalConstants.EMPTY_STRING;
         executorService = null;
-    }
-
-    public static int getMightCode() {
-        return TEACHER_CODE;
-        // TODO понятие сущьности, под кем зашли
     }
 
     private static class Query implements Callable<String> {
@@ -220,11 +221,12 @@ public abstract class Server {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return result.substring(result.indexOf(QUERY_SUCCEEDED) + QUERY_SUCCEEDED.length());
+            return result.substring(result.indexOf(JSON_START_SCOPE));
         }
     }
 
     private static class QueryManager {
+        // TODO будут повторы пока всё окончательно не утресётся, что-бы 10 раз не менять структуру.
 
         private static final String AUTHORIZATION_METHOD = "/authentication/?";
         private static final String AUTHORIZATION_PARAM_ONE = "login=";
@@ -237,6 +239,13 @@ public abstract class Server {
         private static final String PROFILE_PARAM_ONE = "ssid=";
         private static final String PROFILE_PARAM_TWO = "&user_id=";
 
+        private static final String MIGHT_METHOD = "/getRoles/?";
+        private static final String MIGHT_PARAM_ONE = "ssid=";
+        private static final String MIGHT_PARAM_TWO = "&user_id=";
+
+        private static final String SSID_FIRST_ONE = "ssid=";
+        private static final String SSID_LAST_ONE = "&ssid=";
+
         private static String[] valuesBuffer;
 
         private static String getQueryString(byte iDQuery, String... values) {
@@ -247,7 +256,9 @@ public abstract class Server {
                 case EXIT_QUERY_ID:
                     return link(LOG_OUT_METHOD, LOG_OUT_PARAM_ONE);
                 case USER_INFO_QUERY_ID:
-                    return DEFAULT_API_LINK + PROFILE_METHOD + PROFILE_PARAM_ONE + TOKEN + PROFILE_PARAM_TWO + MY_ID;
+                    return link(PROFILE_METHOD, PROFILE_PARAM_ONE, PROFILE_PARAM_TWO);
+                case MIGHT_QUERY_ID:
+                    return link(MIGHT_METHOD, MIGHT_PARAM_ONE, MIGHT_PARAM_TWO);
                 case EMPTY_QUERY_ID:
                 default:
                     return DEFAULT_API_LINK;
@@ -255,15 +266,14 @@ public abstract class Server {
         }
 
         private static String link(String method, String... params) {
-            StringBuilder stringManager = new StringBuilder();
-            stringManager.append(DEFAULT_API_LINK);
+            StringBuilder stringManager = new StringBuilder(DEFAULT_API_LINK);
             stringManager.append(method);
-            for (byte i = 0; i < params.length; i++) {
+            for (byte i = 0, k = 0; i < params.length; i++) {
                 stringManager.append(params[i]);
-                if (params[i].equals(LOG_OUT_PARAM_ONE) || params[i].equals(PROFILE_PARAM_ONE))
+                if (params[i].equals(SSID_FIRST_ONE) || params[i].equals(SSID_LAST_ONE))
                     stringManager.append(TOKEN);
                 else
-                    stringManager.append(valuesBuffer[i]);
+                    stringManager.append(valuesBuffer[k++]);
             }
             return stringManager.toString();
         }
