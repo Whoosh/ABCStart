@@ -3,6 +3,7 @@ package com.example.First_prj.MenuAndSwitchers;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
+import com.example.First_prj.JavaServer.MightInfo;
 import com.example.First_prj.JavaServer.Server;
 
 public class MenuActivity extends Activity {
@@ -14,7 +15,7 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        mainMenu = new Menu(this, Server.getMightCode());
+        mainMenu = new Menu(this, MightInfo.getCurrentMightCode());
         setContentView(mainMenu);
     }
 

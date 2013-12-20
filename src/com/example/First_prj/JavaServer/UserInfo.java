@@ -12,6 +12,7 @@ public class UserInfo {
     public static final String FIRST_NAME_TAG = "firstname";
     public static final String EMAIL_TAG = "email";
     public static final String PHOTO_TAG = "photo";
+    public static final String PHONE_TAG = "phone";
 
     private String status;
     private String lastName;
@@ -19,6 +20,7 @@ public class UserInfo {
     private String firstName;
     private String email;
     private String photoLink;
+    private String phone;
 
     public String getStatus() {
         return status;
@@ -75,6 +77,8 @@ public class UserInfo {
         System.out.println("Email address = " + email);
         System.out.println("Photo link = " + photoLink);
         System.out.println("Status = " + status);
+        System.out.println("Phone = "+ phone);
+
     }
 
     public void setAllParamsEmpty() {
@@ -84,38 +88,44 @@ public class UserInfo {
         firstName = GlobalConstants.EMPTY_STRING;
         email = GlobalConstants.EMPTY_STRING;
         photoLink = GlobalConstants.EMPTY_STRING;
+        phone = GlobalConstants.EMPTY_STRING;
     }
 
     public void setDataFromJson(JSONObject jsonUserInfo) {
         try {
             firstName = jsonUserInfo.get(UserInfo.FIRST_NAME_TAG).toString();
         } catch (JSONException e) {
-            firstName = "";
+            firstName = GlobalConstants.EMPTY_STRING;
         }
         try {
             middleName = jsonUserInfo.get(UserInfo.MIDDLE_NAME_TAG).toString();
         } catch (JSONException e) {
-            middleName = "";
+            middleName = GlobalConstants.EMPTY_STRING;
         }
         try {
             lastName = jsonUserInfo.get(UserInfo.LAST_NAME_TAG).toString();
         } catch (JSONException e) {
-            lastName = "";
+            lastName = GlobalConstants.EMPTY_STRING;
         }
         try {
             email = jsonUserInfo.get(UserInfo.EMAIL_TAG).toString();
         } catch (JSONException e) {
-            email = "";
+            email = GlobalConstants.EMPTY_STRING;
         }
         try {
             status = jsonUserInfo.get(UserInfo.STATUS_TAG).toString();
         } catch (JSONException e) {
-            status = "";
+            status = GlobalConstants.EMPTY_STRING;
         }
         try {
             photoLink = jsonUserInfo.get(UserInfo.PHOTO_TAG).toString();
         } catch (JSONException e) {
-            photoLink = "";
+            photoLink = GlobalConstants.EMPTY_STRING;
+        }
+        try {
+            phone = jsonUserInfo.get(UserInfo.PHONE_TAG).toString();
+        } catch (JSONException e) {
+            photoLink = GlobalConstants.EMPTY_STRING;
         }
     }
 }

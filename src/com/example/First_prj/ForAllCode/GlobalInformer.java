@@ -18,7 +18,7 @@ abstract public class GlobalInformer {
     private static char MAIN_WINDOW_LOGIN_BUTTON_HEIGHT;
     private static char MAIN_WINDOW_LOGIN_WIDTH;
     private static char MAIN_WINDOW_LOGIN_HEIGHT;
-    private static byte MAIN_WINDOW_TRANSPARENT_VIEWS_HEIGHT = 5;
+    private static byte MAIN_WINDOW_TRANSPARENT_VIEWS_HEIGHT;
 
     public static void setGlobalPixelDensityInfo(Context context) {
         DISPLAY_DENSITY_PIXEL_METRIC = context.getResources().getDisplayMetrics().density;

@@ -20,8 +20,8 @@ import com.example.First_prj.ForAllCode.GlobalConstants;
 import com.example.First_prj.ForAllCode.DesigneElements.Backgrounds.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.GlobalInformer;
+import com.example.First_prj.JavaServer.MightInfo;
 import com.example.First_prj.JavaServer.Server;
-import com.example.First_prj.JavaServer.UserInfo;
 import com.example.First_prj.MenuAndSwitchers.MenuActivity;
 
 import java.util.concurrent.TimeoutException;
@@ -183,12 +183,6 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void startMainMenu() {
-        try {
-            Server.getUserInfo().printUserInfo();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
-
         context.startActivity(new Intent(context, MenuActivity.class));
     }
 
