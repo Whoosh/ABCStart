@@ -3,7 +3,6 @@ package com.example.First_prj.LoginForm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.InputType;
 import android.view.Gravity;
@@ -67,7 +66,6 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         saveMe.setTextColor(GlobalConfig.MainWindowConfig.getCheckBoxTextColor());
         saveMe.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
         saveMe.setText(CHECK_BOX_TITLE);
-        saveMe.setDrawingCacheBackgroundColor(Color.GREEN);
 
         login = new SerifTextView(context, ENTER_TITLE);
         login.setLayoutParams(new ViewGroup.LayoutParams(
@@ -142,14 +140,32 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            onButtonPressed();
-            setButtonInPressColor();
+            startButtonLogic();
+            setButtonInPressedColor();
         } else if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_UP)
             setButtonInUpColor();
         return true;
     }
 
-    private void setButtonInPressColor() {
+    private void startButtonLogic() {
+        SharedPreferences proxyInfo = context.getSharedPreferences
+                (MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
+        try {
+            try {
+                onButtonPressed(proxyInfo);
+            } catch (ProxyDetectException e) {
+                startServerWithProxy(proxyInfo);
+            }
+        } catch (ServerDownException e) {
+            messageOnScreen(SERVER_IS_DOWN);
+        } catch (TimeoutException e) {
+            messageOnScreen(SERVER_TTL_QUERY_ERROR);
+        } catch (PasswordErrorException e) {
+            messageOnScreen(LOGIN_OR_PASSWORD_ERROR);
+        }
+    }
+
+    private void setButtonInPressedColor() {
         login.setBackgroundColor(GlobalConfig.MainWindowConfig.getButtonPressColor());
     }
 
@@ -157,54 +173,30 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         login.setBackgroundColor(GlobalConfig.MainWindowConfig.getFormColor());
     }
 
-    private void onButtonPressed() {
-        SharedPreferences proxyInfo = context.getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
-        if (proxyInfo.getBoolean(MainSettingsActivity.CHECK_BOX_KEY, false)) {
-            startServerWithProxy(proxyInfo);
-            return;
-        }
-        try {
-            if (!Server.isConnect()) {
-                messageOnScreen(SERVER_IS_DOWN);
-                return;
-            }
-            Server.connect(userName.getText().toString(), password.getText().toString());
-            if (Server.isPasswordOK()) {
-                startMainMenu();
-                return;
-            }
-            messageOnScreen(LOGIN_OR_PASSWORD_ERROR);
-        } catch (TimeoutException e) {
-            messageOnScreen(SERVER_TTL_QUERY_ERROR);
-        }
+    private void onButtonPressed(SharedPreferences proxyInfo) throws ServerDownException,
+            TimeoutException, PasswordErrorException, ProxyDetectException {
 
+        if (proxyInfo.getBoolean(MainSettingsActivity.CHECK_BOX_KEY, false)) throw new ProxyDetectException();
+        if (Server.isNotConnect()) throw new ServerDownException();
+        Server.connect(userName.getText().toString(), password.getText().toString());
+        if (Server.passwordIsWrong()) throw new PasswordErrorException();
+        startMainMenu();
     }
 
     private void startMainMenu() {
         context.startActivity(new Intent(context, MenuActivity.class));
     }
 
-    private void startServerWithProxy(SharedPreferences proxyInfo) {
+    private void startServerWithProxy(SharedPreferences proxyInfo) throws ServerDownException,
+            PasswordErrorException, TimeoutException {
+
         String address = proxyInfo.getString(MainSettingsActivity.IP_KEY, GlobalConstants.EMPTY_STRING);
         int port = Integer.parseInt(proxyInfo.getString(MainSettingsActivity.PORT_KEY, GlobalConstants.EMPTY_STRING));
-        try {
-            if (!Server.isConnect(address, port)) {
-                messageOnScreen(SERVER_IS_DOWN);
-                return;
-            }
-            try {
-                Server.connect(userName.getText().toString(), password.getText().toString(), address, port);
-            } catch (NullPointerException ex) {
-                Server.connect(GlobalConstants.EMPTY_STRING, GlobalConstants.EMPTY_STRING, address, port);
-            }
-            if (Server.isPasswordOK()) {
-                startMainMenu();
-                return;
-            }
-            messageOnScreen(LOGIN_OR_PASSWORD_ERROR);
-        } catch (TimeoutException e) {
-            messageOnScreen(SERVER_TTL_QUERY_ERROR);
-        }
+
+        if (!Server.isNotConnect(address, port)) throw new ServerDownException();
+        Server.connect(userName.getText().toString(), password.getText().toString(), address, port);
+        if (Server.passwordIsWrong()) throw new PasswordErrorException();
+        startMainMenu();
     }
 
     private void messageOnScreen(String message) {
@@ -229,4 +221,12 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         }
     }
 
+    private class ServerDownException extends Throwable {
+    }
+
+    private class PasswordErrorException extends Throwable {
+    }
+
+    private class ProxyDetectException extends Throwable {
+    }
 }
