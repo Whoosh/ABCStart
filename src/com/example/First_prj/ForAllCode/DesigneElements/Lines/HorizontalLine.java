@@ -19,8 +19,7 @@ public class HorizontalLine extends View {
     }
 
     private void initCode(int color, int height) {
-        super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
-                height));
+        super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, height));
         super.setBackgroundDrawable(new ColorDrawable(color));
     }
 }

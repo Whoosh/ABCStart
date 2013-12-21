@@ -1,6 +1,5 @@
 package com.example.First_prj.JavaServer;
 
-import android.content.Context;
 import com.example.First_prj.ForAllCode.GlobalConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +21,7 @@ public abstract class Server {
     private static final byte DEFAULT_PORT = 80;
 
     private static final byte TRY_THREE_TIMES = 3;
-    private static final byte THIS_IS_NOT_NULL_AND_TOKEN_LEN = 5;
+    private static final byte THIS_IS_NOT_NULL_AND_NOT_TOKEN_LEN = 5;
     private static byte tryCounts;
 
     private static String HOST;
@@ -40,29 +39,29 @@ public abstract class Server {
     private static final String TOKEN_TAG = "ssid";
     private static final String USER_ID_TAG = "user_id";
 
-    private static final byte DEFAULT_WAIT_RESPONSE_DELAY = 5;
-    private static final byte SHORT_RESPONSE_DELAY = 1;
+    private static final byte DEFAULT_WAIT_RESPONSE_DELAY = 3;
+    private static final byte CHECKED_DELAY_RESPONSE = 1;
 
     private static String TOKEN = GlobalConstants.EMPTY_STRING;
     private static String MY_ID = GlobalConstants.EMPTY_STRING;
 
-    public static void connect(Context context, String name, String password) throws TimeoutException {
+    public static void connect(String name, String password) throws TimeoutException {
         HOST = DEFAULT_HOST;
         PORT = DEFAULT_PORT;
-        startServerConnection(context, name, password);
+        startServerConnection(name, password);
     }
 
-    public static void connect(Context context, String name, String password, String proxyAddress, int port) throws TimeoutException {
+    public static void connect(String name, String password, String proxyAddress, int port) throws TimeoutException {
         HOST = proxyAddress;
         PORT = port;
-        startServerConnection(context, name, password);
+        startServerConnection(name, password);
     }
 
     public static boolean isPasswordOK() {
-        return TOKEN.length() > THIS_IS_NOT_NULL_AND_TOKEN_LEN; // самый быстрый способ проверки на валидность токена. Null = 4;
+        return TOKEN.length() > THIS_IS_NOT_NULL_AND_NOT_TOKEN_LEN; // самый быстрый способ проверки на валидность токена. Null = 4;
     }
 
-    private static void startServerConnection(Context context, String name, String password) throws TimeoutException {
+    private static void startServerConnection(String name, String password) throws TimeoutException {
 
         if (executorService != null) executorService.shutdown();
         executorService = Executors.newFixedThreadPool(GlobalConstants.ONE); // 1 поток на исполнение
@@ -76,7 +75,7 @@ public abstract class Server {
             MY_ID = new JSONObject(jsonString).get(USER_ID_TAG).toString();
             setMight();
         } catch (JSONException e) {
-            startServerConnection(context, name, password);
+            startServerConnection(name, password);
             e.printStackTrace();
             if (TRY_THREE_TIMES < tryCounts++) {
                 tryCounts = 0;
@@ -110,20 +109,17 @@ public abstract class Server {
         try {
             userInfo.setDataFromJson(new JSONObject(jsonString));
         } catch (JSONException e) {
-            System.out.println(jsonString);
             userInfo.setAllParamsEmpty();
             e.printStackTrace();
-            System.exit(0);
         }
         return userInfo;
     }
 
     private static void waitResponse(Future response, int delaySec) throws TimeoutException {
         final byte secInMin = 60, defaultDelay = 100; // 100 - 0.1 секунда
-        final Date date = new Date();
-        int startTime = date.getSeconds() + date.getMinutes() * secInMin; // 60 сек
+        int startTime = new Date().getSeconds() + new Date().getMinutes() * secInMin; // 60 сек
         while (!response.isDone()) {
-            if (((date.getSeconds() + date.getMinutes() * secInMin) - startTime) > delaySec)
+            if (((new Date().getSeconds() + new Date().getMinutes() * secInMin) - startTime) > delaySec)
                 throw new TimeoutException();
             try {
                 Thread.sleep(defaultDelay);
@@ -131,26 +127,26 @@ public abstract class Server {
                 e.printStackTrace();
             }
         }
+
     }
 
-    public static boolean isConnect(Context context, String address, int port) throws TimeoutException {
+    public static boolean isConnect(String address, int port) throws TimeoutException {
         HOST = address;
         PORT = port;
         return pushEmptyQuery();
     }
 
-    public static boolean isConnect(Context context) throws TimeoutException {
+    public static boolean isConnect() throws TimeoutException {
         HOST = DEFAULT_HOST;
         PORT = DEFAULT_PORT;
         return pushEmptyQuery();
     }
 
     private static boolean pushEmptyQuery() throws TimeoutException {
-        if (executorService != null)
-            executorService.shutdown();
+        if (executorService != null) executorService.shutdown();
         executorService = Executors.newFixedThreadPool(GlobalConstants.ONE);
         Future<String> response = executorService.submit(new Query(EMPTY_QUERY_ID));
-        waitResponse(response, SHORT_RESPONSE_DELAY);
+        waitResponse(response, CHECKED_DELAY_RESPONSE);
         return !getResponseString(response).isEmpty();
     }
 
