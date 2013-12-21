@@ -57,8 +57,8 @@ public abstract class Server {
         startServerConnection(name, password);
     }
 
-    public static boolean isPasswordOK() {
-        return TOKEN.length() > THIS_IS_NOT_NULL_AND_NOT_TOKEN_LEN; // самый быстрый способ проверки на валидность токена. Null = 4;
+    public static boolean passwordIsWrong() {
+        return TOKEN.length() < THIS_IS_NOT_NULL_AND_NOT_TOKEN_LEN;
     }
 
     private static void startServerConnection(String name, String password) throws TimeoutException {
@@ -130,13 +130,13 @@ public abstract class Server {
 
     }
 
-    public static boolean isConnect(String address, int port) throws TimeoutException {
+    public static boolean isNotConnect(String address, int port) throws TimeoutException {
         HOST = address;
         PORT = port;
         return pushEmptyQuery();
     }
 
-    public static boolean isConnect() throws TimeoutException {
+    public static boolean isNotConnect() throws TimeoutException {
         HOST = DEFAULT_HOST;
         PORT = DEFAULT_PORT;
         return pushEmptyQuery();
@@ -147,7 +147,7 @@ public abstract class Server {
         executorService = Executors.newFixedThreadPool(GlobalConstants.ONE);
         Future<String> response = executorService.submit(new Query(EMPTY_QUERY_ID));
         waitResponse(response, CHECKED_DELAY_RESPONSE);
-        return !getResponseString(response).isEmpty();
+        return getResponseString(response).isEmpty();
     }
 
     private static String getResponseString(Future<String> response) {
