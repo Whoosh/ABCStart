@@ -6,23 +6,25 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.*;
 import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
-import com.example.First_prj.ForAllCode.DesigneElements.Lines.LeftToRightHorizontalBoldGradientLine;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.BlackToWhiteHeaderGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.ForAllCode.GlobalConstants;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 
-public class LoginFormSettingsActivity extends Activity {
+public class MainSettingsActivity extends Activity {
 
     public static final String IP_KEY = "IP";
     public static final String PORT_KEY = "Port";
-    public static final String PROXY_KEY = "Proxy";
     public static final String CHECK_BOX_KEY = "CheckBoxValue";
+
+    public static final String SETTINGS_KEY = "Settings";
 
     private static final String SETTINGS_TITLE = "\tНастройки";
 
-    private IPAddressForm ipAddressForm;
+    private ProxyManager proxyManager;
+    private ThemeManager themeManager;
     private SharedPreferences keyValueStorage;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -61,31 +63,44 @@ public class LoginFormSettingsActivity extends Activity {
     }
 
     private void saveFormsInfo() {
-        keyValueStorage = getSharedPreferences(PROXY_KEY, MODE_PRIVATE);
+        keyValueStorage = getSharedPreferences(SETTINGS_KEY, MODE_PRIVATE);
+
         SharedPreferences.Editor editor = keyValueStorage.edit();
-        editor.putString(IP_KEY, ipAddressForm.getAddress());
-        editor.putString(PORT_KEY, ipAddressForm.getPort());
-        editor.putBoolean(CHECK_BOX_KEY, ipAddressForm.isProxySet());
+        editor.putString(IP_KEY, proxyManager.getAddress());
+        editor.putString(PORT_KEY, proxyManager.getPort());
+        editor.putBoolean(CHECK_BOX_KEY, proxyManager.isProxySet());
+
+        editor.putBoolean(ThemeManager.MATRIX_CHECK_KEY, themeManager.getMatrixCheck());
+
         editor.commit();
     }
 
     private void setOldInfoInToForm() {
-        keyValueStorage = getSharedPreferences(PROXY_KEY, MODE_PRIVATE);
-        ipAddressForm.loadAddress(keyValueStorage.getString(IP_KEY, GlobalConstants.EMPTY_STRING));
-        ipAddressForm.loadPort(keyValueStorage.getString(PORT_KEY, GlobalConstants.EMPTY_STRING));
-        ipAddressForm.setProxyCheckBoxState(keyValueStorage.getBoolean(CHECK_BOX_KEY, false));
+        keyValueStorage = getSharedPreferences(SETTINGS_KEY, MODE_PRIVATE);
+        proxyManager.loadAddress(keyValueStorage.getString(IP_KEY, GlobalConstants.EMPTY_STRING));
+        proxyManager.loadPort(keyValueStorage.getString(PORT_KEY, GlobalConstants.EMPTY_STRING));
+        proxyManager.setProxyCheckBoxState(keyValueStorage.getBoolean(CHECK_BOX_KEY, false));
+
+        themeManager.setMatrixCheck(keyValueStorage.getBoolean(ThemeManager.MATRIX_CHECK_KEY, false));
+        themeManager.setNormalCheck(!themeManager.getMatrixCheck());
+
     }
 
     private void loadProxyState(Bundle savedInstanceState) {
-        ipAddressForm.loadAddress(savedInstanceState.getString(IP_KEY));
-        ipAddressForm.loadPort(savedInstanceState.getString(PORT_KEY));
-        ipAddressForm.setProxyCheckBoxState(savedInstanceState.getBoolean(CHECK_BOX_KEY));
+        proxyManager.loadAddress(savedInstanceState.getString(IP_KEY));
+        proxyManager.loadPort(savedInstanceState.getString(PORT_KEY));
+        proxyManager.setProxyCheckBoxState(savedInstanceState.getBoolean(CHECK_BOX_KEY));
+
+        themeManager.setMatrixCheck(savedInstanceState.getBoolean(ThemeManager.MATRIX_CHECK_KEY));
+        themeManager.setNormalCheck(!themeManager.getMatrixCheck());
     }
 
     private void saveProxyState(Bundle outState) {
-        outState.putString(PORT_KEY, ipAddressForm.getPort());
-        outState.putString(IP_KEY, ipAddressForm.getAddress());
-        outState.putBoolean(CHECK_BOX_KEY, ipAddressForm.isProxySet());
+        outState.putString(PORT_KEY, proxyManager.getPort());
+        outState.putString(IP_KEY, proxyManager.getAddress());
+        outState.putBoolean(CHECK_BOX_KEY, proxyManager.isProxySet());
+
+        outState.putBoolean(ThemeManager.MATRIX_CHECK_KEY, themeManager.getMatrixCheck());
     }
 
     private void addElementInToActivity() {
@@ -94,25 +109,27 @@ public class LoginFormSettingsActivity extends Activity {
         LinearLayout headViewPlusScrollableListOfSettings = new LinearLayout(this);
         LinearLayout headNonScrollElements = new LinearLayout(this);
         ScrollView scrollPackageForSettingsList = new ScrollView(this);
-        ipAddressForm = new IPAddressForm(this);
+
+        proxyManager = new ProxyManager(this);
+        themeManager = new ThemeManager(this);
 
         scrollableListForSettings.setOrientation(LinearLayout.VERTICAL);
         headViewPlusScrollableListOfSettings.setOrientation(LinearLayout.VERTICAL);
 
         headNonScrollElements.addView(new IconSetter(this, android.R.drawable.ic_menu_set_as));
         headNonScrollElements.addView(new SerifTextView(this, SETTINGS_TITLE, GlobalConstants.HEADER_TEXT_SIZE));
+        headNonScrollElements.setBackgroundColor(GlobalConfig.MainSettingsConfig.getFormBackgroundColor());
 
-        scrollableListForSettings.addView(ipAddressForm);
+        scrollableListForSettings.addView(proxyManager);
+        scrollableListForSettings.addView(themeManager);
+        scrollableListForSettings.setBackgroundColor(GlobalConfig.MainSettingsConfig.getFormBackgroundColor());
 
         scrollPackageForSettingsList.addView(scrollableListForSettings);
 
         headViewPlusScrollableListOfSettings.addView(headNonScrollElements);
-        headViewPlusScrollableListOfSettings.addView(new LeftToRightHorizontalBoldGradientLine(this));
-
+        headViewPlusScrollableListOfSettings.addView(GlobalConfig.getHeaderLine(this));
         headViewPlusScrollableListOfSettings.addView(scrollPackageForSettingsList);
-
+        headViewPlusScrollableListOfSettings.setBackgroundColor(GlobalConfig.MainSettingsConfig.getBackgroundColor());
         setContentView(headViewPlusScrollableListOfSettings);
     }
-
-
 }

@@ -10,7 +10,6 @@ public class TransparentHorizontalLine extends View {
     public TransparentHorizontalLine(Context context, int height) {
         super(context);
         super.setBackgroundColor(Color.TRANSPARENT);
-        super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, (int) (height *
-                context.getResources().getDisplayMetrics().density)));
+        super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, height));
     }
 }

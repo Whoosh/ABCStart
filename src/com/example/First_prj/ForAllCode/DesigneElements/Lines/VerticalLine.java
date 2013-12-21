@@ -18,8 +18,7 @@ public class VerticalLine extends View {
     }
 
     private void initCode(int color, int wight) {
-        super.setLayoutParams(new ViewGroup.LayoutParams(wight,
-                ViewGroup.LayoutParams.FILL_PARENT));
+        super.setLayoutParams(new ViewGroup.LayoutParams(wight,ViewGroup.LayoutParams.FILL_PARENT));
         super.setBackgroundDrawable(new ColorDrawable(color));
     }
 }

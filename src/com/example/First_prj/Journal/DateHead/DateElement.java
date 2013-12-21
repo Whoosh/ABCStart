@@ -14,7 +14,6 @@ public class DateElement extends LinearLayout {
     private SerifTextView year;
     private int width;
 
-
     public DateElement(Context context, int numOfMonth) {
         super(context);
         super.setOrientation(VERTICAL);

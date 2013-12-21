@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.ForAllCode.GlobalConstants;
 
 public class SerifTextView extends TextView {
@@ -24,6 +25,7 @@ public class SerifTextView extends TextView {
     private void initCode(String text, int textSize){
         this.text = text;
         this.textSize = textSize;
+        super.setTextColor(GlobalConfig.getSerifTextColor());
         super.setText(text);
         super.setTextSize(textSize);
         super.setLayoutParams(new ViewGroup.LayoutParams(
@@ -34,8 +36,8 @@ public class SerifTextView extends TextView {
 
 
     public int getCurrentWight() {
-        final byte downGradeK = 5;
-        return ((text.length() - GlobalConstants.ONE) * (textSize - textSize / downGradeK));
+        final byte downCo = 5;
+        return ((text.length() - GlobalConstants.ONE) * (textSize - textSize / downCo));
     }
 
     public String getStringText() {

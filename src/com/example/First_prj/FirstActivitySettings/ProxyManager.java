@@ -11,26 +11,20 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.example.First_prj.ForAllCode.DesigneElements.Lines.LeftToRightHorizontalBoldGradientLine;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.BlackToWhiteHeaderGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
-import com.example.First_prj.ForAllCode.GlobalInformer;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.ForAllCode.GlobalConstants;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 
-public class IPAddressForm extends LinearLayout implements View.OnClickListener {
+public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
     private static final int MAX_PORT_VALUE = 65536;
     private static final char MAX_IP_VALUE = 255;
     private static final byte OCTETS_COUNT = 4;
     private static final byte OCTET_LEN = 3;
     private static final byte PORT_LEN = 5;
-
-    private static final byte EMPTY_VIEW_HEIGHT = 10;
-    private static final char PORT_WIDTH = 130;
-
-    private static final short ADDRESS_FRAME_WIDTH = 340;
-    private static final byte ADDRESS_FRAME_HEIGHT = 45;
 
     private static final String DOT = ".";
     private static final String IP_TITLE = " IP :";
@@ -44,17 +38,17 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
     private static final String EMPTY_FIELD_ERROR_MESSAGE = "Поля не должны быть пустыми";
     private static final String FIRST_OCTET_ERROR_MESSAGE = "Адрес не может начинаться с нуля или быть пустым";
 
-    private EditTextWithLengthFilter portForm;
-    private EditTextWithLengthFilter[] ipOctet;
-    private LinearLayout addressFrame;
-    private LinearLayout portLayout;
+    private ProxyEditText portForm;
+    private ProxyEditText[] ipOctet;
+    private LinearLayout addressLay;
+    private LinearLayout portLay;
     private SerifTextView clear;
     private CheckBox proxySet;
     private Context context;
 
     private String bufferStr;
 
-    public IPAddressForm(Context context) {
+    public ProxyManager(Context context) {
         super(context);
         super.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.FILL_PARENT,
@@ -62,19 +56,21 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         super.setOrientation(VERTICAL);
 
         this.context = context;
-        ipOctet = new EditTextWithLengthFilter[OCTETS_COUNT];
+        ipOctet = new ProxyEditText[OCTETS_COUNT];
 
-        super.addView(new SerifTextView(context, PROXY_TITLE));
-        super.addView(new LeftToRightHorizontalBoldGradientLine(context));
-        super.addView(new TransparentHorizontalLine(context, EMPTY_VIEW_HEIGHT));
+        super.addView(new SerifTextView(context, PROXY_TITLE, GlobalConstants.HEADER_TEXT_SIZE));
+        super.addView(GlobalConfig.getHeaderLine(context));
+        super.addView(new TransparentHorizontalLine(context,
+                GlobalConfig.MainSettingsConfig.getTransparentViewHeight()));
         super.addView(new BubbleHorizontalGradientLine(context));
         initAddress();
-        super.addView(addressFrame);
+        super.addView(addressLay);
         super.addView(new BubbleHorizontalGradientLine(context));
         initPort();
-        super.addView(portLayout);
+        super.addView(portLay);
         super.addView(new BubbleHorizontalGradientLine(context));
-        super.addView(new TransparentHorizontalLine(context, EMPTY_VIEW_HEIGHT));
+        super.addView(new TransparentHorizontalLine(context,
+                GlobalConfig.MainSettingsConfig.getTransparentViewHeight()));
 
     }
 
@@ -107,22 +103,17 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
             }
         };
 
-        portLayout = new LinearLayout(context);
-
-        portLayout.setOrientation(HORIZONTAL);
-        portLayout.setBackgroundColor(Color.TRANSPARENT);
-
-        portForm = new EditTextWithLengthFilter(context, PORT_LEN);
-        portForm.setGravity(Gravity.CENTER);
-
+        portLay = new LinearLayout(context);
+        portForm = new ProxyEditText(context, PORT_LEN);
         clear = new SerifTextView(context, CLEAR_PROXY_TITLE);
 
-        portForm.setWidth(PORT_WIDTH);
+        portForm.setPortLayParam();
         portForm.addTextChangedListener(portWatcher);
 
-        portLayout.addView(new SerifTextView(context, PORT_TITLE));
-        portLayout.addView(portForm);
-        portLayout.addView(clear);
+        portLay.setBackgroundColor(Color.TRANSPARENT);
+        portLay.addView(new SerifTextView(context, PORT_TITLE));
+        portLay.addView(portForm);
+        portLay.addView(clear);
 
         clear.setOnClickListener(this);
         proxySet.setOnClickListener(this);
@@ -175,24 +166,24 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         };
 
         proxySet = new CheckBox(context);
+        proxySet.setBackgroundDrawable(GlobalConfig.MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube());
 
-        addressFrame = new LinearLayout(context);
-        addressFrame.addView(new SerifTextView(context, IP_TITLE));
-        addressFrame.setLayoutParams(new ViewGroup.LayoutParams((int)
-                (ADDRESS_FRAME_WIDTH * GlobalInformer.getPixelDensity()),
-                (int) (ADDRESS_FRAME_HEIGHT * GlobalInformer.getPixelDensity())));
-        addressFrame.setOrientation(HORIZONTAL);
-        addressFrame.setBackgroundColor(Color.TRANSPARENT);
-        addressFrame.setGravity(Gravity.CENTER_VERTICAL);
+        addressLay = new LinearLayout(context);
+        addressLay.addView(new SerifTextView(context, IP_TITLE));
+        addressLay.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        addressLay.setBackgroundColor(Color.TRANSPARENT);
+        addressLay.setGravity(Gravity.CENTER_VERTICAL);
 
         for (byte i = 0; i < OCTETS_COUNT; i++) {
-            ipOctet[i] = new EditTextWithLengthFilter(context, OCTET_LEN);
+            ipOctet[i] = new ProxyEditText(context, OCTET_LEN);
             ipOctet[i].addTextChangedListener(addressWatcher);
-            addressFrame.addView(ipOctet[i]);
+            addressLay.addView(ipOctet[i]);
             if (i < OCTETS_COUNT - GlobalConstants.ONE)
-                addressFrame.addView(new SerifTextView(context, DOT));
+                addressLay.addView(new SerifTextView(context, DOT));
         }
-        addressFrame.addView(proxySet);
+        addressLay.addView(proxySet);
     }
 
     public boolean isNumber(CharSequence str) {
@@ -206,13 +197,13 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
 
     public void clearForms() {
         portForm.setText(GlobalConstants.EMPTY_STRING);
-        for (EditTextWithLengthFilter text : ipOctet) text.setText(GlobalConstants.EMPTY_STRING);
+        for (ProxyEditText text : ipOctet) text.setText(GlobalConstants.EMPTY_STRING);
         ipOctet[0].requestFocus();
     }
 
     public String getAddress() {
         StringBuilder ipAddress = new StringBuilder();
-        for (EditTextWithLengthFilter actet : ipOctet) {
+        for (ProxyEditText actet : ipOctet) {
             ipAddress.append(actet.getText());
             ipAddress.append(DOT);
         }
@@ -309,31 +300,27 @@ public class IPAddressForm extends LinearLayout implements View.OnClickListener 
         proxySet.setChecked(state);
     }
 
-    private class EditTextWithLengthFilter extends EditText {
+    private class ProxyEditText extends EditText {
 
-        private static final byte DEFAULT_WIDTH = 63;
-        private static final byte DEFAULT_HEIGHT = 50;
-
-        public EditTextWithLengthFilter(Context context, byte maxSymbolCount) {
+        public ProxyEditText(Context context, byte maxSymbolCount) {
             super(context);
             super.setInputType(InputType.TYPE_CLASS_PHONE);
-            super.setBackgroundColor(Color.TRANSPARENT);
             super.setGravity(Gravity.CENTER);
-            super.setTextColor(Color.WHITE);
+            super.setTextColor(GlobalConfig.MainSettingsConfig.getFormsTextColor());
             super.setLayoutParams(new ViewGroup.LayoutParams(
-                    (int) (DEFAULT_WIDTH * GlobalInformer.getPixelDensity()),
-                    (int) (DEFAULT_HEIGHT * GlobalInformer.getPixelDensity())));
+                    GlobalConfig.MainSettingsConfig.getOctetWidth(),
+                    GlobalConfig.MainSettingsConfig.getOctetHeight()));
             super.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
             super.setText(GlobalConstants.EMPTY_STRING);
             super.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxSymbolCount)});
             super.setTypeface(Typeface.SERIF);
         }
 
-        @Override
-        public void setWidth(int pixels) {
+        public void setPortLayParam() {
             super.setLayoutParams(new ViewGroup.LayoutParams(
-                    (int) (pixels * GlobalInformer.getPixelDensity()),
-                    (int) (DEFAULT_HEIGHT * GlobalInformer.getPixelDensity())));
+                    GlobalConfig.MainSettingsConfig.getPortWidth(),
+                    GlobalConfig.MainSettingsConfig.getPortHeight()));
+
         }
     }
 }

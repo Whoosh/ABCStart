@@ -14,13 +14,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
+import com.example.First_prj.FirstActivitySettings.MainSettingsActivity;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.ForAllCode.GlobalConstants;
-import com.example.First_prj.ForAllCode.DesigneElements.Backgrounds.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalInformer;
-import com.example.First_prj.JavaServer.MightInfo;
 import com.example.First_prj.JavaServer.Server;
 import com.example.First_prj.MenuAndSwitchers.MenuActivity;
 
@@ -28,7 +26,7 @@ import java.util.concurrent.TimeoutException;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
-    private static final String SERVER_IS_DOWN = "Нет соеденения с сервером, попробуйте ещё раз";
+    private static final String SERVER_IS_DOWN = "Отсутсвует подключение";
     private static final String LOGIN_OR_PASSWORD_ERROR = "Неверный логин или пароль";
     private static final String SERVER_TTL_QUERY_ERROR = "Сервер не отвечает, проверьте подлючение и попробуйте ещё раз";
 
@@ -58,24 +56,25 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
                 ViewGroup.LayoutParams.FILL_PARENT));
         super.setGravity(Gravity.CENTER);
         super.setOrientation(VERTICAL);
-        super.setBackgroundDrawable(new LiteMatrixDraw(context));
+        super.addView(GlobalConfig.MainWindowConfig.getLogoView(context));
+        super.setBackgroundDrawable(GlobalConfig.MainWindowConfig.getBackGround(context));
         LinearLayout checkBoxPlusButton = new LinearLayout(context);
 
         this.context = context;
         userName = new CustomLoginEditText(context);
 
         saveMe = new CheckBox(context);
-        saveMe.setTextColor(GlobalInformer.MainWindow.getCheckBoxTextColor());
+        saveMe.setTextColor(GlobalConfig.MainWindowConfig.getCheckBoxTextColor());
         saveMe.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
         saveMe.setText(CHECK_BOX_TITLE);
         saveMe.setDrawingCacheBackgroundColor(Color.GREEN);
 
         login = new SerifTextView(context, ENTER_TITLE);
         login.setLayoutParams(new ViewGroup.LayoutParams(
-                GlobalInformer.MainWindow.getLoginButtonWidth(),
-                GlobalInformer.MainWindow.getLoginButtonHeight()));
-        login.setTextColor(GlobalInformer.MainWindow.getTextColor());
-        login.setBackgroundColor(GlobalInformer.MainWindow.getFormColor());
+                GlobalConfig.MainWindowConfig.getLoginButtonWidth(),
+                GlobalConfig.MainWindowConfig.getLoginButtonHeight()));
+        login.setTextColor(GlobalConfig.MainWindowConfig.getTextColor());
+        login.setBackgroundColor(GlobalConfig.MainWindowConfig.getFormColor());
 
         password = new CustomLoginEditText(context);
         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -83,17 +82,16 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         password.setHint(PASSWORD_TITLE);
         userName.setHint(USER_NAME_TITLE);
 
-
         checkBoxPlusButton.setLayoutParams(new ViewGroup.LayoutParams(
-                GlobalInformer.MainWindow.getLoginWidth(),
-                GlobalInformer.MainWindow.getLoginHeight()));
+                GlobalConfig.MainWindowConfig.getFormWidth(),
+                GlobalConfig.MainWindowConfig.getFormHeight()));
         checkBoxPlusButton.addView(saveMe);
         checkBoxPlusButton.addView(login);
 
         super.addView(userName);
-        super.addView(new TransparentHorizontalLine(context, GlobalInformer.MainWindow.getLinesTransparentHeight()));
+        super.addView(new TransparentHorizontalLine(context, GlobalConfig.MainWindowConfig.getLinesTransparentHeight()));
         super.addView(password);
-        super.addView(new TransparentHorizontalLine(context, GlobalInformer.MainWindow.getLinesTransparentHeight()));
+        super.addView(new TransparentHorizontalLine(context, GlobalConfig.MainWindowConfig.getLinesTransparentHeight()));
         super.addView(checkBoxPlusButton);
 
         login.setOnTouchListener(this);
@@ -152,25 +150,25 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void setButtonInPressColor() {
-        login.setBackgroundColor(Color.GREEN);
+        login.setBackgroundColor(GlobalConfig.MainWindowConfig.getButtonPressColor());
     }
 
     private void setButtonInUpColor() {
-        login.setBackgroundColor(GlobalInformer.MainWindow.getFormColor());
+        login.setBackgroundColor(GlobalConfig.MainWindowConfig.getFormColor());
     }
 
     private void onButtonPressed() {
-        SharedPreferences proxyInfo = context.getSharedPreferences(LoginFormSettingsActivity.PROXY_KEY, Context.MODE_PRIVATE);
-        if (proxyInfo.getBoolean(LoginFormSettingsActivity.CHECK_BOX_KEY, false)) {
+        SharedPreferences proxyInfo = context.getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
+        if (proxyInfo.getBoolean(MainSettingsActivity.CHECK_BOX_KEY, false)) {
             startServerWithProxy(proxyInfo);
             return;
         }
         try {
-            if (!Server.isConnect(context)) {
+            if (!Server.isConnect()) {
                 messageOnScreen(SERVER_IS_DOWN);
                 return;
             }
-            Server.connect(context, userName.getText().toString(), password.getText().toString());
+            Server.connect(userName.getText().toString(), password.getText().toString());
             if (Server.isPasswordOK()) {
                 startMainMenu();
                 return;
@@ -187,17 +185,17 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void startServerWithProxy(SharedPreferences proxyInfo) {
-        String address = proxyInfo.getString(LoginFormSettingsActivity.IP_KEY, GlobalConstants.EMPTY_STRING);
-        int port = Integer.parseInt(proxyInfo.getString(LoginFormSettingsActivity.PORT_KEY, GlobalConstants.EMPTY_STRING));
+        String address = proxyInfo.getString(MainSettingsActivity.IP_KEY, GlobalConstants.EMPTY_STRING);
+        int port = Integer.parseInt(proxyInfo.getString(MainSettingsActivity.PORT_KEY, GlobalConstants.EMPTY_STRING));
         try {
-            if (!Server.isConnect(context, address, port)) {
+            if (!Server.isConnect(address, port)) {
                 messageOnScreen(SERVER_IS_DOWN);
                 return;
             }
             try {
-                Server.connect(context, userName.getText().toString(), password.getText().toString(), address, port);
+                Server.connect(userName.getText().toString(), password.getText().toString(), address, port);
             } catch (NullPointerException ex) {
-                Server.connect(context, GlobalConstants.EMPTY_STRING, GlobalConstants.EMPTY_STRING, address, port);
+                Server.connect(GlobalConstants.EMPTY_STRING, GlobalConstants.EMPTY_STRING, address, port);
             }
             if (Server.isPasswordOK()) {
                 startMainMenu();
@@ -218,16 +216,16 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         public CustomLoginEditText(Context context) {
             super(context);
             super.setLayoutParams(new ViewGroup.LayoutParams(
-                    GlobalInformer.MainWindow.getLoginFormWidth(),
-                    GlobalInformer.MainWindow.getLoginFormHeight()));
-            super.setBackgroundColor(GlobalInformer.MainWindow.getFormColor());
-            super.setTextColor(GlobalInformer.MainWindow.getTextColor());
+                    GlobalConfig.MainWindowConfig.getFormWidth(),
+                    GlobalConfig.MainWindowConfig.getFormHeight()));
+            super.setBackgroundColor(GlobalConfig.MainWindowConfig.getFormColor());
+            super.setTextColor(GlobalConfig.MainWindowConfig.getTextColor());
             super.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
             super.setText(GlobalConstants.EMPTY_STRING);
             super.setGravity(Gravity.CENTER_VERTICAL);
             super.setTypeface(Typeface.SERIF);
             super.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);
-            super.setHintTextColor(GlobalInformer.MainWindow.getTextColor());
+            super.setHintTextColor(GlobalConfig.MainWindowConfig.getTextColor());
         }
     }
 

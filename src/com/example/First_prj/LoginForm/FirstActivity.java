@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
-import com.example.First_prj.FirstActivitySettings.LoginFormSettingsActivity;
-import com.example.First_prj.ForAllCode.GlobalInformer;
+import com.example.First_prj.FirstActivitySettings.MainSettingsActivity;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.JavaServer.Server;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
@@ -22,15 +22,18 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GlobalInformer.setGlobalPixelDensityInfo(this);
-        GlobalInformer.setDefaultPreference();
+        if (savedInstanceState == null) {
+            GlobalConfig.setGlobalPixelDensityInfo(this);
+            GlobalConfig.setThemeConfig(getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, MODE_PRIVATE));
+            GlobalConfig.setDefaultSettings();
+        }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         mainWindow = new MainWindow(this);
         mainWindow.setOnClickListener(this);
         setContentView(mainWindow);
 
-        startActionMode(settingsBar);
+        settings = startActionMode(settingsBar);
     }
 
     @Override
@@ -82,7 +85,7 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             mode.finish();
-            startActivity(new Intent(getApplicationContext(), LoginFormSettingsActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainSettingsActivity.class));
             return true;
         }
 

@@ -6,13 +6,14 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.R;
 
-public class LeftToRightHorizontalBoldGradientLine extends View {
+public class BlackToWhiteHeaderGradientLine extends View {
 
-    private static final byte DEFAULT_HEIGHT = 4;
+    private final static byte DEFAULT_HEIGHT = 3;
 
-    public LeftToRightHorizontalBoldGradientLine(Context context, int height) {
+    public BlackToWhiteHeaderGradientLine(Context context, int height) {
         super(context);
         initCode(context, height);
     }
@@ -22,9 +23,9 @@ public class LeftToRightHorizontalBoldGradientLine extends View {
         super.setBackgroundDrawable(new Gradient(context, height));
     }
 
-    public LeftToRightHorizontalBoldGradientLine(Context context) {
+    public BlackToWhiteHeaderGradientLine(Context context) {
         super(context);
-        initCode(context, DEFAULT_HEIGHT);
+        initCode(context, (int) (GlobalConfig.getPixelDensity() * DEFAULT_HEIGHT));
     }
 
     private class Gradient extends Drawable {
@@ -47,12 +48,11 @@ public class LeftToRightHorizontalBoldGradientLine extends View {
 
         private void addLine(Canvas canvas) {
             Paint settings = new Paint();
-            float alpha = 255;
-            final int R = 0, G = 100, B = 150;
-            float fallPoint = alpha / windowWidth;
-            for (int i = 0; i < windowWidth; ++i, alpha -= fallPoint) {
+            final float starter = 255;
+            float stepSum = 0, fallPoint = starter / windowWidth;
+            for (int i = 0; i < windowWidth; ++i, stepSum += fallPoint) {
                 for (int j = 0; j < height; j++) {
-                    settings.setColor(Color.argb((int) alpha, R, G, B));
+                    settings.setColor(Color.rgb((int) stepSum, (int) stepSum, (int) stepSum));
                     canvas.drawPoint(i, j, settings);
                 }
             }
