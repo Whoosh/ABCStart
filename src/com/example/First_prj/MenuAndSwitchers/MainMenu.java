@@ -2,23 +2,22 @@ package com.example.First_prj.MenuAndSwitchers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
-import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
-import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.ForAllCode.GlobalConstants;
 import com.example.First_prj.JavaServer.MightInfo;
 import com.example.First_prj.Journal.MainJournalActivityStarter;
 
-public class MainMenu extends LinearLayout implements View.OnTouchListener {
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainMenuConfig.*;
 
+public class MainMenu extends LinearLayout implements View.OnTouchListener {
+//
     private static final String MENU_TITLE = "\tГлавное меню";
 
     private ItemMenu itemsLayout[];
@@ -29,7 +28,7 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
         super(context);
         super.setOrientation(VERTICAL);
         this.context = context;
-        super.setBackgroundColor(GlobalConfig.MainMenuSettings.getBackgroundColor());
+        super.setBackgroundColor(getBackgroundColor());
 
         LinearLayout scrollableLayout = new LinearLayout(context);
 
@@ -95,12 +94,11 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
     private void setSettingsHead() {
         LinearLayout headLayout = new LinearLayout(context);
         headLayout.addView(new IconSetter(context, android.R.drawable.ic_menu_agenda));
-        headLayout.addView(new SerifTextView(context, MENU_TITLE, GlobalConstants.HEADER_TEXT_SIZE));
-        headLayout.setBackgroundColor(GlobalConfig.MainMenuSettings.getMenuElementColor());
+        headLayout.addView(new SerifTextView(context, MENU_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
+        headLayout.setBackgroundColor(getMenuElementColor());
         super.addView(headLayout);
         super.addView(GlobalConfig.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context,
-                GlobalConfig.MainMenuSettings.getTransparentViewHeight()));
+        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
     }
 
     @Override
@@ -123,19 +121,17 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
 
         public ItemMenu(Context context, String itemText) {
             super(context);
-            textView = new SerifTextView(context, itemText, GlobalConstants.HEADER_TEXT_SIZE);
+            textView = new SerifTextView(context, itemText, GlobalConfig.HEADER_TEXT_SIZE);
             itemTextIcon = new LinearLayout(context);
             itemTextIcon.addView(new IconSetter(context, android.R.drawable.ic_media_play));
             itemTextIcon.addView(textView);
 
-            super.setBackgroundColor(GlobalConfig.MainMenuSettings.getMenuElementColor());
+            super.setBackgroundColor(getMenuElementColor());
             super.setOrientation(VERTICAL);
-            super.addView(GlobalConfig.MainMenuSettings.getEndStartLineHorizontalLine(context));
+            super.addView(getEndStartLineHorizontalLine(context));
             super.addView(itemTextIcon);
-            super.addView(GlobalConfig.MainMenuSettings.getEndStartLineHorizontalLine(context));
-            super.addView(new HorizontalLine(context,
-                    GlobalConfig.MainMenuSettings.getBackgroundColor(),
-                    GlobalConfig.MainMenuSettings.getTransparentViewHeight()));
+            super.addView(getEndStartLineHorizontalLine(context));
+            super.addView(new HorizontalLine(context, getBackgroundColor(), getTransparentViewHeight()));
         }
 
         public String getStringText() {
@@ -143,11 +139,11 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
         }
 
         public void setBlinkedColor() {
-            itemTextIcon.setBackgroundColor(GlobalConfig.MainMenuSettings.getButtonPressColor());
+            itemTextIcon.setBackgroundColor(getButtonPressColor());
         }
 
         public void setBlinkedColorBack() {
-            itemTextIcon.setBackgroundColor(GlobalConfig.MainMenuSettings.getButtonBackColor());
+            itemTextIcon.setBackgroundColor(getButtonBackColor());
         }
     }
 }

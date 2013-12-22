@@ -2,44 +2,52 @@ package com.example.First_prj.Journal.DateHead;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.GlobalConstants;
-import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+import static com.example.First_prj.ForAllCode.GlobalConfig.LookingJournalConfig.*;
+
+//
 public class GroupSelector extends HorizontalScrollView implements View.OnClickListener {
 
+    private Runnable movingOffsetAction;
     private static final byte GROUP_COUNT = 24;
-
     private SerifTextView[] groups;
     private String currentGroup = "113"; // стартовая группа
     private int oldPosition;
-    private int oldIndexPosition;
 
     public GroupSelector(Context context) {
         super(context);
-        super.setBackgroundColor(Color.argb(100,1,81,90));
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        LinearLayout groupsBuffer = new LinearLayout(context);
-        super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2,
-                (int) (50 * context.getResources().getDisplayMetrics().density)));
+        super.setBackgroundColor(getBackgroundColor());
         super.setHorizontalScrollBarEnabled(false);
+        final LayoutParams groupElementParams = new LayoutParams(FILL_PARENT, FILL_PARENT);
+
+        LinearLayout groupsBuffer = new LinearLayout(context);
+        groupsBuffer.setGravity(Gravity.CENTER_VERTICAL);
+
+        super.setLayoutParams(new LayoutParams(
+                ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE))
+                        .getDefaultDisplay().getWidth() / 2, getDateGroupHeight()));
 
         groups = new SerifTextView[GROUP_COUNT];
         // все группы с 113 по 463
-        for (int i = 100, k = 0; i < 401; i += 100)
-            for (int j = 10; j < 64; j += 10, k++) {
-                groups[k] = new SerifTextView(context, " " + (i + j + 3) + " ", 20);
+        for (int i = 100, k = 0; i <= 400; i += 100)
+            for (int j = 10; j <= 60; j += 10, k++) {
+                groups[k] = new SerifTextView(context, " " + (i + j + 3) + " ", GlobalConfig.HEADER_TEXT_SIZE);
+                groups[k].setLayoutParams(groupElementParams);
                 groupsBuffer.addView(groups[k]);
-                groupsBuffer.addView(new VerticalLine(context, Color.DKGRAY, GlobalConstants.ONE));
+                groupsBuffer.addView(new VerticalLine(context, Color.DKGRAY));
                 groups[k].setOnClickListener(this);
             }
-        refresh();
+        refreshStateOfVisualPosition();
         super.addView(groupsBuffer);
     }
 
@@ -64,24 +72,22 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
         this.currentGroup = currentGroup;
     }
 
-    //@TODO при глобальном рефакторинге, вывести в отдельный класс..
-    // Ад
     private void setFocusToDate() {
-        try {
-            super.getViewTreeObserver().addOnGlobalLayoutListener(
-                    new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                            post(new Runnable() {
-                                public void run() {
-                                    scrollTo(oldPosition, 0);
-                                }
-                            });
-                        }
-                    });
-        } catch (NullPointerException ex) {
-            System.err.println(ex);
-        }
+
+        movingOffsetAction = new Runnable() {
+            public void run() {
+                scrollTo(oldPosition, 0);
+            }
+        };
+
+        ViewTreeObserver.OnGlobalLayoutListener mover = new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                post(movingOffsetAction);
+            }
+        };
+
+        super.getViewTreeObserver().addOnGlobalLayoutListener(mover);
     }
 
 
@@ -92,13 +98,12 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
         return 0;
     }
 
-    public void refresh() {
-        oldIndexPosition = getOldFocusIndex();
-        oldPosition = oldIndexPosition * groups[0].getCurrentWight();
-        if (oldIndexPosition != 0)
-            setFocusToDate();
-        for (int i = 0; i < groups.length; i++)
-            groups[i].setBackgroundColor(Color.TRANSPARENT);
+    public void refreshStateOfVisualPosition() {
+        int oldIndexPosition = getOldFocusIndex();
+
+        oldPosition = (oldIndexPosition - GlobalConfig.ONE) * groups[0].getCurrentWight();
+        if (oldIndexPosition > 0) setFocusToDate();
+        for (SerifTextView group : groups) group.setBackgroundColor(Color.TRANSPARENT);
         groups[oldIndexPosition].setBackgroundColor(Color.DKGRAY);
     }
 

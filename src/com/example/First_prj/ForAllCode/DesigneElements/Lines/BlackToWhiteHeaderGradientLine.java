@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.R;
+
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+
 
 public class BlackToWhiteHeaderGradientLine extends View {
-
+//
     private final static byte DEFAULT_HEIGHT = 3;
 
     public BlackToWhiteHeaderGradientLine(Context context, int height) {
@@ -19,7 +21,7 @@ public class BlackToWhiteHeaderGradientLine extends View {
     }
 
     private void initCode(Context context, int height) {
-        super.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, height));
+        super.setLayoutParams(new ViewGroup.LayoutParams(FILL_PARENT, height));
         super.setBackgroundDrawable(new Gradient(context, height));
     }
 

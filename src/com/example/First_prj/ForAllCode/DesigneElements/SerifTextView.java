@@ -3,10 +3,11 @@ package com.example.First_prj.ForAllCode.DesigneElements;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.Gravity;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.ForAllCode.GlobalConstants;
+
+import static com.example.First_prj.ForAllCode.GlobalConfig.getSerifTextColor;
+//
 
 public class SerifTextView extends TextView {
     private String text;
@@ -14,30 +15,38 @@ public class SerifTextView extends TextView {
 
     public SerifTextView(Context context, String text, int textSize) {
         super(context);
-        initCode(text,textSize);
+        initCode(text, Gravity.CENTER, textSize);
     }
 
     public SerifTextView(Context context, String text) {
         super(context);
-        initCode(text,GlobalConstants.DEFAULT_TEXT_SIZE);
+        initCode(text, Gravity.CENTER, GlobalConfig.DEFAULT_TEXT_SIZE);
     }
 
-    private void initCode(String text, int textSize){
+    public SerifTextView(Context context, int gravity, String text, int textSize) {
+        super(context);
+        initCode(text, gravity, textSize);
+    }
+
+    public SerifTextView(Context context, int gravity, String text) {
+        super(context);
+        initCode(text, gravity, GlobalConfig.DEFAULT_TEXT_SIZE);
+    }
+
+    private void initCode(String text, int gravity, int textSize) {
         this.text = text;
         this.textSize = textSize;
-        super.setTextColor(GlobalConfig.getSerifTextColor());
+        super.setTextColor(getSerifTextColor());
         super.setText(text);
         super.setTextSize(textSize);
-        super.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.FILL_PARENT));
         super.setTypeface(Typeface.SERIF);
-        super.setGravity(Gravity.CENTER);
+        super.setGravity(gravity);
     }
 
 
     public int getCurrentWight() {
         final byte downCo = 5;
-        return ((text.length() - GlobalConstants.ONE) * (textSize - textSize / downCo));
+        return ((text.length() - GlobalConfig.ONE) * (textSize - textSize / downCo));
     }
 
     public String getStringText() {

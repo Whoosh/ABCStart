@@ -17,9 +17,15 @@ import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizon
 import com.example.First_prj.R;
 
 abstract public class GlobalConfig {
-
+//
 //@TODO Идея такая, запилить сюда при старте взятие информации о разрешении и тд..
 // и выделять размеры для елементов, в данном формате для экранов с width более 300,500 ect..
+
+
+    public static final byte ONE = 1;
+    public static final byte DEFAULT_TEXT_SIZE = 15;
+    public static final byte HEADER_TEXT_SIZE = 20;
+    public static final String EMPTY_STRING = "";
 
     private static float DISPLAY_DENSITY_PIXEL_METRIC;
     private static boolean MATRIX_THEME;
@@ -46,18 +52,23 @@ abstract public class GlobalConfig {
     public static void setDefaultSettings() {
         MainWindowConfig.setDefaultElementSize();
         MainSettingsConfig.setDefaultElementSize();
-        MainMenuSettings.setDefaultElementSize();
+        MainMenuConfig.setDefaultElementSize();
+        LookingJournalConfig.setDefaultElementSize();
 
         if (MATRIX_THEME) {
             setGlobalMatrixPreference();
+
             MainWindowConfig.setMatrixThemeColors();
             MainSettingsConfig.setMatrixThemeColors();
-            MainMenuSettings.setMatrixThemeColors();
+            MainMenuConfig.setMatrixThemeColors();
+            LookingJournalConfig.setMatrixThereColors();
         } else {
             setGlobalNormalPreference();
+
             MainWindowConfig.setNormalThemeColors();
             MainSettingsConfig.setNormalThemeColors();
-            MainMenuSettings.setNormalThemeColors();
+            MainMenuConfig.setNormalThemeColors();
+            LookingJournalConfig.setNormalThereColors();
         }
 
     }
@@ -79,7 +90,6 @@ abstract public class GlobalConfig {
             return new HorizontalLine(context, Color.CYAN, HEAD_LINE_HEIGHT);
         return new BlackToWhiteHeaderGradientLine(context);
     }
-
 
     public abstract static class MainWindowConfig {
 
@@ -125,7 +135,7 @@ abstract public class GlobalConfig {
 
         public static View getLogoView(Context context) {
             if (MATRIX_THEME)
-                return new TransparentHorizontalLine(context, GlobalConstants.ONE);
+                return new TransparentHorizontalLine(context, ONE);
             return new IconSetter(context, R.drawable.logo);
         }
 
@@ -246,7 +256,7 @@ abstract public class GlobalConfig {
         }
     }
 
-    public abstract static class MainMenuSettings {
+    public abstract static class MainMenuConfig {
 
         private static byte TRANSPARENT_VIEW_HEIGHT;
 
@@ -296,11 +306,52 @@ abstract public class GlobalConfig {
         public static View getEndStartLineHorizontalLine(Context context) {
             if (MATRIX_THEME)
                 return new BubbleHorizontalGradientLine(context);
-            return new HorizontalLine(context, Color.BLACK, GlobalConstants.ONE);
+            return new HorizontalLine(context, Color.BLACK, ONE);
         }
 
     }
 
+    public abstract static class LookingJournalConfig {
+
+        private static byte DATE_ELEMENT_WIDTH;
+        private static byte GROUP_DATE_SLIDER_HEIGHT;
+
+        private static int BACKGROUND_COLOR;
+
+        public static void setDefaultElementSize() {
+            DATE_ELEMENT_WIDTH = 100;
+            GROUP_DATE_SLIDER_HEIGHT = 50;
+        }
+
+        public static void setMatrixThereColors() {
+            BACKGROUND_COLOR = Color.argb(100, 1, 81, 90);
+        }
+
+        public static void setNormalThereColors() {
+            BACKGROUND_COLOR = Color.TRANSPARENT;
+        }
+
+
+        public static int getDateElementWith() {
+            return (int) (DATE_ELEMENT_WIDTH * DISPLAY_DENSITY_PIXEL_METRIC);
+        }
+
+        public static int getDateGroupHeight() {
+            return (int) (GROUP_DATE_SLIDER_HEIGHT * DISPLAY_DENSITY_PIXEL_METRIC);
+        }
+
+
+        public static int getBackgroundColor() {
+            return BACKGROUND_COLOR;
+        }
+
+        public static Drawable getBackground(Context context) {
+            if (MATRIX_THEME)
+                return new LiteMatrixDraw(context);
+            return new WhiteGradient();
+        }
+
+    }
 
 
 }

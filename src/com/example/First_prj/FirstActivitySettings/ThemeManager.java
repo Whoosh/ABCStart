@@ -2,19 +2,22 @@ package com.example.First_prj.FirstActivitySettings;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import com.example.First_prj.ForAllCode.DesigneElements.Lines.BlackToWhiteHeaderGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.ForAllCode.GlobalConstants;
+
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube;
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getFormsTextColor;
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getTransparentViewHeight;
 
 public class ThemeManager extends LinearLayout implements View.OnClickListener {
-
+//
     private static final String THEME_TITLE = "\tВыбор темы";
     private static final String NORMAL_THEME_TITLE = "Обычная";
     private static final String MATRIX_THEME_TITLE = "От разработчика";
@@ -40,11 +43,9 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
         setCheckBoxParam(matrix);
 
         super.setOrientation(VERTICAL);
-        super.addView(new SerifTextView(context, THEME_TITLE, GlobalConstants.HEADER_TEXT_SIZE));
+        super.addView(new SerifTextView(context, Gravity.CENTER_VERTICAL, THEME_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
         super.addView(GlobalConfig.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context,
-                GlobalConfig.MainSettingsConfig.getTransparentViewHeight()));
-
+        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
         super.addView(new BubbleHorizontalGradientLine(context));
         super.addView(matrix);
         super.addView(new BubbleHorizontalGradientLine(context));
@@ -54,10 +55,10 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
 
     private void setCheckBoxParam(CheckBox checkBox) {
         checkBox.setOnClickListener(this);
-        checkBox.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
+        checkBox.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
         checkBox.setTypeface(Typeface.SERIF);
-        checkBox.setTextColor(GlobalConfig.MainSettingsConfig.getFormsTextColor());
-        checkBox.setBackgroundDrawable(GlobalConfig.MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube());
+        checkBox.setTextColor(getFormsTextColor());
+        checkBox.setBackgroundDrawable(getCheckBoxOnWhiteBackgroundCube());
     }
 
     @Override

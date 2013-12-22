@@ -4,12 +4,12 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.WindowManager;
-import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 
 import java.util.Random;
 
 public class LiteMatrixDraw extends Drawable {
-
+//
     private int maxLen;
     private Paint paint;
     private int indexes_Y[];
@@ -36,10 +36,10 @@ public class LiteMatrixDraw extends Drawable {
         indexes_X = new int[display_W / (TEXT_SIZE + 2)]; // аналогично
 
         // заполнение координат, что-бы не рандомить их в цикле с прорисовкой.
-        for (int i = GlobalConstants.ONE; i < indexes_Y.length; i++)
-            indexes_Y[i] = (indexes_Y[i - GlobalConstants.ONE] += TEXT_SIZE + 2);
-        for (int i = GlobalConstants.ONE; i < indexes_X.length; i++)
-            indexes_X[i] = (indexes_X[i - GlobalConstants.ONE] += TEXT_SIZE + 2);
+        for (int i = GlobalConfig.ONE; i < indexes_Y.length; i++)
+            indexes_Y[i] = (indexes_Y[i - GlobalConfig.ONE] += TEXT_SIZE + 2);
+        for (int i = GlobalConfig.ONE; i < indexes_X.length; i++)
+            indexes_X[i] = (indexes_X[i - GlobalConfig.ONE] += TEXT_SIZE + 2);
 
         Canvas canvasBuffer = new Canvas(background);
         canvasBuffer.drawColor(Color.BLACK);
@@ -61,12 +61,12 @@ public class LiteMatrixDraw extends Drawable {
         int textLineLen = random.nextInt(maxLen) + 3;
         int colorFragment = (255 / textLineLen);
 
-        final Bitmap eraser = Bitmap.createBitmap(TEXT_SIZE, TEXT_SIZE + GlobalConstants.ONE, Bitmap.Config.RGB_565);
+        final Bitmap eraser = Bitmap.createBitmap(TEXT_SIZE, TEXT_SIZE + GlobalConfig.ONE, Bitmap.Config.RGB_565);
 
         for (int i = 0, i_Y = indexer_Y, rgb = 0; i < textLineLen; i++, i_Y += TEXT_SIZE + 2) {
             paint.setColor(Color.rgb(0, rgb += colorFragment, 0));
-            canvas.drawBitmap(eraser, indexer_X, i_Y - TEXT_SIZE + GlobalConstants.ONE, null);
-            canvas.drawText(zeroOne, random.nextInt(zeroOne.length), GlobalConstants.ONE, indexer_X, i_Y, paint);
+            canvas.drawBitmap(eraser, indexer_X, i_Y - TEXT_SIZE + GlobalConfig.ONE, null);
+            canvas.drawText(zeroOne, random.nextInt(zeroOne.length), GlobalConfig.ONE, indexer_X, i_Y, paint);
         }
     }
 

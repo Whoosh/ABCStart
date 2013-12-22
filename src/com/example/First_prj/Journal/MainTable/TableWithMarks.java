@@ -6,10 +6,10 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import com.example.First_prj.ForAllCode.GlobalConstants;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
-import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 
 public class TableWithMarks extends HorizontalScrollView {
 
@@ -41,11 +41,11 @@ public class TableWithMarks extends HorizontalScrollView {
             for (int j = 0; j < maxDateRange; j++) {
                 elements[i][j] = new LinearLayout(context);
                 elements[i][j].setGravity(Gravity.CENTER);
-                elements[i][j].setBackgroundColor(Color.argb(200,1,50,90));
+                elements[i][j].setBackgroundColor(Color.argb(200, 1, 50, 90));
                 elements[i][j].setLayoutParams(new ViewGroup.LayoutParams(elementSize, elementSize));
                 elements[i][j].addView(new SerifTextView(context, "+"));
                 rows[i].addView(elements[i][j]);
-                rows[i].addView(new VerticalLine(context,Color.CYAN, GlobalConstants.ONE));
+                rows[i].addView(new VerticalLine(context, Color.CYAN, GlobalConfig.ONE));
             }
         }
 
@@ -53,13 +53,13 @@ public class TableWithMarks extends HorizontalScrollView {
         results.setOrientation(LinearLayout.VERTICAL);
 
         for (int i = 0; i < numOfPeople; i++) {
-                results.addView(rows[i]);
-                results.addView(new HorizontalLine(context, Color.CYAN, GlobalConstants.ONE));
+            results.addView(rows[i]);
+            results.addView(new HorizontalLine(context, Color.CYAN, GlobalConfig.ONE));
         }
         super.addView(results);
     }
 
-    public int getElementSize(){
+    public int getElementSize() {
         return elementSize;
     }
 

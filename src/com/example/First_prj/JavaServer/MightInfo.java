@@ -1,11 +1,11 @@
 package com.example.First_prj.JavaServer;
 
-import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class MightInfo {
-
+//
     public static final byte ANONYMOUS_MIGHT_CODE = 0;
     public static final byte TEACHER_MIGHT_CODE = 1;
     public static final byte PARENT_MIGHT_CODE = 2;
@@ -46,11 +46,11 @@ public abstract class MightInfo {
     }
 
     public static void setAllEmpty() {
-        status = GlobalConstants.EMPTY_STRING;
-        teacher = GlobalConstants.EMPTY_STRING;
-        student = GlobalConstants.EMPTY_STRING;
-        parent = GlobalConstants.EMPTY_STRING;
-        admin = GlobalConstants.EMPTY_STRING;
+        status = GlobalConfig.EMPTY_STRING;
+        teacher = GlobalConfig.EMPTY_STRING;
+        student = GlobalConfig.EMPTY_STRING;
+        parent = GlobalConfig.EMPTY_STRING;
+        admin = GlobalConfig.EMPTY_STRING;
     }
 
     public static void setDataFromJson(JSONObject jsonUserInfo) {
@@ -59,30 +59,30 @@ public abstract class MightInfo {
             teacher = jsonUserInfo.get(TEACHER_TAG).toString();
             if (teacher.equals(JSON_TRUE_STRING)) mights[TEACHER_INDEX] = true;
         } catch (JSONException e) {
-            teacher = GlobalConstants.EMPTY_STRING;
+            teacher = GlobalConfig.EMPTY_STRING;
         }
         try {
             student = jsonUserInfo.get(STUDENT_TAG).toString();
             if (student.equals(JSON_TRUE_STRING)) mights[STUDENT_INDEX] = true;
         } catch (JSONException e) {
-            student = GlobalConstants.EMPTY_STRING;
+            student = GlobalConfig.EMPTY_STRING;
         }
         try {
             parent = jsonUserInfo.get(PARENT_TAG).toString();
             if (parent.equals(JSON_TRUE_STRING)) mights[PARENT_INDEX] = true;
         } catch (JSONException e) {
-            parent = GlobalConstants.EMPTY_STRING;
+            parent = GlobalConfig.EMPTY_STRING;
         }
         try {
             admin = jsonUserInfo.get(ADMIN_TAG).toString();
             if (admin.equals(JSON_TRUE_STRING)) mights[ADMIN_INDEX] = true;
         } catch (JSONException e) {
-            admin = GlobalConstants.EMPTY_STRING;
+            admin = GlobalConfig.EMPTY_STRING;
         }
         try {
             status = jsonUserInfo.get(STATUS_TAG).toString();
         } catch (JSONException e) {
-            status = GlobalConstants.EMPTY_STRING;
+            status = GlobalConfig.EMPTY_STRING;
         }
         setCurrentMightCode();
     }
@@ -93,7 +93,7 @@ public abstract class MightInfo {
 
     private static void setCurrentMightCode() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = mights.length - GlobalConstants.ONE; i > 0; i--)
+        for (int i = mights.length - GlobalConfig.ONE; i > 0; i--)
             if (mights[i]) stringBuilder.append(i);
         try {
             currentMightCode = Integer.parseInt(stringBuilder.toString());
