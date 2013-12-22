@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.*;
 import android.widget.*;
-import com.example.First_prj.ForAllCode.GlobalConstants;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 

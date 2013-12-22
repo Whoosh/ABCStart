@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import com.example.First_prj.JavaServer.MightInfo;
-
+//
 public class MenuActivity extends Activity {
     // TODO private class to MainMenu
     private MainMenu mainMainMenu;

@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
-import android.widget.*;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
-import com.example.First_prj.ForAllCode.DesigneElements.Lines.BlackToWhiteHeaderGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.ForAllCode.GlobalConstants;
 import org.jetbrains.annotations.NotNull;
+
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getBackgroundColor;
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getFormBackgroundColor;
 
 
 public class MainSettingsActivity extends Activity {
@@ -77,8 +79,8 @@ public class MainSettingsActivity extends Activity {
 
     private void setOldInfoInToForm() {
         keyValueStorage = getSharedPreferences(SETTINGS_KEY, MODE_PRIVATE);
-        proxyManager.loadAddress(keyValueStorage.getString(IP_KEY, GlobalConstants.EMPTY_STRING));
-        proxyManager.loadPort(keyValueStorage.getString(PORT_KEY, GlobalConstants.EMPTY_STRING));
+        proxyManager.loadAddress(keyValueStorage.getString(IP_KEY, GlobalConfig.EMPTY_STRING));
+        proxyManager.loadPort(keyValueStorage.getString(PORT_KEY, GlobalConfig.EMPTY_STRING));
         proxyManager.setProxyCheckBoxState(keyValueStorage.getBoolean(CHECK_BOX_KEY, false));
 
         themeManager.setMatrixCheck(keyValueStorage.getBoolean(ThemeManager.MATRIX_CHECK_KEY, false));
@@ -117,19 +119,20 @@ public class MainSettingsActivity extends Activity {
         headViewPlusScrollableListOfSettings.setOrientation(LinearLayout.VERTICAL);
 
         headNonScrollElements.addView(new IconSetter(this, android.R.drawable.ic_menu_set_as));
-        headNonScrollElements.addView(new SerifTextView(this, SETTINGS_TITLE, GlobalConstants.HEADER_TEXT_SIZE));
-        headNonScrollElements.setBackgroundColor(GlobalConfig.MainSettingsConfig.getFormBackgroundColor());
+        headNonScrollElements.addView(new SerifTextView(this, SETTINGS_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
+        headNonScrollElements.setBackgroundColor(getFormBackgroundColor());
 
         scrollableListForSettings.addView(proxyManager);
         scrollableListForSettings.addView(themeManager);
-        scrollableListForSettings.setBackgroundColor(GlobalConfig.MainSettingsConfig.getFormBackgroundColor());
+        scrollableListForSettings.setBackgroundColor(getFormBackgroundColor());
 
         scrollPackageForSettingsList.addView(scrollableListForSettings);
 
         headViewPlusScrollableListOfSettings.addView(headNonScrollElements);
         headViewPlusScrollableListOfSettings.addView(GlobalConfig.getHeaderLine(this));
         headViewPlusScrollableListOfSettings.addView(scrollPackageForSettingsList);
-        headViewPlusScrollableListOfSettings.setBackgroundColor(GlobalConfig.MainSettingsConfig.getBackgroundColor());
+        headViewPlusScrollableListOfSettings.setBackgroundColor(getBackgroundColor());
+
         setContentView(headViewPlusScrollableListOfSettings);
     }
 }

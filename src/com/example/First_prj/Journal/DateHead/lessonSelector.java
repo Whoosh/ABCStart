@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 
 public class LessonSelector extends LinearLayout {
-
+//
     private SerifTextView nameOfElement;
     private final String DEFAULT_TEXT = "Выбрать предмет";
 

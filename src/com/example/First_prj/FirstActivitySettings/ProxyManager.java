@@ -9,17 +9,21 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
-import com.example.First_prj.ForAllCode.DesigneElements.Lines.BlackToWhiteHeaderGradientLine;
-import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
-import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.ForAllCode.GlobalConstants;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
+import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
+
+import static android.widget.LinearLayout.LayoutParams.FILL_PARENT;
+import static android.widget.LinearLayout.LayoutParams.WRAP_CONTENT;
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.*;
 
 public class ProxyManager extends LinearLayout implements View.OnClickListener {
-
+//
     private static final int MAX_PORT_VALUE = 65536;
     private static final char MAX_IP_VALUE = 255;
     private static final byte OCTETS_COUNT = 4;
@@ -46,22 +50,19 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     private CheckBox proxySet;
     private Context context;
 
-    private String bufferStr;
+    private String beforeChangeBuffering;
 
     public ProxyManager(Context context) {
         super(context);
-        super.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+        super.setLayoutParams(new LayoutParams(FILL_PARENT, WRAP_CONTENT));
         super.setOrientation(VERTICAL);
 
         this.context = context;
         ipOctet = new ProxyEditText[OCTETS_COUNT];
 
-        super.addView(new SerifTextView(context, PROXY_TITLE, GlobalConstants.HEADER_TEXT_SIZE));
+        super.addView(new SerifTextView(context, PROXY_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
         super.addView(GlobalConfig.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context,
-                GlobalConfig.MainSettingsConfig.getTransparentViewHeight()));
+        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
         super.addView(new BubbleHorizontalGradientLine(context));
         initAddress();
         super.addView(addressLay);
@@ -69,8 +70,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
         initPort();
         super.addView(portLay);
         super.addView(new BubbleHorizontalGradientLine(context));
-        super.addView(new TransparentHorizontalLine(context,
-                GlobalConfig.MainSettingsConfig.getTransparentViewHeight()));
+        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
 
     }
 
@@ -79,26 +79,25 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
         TextWatcher portWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                bufferStr = charSequence.toString();
+                beforeChangeBuffering = charSequence.toString();
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 proxySet.setChecked(false);
                 try {
-                    if (!editable.toString().equals(GlobalConstants.EMPTY_STRING))
+                    if (!editable.toString().equals(GlobalConfig.EMPTY_STRING))
                         if (Integer.parseInt(editable.toString()) > MAX_PORT_VALUE) {
-                            portForm.setText(GlobalConstants.EMPTY_STRING);
+                            portForm.setText(GlobalConfig.EMPTY_STRING);
                             Toast.makeText(context, (PORT_ERROR_MESSAGE + MAX_PORT_VALUE), Toast.LENGTH_LONG).show();
                         }
-                    if (!isNumber(editable)) portForm.setText(bufferStr);
+                    if (!isNumber(editable)) portForm.setText(beforeChangeBuffering);
                 } catch (Exception ex) {
-                    portForm.setText(bufferStr);
+                    portForm.setText(beforeChangeBuffering);
                 }
             }
         };
@@ -122,7 +121,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     private void initAddress() {
 
         TextWatcher addressWatcher = new TextWatcher() {
-            private byte indexer = GlobalConstants.ONE;
+            private byte indexer = GlobalConfig.ONE;
             private boolean errorFlag;
             private String bufferedStr;
 
@@ -147,32 +146,30 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
                 }
                 try {
                     if (Integer.parseInt(s.toString()) > MAX_IP_VALUE) {
-                        ipOctet[indexer].setText(GlobalConstants.EMPTY_STRING);
+                        ipOctet[indexer].setText(GlobalConfig.EMPTY_STRING);
                         indexer--;
                         Toast.makeText(context, IP_ERROR_MESSAGE + MAX_IP_VALUE, Toast.LENGTH_SHORT).show();
                     }
                 } catch (NumberFormatException e) {
                     //
                 }
-                if (!s.toString().equals(GlobalConstants.EMPTY_STRING) && !isNumber(s)) {
+                if (!s.toString().equals(GlobalConfig.EMPTY_STRING) && !isNumber(s)) {
                     ipOctet[indexer].setText(bufferedStr);
                     errorFlag = false;
                 }
                 if (s.length() == OCTET_LEN && errorFlag) {
-                    if (indexer != ipOctet.length - GlobalConstants.ONE) indexer++;
+                    if (indexer != ipOctet.length - GlobalConfig.ONE) indexer++;
                     ipOctet[indexer].requestFocus();
                 }
             }
         };
 
         proxySet = new CheckBox(context);
-        proxySet.setBackgroundDrawable(GlobalConfig.MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube());
+        proxySet.setBackgroundDrawable(getCheckBoxOnWhiteBackgroundCube());
 
         addressLay = new LinearLayout(context);
         addressLay.addView(new SerifTextView(context, IP_TITLE));
-        addressLay.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+        addressLay.setLayoutParams(new LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
         addressLay.setBackgroundColor(Color.TRANSPARENT);
         addressLay.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -180,7 +177,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
             ipOctet[i] = new ProxyEditText(context, OCTET_LEN);
             ipOctet[i].addTextChangedListener(addressWatcher);
             addressLay.addView(ipOctet[i]);
-            if (i < OCTETS_COUNT - GlobalConstants.ONE)
+            if (i < OCTETS_COUNT - GlobalConfig.ONE)
                 addressLay.addView(new SerifTextView(context, DOT));
         }
         addressLay.addView(proxySet);
@@ -196,8 +193,8 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     }
 
     public void clearForms() {
-        portForm.setText(GlobalConstants.EMPTY_STRING);
-        for (ProxyEditText text : ipOctet) text.setText(GlobalConstants.EMPTY_STRING);
+        portForm.setText(GlobalConfig.EMPTY_STRING);
+        for (ProxyEditText text : ipOctet) text.setText(GlobalConfig.EMPTY_STRING);
         ipOctet[0].requestFocus();
     }
 
@@ -207,15 +204,14 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
             ipAddress.append(actet.getText());
             ipAddress.append(DOT);
         }
-        ipAddress.deleteCharAt(ipAddress.length() - GlobalConstants.ONE);
+        ipAddress.deleteCharAt(ipAddress.length() - GlobalConfig.ONE);
         return ipAddress.toString();
     }
 
     public boolean ipIsEmpty() {
         for (byte i = 0; i < OCTETS_COUNT; i++)
             try {
-                if (ipOctet[i].getText().toString().equals(GlobalConstants.EMPTY_STRING))
-                    return true;
+                if (ipOctet[i].getText().toString().equals(GlobalConfig.EMPTY_STRING)) return true;
             } catch (NullPointerException ex) {
                 return true;
             }
@@ -224,22 +220,22 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
     public boolean fistActetEqualsZero() {
         try {
-            return (Integer.parseInt(ipOctet[0].getText().toString()) < GlobalConstants.ONE);
+            return (Integer.parseInt(ipOctet[0].getText().toString()) < GlobalConfig.ONE);
         } catch (NullPointerException ex) {
             return true;
         }
     }
 
     public void loadAddress(String kit) {
-        StringBuilder buff = new StringBuilder().append(GlobalConstants.EMPTY_STRING);
+        StringBuilder buff = new StringBuilder().append(GlobalConfig.EMPTY_STRING);
         for (byte i = 0, k = 0; i < kit.length(); i++) {
             if (kit.charAt(i) == DOT.charAt(0)) {
                 ipOctet[k++].setText(buff);
                 buff = new StringBuilder();
-                buff.append(GlobalConstants.EMPTY_STRING);
+                buff.append(GlobalConfig.EMPTY_STRING);
             } else
                 buff.append(kit.charAt(i));
-            if (kit.length() - GlobalConstants.ONE == i)
+            if (kit.length() - GlobalConfig.ONE == i)
                 ipOctet[k].setText(buff);
         }
     }
@@ -260,13 +256,13 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
         try {
             return portForm.getText().toString();
         } catch (NullPointerException ex) {
-            return GlobalConstants.EMPTY_STRING;
+            return GlobalConfig.EMPTY_STRING;
         }
     }
 
     public boolean portIsEmpty() {
         try {
-            return portForm.getText().toString().equals(GlobalConstants.EMPTY_STRING);
+            return portForm.getText().toString().equals(GlobalConfig.EMPTY_STRING);
         } catch (NullPointerException ex) {
             return true;
         }
@@ -306,21 +302,16 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
             super(context);
             super.setInputType(InputType.TYPE_CLASS_PHONE);
             super.setGravity(Gravity.CENTER);
-            super.setTextColor(GlobalConfig.MainSettingsConfig.getFormsTextColor());
-            super.setLayoutParams(new ViewGroup.LayoutParams(
-                    GlobalConfig.MainSettingsConfig.getOctetWidth(),
-                    GlobalConfig.MainSettingsConfig.getOctetHeight()));
-            super.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
-            super.setText(GlobalConstants.EMPTY_STRING);
+            super.setTextColor(getFormsTextColor());
+            super.setLayoutParams(new LayoutParams(getOctetWidth(), getOctetHeight()));
+            super.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
+            super.setText(GlobalConfig.EMPTY_STRING);
             super.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxSymbolCount)});
             super.setTypeface(Typeface.SERIF);
         }
 
         public void setPortLayParam() {
-            super.setLayoutParams(new ViewGroup.LayoutParams(
-                    GlobalConfig.MainSettingsConfig.getPortWidth(),
-                    GlobalConfig.MainSettingsConfig.getPortHeight()));
-
+            super.setLayoutParams(new LayoutParams(getPortWidth(), getPortHeight()));
         }
     }
 }

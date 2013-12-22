@@ -1,7 +1,7 @@
 package com.example.First_prj.MenuAndSwitchers;
 
 public abstract class FunctionsIDAndNames {
-
+//
     private final static String[] keysForActivity = {
             // чтоб глазами не считать.
             "Занятия", // 0

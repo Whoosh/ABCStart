@@ -7,7 +7,6 @@ import android.view.*;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
-import com.example.First_prj.ForAllCode.DesigneElements.Backgrounds.LiteMatrixDraw;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 import com.example.First_prj.Journal.DateHead.DateSelector;
 import com.example.First_prj.Journal.DateHead.GroupSelector;
@@ -16,6 +15,8 @@ import com.example.First_prj.Journal.MainTable.DateList;
 import com.example.First_prj.Journal.MainTable.StudentList;
 import com.example.First_prj.Journal.MainTable.TableWithMarks;
 
+import static com.example.First_prj.ForAllCode.GlobalConfig.LookingJournalConfig.*;
+//
 public class LookingJournalActivity extends Activity implements View.OnClickListener, View.OnTouchListener {
 
     private final String DATA_KEY = "Date";
@@ -46,13 +47,17 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         LinearLayout dateListPlusLessonSelector = new LinearLayout(this);
         LinearLayout studentsPlusTableLayout = new LinearLayout(this);
         ScrollView studentsPlusTableView = new ScrollView(this);
+        studentsPlusTableView.requestDisallowInterceptTouchEvent(false);
 
         groupSelector = new GroupSelector(this);
         dateSelector = new DateSelector(this);
         lessonSelector = new LessonSelector(this);
         dateList = new DateList(this, 30); // @TODO
         studentList = new StudentList(this);
-        tableWithMarks = new TableWithMarks(this, 50, 30);
+        tableWithMarks = new TableWithMarks(this, 50, 30); // TODO
+
+        tableWithMarks.requestDisallowInterceptTouchEvent(false);
+
 
         studentList.addStudents(50);
 
@@ -72,7 +77,8 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         datePlusGroup.addView(new VerticalLine(this, Color.CYAN));
         datePlusGroup.addView(dateSelector);
 
-        mainLay.setBackgroundDrawable(new LiteMatrixDraw(this));
+        mainLay.setBackgroundDrawable(getBackground(this));
+
         mainLay.addView(datePlusGroup);
         mainLay.addView(new HorizontalLine(this, Color.CYAN));
         mainLay.addView(dateListPlusLessonSelector);
@@ -138,11 +144,11 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         dateSelector.setOldSelectedDate(savedInstanceState.getString(DATA_KEY));
         dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(INDEX_OF_DATA_KEY));
         dateSelector.setOldDatePosition(savedInstanceState.getInt(SCROLL_KEY));
-        dateSelector.refresh(); // обновили данные.
+        dateSelector.refreshFocusAndState(); // обновили данные.
 
         // загрузка параметров выбора группы
         groupSelector.setOldSelectedGroup(savedInstanceState.getString(GROUP_KEY));
-        groupSelector.refresh();
+        groupSelector.refreshStateOfVisualPosition();
     }
 
     public void contextMenuStarter(View element) {

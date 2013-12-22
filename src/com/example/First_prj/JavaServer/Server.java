@@ -1,6 +1,6 @@
 package com.example.First_prj.JavaServer;
 
-import com.example.First_prj.ForAllCode.GlobalConstants;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,9 +10,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.*;
-
 public abstract class Server {
-
+//
     private static final String DEFAULT_HOST = "fspo.segrys.ru";
     private static final String DEFAULT_API_LINK = "GET /api";
     private static final String USER_CLIENT_INFO = "User-Agent: .\n";
@@ -42,8 +41,8 @@ public abstract class Server {
     private static final byte DEFAULT_WAIT_RESPONSE_DELAY = 3;
     private static final byte CHECKED_DELAY_RESPONSE = 1;
 
-    private static String TOKEN = GlobalConstants.EMPTY_STRING;
-    private static String MY_ID = GlobalConstants.EMPTY_STRING;
+    private static String TOKEN = GlobalConfig.EMPTY_STRING;
+    private static String MY_ID = GlobalConfig.EMPTY_STRING;
 
     public static void connect(String name, String password) throws TimeoutException {
         HOST = DEFAULT_HOST;
@@ -64,7 +63,7 @@ public abstract class Server {
     private static void startServerConnection(String name, String password) throws TimeoutException {
 
         if (executorService != null) executorService.shutdown();
-        executorService = Executors.newFixedThreadPool(GlobalConstants.ONE); // 1 поток на исполнение
+        executorService = Executors.newFixedThreadPool(GlobalConfig.ONE); // 1 поток на исполнение
         Future<String> response = executorService.submit(new Query(AUTHORIZATION_QUERY_ID, name, password));
 
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
@@ -130,13 +129,13 @@ public abstract class Server {
 
     }
 
-    public static boolean isNotConnect(String address, int port) throws TimeoutException {
+    public static boolean isNotAlive(String address, int port) throws TimeoutException {
         HOST = address;
         PORT = port;
         return pushEmptyQuery();
     }
 
-    public static boolean isNotConnect() throws TimeoutException {
+    public static boolean isNotAlive() throws TimeoutException {
         HOST = DEFAULT_HOST;
         PORT = DEFAULT_PORT;
         return pushEmptyQuery();
@@ -144,7 +143,7 @@ public abstract class Server {
 
     private static boolean pushEmptyQuery() throws TimeoutException {
         if (executorService != null) executorService.shutdown();
-        executorService = Executors.newFixedThreadPool(GlobalConstants.ONE);
+        executorService = Executors.newFixedThreadPool(GlobalConfig.ONE);
         Future<String> response = executorService.submit(new Query(EMPTY_QUERY_ID));
         waitResponse(response, CHECKED_DELAY_RESPONSE);
         return getResponseString(response).isEmpty();
@@ -158,7 +157,7 @@ public abstract class Server {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        return GlobalConstants.EMPTY_STRING;
+        return GlobalConfig.EMPTY_STRING;
     }
 
     public static void disconnect() {
@@ -166,7 +165,7 @@ public abstract class Server {
             executorService.submit(new Query(EXIT_QUERY_ID));
             executorService.shutdown();
         }
-        TOKEN = GlobalConstants.EMPTY_STRING;
+        TOKEN = GlobalConfig.EMPTY_STRING;
         executorService = null;
     }
 
@@ -191,7 +190,7 @@ public abstract class Server {
 
         private String sendQuery(String queryString) {
 
-            StringBuilder result = new StringBuilder(GlobalConstants.EMPTY_STRING);
+            StringBuilder result = new StringBuilder(GlobalConfig.EMPTY_STRING);
 
             try {
                 socket = new Socket(HOST, PORT);

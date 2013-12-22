@@ -8,20 +8,21 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.First_prj.FirstActivitySettings.MainSettingsActivity;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
-import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.ForAllCode.GlobalConstants;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.JavaServer.Server;
 import com.example.First_prj.MenuAndSwitchers.MenuActivity;
 
 import java.util.concurrent.TimeoutException;
+//
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainWindowConfig.*;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
@@ -50,29 +51,25 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
     public MainWindow(Context context) {
         super(context);
-        super.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT,
-                ViewGroup.LayoutParams.FILL_PARENT));
+        super.setLayoutParams(new LayoutParams(FILL_PARENT, FILL_PARENT));
         super.setGravity(Gravity.CENTER);
         super.setOrientation(VERTICAL);
-        super.addView(GlobalConfig.MainWindowConfig.getLogoView(context));
-        super.setBackgroundDrawable(GlobalConfig.MainWindowConfig.getBackGround(context));
+        super.addView(getLogoView(context));
+        super.setBackgroundDrawable(getBackGround(context));
         LinearLayout checkBoxPlusButton = new LinearLayout(context);
 
         this.context = context;
         userName = new CustomLoginEditText(context);
 
         saveMe = new CheckBox(context);
-        saveMe.setTextColor(GlobalConfig.MainWindowConfig.getCheckBoxTextColor());
-        saveMe.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
+        saveMe.setTextColor(getCheckBoxTextColor());
+        saveMe.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
         saveMe.setText(CHECK_BOX_TITLE);
 
         login = new SerifTextView(context, ENTER_TITLE);
-        login.setLayoutParams(new ViewGroup.LayoutParams(
-                GlobalConfig.MainWindowConfig.getLoginButtonWidth(),
-                GlobalConfig.MainWindowConfig.getLoginButtonHeight()));
-        login.setTextColor(GlobalConfig.MainWindowConfig.getTextColor());
-        login.setBackgroundColor(GlobalConfig.MainWindowConfig.getFormColor());
+        login.setLayoutParams(new LayoutParams(getLoginButtonWidth(), getLoginButtonHeight()));
+        login.setTextColor(getTextColor());
+        login.setBackgroundColor(getFormColor());
 
         password = new CustomLoginEditText(context);
         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -80,16 +77,14 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         password.setHint(PASSWORD_TITLE);
         userName.setHint(USER_NAME_TITLE);
 
-        checkBoxPlusButton.setLayoutParams(new ViewGroup.LayoutParams(
-                GlobalConfig.MainWindowConfig.getFormWidth(),
-                GlobalConfig.MainWindowConfig.getFormHeight()));
+        checkBoxPlusButton.setLayoutParams(new LayoutParams(getFormWidth(), getFormHeight()));
         checkBoxPlusButton.addView(saveMe);
         checkBoxPlusButton.addView(login);
 
         super.addView(userName);
-        super.addView(new TransparentHorizontalLine(context, GlobalConfig.MainWindowConfig.getLinesTransparentHeight()));
+        super.addView(new TransparentHorizontalLine(context, getLinesTransparentHeight()));
         super.addView(password);
-        super.addView(new TransparentHorizontalLine(context, GlobalConfig.MainWindowConfig.getLinesTransparentHeight()));
+        super.addView(new TransparentHorizontalLine(context, getLinesTransparentHeight()));
         super.addView(checkBoxPlusButton);
 
         login.setOnTouchListener(this);
@@ -99,7 +94,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         try {
             return password.getText().toString();
         } catch (NullPointerException ex) {
-            return GlobalConstants.EMPTY_STRING;
+            return GlobalConfig.EMPTY_STRING;
         }
     }
 
@@ -107,7 +102,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         try {
             return userName.getText().toString();
         } catch (NullPointerException ex) {
-            return GlobalConstants.EMPTY_STRING;
+            return GlobalConfig.EMPTY_STRING;
         }
     }
 
@@ -131,8 +126,8 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     public void loadWindowInfo() {
         keyValueStorage = context.getSharedPreferences(SETTINGS_KEY, Context.MODE_PRIVATE);
         if (keyValueStorage.getBoolean(SAVE_KEY, false)) {
-            userName.setText(keyValueStorage.getString(USER_NAME_KEY, GlobalConstants.EMPTY_STRING));
-            password.setText(keyValueStorage.getString(PASSWORD_KEY, GlobalConstants.EMPTY_STRING));
+            userName.setText(keyValueStorage.getString(USER_NAME_KEY, GlobalConfig.EMPTY_STRING));
+            password.setText(keyValueStorage.getString(PASSWORD_KEY, GlobalConfig.EMPTY_STRING));
             saveMe.setChecked(true);
         }
     }
@@ -140,8 +135,8 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            startButtonLogic();
             setButtonInPressedColor();
+            startButtonLogic();
         } else if (view.equals(login) && motionEvent.getAction() == MotionEvent.ACTION_UP)
             setButtonInUpColor();
         return true;
@@ -150,12 +145,13 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     private void startButtonLogic() {
         SharedPreferences proxyInfo = context.getSharedPreferences
                 (MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
+        boolean proxyIsON = proxyInfo.getBoolean(MainSettingsActivity.CHECK_BOX_KEY, false);
+
         try {
-            try {
-                onButtonPressed(proxyInfo);
-            } catch (ProxyDetectException e) {
-                startServerWithProxy(proxyInfo);
-            }
+            if (proxyIsON) loginOnServerWithProxy(proxyInfo);
+            else loginOnServer();
+            checkAuthorizationInfo();
+            startMainMenu();
         } catch (ServerDownException e) {
             messageOnScreen(SERVER_IS_DOWN);
         } catch (TimeoutException e) {
@@ -165,55 +161,51 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         }
     }
 
-    private void setButtonInPressedColor() {
-        login.setBackgroundColor(GlobalConfig.MainWindowConfig.getButtonPressColor());
-    }
-
-    private void setButtonInUpColor() {
-        login.setBackgroundColor(GlobalConfig.MainWindowConfig.getFormColor());
-    }
-
-    private void onButtonPressed(SharedPreferences proxyInfo) throws ServerDownException,
-            TimeoutException, PasswordErrorException, ProxyDetectException {
-
-        if (proxyInfo.getBoolean(MainSettingsActivity.CHECK_BOX_KEY, false)) throw new ProxyDetectException();
-        if (Server.isNotConnect()) throw new ServerDownException();
-        Server.connect(userName.getText().toString(), password.getText().toString());
-        if (Server.passwordIsWrong()) throw new PasswordErrorException();
-        startMainMenu();
-    }
-
-    private void startMainMenu() {
-        context.startActivity(new Intent(context, MenuActivity.class));
-    }
-
-    private void startServerWithProxy(SharedPreferences proxyInfo) throws ServerDownException,
-            PasswordErrorException, TimeoutException {
-
-        String address = proxyInfo.getString(MainSettingsActivity.IP_KEY, GlobalConstants.EMPTY_STRING);
-        int port = Integer.parseInt(proxyInfo.getString(MainSettingsActivity.PORT_KEY, GlobalConstants.EMPTY_STRING));
-
-        if (!Server.isNotConnect(address, port)) throw new ServerDownException();
-        Server.connect(userName.getText().toString(), password.getText().toString(), address, port);
-        if (Server.passwordIsWrong()) throw new PasswordErrorException();
-        startMainMenu();
+    private void loginOnServerWithProxy(SharedPreferences proxyInfo) throws TimeoutException, ServerDownException {
+        String address = proxyInfo.getString(MainSettingsActivity.IP_KEY, GlobalConfig.EMPTY_STRING);
+        int port = Integer.parseInt(proxyInfo.getString(MainSettingsActivity.PORT_KEY, GlobalConfig.EMPTY_STRING));
+        loginOnServerWithProxy(address, port);
     }
 
     private void messageOnScreen(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
+    private void loginOnServer() throws ServerDownException, TimeoutException {
+        if (Server.isNotAlive()) throw new ServerDownException();
+        Server.connect(userName.getText().toString(), password.getText().toString());
+    }
+
+    private void loginOnServerWithProxy(String address, int port) throws ServerDownException, TimeoutException {
+        if (Server.isNotAlive(address, port)) throw new ServerDownException();
+        Server.connect(userName.getText().toString(), password.getText().toString(), address, port);
+    }
+
+    private void checkAuthorizationInfo() throws PasswordErrorException {
+        if (Server.passwordIsWrong()) throw new PasswordErrorException();
+    }
+
+    private void startMainMenu() {
+        context.startActivity(new Intent(context, MenuActivity.class));
+    }
+
+    private void setButtonInPressedColor() {
+        login.setBackgroundColor(getButtonPressColor());
+    }
+
+    private void setButtonInUpColor() {
+        login.setBackgroundColor(getFormColor());
+    }
+
     private class CustomLoginEditText extends EditText {
 
         public CustomLoginEditText(Context context) {
             super(context);
-            super.setLayoutParams(new ViewGroup.LayoutParams(
-                    GlobalConfig.MainWindowConfig.getFormWidth(),
-                    GlobalConfig.MainWindowConfig.getFormHeight()));
-            super.setBackgroundColor(GlobalConfig.MainWindowConfig.getFormColor());
+            super.setLayoutParams(new LayoutParams(getFormWidth(), getFormHeight()));
+            super.setBackgroundColor(getFormColor());
             super.setTextColor(GlobalConfig.MainWindowConfig.getTextColor());
-            super.setTextSize(GlobalConstants.DEFAULT_TEXT_SIZE);
-            super.setText(GlobalConstants.EMPTY_STRING);
+            super.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
+            super.setText(GlobalConfig.EMPTY_STRING);
             super.setGravity(Gravity.CENTER_VERTICAL);
             super.setTypeface(Typeface.SERIF);
             super.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);
@@ -225,8 +217,5 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private class PasswordErrorException extends Throwable {
-    }
-
-    private class ProxyDetectException extends Throwable {
     }
 }

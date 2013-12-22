@@ -3,36 +3,32 @@ package com.example.First_prj.ForAllCode.DesigneElements.Backgrounds;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.ForAllCode.GlobalConstants;
+
+import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.*;
 
 public class CheckBoxRim extends Drawable {
-
+//
     private Bitmap box;
-    private final byte VOID_LEN = 10;
 
     public CheckBoxRim() {
-        box = Bitmap.createBitmap(
-                GlobalConfig.MainSettingsConfig.getCheckBoxSize(),
-                GlobalConfig.MainSettingsConfig.getCheckBoxSize(),
-                Bitmap.Config.RGB_565);
+        box = Bitmap.createBitmap(getCheckBoxSize(), getCheckBoxSize(), Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(box);
         setBoxGround(canvas);
     }
 
     private void setBoxGround(Canvas canvas) {
         Paint setting = new Paint();
-        setting.setColor(GlobalConfig.MainSettingsConfig.getCheckBoxColor());
-        canvas.drawColor(GlobalConfig.MainSettingsConfig.getFormBackgroundColor());
+        setting.setColor(getCheckBoxColor());
+        canvas.drawColor(getFormBackgroundColor());
 
-        for (int i = VOID_LEN - GlobalConstants.ONE; i < GlobalConfig.MainSettingsConfig.getCheckBoxSize() - VOID_LEN; i++) {
-            canvas.drawPoint(i, VOID_LEN - GlobalConstants.ONE, setting);
-            canvas.drawPoint(VOID_LEN - GlobalConstants.ONE, i, setting);
-            canvas.drawPoint(box.getWidth() - VOID_LEN - GlobalConstants.ONE, i, setting);
-            canvas.drawPoint(i, box.getHeight() - VOID_LEN - GlobalConstants.ONE, setting);
+        final byte VOID_LEN = 10;
+        for (int i = VOID_LEN - GlobalConfig.ONE; i < getCheckBoxSize() - VOID_LEN; i++) {
+            canvas.drawPoint(i, VOID_LEN - GlobalConfig.ONE, setting);
+            canvas.drawPoint(VOID_LEN - GlobalConfig.ONE, i, setting);
+            canvas.drawPoint(box.getWidth() - VOID_LEN - GlobalConfig.ONE, i, setting);
+            canvas.drawPoint(i, box.getHeight() - VOID_LEN - GlobalConfig.ONE, setting);
         }
-
     }
-
 
     @Override
     public void draw(Canvas canvas) {

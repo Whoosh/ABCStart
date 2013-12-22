@@ -10,7 +10,7 @@ import com.example.First_prj.R;
 
 
 public class MainJournalActivityStarter extends TabActivity {
-
+//
     private final String LOOKING_TAB = "Просмотр";
     private final String EDIT_TAB = "Редактирование";
     private final String CHECK_STUDENT = "Отметить студентов";
