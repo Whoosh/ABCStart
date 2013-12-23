@@ -12,7 +12,7 @@ import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGr
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.GlobalConfig;
-import com.example.First_prj.JavaServer.Month;
+import com.example.First_prj.ForAllCode.Month;
 
 import java.util.Date;
 //

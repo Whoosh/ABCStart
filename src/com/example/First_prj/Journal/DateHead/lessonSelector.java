@@ -1,12 +1,12 @@
 package com.example.First_prj.Journal.DateHead;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 
 public class LessonSelector extends LinearLayout {
 //
@@ -15,7 +15,7 @@ public class LessonSelector extends LinearLayout {
 
     public LessonSelector(Context context) {
         super(context);
-        super.setBackgroundColor(Color.argb(100, 1, 81, 90));
+        super.setBackgroundColor(GlobalConfig.LookingJournalConfig.getBackgroundColor());
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2,
                 (int) (50 * context.getResources().getDisplayMetrics().density)));

@@ -10,6 +10,7 @@ import static com.example.First_prj.ForAllCode.GlobalConfig.getSerifTextColor;
 //
 
 public class SerifTextView extends TextView {
+
     private String text;
     private int textSize;
 
@@ -52,4 +53,13 @@ public class SerifTextView extends TextView {
     public String getStringText() {
         return text;
     }
+
+    public void setText(String text) {
+        super.setText(text);
+    }
+
+    public void setColor(int color) {
+        super.setTextColor(color);
+    }
+
 }

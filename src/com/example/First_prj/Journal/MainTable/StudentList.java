@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 
 public class StudentList extends LinearLayout {
 
@@ -22,7 +23,7 @@ public class StudentList extends LinearLayout {
         elementHeight = (int) (50 * context.getResources().getDisplayMetrics().density);
         this.context = context;
         super.setOrientation(VERTICAL);
-        super.setBackgroundColor(Color.argb(100, 1, 81, 90));
+        super.setBackgroundColor(GlobalConfig.LookingJournalConfig.getBackgroundColor());
         super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
     }

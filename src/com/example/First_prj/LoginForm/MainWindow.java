@@ -41,7 +41,6 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     private static final String PASSWORD_TITLE = "Пароль";
     private static final String USER_NAME_TITLE = "Имя пользователя";
 
-
     private SharedPreferences keyValueStorage;
     private CustomLoginEditText userName;
     private CustomLoginEditText password;
