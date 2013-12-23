@@ -2,19 +2,16 @@ package com.example.First_prj.Journal.MainTable;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.view.Gravity;
-import android.view.ViewGroup;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
-import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.Journal.CustomViewElements.EvaluationCell;
 
-public class TableWithMarks extends HorizontalScrollView {
+public class TableWithMarks extends HorizontalScrollView implements View.OnTouchListener {
 
-    private LinearLayout[] rows;
-    private LinearLayout[][] elements;
     private int numOfPeople;
     private int maxDateRange;
     private Context context;
@@ -25,42 +22,37 @@ public class TableWithMarks extends HorizontalScrollView {
         this.maxDateRange = maxDateRange;
         this.numOfPeople = numOfPeople;
         this.context = context;
-        elementSize = (int) (50 * context.getResources().getDisplayMetrics().density);
+        elementSize = (int) (context.getResources().getDisplayMetrics().density * 50);
         initMatrix();
+        super.setOnTouchListener(this);
+
     }
 
     private void initMatrix() {
-        rows = new LinearLayout[numOfPeople];
-        elements = new LinearLayout[numOfPeople][maxDateRange];
-        for (int i = 0; i < numOfPeople; i++) {
-            rows[i] = new LinearLayout(context);
-            rows[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        }
-
+        LinearLayout rows = new LinearLayout(context);
+        LinearLayout columns = new LinearLayout(context);
+        columns.setOrientation(LinearLayout.VERTICAL);
+        EvaluationCell element;
         for (int i = 0; i < numOfPeople; i++) {
             for (int j = 0; j < maxDateRange; j++) {
-                elements[i][j] = new LinearLayout(context);
-                elements[i][j].setGravity(Gravity.CENTER);
-                elements[i][j].setBackgroundColor(Color.argb(200, 1, 50, 90));
-                elements[i][j].setLayoutParams(new ViewGroup.LayoutParams(elementSize, elementSize));
-                elements[i][j].addView(new SerifTextView(context, "+"));
-                rows[i].addView(elements[i][j]);
-                rows[i].addView(new VerticalLine(context, Color.CYAN, GlobalConfig.ONE));
+                element = new EvaluationCell(context, j, i, elementSize);
+                rows.addView(element);
+                rows.addView(new VerticalLine(context, Color.BLACK));
             }
+            columns.addView(rows);
+            columns.addView(new HorizontalLine(context, Color.BLACK));
+            rows = new LinearLayout(context);
         }
 
-        LinearLayout results = new LinearLayout(context);
-        results.setOrientation(LinearLayout.VERTICAL);
-
-        for (int i = 0; i < numOfPeople; i++) {
-            results.addView(rows[i]);
-            results.addView(new HorizontalLine(context, Color.CYAN, GlobalConfig.ONE));
-        }
-        super.addView(results);
+        super.addView(columns);
     }
 
     public int getElementSize() {
         return elementSize;
     }
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return true; // блочим обрывание евента от родителя.
+    }
 }

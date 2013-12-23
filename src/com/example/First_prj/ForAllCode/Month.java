@@ -1,7 +1,6 @@
-package com.example.First_prj.JavaServer;
+package com.example.First_prj.ForAllCode;
 
 public enum Month {
-    //
     January("Январь"), February("Февраль"), March("Март"),
     April("Апрель"), May("Май"), June("Июнь"),
     July("Июль"), August("Август"), September("Сентябрь"),

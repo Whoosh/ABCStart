@@ -16,6 +16,7 @@ import com.example.First_prj.Journal.MainTable.StudentList;
 import com.example.First_prj.Journal.MainTable.TableWithMarks;
 
 import static com.example.First_prj.ForAllCode.GlobalConfig.LookingJournalConfig.*;
+
 //
 public class LookingJournalActivity extends Activity implements View.OnClickListener, View.OnTouchListener {
 
@@ -52,14 +53,14 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         groupSelector = new GroupSelector(this);
         dateSelector = new DateSelector(this);
         lessonSelector = new LessonSelector(this);
-        dateList = new DateList(this, 30); // @TODO
+        dateList = new DateList(this, 10); // @TODO
         studentList = new StudentList(this);
-        tableWithMarks = new TableWithMarks(this, 50, 30); // TODO
+        tableWithMarks = new TableWithMarks(this, 10, 10); // TODO
 
         tableWithMarks.requestDisallowInterceptTouchEvent(false);
 
 
-        studentList.addStudents(50);
+        studentList.addStudents(10);
 
         mainLay.setOrientation(LinearLayout.VERTICAL);
 

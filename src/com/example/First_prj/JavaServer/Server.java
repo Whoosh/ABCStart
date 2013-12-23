@@ -11,7 +11,7 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.*;
 public abstract class Server {
-//
+
     private static final String DEFAULT_HOST = "fspo.segrys.ru";
     private static final String DEFAULT_API_LINK = "GET /api";
     private static final String USER_CLIENT_INFO = "User-Agent: .\n";

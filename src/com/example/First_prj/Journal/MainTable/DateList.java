@@ -1,11 +1,13 @@
 package com.example.First_prj.Journal.MainTable;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.view.*;
-import android.widget.*;
-import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
+import com.example.First_prj.ForAllCode.GlobalConfig;
 
 public class DateList extends HorizontalScrollView {
 
@@ -20,11 +22,8 @@ public class DateList extends HorizontalScrollView {
         this.context = context;
         this.maxDateRange = maxDateRange;
         LinearLayout elements = new LinearLayout(context);
-        super.setBackgroundColor(Color.argb(80, 1, 81, 90));
+        super.setBackgroundColor(GlobalConfig.LookingJournalConfig.getBackgroundColor());
         dateElements = new LinearLayout[maxDateRange];
-
-        FrameLayout s = new FrameLayout(context);
-
 
         elementSize = (int) (50 * context.getResources().getDisplayMetrics().density);
 
@@ -34,21 +33,10 @@ public class DateList extends HorizontalScrollView {
             dateElements[i].setLayoutParams(new ViewGroup.LayoutParams(elementSize, elementSize));
             dateElements[i].addView(new SerifTextView(context, "" + i));
             elements.addView(dateElements[i]);
-            elements.addView(new VerticalLine(context, Color.CYAN, 1));
+            elements.addView(new VerticalLine(context, GlobalConfig.LookingJournalConfig.getSeparateLineColor()));
         }
 
         super.addView(elements);
     }
-
-    public DateList(Context context, String[] dates) {
-        super(context);
-        super.setBackgroundColor(Color.argb(80, 1, 81, 90));
-        LinearLayout elements = new LinearLayout(context);
-        elementSize = (int) (50 * context.getResources().getDisplayMetrics().density);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(elementSize, elementSize);
-        TextView bufferElement;
-
-    }
-
 
 }

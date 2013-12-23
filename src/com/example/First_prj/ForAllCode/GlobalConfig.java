@@ -21,7 +21,6 @@ abstract public class GlobalConfig {
 //@TODO Идея такая, запилить сюда при старте взятие информации о разрешении и тд..
 // и выделять размеры для елементов, в данном формате для экранов с width более 300,500 ect..
 
-
     public static final byte ONE = 1;
     public static final byte DEFAULT_TEXT_SIZE = 15;
     public static final byte HEADER_TEXT_SIZE = 20;
@@ -317,6 +316,8 @@ abstract public class GlobalConfig {
         private static byte GROUP_DATE_SLIDER_HEIGHT;
 
         private static int BACKGROUND_COLOR;
+        private static int SEPARATE_LINE_COLOR;
+
 
         public static void setDefaultElementSize() {
             DATE_ELEMENT_WIDTH = 100;
@@ -325,10 +326,12 @@ abstract public class GlobalConfig {
 
         public static void setMatrixThereColors() {
             BACKGROUND_COLOR = Color.argb(100, 1, 81, 90);
+            SEPARATE_LINE_COLOR = Color.CYAN;
         }
 
         public static void setNormalThereColors() {
             BACKGROUND_COLOR = Color.TRANSPARENT;
+            SEPARATE_LINE_COLOR = Color.BLACK;
         }
 
 
@@ -340,10 +343,10 @@ abstract public class GlobalConfig {
             return (int) (GROUP_DATE_SLIDER_HEIGHT * DISPLAY_DENSITY_PIXEL_METRIC);
         }
 
-
         public static int getBackgroundColor() {
             return BACKGROUND_COLOR;
         }
+
 
         public static Drawable getBackground(Context context) {
             if (MATRIX_THEME)
@@ -351,6 +354,9 @@ abstract public class GlobalConfig {
             return new WhiteGradient();
         }
 
+        public static int getSeparateLineColor() {
+            return SEPARATE_LINE_COLOR;
+        }
     }
 
 
