@@ -4,12 +4,12 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.WindowManager;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 
 import java.util.Random;
 
 public class LiteMatrixDraw extends Drawable {
-//
+
     private int maxLen;
     private Paint paint;
     private int indexes_Y[];

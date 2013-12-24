@@ -1,11 +1,11 @@
 package com.example.First_prj.Journal;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 import com.example.First_prj.Journal.DateHead.DateSelector;
@@ -14,8 +14,9 @@ import com.example.First_prj.Journal.DateHead.LessonSelector;
 import com.example.First_prj.Journal.MainTable.DateList;
 import com.example.First_prj.Journal.MainTable.StudentList;
 import com.example.First_prj.Journal.MainTable.TableWithMarks;
+import org.jetbrains.annotations.NotNull;
 
-import static com.example.First_prj.ForAllCode.GlobalConfig.LookingJournalConfig.*;
+import java.util.ArrayList;
 
 //
 public class LookingJournalActivity extends Activity implements View.OnClickListener, View.OnTouchListener {
@@ -30,8 +31,7 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
     private GroupSelector groupSelector;
     private DateSelector dateSelector;
     private LessonSelector lessonSelector;
-    private DateList dateList; // TODO
-    private StudentList studentList; // TODO
+    private DateList dateList;
     private TableWithMarks tableWithMarks; // TODO
 
     public void onCreate(Bundle savedInstanceState) {
@@ -53,37 +53,38 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         groupSelector = new GroupSelector(this);
         dateSelector = new DateSelector(this);
         lessonSelector = new LessonSelector(this);
-        dateList = new DateList(this, 10); // @TODO
-        studentList = new StudentList(this);
-        tableWithMarks = new TableWithMarks(this, 10, 10); // TODO
 
-        tableWithMarks.requestDisallowInterceptTouchEvent(false);
+        ArrayList<String> dates = new ArrayList<String>();
+        for (int i = 0; i < 40; i++) dates.add(String.valueOf(i));
+        dateList = new DateList(this, dates); // @TODO
 
+        ArrayList<String> students = new ArrayList<String>();
+        for (int i = 0; i < 30; i++) students.add("Какойто студент С.С");
+        StudentList studentList = new StudentList(this, students);
 
-        studentList.addStudents(10);
+        tableWithMarks = new TableWithMarks(this, students.size(), dates.size()); // TODO
 
         mainLay.setOrientation(LinearLayout.VERTICAL);
-
         studentsPlusTableLayout.addView(studentList);
-        studentsPlusTableLayout.addView(new VerticalLine(this, Color.CYAN));
+        studentsPlusTableLayout.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         studentsPlusTableLayout.addView(tableWithMarks);
 
         studentsPlusTableView.addView(studentsPlusTableLayout);
 
         dateListPlusLessonSelector.addView(lessonSelector);
-        dateListPlusLessonSelector.addView(new VerticalLine(this, Color.CYAN));
+        dateListPlusLessonSelector.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         dateListPlusLessonSelector.addView(dateList);
 
         datePlusGroup.addView(groupSelector);
-        datePlusGroup.addView(new VerticalLine(this, Color.CYAN));
+        datePlusGroup.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         datePlusGroup.addView(dateSelector);
 
-        mainLay.setBackgroundDrawable(getBackground(this));
+        mainLay.setBackgroundDrawable(LookingJournalConfig.getBackground(this));
 
         mainLay.addView(datePlusGroup);
-        mainLay.addView(new HorizontalLine(this, Color.CYAN));
+        mainLay.addView(new HorizontalLine(this, LookingJournalConfig.getSeparateLineColor()));
         mainLay.addView(dateListPlusLessonSelector);
-        mainLay.addView(new HorizontalLine(this, Color.CYAN));
+        mainLay.addView(new HorizontalLine(this, LookingJournalConfig.getSeparateLineColor()));
         mainLay.addView(studentsPlusTableView);
 
         dateList.setOnTouchListener(this);
@@ -119,13 +120,13 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
     };
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
         saveStateOnRotateEvent(outState);
         super.onSaveInstanceState(outState);
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         loadStateOnRotateEvent(savedInstanceState);
     }

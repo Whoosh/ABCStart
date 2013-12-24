@@ -5,8 +5,8 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
 
 public class LessonSelector extends LinearLayout {
 //
@@ -15,7 +15,7 @@ public class LessonSelector extends LinearLayout {
 
     public LessonSelector(Context context) {
         super(context);
-        super.setBackgroundColor(GlobalConfig.LookingJournalConfig.getBackgroundColor());
+        super.setBackgroundColor(LookingJournalConfig.getBackgroundColor());
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2,
                 (int) (50 * context.getResources().getDisplayMetrics().density)));

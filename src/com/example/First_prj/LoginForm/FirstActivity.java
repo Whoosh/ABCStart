@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import com.example.First_prj.FirstActivitySettings.MainSettingsActivity;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 import com.example.First_prj.JavaServer.Server;
 //
 public class FirstActivity extends Activity implements View.OnClickListener {

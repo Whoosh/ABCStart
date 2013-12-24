@@ -1,42 +1,45 @@
 package com.example.First_prj.Journal.MainTable;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+
+import java.util.ArrayList;
 
 public class StudentList extends LinearLayout {
 
-
-    private SerifTextView[] students;
-    private Context context;
-
-    private int elementHeight;
-
-    public StudentList(Context context) {
+    public StudentList(Context context, ArrayList<String> students) {
         super(context);
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        elementHeight = (int) (50 * context.getResources().getDisplayMetrics().density);
-        this.context = context;
         super.setOrientation(VERTICAL);
-        super.setBackgroundColor(GlobalConfig.LookingJournalConfig.getBackgroundColor());
-        super.setLayoutParams(new ViewGroup.LayoutParams(windowManager.getDefaultDisplay().getWidth() / 2,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+        super.setBackgroundColor(LookingJournalConfig.getBackgroundColor());
+        super.setLayoutParams(new ViewGroup.LayoutParams(
+                        LookingJournalConfig.getStudentListElementsWight(context),
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+        addStudents(context, students);
     }
 
-    public void addStudents(int count) { // TODO список
-        students = new SerifTextView[count];
-        for (int i = 0; i < count; i++) {
-            students[i] = new SerifTextView(context, "Какой то студент А.А", 19);
-            students[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, elementHeight));
-            super.addView(students[i]);
-            super.addView(new HorizontalLine(context, Color.CYAN, 1));
+    public void addStudents(Context context, ArrayList<String> students) {
+        for (String student : students) {
+            super.addView(new StudentElement(context,student));
+            super.addView(new HorizontalLine(context, LookingJournalConfig.getSeparateLineColor()));
         }
-
     }
+
+    private class StudentElement extends FrameLayout {
+
+        public StudentElement(Context context,String student) {
+            super(context);
+            super.setLayoutParams(new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.FILL_PARENT,
+                    LookingJournalConfig.getStudentListElementHeight()));
+            super.addView(new SerifTextView(context, student, GlobalConfig.HEADER_TEXT_SIZE));
+        }
+    }
+
 
 }

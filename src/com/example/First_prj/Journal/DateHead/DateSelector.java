@@ -2,22 +2,17 @@ package com.example.First_prj.Journal.DateHead;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.WindowManager;
+import android.view.*;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 import com.example.First_prj.ForAllCode.Month;
 
 import java.util.Date;
-//
-import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-import static com.example.First_prj.ForAllCode.GlobalConfig.LookingJournalConfig.*;
 
 public class DateSelector extends HorizontalScrollView implements View.OnClickListener {
 
@@ -37,11 +32,12 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     public DateSelector(Context context) {
         super(context);
         this.context = context;
-        super.setBackgroundColor(getBackgroundColor());
+        super.setBackgroundColor(LookingJournalConfig.getBackgroundColor());
         super.setHorizontalScrollBarEnabled(false);
         super.setLayoutParams(new LayoutParams(
-                ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE))
-                        .getDefaultDisplay().getWidth() / 2, getDateGroupHeight()));
+                LookingJournalConfig.getDateSelectorWidth(context),
+                LookingJournalConfig.getDateGroupHeight()));
+
         setDateElementsToTheView();
         if (indexOfSelectedDate == -GlobalConfig.ONE) refreshFocusAndState();
         for (DateElement dateElement : dateElements) dateElement.setOnClickListener(this);
@@ -162,7 +158,8 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
 
             super.setOrientation(VERTICAL);
             super.setGravity(Gravity.CENTER);
-            super.setLayoutParams(new LayoutParams(getDateElementWith(), FILL_PARENT));
+            super.setLayoutParams(
+                    new LayoutParams(LookingJournalConfig.getDateElementWith(), ViewGroup.LayoutParams.FILL_PARENT));
             super.addView(month);
             super.addView(new BubbleHorizontalGradientLine(context));
             super.addView(year);
@@ -181,7 +178,7 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
         }
 
         public int getDefaultWidth() {
-            return getDateElementWith();
+            return LookingJournalConfig.getDateElementWith();
         }
 
 

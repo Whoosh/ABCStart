@@ -13,16 +13,18 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.First_prj.FirstActivitySettings.MainSettingsActivity;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.MainWindowConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
 import com.example.First_prj.JavaServer.Server;
 import com.example.First_prj.MenuAndSwitchers.MenuActivity;
 
 import java.util.concurrent.TimeoutException;
-//
+
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainWindowConfig.*;
+
+//
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
@@ -53,22 +55,23 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         super.setLayoutParams(new LayoutParams(FILL_PARENT, FILL_PARENT));
         super.setGravity(Gravity.CENTER);
         super.setOrientation(VERTICAL);
-        super.addView(getLogoView(context));
-        super.setBackgroundDrawable(getBackGround(context));
+        super.addView(MainWindowConfig.getLogoView(context));
+        super.setBackgroundDrawable(MainWindowConfig.getBackGround(context));
         LinearLayout checkBoxPlusButton = new LinearLayout(context);
 
         this.context = context;
         userName = new CustomLoginEditText(context);
 
         saveMe = new CheckBox(context);
-        saveMe.setTextColor(getCheckBoxTextColor());
+        saveMe.setTextColor(MainWindowConfig.getCheckBoxTextColor());
         saveMe.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
         saveMe.setText(CHECK_BOX_TITLE);
 
         login = new SerifTextView(context, ENTER_TITLE);
-        login.setLayoutParams(new LayoutParams(getLoginButtonWidth(), getLoginButtonHeight()));
-        login.setTextColor(getTextColor());
-        login.setBackgroundColor(getFormColor());
+        login.setLayoutParams(
+                new LayoutParams(MainWindowConfig.getLoginButtonWidth(), MainWindowConfig.getLoginButtonHeight()));
+        login.setTextColor(MainWindowConfig.getTextColor());
+        login.setBackgroundColor(MainWindowConfig.getFormColor());
 
         password = new CustomLoginEditText(context);
         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -76,14 +79,15 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         password.setHint(PASSWORD_TITLE);
         userName.setHint(USER_NAME_TITLE);
 
-        checkBoxPlusButton.setLayoutParams(new LayoutParams(getFormWidth(), getFormHeight()));
+        checkBoxPlusButton.setLayoutParams(
+                new LayoutParams(MainWindowConfig.getFormWidth(), MainWindowConfig.getFormHeight()));
         checkBoxPlusButton.addView(saveMe);
         checkBoxPlusButton.addView(login);
 
         super.addView(userName);
-        super.addView(new TransparentHorizontalLine(context, getLinesTransparentHeight()));
+        super.addView(new TransparentHorizontalLine(context, MainWindowConfig.getLinesTransparentHeight()));
         super.addView(password);
-        super.addView(new TransparentHorizontalLine(context, getLinesTransparentHeight()));
+        super.addView(new TransparentHorizontalLine(context, MainWindowConfig.getLinesTransparentHeight()));
         super.addView(checkBoxPlusButton);
 
         login.setOnTouchListener(this);
@@ -189,26 +193,27 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void setButtonInPressedColor() {
-        login.setBackgroundColor(getButtonPressColor());
+        login.setBackgroundColor(MainWindowConfig.getButtonPressColor());
     }
 
     private void setButtonInUpColor() {
-        login.setBackgroundColor(getFormColor());
+        login.setBackgroundColor(MainWindowConfig.getFormColor());
     }
 
     private class CustomLoginEditText extends EditText {
 
         public CustomLoginEditText(Context context) {
             super(context);
-            super.setLayoutParams(new LayoutParams(getFormWidth(), getFormHeight()));
-            super.setBackgroundColor(getFormColor());
-            super.setTextColor(GlobalConfig.MainWindowConfig.getTextColor());
+            super.setLayoutParams(
+                    new LayoutParams(MainWindowConfig.getFormWidth(), MainWindowConfig.getFormHeight()));
+            super.setBackgroundColor(MainWindowConfig.getFormColor());
+            super.setTextColor(MainWindowConfig.getTextColor());
             super.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
             super.setText(GlobalConfig.EMPTY_STRING);
             super.setGravity(Gravity.CENTER_VERTICAL);
             super.setTypeface(Typeface.SERIF);
             super.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);
-            super.setHintTextColor(GlobalConfig.MainWindowConfig.getTextColor());
+            super.setHintTextColor(MainWindowConfig.getTextColor());
         }
     }
 

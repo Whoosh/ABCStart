@@ -6,15 +6,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.example.First_prj.ForAllCode.Configs.MainMenuConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 import com.example.First_prj.JavaServer.MightInfo;
 import com.example.First_prj.Journal.MainJournalActivityStarter;
 
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainMenuConfig.*;
 
 public class MainMenu extends LinearLayout implements View.OnTouchListener {
 //
@@ -28,7 +28,7 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
         super(context);
         super.setOrientation(VERTICAL);
         this.context = context;
-        super.setBackgroundColor(getBackgroundColor());
+        super.setBackgroundColor(MainMenuConfig.getBackgroundColor());
 
         LinearLayout scrollableLayout = new LinearLayout(context);
 
@@ -95,10 +95,10 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
         LinearLayout headLayout = new LinearLayout(context);
         headLayout.addView(new IconSetter(context, android.R.drawable.ic_menu_agenda));
         headLayout.addView(new SerifTextView(context, MENU_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
-        headLayout.setBackgroundColor(getMenuElementColor());
+        headLayout.setBackgroundColor(MainMenuConfig.getMenuElementColor());
         super.addView(headLayout);
         super.addView(GlobalConfig.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
+        super.addView(new TransparentHorizontalLine(context, MainMenuConfig.getTransparentViewHeight()));
     }
 
     @Override
@@ -126,12 +126,13 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
             itemTextIcon.addView(new IconSetter(context, android.R.drawable.ic_media_play));
             itemTextIcon.addView(textView);
 
-            super.setBackgroundColor(getMenuElementColor());
+            super.setBackgroundColor(MainMenuConfig.getMenuElementColor());
             super.setOrientation(VERTICAL);
-            super.addView(getEndStartLineHorizontalLine(context));
+            super.addView(MainMenuConfig.getEndStartLineHorizontalLine(context));
             super.addView(itemTextIcon);
-            super.addView(getEndStartLineHorizontalLine(context));
-            super.addView(new HorizontalLine(context, getBackgroundColor(), getTransparentViewHeight()));
+            super.addView(MainMenuConfig.getEndStartLineHorizontalLine(context));
+            super.addView(new HorizontalLine(context, MainMenuConfig.getBackgroundColor()
+                    , MainMenuConfig.getTransparentViewHeight()));
         }
 
         public String getStringText() {
@@ -139,11 +140,11 @@ public class MainMenu extends LinearLayout implements View.OnTouchListener {
         }
 
         public void setBlinkedColor() {
-            itemTextIcon.setBackgroundColor(getButtonPressColor());
+            itemTextIcon.setBackgroundColor(MainMenuConfig.getButtonPressColor());
         }
 
         public void setBlinkedColorBack() {
-            itemTextIcon.setBackgroundColor(getButtonBackColor());
+            itemTextIcon.setBackgroundColor(MainMenuConfig.getButtonBackColor());
         }
     }
 }

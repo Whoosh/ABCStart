@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.view.Gravity;
 import android.widget.TextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 
-import static com.example.First_prj.ForAllCode.GlobalConfig.getSerifTextColor;
+import static com.example.First_prj.ForAllCode.Configs.GlobalConfig.getSerifTextColor;
 //
 
 public class SerifTextView extends TextView {
