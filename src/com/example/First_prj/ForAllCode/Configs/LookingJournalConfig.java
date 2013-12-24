@@ -18,6 +18,7 @@ public abstract class LookingJournalConfig {
 
     private static int backgroundColor;
     private static int separateLineColor;
+    private static int selectedDateColor;
 
 
     public static void setDefaultElementSize() {
@@ -30,11 +31,13 @@ public abstract class LookingJournalConfig {
     public static void setMatrixThereColors() {
         backgroundColor = Color.argb(100, 1, 81, 90);
         separateLineColor = Color.CYAN;
+        selectedDateColor = Color.GREEN;
     }
 
     public static void setNormalThereColors() {
         backgroundColor = Color.TRANSPARENT;
         separateLineColor = Color.BLACK;
+        selectedDateColor = Color.LTGRAY;
     }
 
 
@@ -75,5 +78,9 @@ public abstract class LookingJournalConfig {
 
     public static int getDateSelectorWidth(Context context){
         return getStudentListElementsWight(context);
+    }
+
+    public static int getPresedDateColor() {
+        return selectedDateColor;
     }
 }
