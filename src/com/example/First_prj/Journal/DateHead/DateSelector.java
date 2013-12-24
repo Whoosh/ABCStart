@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
-import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.ForAllCode.Month;
 
 import java.util.Date;
@@ -18,16 +18,21 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
 
     private DateElement[] dateElements;
     private Context context;
-    private String currentSelectedDate = GlobalConfig.EMPTY_STRING;
-    private int oldPosition;
+    private String currentSelectedDate;
+    private int oldPositionOnScreen;
     private int indexOfSelectedDate = -GlobalConfig.ONE;
     private int monthCounter;
 
     private Runnable movingOffsetAction;
 
     private static final char START_VIEW_YEAR = 2013;
-    private static final byte START_YEAR_DATE = 113;
+    private static final byte START_YEAR = 113;
     private static final byte MONTH_IN_THE_YEAR = 12;
+
+    private int currentYear;
+    private int currentMonth;
+    private final int countOfDateElements;
+    private final byte monthOffsetSize = 3; // 2 даты в перёдт и +1, потому что с 0.
 
     public DateSelector(Context context) {
         super(context);
@@ -38,56 +43,58 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
                 LookingJournalConfig.getDateSelectorWidth(context),
                 LookingJournalConfig.getDateGroupHeight()));
 
+        Date currentDate = new Date();
+        currentMonth = currentDate.getMonth();
+        currentYear = currentDate.getYear();
+
+        countOfDateElements = (currentYear - START_YEAR) * MONTH_IN_THE_YEAR + currentMonth + monthOffsetSize;
+
         setDateElementsToTheView();
+
         if (indexOfSelectedDate == -GlobalConfig.ONE) refreshFocusAndState();
         for (DateElement dateElement : dateElements) dateElement.setOnClickListener(this);
     }
 
-    private void setCurrentDateOnFocus() {
-        // -1 потому что с 0. -3 потому, что +2 даты вперёд.
-        indexOfSelectedDate = monthCounter - 3;
-        dateElements[indexOfSelectedDate].setBackgroundColor(Color.DKGRAY);
-        currentSelectedDate = dateElements[indexOfSelectedDate].getYear()
-                + " " + dateElements[indexOfSelectedDate].getMonth();
-        oldPosition = (((new Date().getYear() - START_YEAR_DATE) * MONTH_IN_THE_YEAR) + new Date().
-                getMonth()) * dateElements[0].getDefaultWidth();
-    }
-
 
     private void setDateElementsToTheView() {
-        // 113 формат даты с 1900 года.
-        Date currentDate = new Date();
-        final byte someMonthUpCount = 3;
-        monthCounter = 0;
-        final int countMonth = (currentDate.getYear() - START_YEAR_DATE) *
-                MONTH_IN_THE_YEAR + currentDate.getMonth() + someMonthUpCount;
-
-        dateElements = new DateElement[countMonth];
-
-        for (int i = START_YEAR_DATE; i < currentDate.getYear(); i++) // до текущего года + месяцы
-            for (int j = 0; j < MONTH_IN_THE_YEAR; j++, monthCounter++)
-                dateElements[monthCounter] = new DateElement(context, monthCounter);
-
-        // оставшиеся месяцы в текущем году + 2 на перёд
-        for (int i = 0; i < currentDate.getMonth() + someMonthUpCount; i++, monthCounter++)
-            dateElements[monthCounter] = new DateElement(context, monthCounter);
-
-        LinearLayout viewDate = new LinearLayout(context);
-        viewDate.setGravity(Gravity.CENTER);
-
+        initDateElements();
+        LinearLayout dateView = new LinearLayout(context);
+        dateView.setGravity(Gravity.CENTER);
         for (DateElement element : dateElements) {
-            viewDate.addView(element);
-            viewDate.addView(new VerticalLine(context, Color.DKGRAY));
+            dateView.addView(element);
+            dateView.addView(new VerticalLine(context, Color.DKGRAY));
         }
-
-        super.addView(viewDate);
+        super.addView(dateView);
     }
 
-    private void setFocusToDate() {
+    private void initDateElements() {
+        dateElements = new DateElement[countOfDateElements];
+        // месяца за все годы
+        for (int i = START_YEAR; i < currentYear; i++)
+            for (int j = 0; j < MONTH_IN_THE_YEAR; j++, monthCounter++)
+                dateElements[monthCounter] = new DateElement(context, monthCounter);
+        // оставшиеся месяцы в текущем году + 2 на перёд
+        for (int i = 0; i < currentMonth + monthOffsetSize; i++, monthCounter++)
+            dateElements[monthCounter] = new DateElement(context, monthCounter);
+    }
+
+    private void setCurrentDateOnFocus() {
+        indexOfSelectedDate = monthCounter - monthOffsetSize;
+        setSelectedElementPressedDown(dateElements[indexOfSelectedDate]);
+        setCurrentSelectedDate(dateElements[indexOfSelectedDate]);
+        mathCurrentXPosition();
+    }
+
+    private void mathCurrentXPosition() {
+        oldPositionOnScreen = ((currentYear - START_YEAR) * MONTH_IN_THE_YEAR + currentMonth) *
+                LookingJournalConfig.getDateElementWith();
+    }
+
+    private void moveFocusToCurrentsSelectableDate() {
 
         movingOffsetAction = new Runnable() {
             public void run() {
-                scrollTo(oldPosition, 0);
+                scrollTo(oldPositionOnScreen, 0);
             }
         };
 
@@ -106,16 +113,44 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
 
         for (int i = 0; i < dateElements.length; i++)
             if (view.equals(dateElements[i])) {
-                for (DateElement dateElement : dateElements) dateElement.setBackgroundColor(Color.TRANSPARENT);
-                dateElements[i].setBackgroundColor(Color.DKGRAY);
                 indexOfSelectedDate = i;
-                currentSelectedDate = dateElements[i].getYear() + " " + dateElements[i].getMonth();
+                setAllDateElementsPressedUP();
+                setCurrentSelectedDate(dateElements[i]);
+                setSelectedElementPressedDown(dateElements[i]);
                 break;
             }
     }
 
+    private void setCurrentSelectedDate(DateElement dateElement) {
+        currentSelectedDate = dateElement.getYear() + " " + dateElement.getMonth();
+    }
+
+
+    public void refreshFocusAndState() {
+        setAllDateElementsPressedUP();
+        if (indexOfSelectedDate == -GlobalConfig.ONE) setCurrentDateOnFocus();
+        setSelectedElementPressedDown(dateElements[indexOfSelectedDate]);
+        moveFocusToCurrentsSelectableDate();
+    }
+
+    private void setSelectedElementPressedDown(DateElement dateElement) {
+        dateElement.setBackgroundColor(LookingJournalConfig.getPresedDateColor());
+    }
+
+    private void setAllDateElementsPressedUP() {
+        for (DateElement dateElement : dateElements) dateElement.setBackgroundColor(Color.TRANSPARENT);
+    }
+
+    public int getOldDatePosition() {
+        return indexOfSelectedDate * LookingJournalConfig.getDateElementWith();
+    }
+
     public String getSelectedDate() {
         return currentSelectedDate;
+    }
+
+    public int getIndexOfCurrentSelectedDate() {
+        return indexOfSelectedDate;
     }
 
     public void setOldSelectedDate(String oldSelectedDate) {
@@ -123,65 +158,45 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     }
 
     public void setOldDatePosition(int oldPosition) {
-        this.oldPosition = oldPosition;
-    }
-
-    public int getOldDatePosition() {
-        return indexOfSelectedDate * dateElements[0].getDefaultWidth();
-    }
-
-    public int getIndexOfCurrentSelectedDate() {
-        return indexOfSelectedDate;
+        this.oldPositionOnScreen = oldPosition;
     }
 
     public void setIndexOfSelectedDate(int indexOfSelectedDate) {
         this.indexOfSelectedDate = indexOfSelectedDate;
     }
 
-    public void refreshFocusAndState() {
-        for (DateElement dateElement : dateElements) dateElement.setBackgroundColor(Color.TRANSPARENT);
-        if (indexOfSelectedDate == -GlobalConfig.ONE) setCurrentDateOnFocus();
-        dateElements[indexOfSelectedDate].setBackgroundColor(Color.DKGRAY);
-        setFocusToDate();
-    }
-
-
     private class DateElement extends LinearLayout {
 
-        private SerifTextView month;
-        private SerifTextView year;
+        private String month;
+        private String year;
 
         public DateElement(Context context, int numOfMonth) {
             super(context);
-            month = new SerifTextView(context, Month.getMonth(numOfMonth));
-            year = new SerifTextView(context, addDataYear(numOfMonth));
+
+            month = Month.getMonth(numOfMonth);
+            year = getDateYear(numOfMonth);
 
             super.setOrientation(VERTICAL);
             super.setGravity(Gravity.CENTER);
-            super.setLayoutParams(
-                    new LayoutParams(LookingJournalConfig.getDateElementWith(), ViewGroup.LayoutParams.FILL_PARENT));
-            super.addView(month);
+            super.setLayoutParams(new LayoutParams(
+                    LookingJournalConfig.getDateElementWith(),
+                    ViewGroup.LayoutParams.FILL_PARENT));
+            super.addView(new SerifTextView(context, month));
             super.addView(new BubbleHorizontalGradientLine(context));
-            super.addView(year);
+            super.addView(new SerifTextView(context, year));
         }
 
-        private String addDataYear(int numOfMonth) {
+        private String getDateYear(int numOfMonth) {
             return Integer.toString(START_VIEW_YEAR + numOfMonth / MONTH_IN_THE_YEAR, 10);
         }
 
         public String getYear() {
-            return year.getStringText();
+            return year;
         }
 
         public String getMonth() {
-            return month.getStringText();
+            return month;
         }
-
-        public int getDefaultWidth() {
-            return LookingJournalConfig.getDateElementWith();
-        }
-
-
     }
 
 }
