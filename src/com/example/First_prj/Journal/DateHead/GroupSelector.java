@@ -8,12 +8,12 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-import static com.example.First_prj.ForAllCode.GlobalConfig.LookingJournalConfig.*;
 
 //
 public class GroupSelector extends HorizontalScrollView implements View.OnClickListener {
@@ -26,7 +26,7 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
 
     public GroupSelector(Context context) {
         super(context);
-        super.setBackgroundColor(getBackgroundColor());
+        super.setBackgroundColor(LookingJournalConfig.getBackgroundColor());
         super.setHorizontalScrollBarEnabled(false);
         final LayoutParams groupElementParams = new LayoutParams(FILL_PARENT, FILL_PARENT);
 
@@ -35,7 +35,7 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
 
         super.setLayoutParams(new LayoutParams(
                 ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE))
-                        .getDefaultDisplay().getWidth() / 2, getDateGroupHeight()));
+                        .getDefaultDisplay().getWidth() / 2, LookingJournalConfig.getDateGroupHeight()));
 
         groups = new SerifTextView[GROUP_COUNT];
         // все группы с 113 по 463

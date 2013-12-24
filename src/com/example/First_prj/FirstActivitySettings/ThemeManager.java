@@ -7,14 +7,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import com.example.First_prj.ForAllCode.Configs.MainSettingsConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube;
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getFormsTextColor;
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getTransparentViewHeight;
 
 public class ThemeManager extends LinearLayout implements View.OnClickListener {
 //
@@ -45,7 +43,7 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
         super.setOrientation(VERTICAL);
         super.addView(new SerifTextView(context, Gravity.CENTER_VERTICAL, THEME_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
         super.addView(GlobalConfig.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
+        super.addView(new TransparentHorizontalLine(context, MainSettingsConfig.getTransparentViewHeight()));
         super.addView(new BubbleHorizontalGradientLine(context));
         super.addView(matrix);
         super.addView(new BubbleHorizontalGradientLine(context));
@@ -57,8 +55,8 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
         checkBox.setOnClickListener(this);
         checkBox.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
         checkBox.setTypeface(Typeface.SERIF);
-        checkBox.setTextColor(getFormsTextColor());
-        checkBox.setBackgroundDrawable(getCheckBoxOnWhiteBackgroundCube());
+        checkBox.setTextColor(MainSettingsConfig.getFormsTextColor());
+        checkBox.setBackgroundDrawable(MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube());
     }
 
     @Override

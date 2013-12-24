@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.MainSettingsConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.IconSetter;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
 import org.jetbrains.annotations.NotNull;
-
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getBackgroundColor;
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.getFormBackgroundColor;
 
 
 public class MainSettingsActivity extends Activity {
@@ -120,18 +118,18 @@ public class MainSettingsActivity extends Activity {
 
         headNonScrollElements.addView(new IconSetter(this, android.R.drawable.ic_menu_set_as));
         headNonScrollElements.addView(new SerifTextView(this, SETTINGS_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
-        headNonScrollElements.setBackgroundColor(getFormBackgroundColor());
+        headNonScrollElements.setBackgroundColor(MainSettingsConfig.getFormBackgroundColor());
 
         scrollableListForSettings.addView(proxyManager);
         scrollableListForSettings.addView(themeManager);
-        scrollableListForSettings.setBackgroundColor(getFormBackgroundColor());
+        scrollableListForSettings.setBackgroundColor(MainSettingsConfig.getFormBackgroundColor());
 
         scrollPackageForSettingsList.addView(scrollableListForSettings);
 
         headViewPlusScrollableListOfSettings.addView(headNonScrollElements);
         headViewPlusScrollableListOfSettings.addView(GlobalConfig.getHeaderLine(this));
         headViewPlusScrollableListOfSettings.addView(scrollPackageForSettingsList);
-        headViewPlusScrollableListOfSettings.setBackgroundColor(getBackgroundColor());
+        headViewPlusScrollableListOfSettings.setBackgroundColor(MainSettingsConfig.getBackgroundColor());
 
         setContentView(headViewPlusScrollableListOfSettings);
     }

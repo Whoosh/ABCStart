@@ -13,14 +13,14 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.MainSettingsConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.BubbleHorizontalGradientLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.TransparentHorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
-import com.example.First_prj.ForAllCode.GlobalConfig;
 
 import static android.widget.LinearLayout.LayoutParams.FILL_PARENT;
 import static android.widget.LinearLayout.LayoutParams.WRAP_CONTENT;
-import static com.example.First_prj.ForAllCode.GlobalConfig.MainSettingsConfig.*;
 
 public class ProxyManager extends LinearLayout implements View.OnClickListener {
 //
@@ -62,7 +62,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
         super.addView(new SerifTextView(context, PROXY_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
         super.addView(GlobalConfig.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
+        super.addView(new TransparentHorizontalLine(context, MainSettingsConfig.getTransparentViewHeight()));
         super.addView(new BubbleHorizontalGradientLine(context));
         initAddress();
         super.addView(addressLay);
@@ -70,7 +70,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
         initPort();
         super.addView(portLay);
         super.addView(new BubbleHorizontalGradientLine(context));
-        super.addView(new TransparentHorizontalLine(context, getTransparentViewHeight()));
+        super.addView(new TransparentHorizontalLine(context, MainSettingsConfig.getTransparentViewHeight()));
 
     }
 
@@ -165,7 +165,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
         };
 
         proxySet = new CheckBox(context);
-        proxySet.setBackgroundDrawable(getCheckBoxOnWhiteBackgroundCube());
+        proxySet.setBackgroundDrawable(MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube());
 
         addressLay = new LinearLayout(context);
         addressLay.addView(new SerifTextView(context, IP_TITLE));
@@ -302,8 +302,9 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
             super(context);
             super.setInputType(InputType.TYPE_CLASS_PHONE);
             super.setGravity(Gravity.CENTER);
-            super.setTextColor(getFormsTextColor());
-            super.setLayoutParams(new LayoutParams(getOctetWidth(), getOctetHeight()));
+            super.setTextColor(MainSettingsConfig.getFormsTextColor());
+            super.setLayoutParams(
+                    new LayoutParams(MainSettingsConfig.getOctetWidth(), MainSettingsConfig.getOctetHeight()));
             super.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
             super.setText(GlobalConfig.EMPTY_STRING);
             super.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxSymbolCount)});
@@ -311,7 +312,8 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
         }
 
         public void setPortLayParam() {
-            super.setLayoutParams(new LayoutParams(getPortWidth(), getPortHeight()));
+            super.setLayoutParams(
+                    new LayoutParams(MainSettingsConfig.getPortWidth(), MainSettingsConfig.getPortHeight()));
         }
     }
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 //

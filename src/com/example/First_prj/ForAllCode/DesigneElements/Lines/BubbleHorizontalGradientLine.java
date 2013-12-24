@@ -3,7 +3,7 @@ package com.example.First_prj.ForAllCode.DesigneElements.Lines;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 import com.example.First_prj.R;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;

@@ -1,6 +1,6 @@
 package com.example.First_prj.JavaServer;
 
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 

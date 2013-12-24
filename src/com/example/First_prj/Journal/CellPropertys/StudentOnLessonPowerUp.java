@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.example.First_prj.ForAllCode.GlobalConfig;
+import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
 
 // высокая аткивность студента
 public class StudentOnLessonPowerUp extends View {

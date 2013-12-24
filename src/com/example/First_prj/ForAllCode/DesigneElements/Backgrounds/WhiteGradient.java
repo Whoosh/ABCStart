@@ -6,7 +6,7 @@ import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 
 public class WhiteGradient extends Drawable {
-//
+
     public WhiteGradient(){
 
     }
