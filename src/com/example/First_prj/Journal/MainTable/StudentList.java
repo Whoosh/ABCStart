@@ -21,6 +21,7 @@ public class StudentList extends LinearLayout {
                         LookingJournalConfig.getStudentListElementsWight(context),
                         ViewGroup.LayoutParams.WRAP_CONTENT));
         addStudents(context, students);
+        super.setBackgroundColor(LookingJournalConfig.getStudentListBackgroundColor());
     }
 
     public void addStudents(Context context, ArrayList<String> students) {

@@ -1,6 +1,7 @@
 package com.example.First_prj.Journal.MainTable;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
@@ -18,22 +19,33 @@ public class DateList extends HorizontalScrollView {
         super(context);
         super.setBackgroundColor(LookingJournalConfig.getBackgroundColor());
         LinearLayout elements = new LinearLayout(context);
-        for (String date : dates) {
-            elements.addView(new DateElement(context, date));
+        elements.setBackgroundColor(LookingJournalConfig.getDateListBackgroundColor());
+        for (int i = 0; i < dates.size(); i++) {
+            elements.addView(new DateElement(context, dates.get(i), i));
             elements.addView(new VerticalLine(context, LookingJournalConfig.getSeparateLineColor()));
         }
         super.addView(elements);
     }
 
 
-    private class DateElement extends FrameLayout {
+    private class DateElement extends FrameLayout implements View.OnClickListener {
 
-        public DateElement(Context context, String date) {
+        private final int indexOfDatePosition;
+
+        public DateElement(Context context, String date, int index) {
             super(context);
+            indexOfDatePosition = index;
             super.setLayoutParams(new ViewGroup.LayoutParams(
                     LookingJournalConfig.getDateCellSize(),
                     LookingJournalConfig.getDateCellSize()));
+            super.setOnClickListener(this);
             super.addView(new SerifTextView(context, date, GlobalConfig.DEFAULT_TEXT_SIZE));
+        }
+
+        @Override
+        public void onClick(View view) {
+            //TODO
+            System.out.println(indexOfDatePosition);
         }
     }
 }

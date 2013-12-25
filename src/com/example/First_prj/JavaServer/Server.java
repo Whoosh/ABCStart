@@ -1,6 +1,7 @@
 package com.example.First_prj.JavaServer;
 
 import com.example.First_prj.ForAllCode.Configs.GlobalConfig;
+import com.example.First_prj.Journal.LookingJournalActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,8 +9,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.*;
+
 public abstract class Server {
 
     private static final String DEFAULT_HOST = "fspo.segrys.ru";
@@ -168,6 +171,13 @@ public abstract class Server {
         TOKEN = GlobalConfig.EMPTY_STRING;
         executorService = null;
     }
+
+    public static void refreshStateOfLookingJournal() {
+        LookingJournalActivity.lessonSelector.setDefaultText();
+        // TODO, запрос со списком предметов
+        LookingJournalActivity.listOfLessonsNames = new ArrayList<String>();
+    }
+
 
     private static class Query implements Callable<String> {
 

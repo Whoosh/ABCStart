@@ -14,30 +14,37 @@ public abstract class LookingJournalConfig {
     private static byte groupDateSliderHeight;
     private static byte studentListElementHeight;
     private static byte dateCellSize;
+    private static byte lessonSelectorHeight;
 
 
     private static int backgroundColor;
     private static int separateLineColor;
     private static int selectedDateColor;
-
+    private static int dateSelectorBackgroundColor;
+    private static int dateListBackgroundColor;
 
     public static void setDefaultElementSize() {
         dateElementWidth = 100;
         groupDateSliderHeight = 50;
         studentListElementHeight = 50;
         dateCellSize = 50;
+        lessonSelectorHeight = 50;
     }
 
     public static void setMatrixThereColors() {
         backgroundColor = Color.argb(100, 1, 81, 90);
         separateLineColor = Color.CYAN;
         selectedDateColor = Color.GREEN;
+        dateSelectorBackgroundColor = Color.TRANSPARENT;
+        dateListBackgroundColor = Color.TRANSPARENT;
     }
 
     public static void setNormalThereColors() {
         backgroundColor = Color.TRANSPARENT;
         separateLineColor = Color.BLACK;
         selectedDateColor = Color.LTGRAY;
+        dateSelectorBackgroundColor = Color.parseColor("#E6FFF3"); // лаванда лол
+        dateListBackgroundColor = Color.LTGRAY;
     }
 
 
@@ -76,11 +83,44 @@ public abstract class LookingJournalConfig {
         return (int) (dateCellSize * GlobalConfig.getPixelDensity());
     }
 
-    public static int getDateSelectorWidth(Context context){
+    public static int getDateSelectorWidth(Context context) {
         return getStudentListElementsWight(context);
     }
 
-    public static int getPresedDateColor() {
+    public static int getPressedDateColor() {
         return selectedDateColor;
     }
+
+    public static int getGroupSelectorWidth(Context context) {
+        return getDateSelectorWidth(context);
+    }
+
+    public static int getPressedGroupColor() {
+        return getPressedDateColor();
+    }
+
+    public static int getDateSelectorBackgroundColor() {
+        return dateSelectorBackgroundColor;
+    }
+
+    public static int getGroupSelectorBackgroundColor() {
+        return getDateSelectorBackgroundColor();
+    }
+
+    public static int getDateListBackgroundColor() {
+        return dateListBackgroundColor;
+    }
+
+    public static int getLessonSelectorHeight() {
+        return (int) (lessonSelectorHeight * GlobalConfig.getPixelDensity());
+    }
+
+    public static int getLessonSelectorWidth(Context context) {
+        return getDateSelectorWidth(context);
+    }
+
+    public static int getStudentListBackgroundColor(){
+        return getGroupSelectorBackgroundColor();
+    }
+
 }

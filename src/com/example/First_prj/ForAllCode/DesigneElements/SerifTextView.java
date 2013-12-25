@@ -46,8 +46,9 @@ public class SerifTextView extends TextView {
 
 
     public int getCurrentWight() {
-        final byte downCo = 5;
-        return ((text.length() - GlobalConfig.ONE) * (textSize - textSize / downCo));
+        //final byte downCo = 5;
+        //return ((text.length() - GlobalConfig.ONE) * (textSize - textSize / downCo));
+        return super.getWidth();
     }
 
     public String getStringText() {

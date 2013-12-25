@@ -8,6 +8,7 @@ import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
+import com.example.First_prj.JavaServer.Server;
 import com.example.First_prj.Journal.DateHead.DateSelector;
 import com.example.First_prj.Journal.DateHead.GroupSelector;
 import com.example.First_prj.Journal.DateHead.LessonSelector;
@@ -18,28 +19,33 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-//
-public class LookingJournalActivity extends Activity implements View.OnClickListener, View.OnTouchListener {
+public class LookingJournalActivity extends Activity implements View.OnTouchListener, View.OnClickListener {
 
-    private final String DATA_KEY = "Date";
-    private final String INDEX_OF_DATA_KEY = "IndexOfDate";
-    private final String SCROLL_KEY = "Scroll Position";
+    private final String DATE_KEY = "IndexOfDate";
     private final String GROUP_KEY = "Group";
 
-    private ActionMode mActionMode;
-    private LinearLayout mainLay;
     private GroupSelector groupSelector;
     private DateSelector dateSelector;
-    private LessonSelector lessonSelector;
     private DateList dateList;
-    private TableWithMarks tableWithMarks; // TODO
+    private TableWithMarks tableWithMarks;
+
+    private LinearLayout mainLay;
+
+    public static ArrayList<String> listOfLessonsNames;
+    public static LessonSelector lessonSelector;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initElements();
         setContentView(mainLay);
-
         lessonSelector.setOnClickListener(this);
+        Server.refreshStateOfLookingJournal();
+    }
+
+    @Override
+    protected void onDestroy() {
+        setAllStaticFieldsIsNull();
+        super.onDestroy();
     }
 
     private void initElements() {
@@ -48,7 +54,6 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         LinearLayout dateListPlusLessonSelector = new LinearLayout(this);
         LinearLayout studentsPlusTableLayout = new LinearLayout(this);
         ScrollView studentsPlusTableView = new ScrollView(this);
-        studentsPlusTableView.requestDisallowInterceptTouchEvent(false);
 
         groupSelector = new GroupSelector(this);
         dateSelector = new DateSelector(this);
@@ -80,7 +85,6 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         datePlusGroup.addView(dateSelector);
 
         mainLay.setBackgroundDrawable(LookingJournalConfig.getBackground(this));
-
         mainLay.addView(datePlusGroup);
         mainLay.addView(new HorizontalLine(this, LookingJournalConfig.getSeparateLineColor()));
         mainLay.addView(dateListPlusLessonSelector);
@@ -91,33 +95,6 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
         tableWithMarks.setOnTouchListener(this);
     }
 
-    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            for (int i = 0; i < 100; i++) {
-                //@TODO тестовый вариант.
-                menu.add("Список предметов");
-            }
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            mode.finish();
-            return true;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            mActionMode = null;
-        }
-    };
 
     @Override
     protected void onSaveInstanceState(@NotNull Bundle outState) {
@@ -133,38 +110,20 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
 
     private void saveStateOnRotateEvent(Bundle outState) {
         // сохранение параметров выбора даты
-        outState.putString(DATA_KEY, dateSelector.getSelectedDate());
-        outState.putInt(INDEX_OF_DATA_KEY, dateSelector.getIndexOfCurrentSelectedDate());
-        outState.putInt(SCROLL_KEY, dateSelector.getOldDatePosition());
+        outState.putInt(DATE_KEY, dateSelector.getIndexOfSelectedDate());
 
         // сохранение параметров выбора группы
-        outState.putString(GROUP_KEY, groupSelector.getSelectedGroup());
+        outState.putByte(GROUP_KEY, groupSelector.getOldFocusedIndex());
     }
 
     private void loadStateOnRotateEvent(Bundle savedInstanceState) {
         // загрузка параметров выбора даты
-        dateSelector.setOldSelectedDate(savedInstanceState.getString(DATA_KEY));
-        dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(INDEX_OF_DATA_KEY));
-        dateSelector.setOldDatePosition(savedInstanceState.getInt(SCROLL_KEY));
-        dateSelector.refreshFocusAndState(); // обновили данные.
+        dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(DATE_KEY));
+        dateSelector.refreshVisualState();
 
         // загрузка параметров выбора группы
-        groupSelector.setOldSelectedGroup(savedInstanceState.getString(GROUP_KEY));
-        groupSelector.refreshStateOfVisualPosition();
-    }
-
-    public void contextMenuStarter(View element) {
-        registerForContextMenu(element);
-        openContextMenu(element);
-        unregisterForContextMenu(element);
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view.equals(lessonSelector)) {
-            mActionMode = startActionMode(mActionModeCallback);
-            view.setSelected(true);
-        }
+        groupSelector.setOldFocusedIndex(savedInstanceState.getByte(GROUP_KEY));
+        groupSelector.refreshVisualState();
     }
 
     @Override
@@ -181,5 +140,53 @@ public class LookingJournalActivity extends Activity implements View.OnClickList
 
         return true;
     }
+
+    @Override
+    public void onClick(View view) {
+        if (view.equals(lessonSelector))
+            startActionMode(new LessonsList(new ArrayList<String>()));
+    }
+
+
+    public static void setAllStaticFieldsIsNull(){
+        lessonSelector = null;
+        listOfLessonsNames = null;
+    }
+
+
+    private class LessonsList implements ActionMode.Callback {
+
+        public LessonsList(ArrayList<String> lessonsList) {
+
+        }
+
+        @Override
+        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+            for (int i = 0; i < 100; i++) {
+                //@TODO тестовый вариант.
+                menu.add("Список предметов");
+            }
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+            lessonSelector.setLessonName("Hello");
+            actionMode.finish();
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode actionMode) {
+
+        }
+    }
+
+
 }
 
