@@ -8,6 +8,7 @@ import android.widget.ScrollView;
 import com.example.First_prj.ForAllCode.Configs.LookingJournalConfig;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.HorizontalLine;
 import com.example.First_prj.ForAllCode.DesigneElements.Lines.VerticalLine;
+import com.example.First_prj.ForAllCode.DesigneElements.SerifTextView;
 import com.example.First_prj.JavaServer.Server;
 import com.example.First_prj.Journal.DateHead.DateSelector;
 import com.example.First_prj.Journal.DateHead.GroupSelector;
@@ -53,7 +54,7 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         LinearLayout datePlusGroup = new LinearLayout(this);
         LinearLayout dateListPlusLessonSelector = new LinearLayout(this);
         LinearLayout studentsPlusTableLayout = new LinearLayout(this);
-        ScrollView studentsPlusTableView = new ScrollView(this);
+        ScrollView studentsPlusTable = new ScrollView(this);
 
         groupSelector = new GroupSelector(this);
         dateSelector = new DateSelector(this);
@@ -61,20 +62,22 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
 
         ArrayList<String> dates = new ArrayList<String>();
         for (int i = 0; i < 40; i++) dates.add(String.valueOf(i));
-        dateList = new DateList(this, dates); // @TODO
 
         ArrayList<String> students = new ArrayList<String>();
         for (int i = 0; i < 30; i++) students.add("Какойто студент С.С");
         StudentList studentList = new StudentList(this, students);
 
-        tableWithMarks = new TableWithMarks(this, students.size(), dates.size()); // TODO
+        dateList = new DateList(this, dates); // @TODO
+        dateList.setOnTouchListener(this);
 
-        mainLay.setOrientation(LinearLayout.VERTICAL);
+        tableWithMarks = new TableWithMarks(this, students.size(), dates.size()); // TODO
+        tableWithMarks.setOnTouchListener(this);
+
         studentsPlusTableLayout.addView(studentList);
         studentsPlusTableLayout.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         studentsPlusTableLayout.addView(tableWithMarks);
 
-        studentsPlusTableView.addView(studentsPlusTableLayout);
+        studentsPlusTable.addView(studentsPlusTableLayout);
 
         dateListPlusLessonSelector.addView(lessonSelector);
         dateListPlusLessonSelector.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
@@ -84,15 +87,13 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         datePlusGroup.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         datePlusGroup.addView(dateSelector);
 
+        mainLay.setOrientation(LinearLayout.VERTICAL);
         mainLay.setBackgroundDrawable(LookingJournalConfig.getBackground(this));
         mainLay.addView(datePlusGroup);
         mainLay.addView(new HorizontalLine(this, LookingJournalConfig.getSeparateLineColor()));
         mainLay.addView(dateListPlusLessonSelector);
         mainLay.addView(new HorizontalLine(this, LookingJournalConfig.getSeparateLineColor()));
-        mainLay.addView(studentsPlusTableView);
-
-        dateList.setOnTouchListener(this);
-        tableWithMarks.setOnTouchListener(this);
+        mainLay.addView(studentsPlusTable);
     }
 
 
@@ -164,7 +165,7 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
             for (int i = 0; i < 100; i++) {
                 //@TODO тестовый вариант.
-                menu.add("Список предметов");
+                menu.add("Список предметов").setActionView(new SerifTextView(getBaseContext(),"HELLLO",10));
             }
             return true;
         }
@@ -186,7 +187,6 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
 
         }
     }
-
 
 }
 
