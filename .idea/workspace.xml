@@ -12,16 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/DateList.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/DateList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/First_prj/TestCode/Old/ProxyManagerOld.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/LookingJournalConfig.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/LookingJournalConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/DesigneElements/SerifTextView.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/DesigneElements/SerifTextView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Server.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/StudentList.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/StudentList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManager.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelector.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelector.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\TestCode\Matrix\SurfaceBackground.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/TestCode/Old/SurfaceBackground.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\com\example\First_prj\TestCode\Matrix\Symbols.java" afterPath="$PROJECT_DIR$/src/com/example/First_prj/TestCode/Old/Symbols.java" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
     <ignored path="First_prj.iws" />
@@ -86,26 +82,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LookingJournalConfig.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LookingJournalConfig.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/LookingJournalConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="30" selection-start="2970" selection-end="2970" vertical-scroll-proportion="0.36614174" vertical-offset="1191" max-vertical-offset="2023">
-              <folding>
-                <element signature="e#2938#2939#0" expanded="true" />
-                <element signature="e#2978#2979#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DateSelector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3043">
-              <folding>
-                <element signature="e#4652#4653#0" expanded="true" />
-                <element signature="e#4694#4695#0" expanded="true" />
-              </folding>
+            <state line="121" column="54" selection-start="3817" selection-end="3817" vertical-scroll-proportion="0.0" vertical-offset="2057" max-vertical-offset="2244">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,21 +94,23 @@
       <file leaf-file-name="LookingJournalActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="20" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.0" vertical-offset="101" max-vertical-offset="3366">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2317#2325#0" expanded="true" />
-                <element signature="e#2502#2510#0" expanded="true" />
-              </folding>
+            <state line="172" column="17" selection-start="6580" selection-end="6580" vertical-scroll-proportion="0.0" vertical-offset="2924" max-vertical-offset="3366">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableWithMarks.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/TableWithMarks.java">
+      <file leaf-file-name="ProxyManager.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="48" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-              <folding />
+            <state line="186" column="24" selection-start="7044" selection-end="7044" vertical-scroll-proportion="4.0247116" vertical-offset="396" max-vertical-offset="3706">
+              <folding>
+                <element signature="class#IPStartFromZeroException#0;class#ProxyManager#0" expanded="false" />
+                <element signature="class#FormIsEmptyException#0;class#ProxyManager#0" expanded="false" />
+                <element signature="class#PortWatcher#0;class#ProxyManager#0" expanded="false" />
+                <element signature="class#AddressWatcher#0;class#ProxyManager#0" expanded="false" />
+                <element signature="class#ProxyEditText#0;class#ProxyManager#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,7 +118,7 @@
       <file leaf-file-name="GroupSelector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="56" selection-start="3674" selection-end="3674" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1802">
+            <state line="80" column="8" selection-start="2905" selection-end="2905" vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1802">
               <folding />
             </state>
           </provider>
@@ -154,8 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/DesigneElements/Lines/BlackToWhiteHeaderGradientLine.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/lessonSelector.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Month2.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Month.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/GlobalConfig.java" />
@@ -186,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ThemeManager.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/DesigneElements/Backgrounds/CheckBoxRim.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/MainSettingsActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManager.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/MainMenu.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/GlobalConfig.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/MainMenuConfig.java" />
@@ -205,6 +185,9 @@
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java" />
         <option value="$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManagerOld.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/FormIsEmptyException.java" />
+        <option value="$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManager.java" />
       </list>
     </option>
   </component>
@@ -637,7 +620,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -693,7 +675,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Matrix" />
+              <option name="myItemId" value="Old" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -760,6 +742,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Journal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="First_prj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ABCStart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="First_prj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Journal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainTable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -919,6 +927,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -968,6 +977,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.First_prj.FirstActivitySettings" />
       <recent name="com.example.First_prj.ForAllCode.Gradients" />
       <recent name="nativeLibs" />
     </key>
@@ -977,6 +987,9 @@
       <recent name="F:\MainBranch\ABCStart\src\com\example\First_prj\Journal\DateHead" />
       <recent name="F:\MainBranch\ABCStart\libs" />
       <recent name="F:\AndroidKoD\AndroidKoD\First_prj" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.First_prj.FirstActivitySettings" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\MainBranch\ABCStart\res\drawable" />
@@ -1306,7 +1319,9 @@
       <workItem from="1387738268527" duration="4549000" />
       <workItem from="1387789194405" duration="56305000" />
       <workItem from="1387890627873" duration="21253000" />
-      <workItem from="1387976114384" duration="29143000" />
+      <workItem from="1387976114384" duration="36828000" />
+      <workItem from="1388022309668" duration="5453000" />
+      <workItem from="1388063423960" duration="9428000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1388,11 +1403,15 @@
       <created>1387851748025</created>
       <updated>1387851748025</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Group and Date selector,s refactoring">
+      <created>1388008690882</created>
+      <updated>1388008690882</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1225281000" />
+    <option name="totallyTimeSpent" value="1247847000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="776" extended-state="6" />
@@ -1420,7 +1439,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25622255" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21585903" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07048458" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22693998" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
@@ -1460,7 +1479,8 @@
     <MESSAGE value="Cells and Table refactoring" />
     <MESSAGE value="Some refactoring" />
     <MESSAGE value="Some refactoring&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some refactoring&#10;" />
+    <MESSAGE value="Group and Date selector,s refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Group and Date selector,s refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1482,11 +1502,6 @@
             <element signature="imports" expanded="false" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/TestCode/Matrix/SurfaceBackground.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="348" selection-end="348" vertical-scroll-proportion="-3.501094" vertical-offset="1668" max-vertical-offset="2125" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/MenuAndSwitchers/FunctionsIDAndNames.java">
@@ -1552,13 +1567,6 @@
         <state line="9" column="0" selection-start="252" selection-end="252" vertical-scroll-proportion="0.1328125" vertical-offset="0" max-vertical-offset="512" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Month.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="62" selection-end="62" vertical-scroll-proportion="0.06692913" vertical-offset="0" max-vertical-offset="508">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/FirstActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="9" selection-start="3279" selection-end="3279" vertical-scroll-proportion="1.8740157" vertical-offset="714" max-vertical-offset="2108">
@@ -1593,34 +1601,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/CustomViewElements/EvaluationCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="0" selection-start="3813" selection-end="3813" vertical-scroll-proportion="4.1648107" vertical-offset="0" max-vertical-offset="2159">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="114" column="0" selection-start="3813" selection-end="3813" vertical-scroll-proportion="4.1648107" vertical-offset="0" max-vertical-offset="2159" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/DesigneElements/Backgrounds/LiteMatrixDraw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="4" selection-start="348" selection-end="348" vertical-scroll-proportion="0.13178295" vertical-offset="0" max-vertical-offset="1479">
-          <folding />
-        </state>
+        <state line="11" column="4" selection-start="348" selection-end="348" vertical-scroll-proportion="0.13178295" vertical-offset="0" max-vertical-offset="1479" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/DesigneElements/Backgrounds/WhiteGradient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="4" selection-start="265" selection-end="265" vertical-scroll-proportion="0.13178295" vertical-offset="0" max-vertical-offset="645">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="52" selection-start="8896" selection-end="8896" vertical-scroll-proportion="0.57227725" vertical-offset="3366" max-vertical-offset="3927">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="8" column="4" selection-start="265" selection-end="265" vertical-scroll-proportion="0.13178295" vertical-offset="0" max-vertical-offset="645" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/CellPropertys/StudentOnLesson.java">
@@ -1651,13 +1642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="306" column="20" selection-start="11676" selection-end="11676" vertical-scroll-proportion="10.730513" vertical-offset="44" max-vertical-offset="5185">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/MainSettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="131" column="83" selection-start="5292" selection-end="5292" vertical-scroll-proportion="4.5812917" vertical-offset="0" max-vertical-offset="2244">
@@ -1667,11 +1651,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/MainSettingsConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="5" selection-start="2191" selection-end="2191" vertical-scroll-proportion="0.65924275" vertical-offset="945" max-vertical-offset="1394">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="77" column="5" selection-start="2191" selection-end="2191" vertical-scroll-proportion="0.65924275" vertical-offset="945" max-vertical-offset="1394" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/MainWindowConfig.java">
@@ -1704,13 +1684,6 @@
         <state line="6" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.19058296" vertical-offset="0" max-vertical-offset="1581" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/DateList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="18" selection-start="1885" selection-end="1885" vertical-scroll-proportion="1.2962962" vertical-offset="0" max-vertical-offset="782">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/app/Activity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="175" column="16" selection-start="7645" selection-end="7645" vertical-scroll-proportion="0.33183858" vertical-offset="2810" max-vertical-offset="5831" />
@@ -1723,15 +1696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="16" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.7145038" vertical-offset="42" max-vertical-offset="697">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/JavaServer/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="174" column="23" selection-start="6557" selection-end="6557" vertical-scroll-proportion="0.33267716" vertical-offset="2602" max-vertical-offset="4794">
@@ -1741,73 +1705,106 @@
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/java/lang/Runnable.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="9" selection-start="176" selection-end="176" vertical-scroll-proportion="0.2007874" vertical-offset="0" max-vertical-offset="508">
-          <folding />
-        </state>
+        <state line="7" column="9" selection-start="176" selection-end="176" vertical-scroll-proportion="0.2007874" vertical-offset="0" max-vertical-offset="508" />
       </provider>
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/view/ViewTreeObserver.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="13" selection-start="2095" selection-end="2095" vertical-scroll-proportion="0.58787876" vertical-offset="508" max-vertical-offset="1003">
-          <folding />
-        </state>
+        <state line="48" column="13" selection-start="2095" selection-end="2095" vertical-scroll-proportion="0.58787876" vertical-offset="508" max-vertical-offset="1003" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/DesigneElements/SerifTextView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="437" selection-end="437" vertical-scroll-proportion="0.26771653" vertical-offset="0" max-vertical-offset="1088">
-          <folding />
-        </state>
+        <state line="14" column="25" selection-start="437" selection-end="437" vertical-scroll-proportion="0.26771653" vertical-offset="0" max-vertical-offset="1088" />
       </provider>
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/view/View.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="467" column="16" selection-start="20190" selection-end="20190" vertical-scroll-proportion="0.33333334" vertical-offset="7757" max-vertical-offset="14501">
-          <folding />
-        </state>
+        <state line="467" column="16" selection-start="20190" selection-end="20190" vertical-scroll-proportion="0.33333334" vertical-offset="7757" max-vertical-offset="14501" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/DateList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="20" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.0" vertical-offset="101" max-vertical-offset="3366">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2317#2325#0" expanded="true" />
-            <element signature="e#2502#2510#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="56" selection-start="3674" selection-end="3674" vertical-scroll-proportion="0.0" vertical-offset="1192" max-vertical-offset="1802">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/TableWithMarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="48" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+        <state line="46" column="18" selection-start="1885" selection-end="1885" vertical-scroll-proportion="1.1712599" vertical-offset="0" max-vertical-offset="782">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/DateSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3043">
+        <state line="33" column="0" selection-start="1205" selection-end="1205" vertical-scroll-proportion="-2.074803" vertical-offset="1377" max-vertical-offset="3043">
           <folding>
-            <element signature="e#4652#4653#0" expanded="true" />
-            <element signature="e#4694#4695#0" expanded="true" />
+            <element signature="e#4652#4653#0" expanded="false" />
+            <element signature="e#4694#4695#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/LoginForm/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="38" selection-start="4545" selection-end="4545" vertical-scroll-proportion="3.011811" vertical-offset="51" max-vertical-offset="3553">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Configs/LookingJournalConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="30" selection-start="2970" selection-end="2970" vertical-scroll-proportion="0.36614174" vertical-offset="1191" max-vertical-offset="2023">
+        <state line="121" column="54" selection-start="3817" selection-end="3817" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/MainTable/TableWithMarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="48" selection-start="48" selection-end="48" vertical-scroll-proportion="-0.003937008" vertical-offset="2" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/ForAllCode/Month.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="19" selection-start="62" selection-end="62" vertical-scroll-proportion="0.06692913" vertical-offset="0" max-vertical-offset="508">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/LookingJournalActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="17" selection-start="6580" selection-end="6580" vertical-scroll-proportion="0.0" vertical-offset="1334" max-vertical-offset="3366">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/TestCode/Old/ProxyManagerOld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="185" column="0" selection-start="7667" selection-end="8020" vertical-scroll-proportion="0.57990116" vertical-offset="2453" max-vertical-offset="5202">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/LessonSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="16" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.6721582" vertical-offset="0" max-vertical-offset="607">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/Journal/DateHead/GroupSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="8" selection-start="2905" selection-end="2905" vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1802">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/First_prj/FirstActivitySettings/ProxyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="186" column="24" selection-start="7044" selection-end="7044" vertical-scroll-proportion="4.0247116" vertical-offset="396" max-vertical-offset="3706">
           <folding>
-            <element signature="e#2938#2939#0" expanded="true" />
-            <element signature="e#2978#2979#0" expanded="true" />
+            <element signature="class#IPStartFromZeroException#0;class#ProxyManager#0" expanded="false" />
+            <element signature="class#FormIsEmptyException#0;class#ProxyManager#0" expanded="false" />
+            <element signature="class#PortWatcher#0;class#ProxyManager#0" expanded="false" />
+            <element signature="class#AddressWatcher#0;class#ProxyManager#0" expanded="false" />
+            <element signature="class#ProxyEditText#0;class#ProxyManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
