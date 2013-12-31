@@ -1,7 +1,7 @@
 package nativeLibs;
 
 public class Server {
-	// TODO функции когда будем собирать.
+	// TODO
     static {
         System.loadLibrary("Server");
     }

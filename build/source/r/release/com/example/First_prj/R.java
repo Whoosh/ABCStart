@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.First_prj;
+package com.journal.First_prj;
 
 public final class R {
     public static final class attr {
