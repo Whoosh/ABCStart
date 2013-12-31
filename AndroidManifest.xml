@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.First_prj"
+          package="ru.journal.fspoPrj"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="11"/>
@@ -9,33 +9,37 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application android:icon="@drawable/logo">
-        <activity android:name=".LoginForm.FirstActivity">
+        <activity android:name=".login_form.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FirstActivitySettings.MainSettingsActivity">
+        <activity android:name=".login_form.settings_button_form.MainSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".MenuAndSwitchers.MenuActivity">
+        <activity android:name=".main_menu.MenuActivity">
         </activity>
 
-        <activity android:name=".Journal.MainJournalActivityStarter">
+        <activity android:name=".journal.MainJournalActivityStarter">
         </activity>
 
-        <activity android:name=".Journal.LookingJournalActivity">
+        <activity android:name=".journal.LookingJournalActivity">
         </activity>
 
-        <activity android:name=".Journal.EditJournalActivity">
+        <activity android:name=".journal.EditJournalActivity">
         </activity>
 
-        <activity android:name=".Journal.StudentCheckerActivity">
+        <activity android:name=".journal.StudentCheckerActivity">
         </activity>
+
+        <activity android:name=".user_profile.ProfileActivity"></activity>
+
+        <activity android:name=".main_menu.BugReportInformerActivity"></activity>
 
     </application>
 </manifest>

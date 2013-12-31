@@ -8,5 +8,6 @@
       <option name="DONT_REPORT_TRUE_ASSERT_STATEMENTS" value="false" />
       <option name="IGNORE_ASSERT_STATEMENTS" value="true" />
     </inspection_tool>
+    <inspection_tool class="FieldNotUsedInToString" enabled="true" level="WARNING" enabled_by_default="true" />
   </profile>
 </component>
