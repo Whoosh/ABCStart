@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".login_form.settings_button_form.MainSettingsActivity">
+        <activity android:name=".login_form.settings_form.MainSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -23,9 +23,6 @@
         </activity>
 
         <activity android:name=".main_menu.MenuActivity">
-        </activity>
-
-        <activity android:name=".journal.MainJournalActivityStarter">
         </activity>
 
         <activity android:name=".journal.LookingJournalActivity">

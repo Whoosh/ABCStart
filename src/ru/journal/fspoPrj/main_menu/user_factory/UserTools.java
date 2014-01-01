@@ -25,8 +25,6 @@ public class UserTools implements InfoGetter {
                 tools = new Teacher();
                 break;
             case MightInfo.ANONYMOUS_MIGHT_CODE:
-                tools = new Anonymous();
-                break;
             default: {
                 tools = new Anonymous();
             }

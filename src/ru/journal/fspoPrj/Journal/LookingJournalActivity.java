@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import ru.journal.fspoPrj.journal.callbacks.Lessons;
+import ru.journal.fspoPrj.journal.callbacks.Switcher;
 import ru.journal.fspoPrj.public_code.configs.LookingJournalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.server_java.Server;
 import ru.journal.fspoPrj.journal.head_selector.DateSelector;
 import ru.journal.fspoPrj.journal.head_selector.GroupSelector;
@@ -37,16 +38,78 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         initElements();
         setContentView(mainLay);
         lessonSelector.setOnClickListener(this);
-        Server.refreshStateOfLookingJournal();
+        startActionMode(new Switcher(this));
     }
 
     @Override
     protected void onDestroy() {
         setAllStaticFieldsIsNull();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
+        saveStateOnRotateEvent(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        loadStateOnRotateEvent(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        startActionMode(new Switcher(this));
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+            if (view.equals(tableWithMarks))
+                dateList.scrollTo(tableWithMarks.getScrollX(), 0);
+            if (view.equals(dateList))
+                tableWithMarks.scrollTo(dateList.getScrollX(), 0);
+            return false;
+        }
+        tableWithMarks.scrollTo(dateList.getScrollX(), 0);
+        dateList.scrollTo(tableWithMarks.getScrollX(), 0);
+
+        return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.equals(lessonSelector)) startActionMode(new Lessons(new ArrayList<String>()));
+    }
+
+    private void saveStateOnRotateEvent(Bundle outState) {
+        // сохранение параметров выбора даты
+        outState.putInt(DATE_KEY, dateSelector.getIndexOfSelectedDate());
+
+        // сохранение параметров выбора группы
+        outState.putByte(GROUP_KEY, groupSelector.getOldFocusedIndex());
+    }
+
+    private void loadStateOnRotateEvent(Bundle savedInstanceState) {
+        // загрузка параметров выбора даты
+        dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(DATE_KEY));
+        dateSelector.refreshVisualState();
+
+        // загрузка параметров выбора группы
+        groupSelector.setOldFocusedIndex(savedInstanceState.getByte(GROUP_KEY));
+        groupSelector.refreshVisualState();
+    }
+
+
+    public static void setAllStaticFieldsIsNull() {
+        lessonSelector = null;
+        listOfLessonsNames = null;
     }
 
     private void initElements() {
@@ -61,10 +124,10 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         lessonSelector = new LessonSelector(this);
 
         ArrayList<String> dates = new ArrayList<>();
-        for (int i = 0; i < 40; i++) dates.add(String.valueOf(i));
+        for (int i = 0; i < 5; i++) dates.add(String.valueOf(i));
 
         ArrayList<String> students = new ArrayList<>();
-        for (int i = 0; i < 30; i++) students.add("Какойто студент С.С");
+        for (int i = 0; i < 10; i++) students.add("Какойто студент С.С");
         StudentList studentList = new StudentList(this, students);
 
         dateList = new DateList(this, dates); // @TODO
@@ -96,97 +159,6 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         mainLay.addView(studentsPlusTable);
     }
 
-
-    @Override
-    protected void onSaveInstanceState(@NotNull Bundle outState) {
-        saveStateOnRotateEvent(outState);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        loadStateOnRotateEvent(savedInstanceState);
-    }
-
-    private void saveStateOnRotateEvent(Bundle outState) {
-        // сохранение параметров выбора даты
-        outState.putInt(DATE_KEY, dateSelector.getIndexOfSelectedDate());
-
-        // сохранение параметров выбора группы
-        outState.putByte(GROUP_KEY, groupSelector.getOldFocusedIndex());
-    }
-
-    private void loadStateOnRotateEvent(Bundle savedInstanceState) {
-        // загрузка параметров выбора даты
-        dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(DATE_KEY));
-        dateSelector.refreshVisualState();
-
-        // загрузка параметров выбора группы
-        groupSelector.setOldFocusedIndex(savedInstanceState.getByte(GROUP_KEY));
-        groupSelector.refreshVisualState();
-    }
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-            if (view.equals(tableWithMarks))
-                dateList.scrollTo(tableWithMarks.getScrollX(), 0);
-            if (view.equals(dateList))
-                tableWithMarks.scrollTo(dateList.getScrollX(), 0);
-            return false;
-        }
-        tableWithMarks.scrollTo(dateList.getScrollX(), 0);
-        dateList.scrollTo(tableWithMarks.getScrollX(), 0);
-
-        return true;
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view.equals(lessonSelector))
-            startActionMode(new LessonsList(new ArrayList<String>()));
-    }
-
-
-    public static void setAllStaticFieldsIsNull(){
-        lessonSelector = null;
-        listOfLessonsNames = null;
-    }
-
-
-    private class LessonsList implements ActionMode.Callback {
-
-        public LessonsList(ArrayList<String> lessonsList) {
-
-        }
-
-        @Override
-        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-            for (int i = 0; i < 100; i++) {
-                //@TODO тестовый вариант.
-                menu.add("Список предметов").setActionView(new SerifTextView(getBaseContext(),"HELLLO",10));
-            }
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-            lessonSelector.setLessonName("Hello");
-            actionMode.finish();
-            return false;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode actionMode) {
-
-        }
-    }
 
 }
 

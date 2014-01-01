@@ -19,6 +19,7 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHo
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.server_java.MightInfo;
 import ru.journal.fspoPrj.server_java.Server;
+import ru.journal.fspoPrj.server_java.ServerErrors;
 
 
 public class MenuActivity extends Activity {
@@ -28,7 +29,7 @@ public class MenuActivity extends Activity {
     private LinearLayout mainLay;
     private UserTools userTools;
 
-    public static final int REQUEST_RESULT_CODE = 440;
+    public static final int IS_REQUEST_RESULT_CODE = 440;
 
     public static boolean SERVER_HAS_CONNECTED_ERROR;
 
@@ -61,8 +62,8 @@ public class MenuActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (SERVER_HAS_CONNECTED_ERROR && REQUEST_RESULT_CODE == resultCode)
-            showMessageOnScreen(Server.SERVER_TTL_QUERY_ERROR);
+        if (SERVER_HAS_CONNECTED_ERROR && IS_REQUEST_RESULT_CODE == resultCode)
+            showMessageOnScreen(ServerErrors.SERVER_TTL_QUERY_ERROR.message());
     }
 
     private void showMessageOnScreen(String message) {
@@ -71,7 +72,7 @@ public class MenuActivity extends Activity {
 
 
     public void startActivity(int index) {
-        startActivityForResult(new Intent(this, userTools.getToolClass(index)), REQUEST_RESULT_CODE);
+        startActivityForResult(new Intent(this, userTools.getToolClass(index)), IS_REQUEST_RESULT_CODE);
     }
 
     private void initMainLay() {

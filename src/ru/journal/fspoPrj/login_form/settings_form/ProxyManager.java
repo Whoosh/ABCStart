@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.login_form.settings_button_form;
+package ru.journal.fspoPrj.login_form.settings_form;
 
 import android.content.Context;
 import android.graphics.Typeface;

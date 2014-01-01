@@ -1,8 +1,10 @@
-package ru.journal.fspoPrj.server_java;
+package ru.journal.fspoPrj.test_code.old;
 
-import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
+import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
+import ru.journal.fspoPrj.server_java.MightInfo;
+import ru.journal.fspoPrj.server_java.UserInfo;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,23 +13,32 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.*;
 
-public abstract class Server {
+public abstract class ServerOld {
+
+
+    public static final String SERVER_TTL_QUERY_ERROR = "Сервер не отвечает, проверьте подлючение и попробуйте ещё раз";
 
     private static final String DEFAULT_HOST = "fspo.segrys.ru";
+    private static final String DEFAULT_API_LINK = "GET /api";
     private static final String USER_CLIENT_INFO = "User-Agent: .\n";
     private static final String HTTP_VERSION = " HTTP/1.0";
     private static final String HOST_INFO = "Host: ";
-
     private static final byte DEFAULT_PORT = 80;
 
+    private static final byte TRY_THREE_TIMES = 3;
     private static final byte THIS_IS_NOT_NULL_AND_NOT_TOKEN_LEN = 5;
-
-    private static final int THREAD_WAITING_DELAY = 100;
-    private static final int SEC = 60;
+    private static byte tryCounts;
 
     private static String HOST;
     private static int PORT;
+
     private static ExecutorService executorService;
+
+    private static final byte AUTHORIZATION_QUERY_ID = 0;
+    private static final byte EMPTY_QUERY_ID = 1;
+    private static final byte EXIT_QUERY_ID = 2;
+    private static final byte USER_INFO_QUERY_ID = 3;
+    private static final byte MIGHT_QUERY_ID = 4;
 
     private static final String JSON_START_SCOPE = "{";
     private static final String TOKEN_TAG = "ssid";
@@ -58,59 +69,67 @@ public abstract class Server {
     private static void startServerConnection(String name, String password) throws TimeoutException {
 
         if (executorService != null) executorService.shutdown();
-        executorService = Executors.newFixedThreadPool(GlobalConfig.ONE);
-        Future<String> response = executorService.submit(new Query(APIQuery.AUTHORIZATION.getLink(name, password)));
+        executorService = Executors.newFixedThreadPool(GlobalConfig.ONE); // 1 поток на исполнение
+        Future<String> response = executorService.submit(new Query(AUTHORIZATION_QUERY_ID, name, password));
 
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
 
         String jsonString = getResponseString(response);
-
         try {
             TOKEN = new JSONObject(jsonString).get(TOKEN_TAG).toString();
             MY_ID = new JSONObject(jsonString).get(USER_ID_TAG).toString();
             setMight();
         } catch (JSONException e) {
-            System.err.println(e);
-            throw new TimeoutException();
+            startServerConnection(name, password);
+            e.printStackTrace();
+            if (TRY_THREE_TIMES < tryCounts++) {
+                tryCounts = 0;
+                throw new TimeoutException();
+            }
         }
     }
 
     private static void setMight() throws TimeoutException, JSONException {
-        Future<String> response = executorService.submit(new Query(APIQuery.GET_MIGHT.getLink(TOKEN, MY_ID)));
+        Future<String> response = executorService.submit(new Query(MIGHT_QUERY_ID, MY_ID));
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
         String jsonString = getResponseString(response);
         MightInfo.setDataFromJson(new JSONObject(jsonString));
     }
 
+
     public static UserInfo getMyProfileInfo() throws TimeoutException {
-        Future<String> response = executorService.submit(new Query(APIQuery.GET_PROFILE.getLink(TOKEN, MY_ID)));
+        Future<String> response = executorService.submit(new Query(USER_INFO_QUERY_ID, MY_ID));
         return requestProfile(response);
     }
 
     public static UserInfo getUserInfo(String userID) throws TimeoutException {
-        Future<String> response = executorService.submit(new Query(APIQuery.GET_PROFILE.getLink(TOKEN, userID)));
+        Future<String> response = executorService.submit(new Query(USER_INFO_QUERY_ID, userID));
         return requestProfile(response);
     }
 
     private static UserInfo requestProfile(Future<String> response) throws TimeoutException {
+        UserInfo userInfo = new UserInfo();
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
         String jsonString = getResponseString(response);
         try {
-            return new UserInfo(new JSONObject(jsonString));
+            userInfo.setDataFromJson(new JSONObject(jsonString));
         } catch (JSONException e) {
-            return new UserInfo();
+            userInfo.setAllParamsEmpty();
+            e.printStackTrace();
         }
+        return userInfo;
     }
 
     private static void waitResponse(Future response, int delaySec) throws TimeoutException {
-        int startTime = new Date().getSeconds() + new Date().getMinutes() * SEC;
+        final byte secInMin = 60, defaultDelay = 100; // 100 - 0.1 секунда
+        int startTime = new Date().getSeconds() + new Date().getMinutes() * secInMin; // 60 сек
         while (!response.isDone()) {
-            if (((new Date().getSeconds() + new Date().getMinutes() * SEC) - startTime) > delaySec)
+            if (((new Date().getSeconds() + new Date().getMinutes() * secInMin) - startTime) > delaySec)
                 throw new TimeoutException();
             try {
-                Thread.sleep(THREAD_WAITING_DELAY);
+                Thread.sleep(defaultDelay);
             } catch (InterruptedException e) {
-                throw new TimeoutException();
+                e.printStackTrace();
             }
         }
     }
@@ -130,10 +149,8 @@ public abstract class Server {
     private static boolean pushEmptyQuery() throws TimeoutException {
         if (executorService != null) executorService.shutdown();
         executorService = Executors.newFixedThreadPool(GlobalConfig.ONE);
-
-        Future<String> response = executorService.submit(new Query(APIQuery.EMPTY_QUERY.getLink()));
+        Future<String> response = executorService.submit(new Query(EMPTY_QUERY_ID));
         waitResponse(response, CHECKED_DELAY_RESPONSE);
-
         return getResponseString(response).isEmpty();
     }
 
@@ -146,27 +163,31 @@ public abstract class Server {
     }
 
     public static void disconnect() {
-        if (executorService == null) return;
-
-        executorService.submit(new Query(APIQuery.LOG_OUT.getLink(TOKEN)));
-        executorService.shutdown();
-        executorService = null;
-
+        if (executorService != null) {
+            executorService.submit(new Query(EXIT_QUERY_ID));
+            executorService.shutdown();
+        }
         TOKEN = GlobalConfig.EMPTY_STRING;
+        executorService = null;
     }
 
     private static class Query implements Callable<String> {
 
+        private final byte iDQuery;
         private Socket socket;
-        private String queryLink;
+        private String[] values;
 
-        public Query(String queryLink) {
-            this.queryLink = queryLink;
+        public Query(byte iDQuery) {
+            this.iDQuery = iDQuery;
         }
 
-        @Override
+        public Query(byte iDQuery, String... values) {
+            this.iDQuery = iDQuery;
+            this.values = values;
+        }
+
         public String call() throws Exception {
-            return sendQuery(queryLink);
+            return sendQuery(QueryManager.getQueryString(iDQuery, values));
         }
 
         private String sendQuery(String queryString) {
@@ -195,9 +216,64 @@ public abstract class Server {
                 socket.close();
 
             } catch (Exception e) {
-                System.err.println(e);
+                e.printStackTrace();
             }
             return result.substring(result.indexOf(JSON_START_SCOPE));
         }
     }
+
+    private static class QueryManager {
+        // TODO будут повторы пока всё окончательно не утресётся, что-бы 10 раз не менять структуру.
+
+        private static final String AUTHORIZATION_METHOD = "/authentication/?";
+        private static final String AUTHORIZATION_PARAM_ONE = "login=";
+        private static final String AUTHORIZATION_PARAM_TWO = "&pass=";
+
+        private static final String LOG_OUT_METHOD = "/logout/?";
+        private static final String LOG_OUT_PARAM_ONE = "ssid=";
+
+        private static final String PROFILE_METHOD = "/getProfile/?";
+        private static final String PROFILE_PARAM_ONE = "ssid=";
+        private static final String PROFILE_PARAM_TWO = "&user_id=";
+
+        private static final String MIGHT_METHOD = "/getRoles/?";
+        private static final String MIGHT_PARAM_ONE = "ssid=";
+        private static final String MIGHT_PARAM_TWO = "&user_id=";
+
+        private static final String SSID_FIRST_ONE = "ssid=";
+        private static final String SSID_LAST_ONE = "&ssid=";
+
+        private static String[] valuesBuffer;
+
+        private static String getQueryString(byte iDQuery, String... values) {
+            valuesBuffer = values;
+            switch (iDQuery) {
+                case AUTHORIZATION_QUERY_ID:
+                    return link(AUTHORIZATION_METHOD, AUTHORIZATION_PARAM_ONE, AUTHORIZATION_PARAM_TWO);
+                case EXIT_QUERY_ID:
+                    return link(LOG_OUT_METHOD, LOG_OUT_PARAM_ONE);
+                case USER_INFO_QUERY_ID:
+                    return link(PROFILE_METHOD, PROFILE_PARAM_ONE, PROFILE_PARAM_TWO);
+                case MIGHT_QUERY_ID:
+                    return link(MIGHT_METHOD, MIGHT_PARAM_ONE, MIGHT_PARAM_TWO);
+                case EMPTY_QUERY_ID:
+                default:
+                    return DEFAULT_API_LINK;
+            }
+        }
+
+        private static String link(String method, String... params) {
+            StringBuilder stringManager = new StringBuilder(DEFAULT_API_LINK);
+            stringManager.append(method);
+            for (byte i = 0, k = 0; i < params.length; i++) {
+                stringManager.append(params[i]);
+                if (params[i].equals(SSID_FIRST_ONE) || params[i].equals(SSID_LAST_ONE))
+                    stringManager.append(TOKEN);
+                else
+                    stringManager.append(valuesBuffer[k++]);
+            }
+            return stringManager.toString();
+        }
+    }
+
 }

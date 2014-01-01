@@ -12,13 +12,14 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import ru.journal.fspoPrj.login_form.settings_button_form.MainSettingsActivity;
+import ru.journal.fspoPrj.login_form.settings_form.MainSettingsActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.configs.MainWindowConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.server_java.Server;
 import ru.journal.fspoPrj.main_menu.MenuActivity;
+import ru.journal.fspoPrj.server_java.ServerErrors;
 
 import java.util.concurrent.TimeoutException;
 
@@ -27,9 +28,6 @@ import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 //
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
-
-    private static final String SERVER_IS_DOWN = "Отсутсвует подключение";
-    private static final String LOGIN_OR_PASSWORD_ERROR = "Неверный логин или пароль";
 
     private static final String SETTINGS_KEY = "User Settings";
     private static final String USER_NAME_KEY = "User Name";
@@ -155,11 +153,11 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
             checkAuthorizationInfo();
             startMainMenu();
         } catch (ServerDownException e) {
-            messageOnScreen(SERVER_IS_DOWN);
+            messageOnScreen(ServerErrors.SERVER_IS_DOWN.message());
         } catch (TimeoutException e) {
-            messageOnScreen(Server.SERVER_TTL_QUERY_ERROR);
+            messageOnScreen(ServerErrors.SERVER_TTL_QUERY_ERROR.message());
         } catch (PasswordErrorException e) {
-            messageOnScreen(LOGIN_OR_PASSWORD_ERROR);
+            messageOnScreen(ServerErrors.LOGIN_OR_PASSWORD_ERROR.message());
         }
     }
 

@@ -30,9 +30,9 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     private DateElement[] dateElements;
     private Context context;
 
-    private static boolean isFirstLoad = true;
+    private static boolean isFirstLoad = true; // TODO после свапа через меню не сбросить тоже самое с группой
 
-    private final byte monthOffsetSize = 3; // 2 месяца в перёд +1 потому, что с 0
+    private static final byte MONTH_OFFSET_SIZE = 3; // 2 месяца в перёд +1 потому, что с 0
 
     public DateSelector(Context context) {
         super(context);
@@ -56,13 +56,13 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     }
 
     private void setPressedDateToCurrentDate() {
-        indexOfSelectedDate = countOfDateElements - monthOffsetSize;
+        indexOfSelectedDate = countOfDateElements - MONTH_OFFSET_SIZE;
         setDateStateDown();
         moveFocusToActualPosition();
     }
 
     private void mathCountOfDateElements() {
-        countOfDateElements = (currentYear - START_YEAR) * MONTH_IN_THE_YEAR + currentMonth + monthOffsetSize;
+        countOfDateElements = (currentYear - START_YEAR) * MONTH_IN_THE_YEAR + currentMonth + MONTH_OFFSET_SIZE;
     }
 
     private void setCurrentDates() {
@@ -89,7 +89,7 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
             for (int j = 0; j < MONTH_IN_THE_YEAR; j++, monthCounter++)
                 dateElements[monthCounter] = new DateElement(context, monthCounter);
 
-        for (int i = 0; i < currentMonth + monthOffsetSize; i++, monthCounter++)
+        for (int i = 0; i < currentMonth + MONTH_OFFSET_SIZE; i++, monthCounter++)
             dateElements[monthCounter] = new DateElement(context, monthCounter);
     }
 
@@ -102,7 +102,6 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
         for (int i = 0; i < dateElements.length; i++)
             if (view.equals(dateElements[i])) {
                 changeDatesState(i);
-                Server.refreshStateOfLookingJournal();
                 break;
             }
     }

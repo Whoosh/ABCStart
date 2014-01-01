@@ -60,7 +60,6 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
         for (byte i = 0; i < GROUP_COUNT; i++)
             if (view.equals(groups[i])) {
                 changeGroupsState(i);
-                Server.refreshStateOfLookingJournal();
                 break;
             }
     }
