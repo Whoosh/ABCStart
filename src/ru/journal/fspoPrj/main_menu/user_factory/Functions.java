@@ -1,12 +1,12 @@
 package ru.journal.fspoPrj.main_menu.user_factory;
 
-import ru.journal.fspoPrj.journal.MainJournalActivityStarter;
+import ru.journal.fspoPrj.journal.LookingJournalActivity;
 import ru.journal.fspoPrj.main_menu.BugReportInformerActivity;
 import ru.journal.fspoPrj.user_profile.ProfileActivity;
 
 public enum Functions {
 
-    JOURNALS("Журналы", MainJournalActivityStarter.class),
+    JOURNALS("Журналы", LookingJournalActivity.class),
     PROFILE("Мой профиль", ProfileActivity.class),
     ERROR_INFORMER("Доступна информация", BugReportInformerActivity.class);
 

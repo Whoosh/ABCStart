@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
-import ru.journal.fspoPrj.login_form.settings_button_form.MainSettingsActivity;
+import ru.journal.fspoPrj.login_form.settings_form.MainSettingsActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.server_java.Server;
 

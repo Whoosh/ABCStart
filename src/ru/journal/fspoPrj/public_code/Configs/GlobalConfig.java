@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.View;
-import ru.journal.fspoPrj.login_form.settings_button_form.ThemeManager;
+import ru.journal.fspoPrj.login_form.settings_form.ThemeManager;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.BlackToWhiteHeaderGradientLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 

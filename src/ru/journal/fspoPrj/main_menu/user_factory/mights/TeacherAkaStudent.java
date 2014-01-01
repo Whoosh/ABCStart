@@ -12,20 +12,12 @@ public class TeacherAkaStudent implements InfoGetter {
 
     @Override
     public Class<?> getToolClass(int index) {
-        try {
-            return Functions.values()[indexing[index]].getToolClass();
-        } catch (Exception e) {
-            return Functions.values()[indexing[index % indexing.length]].getToolClass();
-        }
+        return Functions.values()[indexing[index % indexing.length]].getToolClass();
     }
 
     @Override
     public String getToolName(int index) {
-        try {
-            return Functions.values()[indexing[index]].getToolName();
-        } catch (Exception e) {
-            return Functions.values()[indexing[index % indexing.length]].getToolName();
-        }
+        return Functions.values()[indexing[index % indexing.length]].getToolName();
     }
 
     @Override

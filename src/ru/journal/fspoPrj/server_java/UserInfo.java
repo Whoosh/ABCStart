@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserInfo {
-    //
+
     public static final String STATUS_TAG = "status";
     public static final String LAST_NAME_TAG = "lastname";
     public static final String MIDDLE_NAME_TAG = "middlename";
@@ -27,6 +27,14 @@ public class UserInfo {
     public String email;
     public String photoLink;
     public String phone;
+
+    public UserInfo() {
+        setAllParamsEmpty();
+    }
+
+    public UserInfo(JSONObject jsonUserInfoString) {
+        setDataFromJson(jsonUserInfoString);
+    }
 
     public void printUserInfo() {
         System.out.println(PREFIX_FIRST_NAME + firstName);
