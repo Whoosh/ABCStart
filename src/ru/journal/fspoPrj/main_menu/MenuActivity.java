@@ -10,16 +10,15 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
-import ru.journal.fspoPrj.main_menu.user_factory.UserTools;
+import ru.journal.fspoPrj.main_menu.user_factory.ToolsGetter;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.configs.MainMenuConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.IconSetter;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
-import ru.journal.fspoPrj.server_java.MightInfo;
-import ru.journal.fspoPrj.server_java.Server;
 import ru.journal.fspoPrj.server_java.ServerErrors;
+import ru.journal.fspoPrj.server_java.might_info.MightInfo;
 
 
 public class MenuActivity extends Activity {
@@ -27,7 +26,8 @@ public class MenuActivity extends Activity {
     private static final String MENU_TITLE = "\tГлавное меню";
 
     private LinearLayout mainLay;
-    private UserTools userTools;
+    private ToolsGetter userTools;
+    private LinearLayout functionsList;
 
     public static final int IS_REQUEST_RESULT_CODE = 440;
 
@@ -37,22 +37,35 @@ public class MenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        userTools = new UserTools(MightInfo.getCurrentMightCode());
 
-        initMainLay();
+        userTools = MightInfo.getToolsKit();
+        functionsList = new LinearLayout(this);
 
-        LinearLayout functionsList = new LinearLayout(this);
+        initMainLayout();
+        generateFunctionsList();
+        addFunctionsListOnMainLayout();
+
+        setContentView(mainLay);
+    }
+
+    private void generateFunctionsList() {
         functionsList.setOrientation(LinearLayout.VERTICAL);
 
+        for (int i = 0; i < userTools.getToolsCount(); i++) {
+            functionsList.addView(new ItemMenu(this, userTools.getToolName(i), i));
+        }
+    }
+
+    private void addFunctionsListOnMainLayout() {
         ScrollView scrollViewForFunctionList = new ScrollView(this);
         scrollViewForFunctionList.setVerticalScrollBarEnabled(false);
 
-        for (int i = 0; i < userTools.getToolsCount(); i++)
-            functionsList.addView(new ItemMenu(this, userTools.getToolName(i), i));
-
         scrollViewForFunctionList.addView(functionsList);
         mainLay.addView(scrollViewForFunctionList);
-        setContentView(mainLay);
+    }
+
+    private void startActivity(int index) {
+        startActivityForResult(new Intent(this, userTools.getToolClass(index)), IS_REQUEST_RESULT_CODE);
     }
 
     @Override
@@ -70,12 +83,7 @@ public class MenuActivity extends Activity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-
-    public void startActivity(int index) {
-        startActivityForResult(new Intent(this, userTools.getToolClass(index)), IS_REQUEST_RESULT_CODE);
-    }
-
-    private void initMainLay() {
+    private void initMainLayout() {
         mainLay = new LinearLayout(this);
         mainLay.setOrientation(LinearLayout.VERTICAL);
         mainLay.setBackgroundColor(MainMenuConfig.getBackgroundColor());
@@ -97,18 +105,18 @@ public class MenuActivity extends Activity {
 
         private SerifTextView textView;
         private LinearLayout itemTextIcon;
-        private final int elementID;
+        private final int selectedElementID;
 
-        public ItemMenu(Context context, String itemText, int elementID) {
+        public ItemMenu(Context context, String itemText, int selectedElementID) {
             super(context);
-            super.setOnTouchListener(this);
-
-            this.elementID = elementID;
+            this.selectedElementID = selectedElementID;
 
             textView = new SerifTextView(context, itemText, GlobalConfig.HEADER_TEXT_SIZE);
             itemTextIcon = new LinearLayout(context);
             itemTextIcon.addView(new IconSetter(context, android.R.drawable.ic_media_play));
             itemTextIcon.addView(textView);
+
+            super.setOnTouchListener(this);
 
             super.setBackgroundColor(MainMenuConfig.getMenuElementColor());
             super.setOrientation(VERTICAL);
@@ -119,11 +127,11 @@ public class MenuActivity extends Activity {
                     , MainMenuConfig.getTransparentViewHeight()));
         }
 
-        public void setBlinkedColor() {
+        private void setBlinkedColor() {
             itemTextIcon.setBackgroundColor(MainMenuConfig.getButtonPressColor());
         }
 
-        public void setBlinkedColorBack() {
+        private void setBlinkedColorBack() {
             itemTextIcon.setBackgroundColor(MainMenuConfig.getButtonBackColor());
         }
 
@@ -131,11 +139,13 @@ public class MenuActivity extends Activity {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 setBlinkedColor();
-                startActivity(elementID);
-            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP)
+            } else {
                 setBlinkedColorBack();
+            }
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                startActivity(selectedElementID);
+            }
             return true;
         }
-
     }
 }

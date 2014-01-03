@@ -19,7 +19,7 @@ public class LiteMatrixDraw extends Drawable {
 
     private static final byte TEXT_SIZE = 12;
 
-    // j4fun
+    // j4fun TODO if actual
     public LiteMatrixDraw(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         int display_H = windowManager.getDefaultDisplay().getHeight();

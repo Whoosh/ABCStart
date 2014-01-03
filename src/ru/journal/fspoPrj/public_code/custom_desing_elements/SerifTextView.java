@@ -7,12 +7,10 @@ import android.widget.TextView;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 
 import static ru.journal.fspoPrj.public_code.configs.GlobalConfig.getSerifTextColor;
-//
 
 public class SerifTextView extends TextView {
 
     private String text;
-    private int textSize;
 
     public SerifTextView(Context context, String text, int textSize) {
         super(context);
@@ -36,7 +34,6 @@ public class SerifTextView extends TextView {
 
     private void initCode(String text, int gravity, int textSize) {
         this.text = text;
-        this.textSize = textSize;
         super.setTextColor(getSerifTextColor());
         super.setText(text);
         super.setTextSize(textSize);
@@ -46,8 +43,6 @@ public class SerifTextView extends TextView {
 
 
     public int getCurrentWight() {
-        //final byte downCo = 5;
-        //return ((text.length() - GlobalConfig.ONE) * (textSize - textSize / downCo));
         return super.getWidth();
     }
 

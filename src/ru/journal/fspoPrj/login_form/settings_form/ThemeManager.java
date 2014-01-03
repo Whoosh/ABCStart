@@ -15,7 +15,7 @@ import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 
 
 public class ThemeManager extends LinearLayout implements View.OnClickListener {
-//
+
     private static final String THEME_TITLE = "\tВыбор темы";
     private static final String NORMAL_THEME_TITLE = "Обычная";
     private static final String MATRIX_THEME_TITLE = "От разработчика";

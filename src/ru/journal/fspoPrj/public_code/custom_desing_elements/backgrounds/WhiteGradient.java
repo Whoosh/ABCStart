@@ -13,6 +13,7 @@ public class WhiteGradient extends Drawable {
 
     @Override
     public void draw(Canvas canvas) {
+        // TODO
         canvas.drawColor(Color.WHITE);
     }
 

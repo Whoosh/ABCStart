@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import ru.journal.fspoPrj.login_form.settings_form.proxy.ProxyManager;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.configs.MainSettingsConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.IconSetter;
@@ -18,7 +19,6 @@ public class MainSettingsActivity extends Activity {
     public static final String IP_KEY = "IP";
     public static final String PORT_KEY = "Port";
     public static final String CHECK_BOX_KEY = "CheckBoxValue";
-
     public static final String SETTINGS_KEY = "Settings";
 
     private static final String SETTINGS_TITLE = "\tНастройки";

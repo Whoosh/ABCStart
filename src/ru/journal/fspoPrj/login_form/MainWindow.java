@@ -23,10 +23,6 @@ import ru.journal.fspoPrj.server_java.ServerErrors;
 
 import java.util.concurrent.TimeoutException;
 
-import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-
-//
-
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
     private static final String SETTINGS_KEY = "User Settings";
@@ -49,7 +45,6 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
     public MainWindow(Context context) {
         super(context);
-        super.setLayoutParams(new LayoutParams(FILL_PARENT, FILL_PARENT));
         super.setGravity(Gravity.CENTER);
         super.setOrientation(VERTICAL);
         super.addView(MainWindowConfig.getLogoView(context));
@@ -65,8 +60,9 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         saveMe.setText(CHECK_BOX_TITLE);
 
         login = new SerifTextView(context, ENTER_TITLE);
-        login.setLayoutParams(
-                new LayoutParams(MainWindowConfig.getLoginButtonWidth(), MainWindowConfig.getLoginButtonHeight()));
+        login.setLayoutParams(new LayoutParams(
+                MainWindowConfig.getLoginButtonWidth(),
+                MainWindowConfig.getLoginButtonHeight()));
         login.setTextColor(MainWindowConfig.getTextColor());
         login.setBackgroundColor(MainWindowConfig.getFormColor());
 
@@ -76,8 +72,9 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         password.setHint(PASSWORD_TITLE);
         userName.setHint(USER_NAME_TITLE);
 
-        checkBoxPlusButton.setLayoutParams(
-                new LayoutParams(MainWindowConfig.getFormWidth(), MainWindowConfig.getFormHeight()));
+        checkBoxPlusButton.setLayoutParams(new LayoutParams(
+                MainWindowConfig.getFormWidth(),
+                MainWindowConfig.getFormHeight()));
         checkBoxPlusButton.addView(saveMe);
         checkBoxPlusButton.addView(login);
 
@@ -201,8 +198,9 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
         public CustomLoginEditText(Context context) {
             super(context);
-            super.setLayoutParams(
-                    new LayoutParams(MainWindowConfig.getFormWidth(), MainWindowConfig.getFormHeight()));
+            super.setLayoutParams(new LayoutParams(
+                    MainWindowConfig.getFormWidth(),
+                    MainWindowConfig.getFormHeight()));
             super.setBackgroundColor(MainWindowConfig.getFormColor());
             super.setTextColor(MainWindowConfig.getTextColor());
             super.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);

@@ -8,7 +8,7 @@ import ru.journal.fspoPrj.R;
 
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-//
+
 public class BubbleHorizontalGradientLine extends View {
     public BubbleHorizontalGradientLine(Context context, int height) {
         super(context);
@@ -22,6 +22,7 @@ public class BubbleHorizontalGradientLine extends View {
 
     private void initCode(int height) {
         super.setLayoutParams(new ViewGroup.LayoutParams(FILL_PARENT, height));
+        // TODO
         super.setBackgroundResource(R.drawable.bubblegradient);
     }
 }

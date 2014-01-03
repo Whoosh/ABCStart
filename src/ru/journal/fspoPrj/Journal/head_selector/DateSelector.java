@@ -30,8 +30,6 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     private DateElement[] dateElements;
     private Context context;
 
-    private static boolean isFirstLoad = true; // TODO после свапа через меню не сбросить тоже самое с группой
-
     private static final byte MONTH_OFFSET_SIZE = 3; // 2 месяца в перёд +1 потому, что с 0
 
     public DateSelector(Context context) {
@@ -48,11 +46,7 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
         setDateElementsToTheView();
 
         for (DateElement dateElement : dateElements) dateElement.setOnClickListener(this);
-
-        if(isFirstLoad){
-            setPressedDateToCurrentDate();
-            isFirstLoad = false;
-        }
+        setPressedDateToCurrentDate();
     }
 
     private void setPressedDateToCurrentDate() {
@@ -137,6 +131,7 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
     }
 
     public void setIndexOfSelectedDate(int indexOfSelectedDate) {
+        setDateStateUP();
         this.indexOfSelectedDate = indexOfSelectedDate;
         if (indexOfSelectedDate > 0) moveFocusToActualPosition();
     }

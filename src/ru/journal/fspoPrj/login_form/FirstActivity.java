@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
+import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.login_form.settings_form.MainSettingsActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.server_java.Server;
@@ -16,7 +17,6 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     private static final String USER_NAME_KEY = "User name";
     private static final String PASSWORD_KEY = "Password";
-
 
     private static final String SETTINGS_TITLE = "Настройки";
 
@@ -57,14 +57,14 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
         outState.putString(USER_NAME_KEY, mainWindow.getUserName());
         outState.putString(PASSWORD_KEY, mainWindow.getPassword());
         super.onSaveInstanceState(outState);
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         mainWindow.setUserName(savedInstanceState.get(USER_NAME_KEY).toString());
         mainWindow.setPassword(savedInstanceState.get(PASSWORD_KEY).toString());
@@ -112,11 +112,8 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.equals(mainWindow)) {
             try {// закрываем виртуальную клавиатуру по клику на пустое место.
-                ((InputMethodManager)
-                        getSystemService(INPUT_METHOD_SERVICE)).
-                        hideSoftInputFromWindow(getCurrentFocus().
-                                getWindowToken(),
-                                InputMethodManager.HIDE_NOT_ALWAYS);
+                InputMethodManager method = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                method.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (NullPointerException ex) {
                 ex.printStackTrace();
             }

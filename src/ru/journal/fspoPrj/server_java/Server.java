@@ -3,6 +3,8 @@ package ru.journal.fspoPrj.server_java;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
+import ru.journal.fspoPrj.server_java.might_info.MightInfo;
+import ru.journal.fspoPrj.server_java.profile_info.ProfileInfo;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,10 +16,6 @@ import java.util.concurrent.*;
 public abstract class Server {
 
     private static final String DEFAULT_HOST = "fspo.segrys.ru";
-    private static final String USER_CLIENT_INFO = "User-Agent: .\n";
-    private static final String HTTP_VERSION = " HTTP/1.0";
-    private static final String HOST_INFO = "Host: ";
-
     private static final byte DEFAULT_PORT = 80;
 
     private static final byte THIS_IS_NOT_NULL_AND_NOT_TOKEN_LEN = 5;
@@ -25,8 +23,8 @@ public abstract class Server {
     private static final int THREAD_WAITING_DELAY = 100;
     private static final int SEC = 60;
 
-    private static String HOST;
     private static int PORT;
+    private static String HOST;
     private static ExecutorService executorService;
 
     private static final String JSON_START_SCOPE = "{";
@@ -56,7 +54,6 @@ public abstract class Server {
     }
 
     private static void startServerConnection(String name, String password) throws TimeoutException {
-
         if (executorService != null) executorService.shutdown();
         executorService = Executors.newFixedThreadPool(GlobalConfig.ONE);
         Future<String> response = executorService.submit(new Query(APIQuery.AUTHORIZATION.getLink(name, password)));
@@ -82,23 +79,22 @@ public abstract class Server {
         MightInfo.setDataFromJson(new JSONObject(jsonString));
     }
 
-    public static UserInfo getMyProfileInfo() throws TimeoutException {
+    public static void loadMyProfileInToProfileInfo() throws TimeoutException {
         Future<String> response = executorService.submit(new Query(APIQuery.GET_PROFILE.getLink(TOKEN, MY_ID)));
-        return requestProfile(response);
+        requestProfile(response);
     }
 
-    public static UserInfo getUserInfo(String userID) throws TimeoutException {
+    public static void loadAnyUserInfoInToProfileInfo(String userID) throws TimeoutException {
         Future<String> response = executorService.submit(new Query(APIQuery.GET_PROFILE.getLink(TOKEN, userID)));
-        return requestProfile(response);
+        requestProfile(response);
     }
 
-    private static UserInfo requestProfile(Future<String> response) throws TimeoutException {
+    private static void requestProfile(Future<String> response) throws TimeoutException {
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
-        String jsonString = getResponseString(response);
         try {
-            return new UserInfo(new JSONObject(jsonString));
+            ProfileInfo.loadDataFromJson(new JSONObject(getResponseString(response)));
         } catch (JSONException e) {
-            return new UserInfo();
+            ProfileInfo.setProfileEmpty();
         }
     }
 
@@ -160,6 +156,7 @@ public abstract class Server {
         private Socket socket;
         private String queryLink;
 
+
         public Query(String queryLink) {
             this.queryLink = queryLink;
         }
@@ -178,16 +175,13 @@ public abstract class Server {
 
                 PrintWriter query = new PrintWriter(socket.getOutputStream());
                 query.print(queryString);
-                query.println(HTTP_VERSION);
-                query.println(HOST_INFO + DEFAULT_HOST);
-                query.println(USER_CLIENT_INFO);
+                query.println(ClientInfo.CLIENT_INFO.get());
                 query.flush();
 
                 InputStreamReader iSReader = new InputStreamReader(socket.getInputStream());
                 BufferedReader bufferedReader = new BufferedReader(iSReader);
 
-                for (String buffer; (buffer = bufferedReader.readLine()) != null; )
-                    result.append(buffer);
+                for (String buffer; (buffer = bufferedReader.readLine()) != null; ) result.append(buffer);
 
                 query.close();
                 iSReader.close();
