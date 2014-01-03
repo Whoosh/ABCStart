@@ -11,9 +11,13 @@ import ru.journal.fspoPrj.public_code.configs.MainSettingsConfig;
 public class CheckBoxRim extends Drawable {
 
     private Bitmap box;
+    private static final byte VOID_LEN = 10;
 
     public CheckBoxRim() {
-        box = Bitmap.createBitmap(MainSettingsConfig.getCheckBoxSize(),MainSettingsConfig.getCheckBoxSize(), Bitmap.Config.RGB_565);
+        box = Bitmap.createBitmap(
+                MainSettingsConfig.getCheckBoxSize(),
+                MainSettingsConfig.getCheckBoxSize(),
+                Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(box);
         setBoxGround(canvas);
     }
@@ -23,7 +27,7 @@ public class CheckBoxRim extends Drawable {
         setting.setColor(MainSettingsConfig.getCheckBoxColor());
         canvas.drawColor(MainSettingsConfig.getFormBackgroundColor());
 
-        final byte VOID_LEN = 10;
+
         for (int i = VOID_LEN - GlobalConfig.ONE; i < MainSettingsConfig.getCheckBoxSize() - VOID_LEN; i++) {
             canvas.drawPoint(i, VOID_LEN - GlobalConfig.ONE, setting);
             canvas.drawPoint(VOID_LEN - GlobalConfig.ONE, i, setting);

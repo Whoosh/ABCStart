@@ -12,7 +12,7 @@ import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 
 
 public class BlackToWhiteHeaderGradientLine extends View {
-//
+
     private final static byte DEFAULT_HEIGHT = 3;
 
     public BlackToWhiteHeaderGradientLine(Context context, int height) {

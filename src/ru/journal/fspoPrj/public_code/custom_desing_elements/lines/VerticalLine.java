@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-//
+
 public class VerticalLine extends View {
     public VerticalLine(Context context, int color, int wight) {
         super(context);

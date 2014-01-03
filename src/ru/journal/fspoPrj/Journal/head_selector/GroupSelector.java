@@ -18,7 +18,6 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
     private static final byte GROUP_COUNT = 24;
 
     private byte groupIndex;
-    private static boolean isFirstLoad = true;
 
     private SerifTextView[] groups;
 
@@ -46,12 +45,7 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
                 groupsBuffer.addView(groups[k]);
                 groupsBuffer.addView(new VerticalLine(context, Color.DKGRAY));
             }
-
-        if (isFirstLoad) {
-            refreshVisualState();
-            isFirstLoad = false;
-        }
-
+        refreshVisualState();
         super.addView(groupsBuffer);
     }
 
@@ -81,6 +75,7 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
     }
 
     public void setOldFocusedIndex(byte focusedIndex) {
+        setGroupStatePressedUP();
         this.groupIndex = focusedIndex;
         if (groupIndex > 0) moveFocusToActualPosition();
     }

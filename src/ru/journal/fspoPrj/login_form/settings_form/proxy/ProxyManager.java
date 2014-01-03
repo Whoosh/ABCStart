@@ -1,7 +1,6 @@
-package ru.journal.fspoPrj.test_code.old;
+package ru.journal.fspoPrj.login_form.settings_form.proxy;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -22,10 +21,10 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import static android.widget.LinearLayout.LayoutParams.FILL_PARENT;
 import static android.widget.LinearLayout.LayoutParams.WRAP_CONTENT;
 
-public class ProxyManagerOld extends LinearLayout implements View.OnClickListener {
+public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
     private static final int MAX_PORT_VALUE = 65536;
-    private static final char MAX_IP_VALUE = 255;
+    private static final int MAX_IP_VALUE = 255;
     private static final byte OCTETS_COUNT = 4;
     private static final byte OCTET_LEN = 3;
     private static final byte PORT_LEN = 5;
@@ -46,13 +45,13 @@ public class ProxyManagerOld extends LinearLayout implements View.OnClickListene
     private ProxyEditText[] ipOctet;
     private LinearLayout addressLay;
     private LinearLayout portLay;
-    private SerifTextView clear;
+    private SerifTextView clearMessageButton;
     private CheckBox proxySet;
     private Context context;
 
     private String beforeChangeBuffering;
 
-    public ProxyManagerOld(Context context) {
+    public ProxyManager(Context context) {
         super(context);
         super.setLayoutParams(new LayoutParams(FILL_PARENT, WRAP_CONTENT));
         super.setOrientation(VERTICAL);
@@ -75,121 +74,36 @@ public class ProxyManagerOld extends LinearLayout implements View.OnClickListene
     }
 
     private void initPort() {
-
-        TextWatcher portWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                beforeChangeBuffering = charSequence.toString();
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                proxySet.setChecked(false);
-                try {
-                    if (!editable.toString().equals(GlobalConfig.EMPTY_STRING))
-                        if (Integer.parseInt(editable.toString()) > MAX_PORT_VALUE) {
-                            portForm.setText(GlobalConfig.EMPTY_STRING);
-                            Toast.makeText(context, (PORT_ERROR_MESSAGE + MAX_PORT_VALUE), Toast.LENGTH_LONG).show();
-                        }
-                    if (!isNumber(editable)) portForm.setText(beforeChangeBuffering);
-                } catch (Exception ex) {
-                    portForm.setText(beforeChangeBuffering);
-                }
-            }
-        };
-
         portLay = new LinearLayout(context);
         portForm = new ProxyEditText(context, PORT_LEN);
-        clear = new SerifTextView(context, CLEAR_PROXY_TITLE);
+        clearMessageButton = new SerifTextView(context, CLEAR_PROXY_TITLE);
 
         portForm.setPortLayParam();
-        portForm.addTextChangedListener(portWatcher);
+        portForm.addTextChangedListener(new PortWatcher());
 
-        portLay.setBackgroundColor(Color.TRANSPARENT);
         portLay.addView(new SerifTextView(context, PORT_TITLE));
         portLay.addView(portForm);
-        portLay.addView(clear);
+        portLay.addView(clearMessageButton);
 
-        clear.setOnClickListener(this);
+        clearMessageButton.setOnClickListener(this);
         proxySet.setOnClickListener(this);
     }
 
     private void initAddress() {
-
-        TextWatcher addressWatcher = new TextWatcher() {
-            private byte indexer = GlobalConfig.ONE;
-            private boolean errorFlag;
-            private String bufferedStr;
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                bufferedStr = s.toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                proxySet.setChecked(false);
-                errorFlag = true;
-                for (byte i = 0; i < OCTETS_COUNT; i++) {
-                    if (ipOctet[i].isFocused()) {
-                        indexer = i;
-                        break;
-                    }
-                }
-                try {
-                    if (Integer.parseInt(s.toString()) > MAX_IP_VALUE) {
-                        ipOctet[indexer].setText(GlobalConfig.EMPTY_STRING);
-                        indexer--;
-                        Toast.makeText(context, IP_ERROR_MESSAGE + MAX_IP_VALUE, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (NumberFormatException e) {
-                    //
-                }
-                if (!s.toString().equals(GlobalConfig.EMPTY_STRING) && !isNumber(s)) {
-                    ipOctet[indexer].setText(bufferedStr);
-                    errorFlag = false;
-                }
-                if (s.length() == OCTET_LEN && errorFlag) {
-                    if (indexer != ipOctet.length - GlobalConfig.ONE) indexer++;
-                    ipOctet[indexer].requestFocus();
-                }
-            }
-        };
-
         proxySet = new CheckBox(context);
         proxySet.setBackgroundDrawable(MainSettingsConfig.getCheckBoxOnWhiteBackgroundCube());
 
         addressLay = new LinearLayout(context);
         addressLay.addView(new SerifTextView(context, IP_TITLE));
-        addressLay.setLayoutParams(new LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
-        addressLay.setBackgroundColor(Color.TRANSPARENT);
         addressLay.setGravity(Gravity.CENTER_VERTICAL);
 
         for (byte i = 0; i < OCTETS_COUNT; i++) {
             ipOctet[i] = new ProxyEditText(context, OCTET_LEN);
-            ipOctet[i].addTextChangedListener(addressWatcher);
+            ipOctet[i].addTextChangedListener(new AddressWatcher());
             addressLay.addView(ipOctet[i]);
-            if (i < OCTETS_COUNT - GlobalConfig.ONE)
-                addressLay.addView(new SerifTextView(context, DOT));
+            if (i < OCTETS_COUNT - GlobalConfig.ONE) addressLay.addView(new SerifTextView(context, DOT));
         }
         addressLay.addView(proxySet);
-    }
-
-    public boolean isNumber(CharSequence str) {
-        if (str.length() == 0) return true;
-        byte result = 0;
-        for (byte symbol = 48; symbol < 58; symbol++) // аски 0(48) - 9(57)
-            for (byte i = 0; i < str.length(); i++)
-                if (str.charAt(i) == (char) symbol) result++;
-        return (result == str.length());
     }
 
     public void clearForms() {
@@ -218,7 +132,7 @@ public class ProxyManagerOld extends LinearLayout implements View.OnClickListene
         return false;
     }
 
-    public boolean fistActetEqualsZero() {
+    public boolean fistOctetEqualsZero() {
         try {
             return (Integer.parseInt(ipOctet[0].getText().toString()) < GlobalConfig.ONE);
         } catch (NullPointerException ex) {
@@ -242,7 +156,7 @@ public class ProxyManagerOld extends LinearLayout implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        if (clear.equals(view)) {
+        if (clearMessageButton.equals(view)) {
             clearForms();
         } else if (view.equals(proxySet))
             proxyBoxLogic();
@@ -269,23 +183,19 @@ public class ProxyManagerOld extends LinearLayout implements View.OnClickListene
     }
 
     private void proxyBoxLogic() {
-        if (proxySet.isChecked()) {
-            if (noErrorsOnForms()) {
-                Toast.makeText(context, PROXY_MESSAGE_ON, Toast.LENGTH_SHORT).show();
-            } else proxySet.setChecked(false);
-        } else
-            Toast.makeText(context, PROXY_MESSAGE_OFF, Toast.LENGTH_SHORT).show();
+        try {
+            checkFormOnErrors();
+            showMessageOnScreen(proxySet.isChecked() ? PROXY_MESSAGE_ON : PROXY_MESSAGE_OFF);
+        } catch (FormIsEmptyException e) {
+            showMessageOnScreen(EMPTY_FIELD_ERROR_MESSAGE);
+        } catch (IPStartFromZeroException e) {
+            showMessageOnScreen(FIRST_OCTET_ERROR_MESSAGE);
+        }
     }
 
-    private boolean noErrorsOnForms() {
-        if (ipIsEmpty() || portIsEmpty()) {
-            Toast.makeText(context, EMPTY_FIELD_ERROR_MESSAGE, Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (fistActetEqualsZero()) {
-            Toast.makeText(context, FIRST_OCTET_ERROR_MESSAGE, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
+    private void checkFormOnErrors() throws FormIsEmptyException, IPStartFromZeroException {
+        if (ipIsEmpty() || portIsEmpty()) throw new FormIsEmptyException();
+        if (fistOctetEqualsZero()) throw new IPStartFromZeroException();
     }
 
     public boolean isProxySet() {
@@ -294,6 +204,134 @@ public class ProxyManagerOld extends LinearLayout implements View.OnClickListene
 
     public void setProxyCheckBoxState(boolean state) {
         proxySet.setChecked(state);
+    }
+
+    private void showMessageOnScreen(String errorMessage) {
+        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean isNumber(CharSequence str) {
+        byte result = 0;
+        for (byte symbol = 48; symbol < 58; symbol++) // аски 0(48) - 9(57)
+            for (byte i = 0; i < str.length(); i++)
+                if (str.charAt(i) == (char) symbol) result++;
+        return (result == str.length());
+    }
+
+    private class IPStartFromZeroException extends Throwable {
+        public IPStartFromZeroException() {
+            proxySet.setChecked(false);
+        }
+    }
+
+    private class FormIsEmptyException extends Throwable {
+        public FormIsEmptyException() {
+            proxySet.setChecked(false);
+        }
+    }
+
+    private class PortWatcher implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            beforeChangeBuffering = charSequence.toString();
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            proxySet.setChecked(false);
+            lookingOnPort(editable);
+        }
+
+        private void lookingOnPort(Editable port) {
+            try {
+                lookingErrorsOnPort(port);
+            } catch (PortMaxValueException e) {
+                showMessageOnScreen(PORT_ERROR_MESSAGE + MAX_PORT_VALUE);
+            } catch (NumberFormatException e) {
+                portForm.setText(beforeChangeBuffering);
+            }
+        }
+
+        private void lookingErrorsOnPort(Editable port) throws NumberFormatException, PortMaxValueException {
+            if (port.toString().isEmpty()) return;
+            if (!isNumber(port.toString())) throw new NumberFormatException();
+            if (Integer.parseInt(port.toString()) > MAX_PORT_VALUE) throw new PortMaxValueException();
+            if (String.valueOf(Integer.parseInt(port.toString())).length() < port.toString().length()) unZero(port);
+        }
+
+        private void unZero(Editable port) {
+            portForm.setText(Integer.parseInt(port.toString()));
+        }
+
+        private class PortMaxValueException extends Throwable {
+            public PortMaxValueException() {
+                portForm.setText(GlobalConfig.EMPTY_STRING);
+            }
+        }
+    }
+
+    private class AddressWatcher implements TextWatcher {
+        private byte focusedOctetIndex;
+
+        @Override
+        public void onTextChanged(CharSequence octet, int start, int before, int count) {
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence octet, int start, int count, int after) {
+            beforeChangeBuffering = octet.toString();
+            focusedOctetIndex = getCurrentOctetFocus();
+        }
+
+        @Override
+        public void afterTextChanged(Editable octet) {
+            proxySet.setChecked(false);
+            lookingOnIPOctet(octet);
+        }
+
+        private void lookingOnIPOctet(Editable octet) {
+            try {
+                lookingOnIPErrors(octet);
+            } catch (MaxIPValueException e) {
+                showMessageOnScreen(IP_ERROR_MESSAGE + MAX_IP_VALUE);
+            } catch (NumberFormatException e) {
+                ipOctet[focusedOctetIndex].setText(beforeChangeBuffering);
+            }
+        }
+
+        private void lookingOnIPErrors(Editable octet) throws MaxIPValueException, NumberFormatException {
+            if (octet.toString().isEmpty()) return;
+            if (!isNumber(octet.toString())) throw new NumberFormatException();
+            if (Integer.parseInt(octet.toString()) > MAX_IP_VALUE) throw new MaxIPValueException(focusedOctetIndex);
+            if (String.valueOf(Integer.parseInt(octet.toString())).length() < octet.toString().length()) unZero(octet);
+            if (octet.toString().length() == OCTET_LEN) setNextOctetInFocus();
+        }
+
+        private void unZero(Editable octet) throws NumberFormatException {
+            ipOctet[focusedOctetIndex].setText(String.valueOf(Integer.parseInt(octet.toString())));
+        }
+
+        private void setNextOctetInFocus() {
+            if (focusedOctetIndex < OCTET_LEN) focusedOctetIndex++;
+            ipOctet[focusedOctetIndex].requestFocus();
+        }
+
+        public byte getCurrentOctetFocus() {
+            for (byte i = 0; i < OCTETS_COUNT; i++)
+                if (ipOctet[i].isFocused()) return i;
+            return 0;
+        }
+
+        private class MaxIPValueException extends Throwable {
+            MaxIPValueException(byte index) {
+                ipOctet[index].setText(GlobalConfig.EMPTY_STRING);
+            }
+        }
     }
 
     private class ProxyEditText extends EditText {

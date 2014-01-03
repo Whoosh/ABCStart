@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.public_code;
 
 public enum Month {
+
     January("Январь"), February("Февраль"), March("Март"),
     April("Апрель"), May("Май"), June("Июнь"),
     July("Июль"), August("Август"), September("Сентябрь"),

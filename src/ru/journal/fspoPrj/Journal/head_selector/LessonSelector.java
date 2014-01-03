@@ -11,7 +11,7 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 public class LessonSelector extends LinearLayout {
 
     private SerifTextView lessonName;
-    private final String DEFAULT_TEXT = "Выбрать предмет";
+    private static final String DEFAULT_TEXT = "Выбрать предмет";
 
     public LessonSelector(Context context) {
         super(context);

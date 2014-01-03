@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.journal;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.LinearLayout;
@@ -10,7 +11,6 @@ import ru.journal.fspoPrj.journal.callbacks.Switcher;
 import ru.journal.fspoPrj.public_code.configs.LookingJournalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
-import ru.journal.fspoPrj.server_java.Server;
 import ru.journal.fspoPrj.journal.head_selector.DateSelector;
 import ru.journal.fspoPrj.journal.head_selector.GroupSelector;
 import ru.journal.fspoPrj.journal.head_selector.LessonSelector;
@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 public class LookingJournalActivity extends Activity implements View.OnTouchListener, View.OnClickListener {
 
-    private final String DATE_KEY = "IndexOfDate";
-    private final String GROUP_KEY = "Group";
+    private static final String DATE_KEY = "IndexOfDate";
+    private static final String GROUP_KEY = "Group";
 
     private GroupSelector groupSelector;
     private DateSelector dateSelector;
@@ -89,19 +89,14 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
     }
 
     private void saveStateOnRotateEvent(Bundle outState) {
-        // сохранение параметров выбора даты
         outState.putInt(DATE_KEY, dateSelector.getIndexOfSelectedDate());
-
-        // сохранение параметров выбора группы
         outState.putByte(GROUP_KEY, groupSelector.getOldFocusedIndex());
     }
 
     private void loadStateOnRotateEvent(Bundle savedInstanceState) {
-        // загрузка параметров выбора даты
         dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(DATE_KEY));
         dateSelector.refreshVisualState();
 
-        // загрузка параметров выбора группы
         groupSelector.setOldFocusedIndex(savedInstanceState.getByte(GROUP_KEY));
         groupSelector.refreshVisualState();
     }
@@ -113,11 +108,10 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
     }
 
     private void initElements() {
-        mainLay = new LinearLayout(this);
         LinearLayout datePlusGroup = new LinearLayout(this);
         LinearLayout dateListPlusLessonSelector = new LinearLayout(this);
         LinearLayout studentsPlusTableLayout = new LinearLayout(this);
-        ScrollView studentsPlusTable = new ScrollView(this);
+        ScrollView studentsPlusTableScrollView = new ScrollView(this);
 
         groupSelector = new GroupSelector(this);
         dateSelector = new DateSelector(this);
@@ -140,23 +134,25 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         studentsPlusTableLayout.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         studentsPlusTableLayout.addView(tableWithMarks);
 
-        studentsPlusTable.addView(studentsPlusTableLayout);
+        studentsPlusTableScrollView.addView(studentsPlusTableLayout);
 
         dateListPlusLessonSelector.addView(lessonSelector);
         dateListPlusLessonSelector.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         dateListPlusLessonSelector.addView(dateList);
+        dateListPlusLessonSelector.setBackgroundColor(Color.LTGRAY);
 
         datePlusGroup.addView(groupSelector);
         datePlusGroup.addView(new VerticalLine(this, LookingJournalConfig.getSeparateLineColor()));
         datePlusGroup.addView(dateSelector);
 
+        mainLay = new LinearLayout(this);
         mainLay.setOrientation(LinearLayout.VERTICAL);
         mainLay.setBackgroundDrawable(LookingJournalConfig.getBackground(this));
         mainLay.addView(datePlusGroup);
         mainLay.addView(new HorizontalLine(this, LookingJournalConfig.getSeparateLineColor()));
         mainLay.addView(dateListPlusLessonSelector);
         mainLay.addView(new HorizontalLine(this, LookingJournalConfig.getSeparateLineColor()));
-        mainLay.addView(studentsPlusTable);
+        mainLay.addView(studentsPlusTableScrollView);
     }
 
 

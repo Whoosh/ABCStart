@@ -1,6 +1,6 @@
 package ru.journal.fspoPrj.server_java;
 
-import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
+import ru.journal.fspoPrj.public_code.Logger;
 
 public enum APIQuery {
 
@@ -10,20 +10,24 @@ public enum APIQuery {
     GET_MIGHT("GET /api/getRoles/?ssid=", "&user_id="),
     EMPTY_QUERY("GET /api");
 
-    private final String[] key;
+    private final String[] keys;
 
-    private APIQuery(String... key) {
-        this.key = key;
+    private APIQuery(String... keys) {
+        this.keys = keys;
     }
 
-    // при несовподении параметров, получим эксепшен, TODO
     public String getLink(String... values) {
-        if (values.length == 0) return key[0];
+        if (values.length == 0) return keys[0];
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < values.length; i++) {
-            builder.append(key[i]);
-            builder.append(values[i]);
+        try {
+            for (int i = 0; i < values.length; i++) {
+                builder.append(keys[i]);
+                builder.append(values[i]);
+            }
+            return builder.toString();
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            Logger.printError(ex, getClass());
+            return EMPTY_QUERY.toString();
         }
-        return builder.toString();
     }
 }
