@@ -8,7 +8,7 @@ public class TeacherAkaStudent extends User {
         super(
                 Functions.JOURNALS.ordinal(),
                 Functions.PROFILE.ordinal(),
-                Functions.ERROR_INFORMER.ordinal()
+                Functions.ERROR_INFORMER.ordinal() // TODO
         );
     }
 }

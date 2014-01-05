@@ -1,12 +1,14 @@
 package ru.journal.fspoPrj.server_java;
 
-import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
+import ru.journal.fspoPrj.public_code.Logger;
+import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.server_java.might_info.MightInfo;
-import ru.journal.fspoPrj.server_java.profile_info.ProfileInfo;
+import ru.journal.fspoPrj.server_java.profile_info.UserProfile;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -67,8 +69,7 @@ public abstract class Server {
             MY_ID = new JSONObject(jsonString).get(USER_ID_TAG).toString();
             setMight();
         } catch (JSONException e) {
-            System.err.println(e);
-            throw new TimeoutException();
+            Logger.printError(e, Server.class);
         }
     }
 
@@ -79,22 +80,22 @@ public abstract class Server {
         MightInfo.setDataFromJson(new JSONObject(jsonString));
     }
 
-    public static void loadMyProfileInToProfileInfo() throws TimeoutException {
+    public static UserProfile getMyProfile() throws TimeoutException {
         Future<String> response = executorService.submit(new Query(APIQuery.GET_PROFILE.getLink(TOKEN, MY_ID)));
-        requestProfile(response);
+        return requestProfile(response);
     }
 
-    public static void loadAnyUserInfoInToProfileInfo(String userID) throws TimeoutException {
+    public static UserProfile getUserProfile(String userID) throws TimeoutException {
         Future<String> response = executorService.submit(new Query(APIQuery.GET_PROFILE.getLink(TOKEN, userID)));
-        requestProfile(response);
+        return requestProfile(response);
     }
 
-    private static void requestProfile(Future<String> response) throws TimeoutException {
+    private static UserProfile requestProfile(Future<String> response) throws TimeoutException {
         waitResponse(response, DEFAULT_WAIT_RESPONSE_DELAY);
         try {
-            ProfileInfo.loadDataFromJson(new JSONObject(getResponseString(response)));
+            return new UserProfile(new JSONObject(getResponseString(response)));
         } catch (JSONException e) {
-            ProfileInfo.setProfileEmpty();
+            return new UserProfile();
         }
     }
 
@@ -106,6 +107,7 @@ public abstract class Server {
             try {
                 Thread.sleep(THREAD_WAITING_DELAY);
             } catch (InterruptedException e) {
+                Logger.printError(e, Server.class);
                 throw new TimeoutException();
             }
         }
@@ -172,25 +174,22 @@ public abstract class Server {
 
             try {
                 socket = new Socket(HOST, PORT);
-
                 PrintWriter query = new PrintWriter(socket.getOutputStream());
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
                 query.print(queryString);
                 query.println(ClientInfo.CLIENT_INFO.get());
                 query.flush();
 
-                InputStreamReader iSReader = new InputStreamReader(socket.getInputStream());
-                BufferedReader bufferedReader = new BufferedReader(iSReader);
-
                 for (String buffer; (buffer = bufferedReader.readLine()) != null; ) result.append(buffer);
 
                 query.close();
-                iSReader.close();
                 bufferedReader.close();
                 socket.close();
-
-            } catch (Exception e) {
-                System.err.println(e);
+            } catch (IOException e) {
+                Logger.printError(e, Server.class);
             }
+
             return result.substring(result.indexOf(JSON_START_SCOPE));
         }
     }

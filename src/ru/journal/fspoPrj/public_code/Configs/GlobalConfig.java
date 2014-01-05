@@ -1,12 +1,8 @@
 package ru.journal.fspoPrj.public_code.configs;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.view.View;
-import ru.journal.fspoPrj.login_form.settings_form.ThemeManager;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.BlackToWhiteHeaderGradientLine;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
+import ru.journal.fspoPrj.journal.config.Config;
 
 abstract public class GlobalConfig {
 //
@@ -29,38 +25,44 @@ abstract public class GlobalConfig {
         DISPLAY_DENSITY_PIXEL_METRIC = context.getResources().getDisplayMetrics().density;
     }
 
-    public static void setThemeConfig(SharedPreferences keyValueStorage) {
-        MATRIX_THEME = keyValueStorage.getBoolean(ThemeManager.MATRIX_CHECK_KEY, false);
+    public static void setMatrixTheme(boolean value) {
+        MATRIX_THEME = value;
         NORMAL_THEME = !MATRIX_THEME;
+    }
+
+    public static void setDefaultTheme(boolean value) {
+        NORMAL_THEME = value;
+        MATRIX_THEME = !NORMAL_THEME;
     }
 
     public static float getPixelDensity() {
         return DISPLAY_DENSITY_PIXEL_METRIC;
     }
 
-    public static void setDefaultSettings() {
-        MainWindowConfig.setDefaultElementSize();
-        MainSettingsConfig.setDefaultElementSize();
-        MainMenuConfig.setDefaultElementSize();
-        LookingJournalConfig.setDefaultElementSize();
-        ProfileConfig.setDefaultElementSize();
+    public static void acceptPreference() {
+
+        ru.journal.fspoPrj.login_form.config.Config.setDefaultElementSize();
+        ru.journal.fspoPrj.settings_form.config.Config.setDefaultElementSize();
+        ru.journal.fspoPrj.main_menu.config.Config.setDefaultElementSize();
+        Config.setDefaultElementSize();
+        ru.journal.fspoPrj.user_profile.config.Config.setDefaultElementSize();
 
         if (MATRIX_THEME) {
             setGlobalMatrixPreference();
 
-            MainWindowConfig.setMatrixThemeColors();
-            MainSettingsConfig.setMatrixThemeColors();
-            MainMenuConfig.setMatrixThemeColors();
-            LookingJournalConfig.setMatrixThemeColors();
-            ProfileConfig.setMatrixThemeColors();
+            ru.journal.fspoPrj.login_form.config.Config.setMatrixThemeColors();
+            ru.journal.fspoPrj.settings_form.config.Config.setMatrixThemeColors();
+            ru.journal.fspoPrj.main_menu.config.Config.setMatrixThemeColors();
+            Config.setMatrixThemeColors();
+            ru.journal.fspoPrj.user_profile.config.Config.setMatrixThemeColors();
         } else {
             setGlobalNormalPreference();
 
-            MainWindowConfig.setNormalThemeColors();
-            MainSettingsConfig.setNormalThemeColors();
-            MainMenuConfig.setNormalThemeColors();
-            LookingJournalConfig.setNormalThereColors();
-            ProfileConfig.setNormalThemeColors();
+            ru.journal.fspoPrj.login_form.config.Config.setNormalThemeColors();
+            ru.journal.fspoPrj.settings_form.config.Config.setNormalThemeColors();
+            ru.journal.fspoPrj.main_menu.config.Config.setNormalThemeColors();
+            Config.setNormalThereColors();
+            ru.journal.fspoPrj.user_profile.config.Config.setNormalThemeColors();
         }
 
     }
@@ -75,12 +77,6 @@ abstract public class GlobalConfig {
 
     public static int getSerifTextColor() {
         return serifTextDefaultColor;
-    }
-
-    public static View getHeaderLine(Context context) {
-        if (MATRIX_THEME)
-            return new HorizontalLine(context, Color.CYAN, 3);
-        return new BlackToWhiteHeaderGradientLine(context);
     }
 
     public static int convertToRealPixels(int countOfPixels) {

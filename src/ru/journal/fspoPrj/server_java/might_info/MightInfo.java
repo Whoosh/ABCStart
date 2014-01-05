@@ -13,6 +13,7 @@ public abstract class MightInfo {
                 JsonValues.values()[i].setStatus(jsonMightInfo.getBoolean(JsonValues.values()[i].getJsonKey()));
             } catch (JSONException e) {
                 Logger.printError(e, MightInfo.class);
+                JsonValues.values()[i].setStatus(false);
             }
         }
     }
@@ -33,11 +34,7 @@ public abstract class MightInfo {
                 return MightsCodes.values()[i].getToolsKit();
             }
         }
-        try {
-            throw new ArrayStoreException();
-        } catch (ArrayStoreException e) {
-            Logger.printError(e, MightInfo.class);
-        }
+        Logger.printError(new ArrayStoreException(), MightInfo.class);
         return MightsCodes.ANONYMOUS_CODE.getToolsKit();
     }
 }

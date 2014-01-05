@@ -5,12 +5,31 @@ import ru.journal.fspoPrj.main_menu.user_factory.mights_function_kits.*;
 
 public enum MightsCodes {
 
-    ANONYMOUS_CODE(new Anonymous(), JsonValues.RESERVED_TO_ANONYMOUS.ordinal()),
-    TEACHER_CODE(new Teacher(), JsonValues.TEACHER.ordinal()),
-    STUDENT_CODE(new Student(), JsonValues.STUDENT.ordinal()),
-    PARENT_CODE(new Parent(), JsonValues.PARENT.ordinal()),
-    ADMIN_CODE(new Admin(), JsonValues.ADMIN.ordinal()),
-    STUDENT_AKA_TEACHER(new TeacherAkaStudent(), generateCode(TEACHER_CODE.code, STUDENT_CODE.code));
+    ANONYMOUS_CODE(
+            new Anonymous(),
+            JsonValues.RESERVED_TO_ANONYMOUS.ordinal()
+    ),
+    TEACHER_CODE(
+            new Teacher(),
+            JsonValues.TEACHER.ordinal()
+    ),
+    STUDENT_CODE(
+            new Student(),
+            JsonValues.STUDENT.ordinal()
+    ),
+    PARENT_CODE(
+            new Parent(),
+            JsonValues.PARENT.ordinal()
+    ),
+    ADMIN_CODE(
+            new Admin(),
+            JsonValues.ADMIN.ordinal()
+    ),
+    STUDENT_AKA_TEACHER(
+            new TeacherAkaStudent(),
+            generateCode(TEACHER_CODE.code, STUDENT_CODE.code)
+    );
+
 
     private static int generateCode(int... codes) {
         StringBuilder builder = new StringBuilder();
@@ -18,12 +37,12 @@ public enum MightsCodes {
         return Integer.parseInt(builder.toString());
     }
 
+    private final User tool;
     private final int code;
-    private final User tools;
 
-    private MightsCodes(User tools, int code) {
-        this.tools = tools;
+    private MightsCodes(User tool, int code) {
         this.code = code;
+        this.tool = tool;
     }
 
     public int getCode() {
@@ -31,6 +50,6 @@ public enum MightsCodes {
     }
 
     public ToolsGetter getToolsKit() {
-        return tools;
+        return tool;
     }
 }
