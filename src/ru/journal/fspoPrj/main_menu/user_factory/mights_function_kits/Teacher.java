@@ -5,6 +5,6 @@ import ru.journal.fspoPrj.main_menu.user_factory.Functions;
 public class Teacher extends User {
 
     public Teacher() {
-        super(Functions.PROFILE.ordinal());
+        super(Functions.PROFILE.ordinal()); // TODO
     }
 }

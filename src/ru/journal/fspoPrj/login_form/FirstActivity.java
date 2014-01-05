@@ -3,38 +3,52 @@ package ru.journal.fspoPrj.login_form;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
+import android.view.Menu;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import org.jetbrains.annotations.NotNull;
-import ru.journal.fspoPrj.login_form.settings_form.MainSettingsActivity;
+import ru.journal.fspoPrj.login_form.elements.MainWindow;
+import ru.journal.fspoPrj.login_form.elements.MenuShower;
+import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.server_java.Server;
+import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
+import ru.journal.fspoPrj.settings_form.elements.ThemeManager;
 
 public class FirstActivity extends Activity implements View.OnClickListener {
 
     private MainWindow mainWindow;
-    private ActionMode settings;
 
     private static final String USER_NAME_KEY = "User name";
     private static final String PASSWORD_KEY = "Password";
 
-    private static final String SETTINGS_TITLE = "Настройки";
+    private static boolean currentTheme;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState == null) {
-            GlobalConfig.setGlobalPixelDensityInfo(this);
-            GlobalConfig.setThemeConfig(getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, MODE_PRIVATE));
-            GlobalConfig.setDefaultSettings();
-        }
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        prepareGlobalPreference();
+
         mainWindow = new MainWindow(this);
         mainWindow.setOnClickListener(this);
+
         setContentView(mainWindow);
 
-        settings = startActionMode(settingsBar);
+        startActionMode(new MenuShower(this));
+    }
+
+    private void prepareGlobalPreference() {
+        currentTheme = getThemeState();
+        GlobalConfig.setGlobalPixelDensityInfo(this);
+        GlobalConfig.setMatrixTheme(currentTheme);
+        GlobalConfig.acceptPreference();
+    }
+
+    private void refreshActivity() {
+        GlobalConfig.acceptPreference();
+        startActivity(new Intent(this, FirstActivity.class));
+        this.finish();
     }
 
     @Override
@@ -51,6 +65,8 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onResume() {
+        if (currentTheme != getThemeState())
+            refreshActivity();
         Server.disconnect();
         mainWindow.loadWindowInfo();
         super.onResume();
@@ -70,43 +86,12 @@ public class FirstActivity extends Activity implements View.OnClickListener {
         mainWindow.setPassword(savedInstanceState.get(PASSWORD_KEY).toString());
     }
 
-    private ActionMode.Callback settingsBar = new ActionMode.Callback() {
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            menu.add(SETTINGS_TITLE);
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            mode.finish();
-            startActivity(new Intent(getApplicationContext(), MainSettingsActivity.class));
-            return true;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            settings = null;
-            mode.finish();
-        }
-    };
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (settings == null) {
-            settings = startActionMode(settingsBar);
-        } else {
-            settings.finish();
-            settings = null;
-        }
+        startActionMode(new MenuShower(this));
         return false;
     }
+
 
     @Override
     public void onClick(View view) {
@@ -115,9 +100,13 @@ public class FirstActivity extends Activity implements View.OnClickListener {
                 InputMethodManager method = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 method.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (NullPointerException ex) {
-                ex.printStackTrace();
+                Logger.printError(ex, getClass());
             }
         }
+    }
 
+    public boolean getThemeState() {
+        return getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, MODE_PRIVATE)
+                .getBoolean(ThemeManager.MATRIX_CHECK_KEY, false);
     }
 }

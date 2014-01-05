@@ -10,27 +10,20 @@ public enum Functions {
     PROFILE("Мой профиль", ProfileActivity.class),
     ERROR_INFORMER("Доступна информация", BugReportInformerActivity.class);
 
-    private final Function function;
+    private final Class<?> functionClass;
+    private final String functionName;
 
     private Functions(String functionName, Class<?> functionClass) {
-        this.function = new Function(functionName, functionClass);
+        this.functionClass = functionClass;
+        this.functionName = functionName;
     }
 
     public Class<?> getToolClass() {
-        return function.functionClass;
+        return functionClass;
     }
 
     public String getToolName() {
-        return function.functionName;
+        return functionName;
     }
 
-    private class Function {
-        public String functionName;
-        public Class<?> functionClass;
-
-        public Function(String functionName, Class<?> functionClass) {
-            this.functionClass = functionClass;
-            this.functionName = functionName;
-        }
-    }
 }

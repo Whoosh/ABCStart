@@ -5,5 +5,4 @@ public class Server {
     static {
         System.loadLibrary("Server");
     }
-
 }

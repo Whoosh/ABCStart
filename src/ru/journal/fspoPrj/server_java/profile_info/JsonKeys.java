@@ -16,7 +16,11 @@ public enum JsonKeys {
         this.jsonKey = jsonKey;
     }
 
-    public String getKey() {
+    public String getJsonKey() {
         return jsonKey;
+    }
+
+    public int getChainKey() {
+        return ordinal();
     }
 }
