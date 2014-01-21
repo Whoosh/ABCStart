@@ -18,7 +18,6 @@ public class ProxyEditText extends EditText {
         super(context);
         setInputType(InputType.TYPE_CLASS_PHONE);
         setGravity(Gravity.CENTER_HORIZONTAL);
-        setBackgroundColor(Color.TRANSPARENT);
         setTextColor(Config.getFormsTextColor());
         setLayoutParams(new LinearLayout.LayoutParams(Config.getOctetWidth(), Config.getOctetHeight()));
         setTextSize(Config.getOctetTextSize());

@@ -4,21 +4,21 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 
 import java.util.ArrayList;
 
 public class Lessons implements ActionMode.Callback {
 
-    public Lessons(ArrayList<String> lessonsList) {
+    ArrayList<String> lessonList;
 
+    public Lessons(ArrayList<String> lessonsList) {
+        this.lessonList = lessonsList;
     }
 
     @Override
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-        for (int i = 0; i < 100; i++) {
-            //@TODO тестовый вариант.
-            menu.add("Список предметов");
+        for (String lesson : lessonList) {
+            menu.add(lesson);
         }
         return true;
     }
@@ -30,7 +30,7 @@ public class Lessons implements ActionMode.Callback {
 
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        LookingJournalActivity.lessonSelector.setLessonName("Hello");
+        LookingJournalActivity.lessonSelector.setDefaultText();
         actionMode.finish();
         return false;
     }

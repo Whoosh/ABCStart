@@ -91,6 +91,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
         addressLay = new LinearLayout(context);
         addressLay.addView(new SerifTextView(context, Gravity.BOTTOM, IP_TITLE));
+        addressLay.setGravity(Gravity.CENTER_VERTICAL);
 
         for (byte i = 0; i < OCTETS_COUNT; i++) {
             ipOctet[i] = new ProxyEditText(context, OCTET_LEN);

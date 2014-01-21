@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".settings_form.MainSettingsActivity"
-                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:theme="@android:style/Theme.Holo.DialogWhenLarge.NoActionBar"
                 >
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
@@ -56,6 +56,10 @@
                   android:theme="@android:style/Theme.NoTitleBar"
 
                 >
+        </activity>
+
+        <activity android:name=".server_java.server_managers.Progress" android:theme="@style/Theme.Transparent">
+
         </activity>
 
     </application>

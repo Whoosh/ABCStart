@@ -21,6 +21,7 @@ import ru.journal.fspoPrj.journal.elements.main_table.StudentList;
 import ru.journal.fspoPrj.journal.elements.main_table.TableWithMarks;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
+import ru.journal.fspoPrj.server_java.Server;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,6 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
 
     private LinearLayout mainLay;
 
-    public static ArrayList<String> listOfLessonsNames;
     public static LessonSelector lessonSelector;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -88,7 +88,8 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
 
     @Override
     public void onClick(View view) {
-        if (view.equals(lessonSelector)) startActionMode(new Lessons(new ArrayList<String>()));
+     //   if (view.equals(lessonSelector))
+          //  startActionMode(new Lessons(Server.getLessons()));
     }
 
     private void saveStateOnRotateEvent(Bundle outState) {
@@ -107,7 +108,6 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
 
     public static void setAllStaticFieldsIsNull() {
         lessonSelector = null;
-        listOfLessonsNames = null;
     }
 
     private void initElements() {
@@ -121,10 +121,10 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         lessonSelector = new LessonSelector(this);
 
         ArrayList<String> dates = new ArrayList<>();
-        for (int i = 0; i < 5; i++) dates.add(String.valueOf(i));
+        for (int i = 0; i < 30; i++) dates.add(String.valueOf(i));
 
         ArrayList<String> students = new ArrayList<>();
-        for (int i = 0; i < 10; i++) students.add("Какойто студент С.С");
+        for (int i = 0; i < 30; i++) students.add("Какойто студент С.С");
         StudentList studentList = new StudentList(this, students);
 
         dateList = new DateList(this, dates); // @TODO

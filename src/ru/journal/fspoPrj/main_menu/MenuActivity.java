@@ -16,7 +16,7 @@ import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.IconSetter;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
-import ru.journal.fspoPrj.server_java.ServerErrors;
+import ru.journal.fspoPrj.server_java.server_info.ServerErrors;
 import ru.journal.fspoPrj.server_java.might_info.MightInfo;
 
 
