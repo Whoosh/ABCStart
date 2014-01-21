@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.server_java;
+package ru.journal.fspoPrj.server_java.server_info;
 
 public enum ClientInfo {
 

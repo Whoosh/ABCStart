@@ -65,7 +65,7 @@ public abstract class Config {
         return checkBoxSize;
     }
 
-    public static Drawable getCheckBoxOnWhiteBackgroundCube() {
+    public static Drawable getCustomCheckBox() {
         return new CheckBoxRim();
     }
 
@@ -104,6 +104,7 @@ public abstract class Config {
         checkBox.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
         checkBox.setTypeface(Typeface.SERIF);
         checkBox.setTextColor(Config.getFormsTextColor());
+        checkBox.setBackgroundDrawable(getCustomCheckBox());
     }
 
     public static int getOctetTextSize() {

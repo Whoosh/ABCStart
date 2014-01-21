@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import ru.journal.fspoPrj.main_menu.user_factory.ToolsGetter;
 import ru.journal.fspoPrj.public_code.Logger;
 
+import java.util.Arrays;
+
 public abstract class MightInfo {
 
     public static void setDataFromJson(JSONObject jsonMightInfo) {

@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.login_form.elements.MainWindow;
 import ru.journal.fspoPrj.login_form.elements.MenuShower;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
+import ru.journal.fspoPrj.server_java.storage.CachedStorage;
 import ru.journal.fspoPrj.server_java.Server;
+import ru.journal.fspoPrj.server_java.server_info.ServerErrors;
 import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
 import ru.journal.fspoPrj.settings_form.elements.ThemeManager;
 
@@ -23,18 +26,15 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     private static final String PASSWORD_KEY = "Password";
 
     private static boolean currentTheme;
+    private static Toast messageShower;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         prepareGlobalPreference();
-
         mainWindow = new MainWindow(this);
         mainWindow.setOnClickListener(this);
-
         setContentView(mainWindow);
-
         startActionMode(new MenuShower(this));
     }
 
@@ -52,6 +52,34 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == mainWindow.getAuthBufferedLink().getRequestCode()) {
+            handleAuthorization();
+        }
+    }
+
+    private void handleAuthorization() {
+        if (CachedStorage.isHavingDataFor(mainWindow.getAuthBufferedLink().getQueryLink())) {
+            CachedStorage.cachedAuthorizationInfo(mainWindow.getAuthBufferedLink().getQueryLink());
+            if (CachedStorage.isTokenValid()) {
+                mainWindow.startMainMenu();
+            } else {
+                showMessage(ServerErrors.LOGIN_OR_PASSWORD_ERROR.message());
+                Toast.makeText(this, ServerErrors.LOGIN_OR_PASSWORD_ERROR.message(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void showMessage(String message) {
+        if (messageShower == null) {
+            messageShower = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+        } else {
+            messageShower.setText(message);
+        }
+        messageShower.show();
+    }
+
+    @Override
     protected void onPause() {
         mainWindow.saveWindowInfo();
         super.onPause();
@@ -65,8 +93,9 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onResume() {
-        if (currentTheme != getThemeState())
+        if (currentTheme != getThemeState()) {
             refreshActivity();
+        }
         Server.disconnect();
         mainWindow.loadWindowInfo();
         super.onResume();

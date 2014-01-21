@@ -9,17 +9,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import ru.journal.fspoPrj.login_form.config.Config;
 import ru.journal.fspoPrj.main_menu.MenuActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
+import ru.journal.fspoPrj.server_java.server_info.APIQuery;
+import ru.journal.fspoPrj.server_java.storage.BufferedLink;
 import ru.journal.fspoPrj.server_java.Server;
-import ru.journal.fspoPrj.server_java.ServerErrors;
 import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
-
-import java.util.concurrent.TimeoutException;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
@@ -40,45 +38,16 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     private LoginForm userName, password;
     private SharedPreferences keyValueStorage;
 
+    private static BufferedLink authBufferedLink;
+
+    static {
+        authBufferedLink = new BufferedLink(APIQuery.EMPTY_QUERY.getLink());
+    }
+
     public MainWindow(Context context) {
         super(context);
-        super.setGravity(Gravity.CENTER);
-        super.setOrientation(VERTICAL);
-        super.addView(Config.getLogoView(context));
-        super.setBackgroundDrawable(Config.getBackGround(context));
-
         this.context = context;
-
-        userName = new LoginForm(context);
-        password = new LoginForm(context);
-        saveMe = new CheckBox(context);
-        loginButton = new SerifTextView(context, ENTER_TITLE);
-
-        saveMe.setTextColor(Config.getCheckBoxTextColor());
-        saveMe.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
-        saveMe.setText(CHECK_BOX_TITLE);
-
-        loginButton.setLayoutParams(Config.getLoginButtonParam());
-        loginButton.setTextColor(Config.getTextColor());
-        loginButton.setBackgroundColor(Config.getFormColor());
-
-        password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-
-        password.setHint(PASSWORD_TITLE);
-        userName.setHint(USER_NAME_TITLE);
-
-        LinearLayout checkBoxPlusButton = new LinearLayout(context);
-        checkBoxPlusButton.setLayoutParams(Config.getLoginFormParam());
-        checkBoxPlusButton.addView(saveMe);
-        checkBoxPlusButton.addView(loginButton);
-
-        super.addView(userName);
-        super.addView(new TransparentHorizontalLine(context, Config.getLinesTransparentHeight()));
-        super.addView(password);
-        super.addView(new TransparentHorizontalLine(context, Config.getLinesTransparentHeight()));
-        super.addView(checkBoxPlusButton);
-
-        loginButton.setOnTouchListener(this);
+        initFields();
     }
 
     public String getPassword() {
@@ -95,6 +64,10 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         } catch (NullPointerException ex) {
             return GlobalConfig.EMPTY_STRING;
         }
+    }
+
+    public BufferedLink getAuthBufferedLink() {
+        return authBufferedLink;
     }
 
     public void setUserName(String userName) {
@@ -133,49 +106,33 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void startButtonLogic() {
-        keyValueStorage = context.getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
-
-        try {
+        if (Server.isNotMakingQueryNow(authBufferedLink.getQueryLink())) {
+            loadConnectSettings();
             loginOnServer();
-            checkAuthorization();
-            startMainMenu();
-        } catch (ServerDownException e) {
-            messageOnScreen(ServerErrors.SERVER_IS_DOWN.message());
-        } catch (TimeoutException e) {
-            messageOnScreen(ServerErrors.SERVER_TTL_QUERY_ERROR.message());
-        } catch (PasswordErrorException e) {
-            messageOnScreen(ServerErrors.LOGIN_OR_PASSWORD_ERROR.message());
         }
     }
 
-    private void loginOnServer() throws TimeoutException, ServerDownException {
-        if (isProxyON())startConnectWithProxy();
-        else startDefaultConnect();
+    private void loadConnectSettings() {
+        keyValueStorage = context.getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
     }
 
-    private void startConnectWithProxy() throws TimeoutException, ServerDownException {
-        loginOnServerWithProxy(getAddress(), getPort());
+    private void loginOnServer() {
+        if (isProxyON()) connectWithProxy();
+        else defaultConnect();
     }
 
-    private void messageOnScreen(String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    private void connectWithProxy() {
+        authBufferedLink = Server.connect(
+                userName.getText().toString(),
+                password.getText().toString(),
+                getAddress(), getPort(), context);
     }
 
-    private void startDefaultConnect() throws ServerDownException, TimeoutException {
-        if (Server.isNotAlive()) throw new ServerDownException();
-        Server.connect(userName.getText().toString(), password.getText().toString());
+    private void defaultConnect() {
+        authBufferedLink = Server.connect(userName.getText().toString(), password.getText().toString(), context);
     }
 
-    private void loginOnServerWithProxy(String address, int port) throws ServerDownException, TimeoutException {
-        if (Server.isNotAlive(address, port)) throw new ServerDownException();
-        Server.connect(userName.getText().toString(), password.getText().toString(), address, port);
-    }
-
-    private void checkAuthorization() throws PasswordErrorException {
-        if (Server.passwordIsWrong()) throw new PasswordErrorException();
-    }
-
-    private void startMainMenu() {
+    public void startMainMenu() {
         context.startActivity(new Intent(context, MenuActivity.class));
     }
 
@@ -199,9 +156,42 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         return Integer.parseInt(keyValueStorage.getString(MainSettingsActivity.PORT_KEY, GlobalConfig.EMPTY_STRING));
     }
 
-    private class ServerDownException extends Throwable {
+    private void initFields() {
+        super.setGravity(Gravity.CENTER);
+        super.setOrientation(VERTICAL);
+        super.addView(Config.getLogoView(context));
+        super.setBackgroundDrawable(Config.getBackGround(context));
+
+        userName = new LoginForm(context);
+        password = new LoginForm(context);
+        saveMe = new CheckBox(context);
+        loginButton = new SerifTextView(context, ENTER_TITLE);
+
+        saveMe.setTextColor(Config.getCheckBoxTextColor());
+        saveMe.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
+        saveMe.setText(CHECK_BOX_TITLE);
+
+        loginButton.setLayoutParams(Config.getLoginButtonParam());
+        loginButton.setTextColor(Config.getTextColor());
+        loginButton.setBackgroundColor(Config.getFormColor());
+
+        password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        password.setHint(PASSWORD_TITLE);
+        userName.setHint(USER_NAME_TITLE);
+
+        LinearLayout checkBoxPlusButton = new LinearLayout(context);
+        checkBoxPlusButton.setLayoutParams(Config.getLoginFormParam());
+        checkBoxPlusButton.addView(saveMe);
+        checkBoxPlusButton.addView(loginButton);
+
+        super.addView(userName);
+        super.addView(new TransparentHorizontalLine(context, Config.getLinesTransparentHeight()));
+        super.addView(password);
+        super.addView(new TransparentHorizontalLine(context, Config.getLinesTransparentHeight()));
+        super.addView(checkBoxPlusButton);
+
+        loginButton.setOnTouchListener(this);
     }
 
-    private class PasswordErrorException extends Throwable {
-    }
 }

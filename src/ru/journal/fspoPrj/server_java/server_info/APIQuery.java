@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.server_java;
+package ru.journal.fspoPrj.server_java.server_info;
 
 import ru.journal.fspoPrj.public_code.Logger;
 
@@ -8,6 +8,9 @@ public enum APIQuery {
     LOG_OUT("GET /api/logout/?ssid="),
     GET_PROFILE("GET /api/getProfile/?ssid=", "&user_id="),
     GET_MIGHT("GET /api/getRoles/?ssid=", "&user_id="),
+    GET_GROUP_LIST("GET /api/getGroupsList/?ssid=","&year_id="),
+    GET_TEACHER_LESSON("GET /api/getTeacherLessons/?ssid=","&year_id=","&user_id="),
+    GET_GROUP_JOURNAL("GET /api/getGroupsJournals/?ssid=","&year_id="),
     EMPTY_QUERY("GET /api");
 
     private final String[] keys;

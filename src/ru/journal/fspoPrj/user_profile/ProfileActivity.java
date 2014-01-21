@@ -51,7 +51,8 @@ public class ProfileActivity extends Activity {
 
     private void lookingOnRequestsProfile() throws TimeoutException {
         String userID = getIntent().getStringExtra(USER_ID_KEY);
-        userProfile = userID == null ? Server.getMyProfile() : Server.getUserProfile(userID);
+       // userProfile = userID == null ? Server.getMyProfile() : Server.getUserProfile(userID);
+        //TODO
     }
 
     private void loadAllInfoOnScreen() {
