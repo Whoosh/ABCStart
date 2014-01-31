@@ -14,7 +14,7 @@ public class SettingsHead extends LinearLayout {
     public SettingsHead(Context context) {
         super(context);
         addView(new IconSetter(context, android.R.drawable.ic_menu_set_as));
-        addView(new SerifTextView(context, SETTINGS_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
-        setBackgroundColor(Config.getFormBackgroundColor());
+        addView(new SerifTextView(context, SETTINGS_TITLE, GlobalConfig.getHeaderTextSize()));
+        setBackgroundColor(Config.getElementBackgroundColor());
     }
 }

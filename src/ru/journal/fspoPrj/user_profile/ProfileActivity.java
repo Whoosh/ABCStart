@@ -8,12 +8,9 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import ru.journal.fspoPrj.main_menu.MenuActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
-import ru.journal.fspoPrj.server_java.Server;
 import ru.journal.fspoPrj.server_java.profile_info.JsonKeys;
 import ru.journal.fspoPrj.server_java.profile_info.UserProfile;
 import ru.journal.fspoPrj.user_profile.config.Config;
@@ -36,22 +33,11 @@ public class ProfileActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        prepareActivity();
-    }
-
-    private void prepareActivity() {
-        try {
-            lookingOnRequestsProfile();
-            loadAllInfoOnScreen();
-        } catch (TimeoutException e) {
-            setResult(MenuActivity.SERVER_CONNECTION_DIE);
-            finish();
-        }
     }
 
     private void lookingOnRequestsProfile() throws TimeoutException {
         String userID = getIntent().getStringExtra(USER_ID_KEY);
-       // userProfile = userID == null ? Server.getMyProfile() : Server.getUserProfile(userID);
+        // userProfile = userID == null ? Server.getMyProfile() : Server.getUserProfile(userID);
         //TODO
     }
 
@@ -77,7 +63,7 @@ public class ProfileActivity extends Activity {
     }
 
     private void addInfoOnScreen() {
-        infoLay.addView(new TransparentHorizontalLine(this, Config.vacuumHeight));
+        infoLay.addView(new HorizontalLine(this, Color.TRANSPARENT, Config.vacuumHeight));
 
         for (int i = 0; i < TextInfo.values().length; i++) {
             infoLay.addView(new HorizontalLine(this, Color.LTGRAY));
@@ -86,7 +72,7 @@ public class ProfileActivity extends Activity {
                     .values()[i]
                     .getVisualKey() + userProfile
                     .getInfo(TextInfo.values()[i].getChainKey()),
-                    GlobalConfig.HEADER_TEXT_SIZE));
+                    GlobalConfig.getHeaderTextSize()));
             infoLay.addView(new HorizontalLine(this, Color.LTGRAY));
         }
     }

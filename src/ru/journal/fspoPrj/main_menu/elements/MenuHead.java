@@ -14,7 +14,7 @@ public class MenuHead extends LinearLayout {
     public MenuHead(Context context) {
         super(context);
         super.addView(new IconSetter(context, android.R.drawable.ic_menu_agenda));
-        super.addView(new SerifTextView(context, MENU_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
-        super.setBackgroundColor(Config.getMenuElementColor());
+        super.addView(new SerifTextView(context, MENU_TITLE, GlobalConfig.getHeaderTextSize()));
+        super.setBackgroundColor(Config.getHeadElementColor());
     }
 }

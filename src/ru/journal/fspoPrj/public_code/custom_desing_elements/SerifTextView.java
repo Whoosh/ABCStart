@@ -19,7 +19,7 @@ public class SerifTextView extends TextView {
 
     public SerifTextView(Context context, String text) {
         super(context);
-        initCode(text, Gravity.CENTER, GlobalConfig.DEFAULT_TEXT_SIZE);
+        initCode(text, Gravity.CENTER, GlobalConfig.getDefaultTextSize());
     }
 
     public SerifTextView(Context context, int gravity, String text, int textSize) {
@@ -29,7 +29,7 @@ public class SerifTextView extends TextView {
 
     public SerifTextView(Context context, int gravity, String text) {
         super(context);
-        initCode(text, gravity, GlobalConfig.DEFAULT_TEXT_SIZE);
+        initCode(text, gravity, GlobalConfig.getDefaultTextSize());
     }
 
     private void initCode(String text, int gravity, int textSize) {

@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.public_code.Month;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.BubbleHorizontalGradientLine;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalGradientLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 
 import java.util.Date;
@@ -160,7 +161,7 @@ public class DateSelector extends HorizontalScrollView implements View.OnClickLi
                     Config.getDateElementWith(),
                     ViewGroup.LayoutParams.FILL_PARENT));
             super.addView(new SerifTextView(context, month));
-            super.addView(new BubbleHorizontalGradientLine(context));
+            super.addView(new VerticalGradientLine(context, R.drawable.gr_blue_black_sepatator_settings_line));
             super.addView(new SerifTextView(context, year));
         }
 

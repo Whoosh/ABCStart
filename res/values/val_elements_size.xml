@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Global config values -->
+    <integer name="global__header_text_size">20</integer>
+    <integer name="global__default_text_size">15</integer>
+
+    <!-- Settings activity values -->
+    <integer name="settings__octet_width">58</integer>
+    <integer name="settings__port_width">125</integer>
+    <integer name="settings__horizontal_empty_view_height">15</integer>
+    <integer name="settings__head_line_height">3</integer>
+
+    <!-- First activity values -->
+    <integer name="login__button_width">80</integer>
+    <integer name="login__button_height">40</integer>
+    <integer name="login__login_form_width">200</integer>
+    <integer name="login__login_form_height">40</integer>
+    <integer name="login__separator_height">5</integer>
+
+    <!-- Menu activity values -->
+    <integer name="menu__header_line_height">3</integer>
+    <integer name="menu__item_menu_height">50</integer>
+    <integer name="menu__item_menu_width">400</integer>
+    <integer name="menu__item_menu_text_tab_width">20</integer>
+    <integer name="menu__item_menu_text_size">15</integer>
+    <integer name="menu__item_menu_end_start_line_height">3</integer>
+    <integer name="menu__item_menu_separate_line_height">15</integer>
+
+</resources>

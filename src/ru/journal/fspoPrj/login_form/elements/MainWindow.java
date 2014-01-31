@@ -3,26 +3,28 @@ package ru.journal.fspoPrj.login_form.elements;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.login_form.config.Config;
 import ru.journal.fspoPrj.main_menu.MenuActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
-import ru.journal.fspoPrj.server_java.server_info.APIQuery;
-import ru.journal.fspoPrj.server_java.storage.BufferedLink;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.server_java.Server;
+import ru.journal.fspoPrj.server_java.server_info.APIQuery;
+import ru.journal.fspoPrj.server_java.storage.BufferedLinker;
 import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
-    private static final String SETTINGS_KEY = "User Settings";
-    private static final String USER_NAME_KEY = "User Name";
+    private static final String SETTINGS_KEY = "ToolKitsManager Settings";
+    private static final String USER_NAME_KEY = "ToolKitsManager Name";
     private static final String PASSWORD_KEY = "Password";
     private static final String SAVE_KEY = "Save me";
 
@@ -38,10 +40,10 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     private LoginForm userName, password;
     private SharedPreferences keyValueStorage;
 
-    private static BufferedLink authBufferedLink;
+    private static BufferedLinker authBufferedLink; // TODO non static
 
     static {
-        authBufferedLink = new BufferedLink(APIQuery.EMPTY_QUERY.getLink());
+        authBufferedLink = new BufferedLinker(APIQuery.EMPTY_QUERY.getLink());
     }
 
     public MainWindow(Context context) {
@@ -66,10 +68,6 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         }
     }
 
-    public BufferedLink getAuthBufferedLink() {
-        return authBufferedLink;
-    }
-
     public void setUserName(String userName) {
         this.userName.setText(userName);
     }
@@ -78,7 +76,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         this.password.setText(password);
     }
 
-    public void saveWindowInfo() {
+    public void saveCurrentInfo() {
         keyValueStorage = context.getSharedPreferences(SETTINGS_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = keyValueStorage.edit();
         editor.putString(USER_NAME_KEY, getUserName());
@@ -87,7 +85,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         editor.commit();
     }
 
-    public void loadWindowInfo() {
+    public void loadOldInfoOnScreen() {
         keyValueStorage = context.getSharedPreferences(SETTINGS_KEY, Context.MODE_PRIVATE);
         if (keyValueStorage.getBoolean(SAVE_KEY, false)) {
             userName.setText(keyValueStorage.getString(USER_NAME_KEY, GlobalConfig.EMPTY_STRING));
@@ -106,10 +104,11 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void startButtonLogic() {
-        if (Server.isNotMakingQueryNow(authBufferedLink.getQueryLink())) {
-            loadConnectSettings();
-            loginOnServer();
+        if (Server.isMakingQueryNow()) {
+            return;
         }
+        loadConnectSettings();
+        loginOnServer();
     }
 
     private void loadConnectSettings() {
@@ -117,19 +116,25 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void loginOnServer() {
-        if (isProxyON()) connectWithProxy();
-        else defaultConnect();
+        if (isProxyON()) {
+            connectWithProxy();
+        } else {
+            defaultConnect();
+        }
     }
 
     private void connectWithProxy() {
-        authBufferedLink = Server.connect(
+        authBufferedLink = Server.authorizationQuery(
                 userName.getText().toString(),
                 password.getText().toString(),
                 getAddress(), getPort(), context);
     }
 
     private void defaultConnect() {
-        authBufferedLink = Server.connect(userName.getText().toString(), password.getText().toString(), context);
+        authBufferedLink = Server.authorizationQuery(
+                userName.getText().toString(),
+                password.getText().toString(),
+                context);
     }
 
     public void startMainMenu() {
@@ -156,6 +161,10 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         return Integer.parseInt(keyValueStorage.getString(MainSettingsActivity.PORT_KEY, GlobalConfig.EMPTY_STRING));
     }
 
+    public BufferedLinker getAuthBufferedLink() {
+        return authBufferedLink;
+    }
+
     private void initFields() {
         super.setGravity(Gravity.CENTER);
         super.setOrientation(VERTICAL);
@@ -168,10 +177,10 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         loginButton = new SerifTextView(context, ENTER_TITLE);
 
         saveMe.setTextColor(Config.getCheckBoxTextColor());
-        saveMe.setTextSize(GlobalConfig.DEFAULT_TEXT_SIZE);
+        saveMe.setTextSize(GlobalConfig.getDefaultTextSize());
         saveMe.setText(CHECK_BOX_TITLE);
 
-        loginButton.setLayoutParams(Config.getLoginButtonParam());
+        loginButton.setLayoutParams(new ViewGroup.LayoutParams(Config.getLoginButtonWidth(), Config.getLoginButtonHeight()));
         loginButton.setTextColor(Config.getTextColor());
         loginButton.setBackgroundColor(Config.getFormColor());
 
@@ -181,14 +190,14 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         userName.setHint(USER_NAME_TITLE);
 
         LinearLayout checkBoxPlusButton = new LinearLayout(context);
-        checkBoxPlusButton.setLayoutParams(Config.getLoginFormParam());
+        checkBoxPlusButton.setLayoutParams(new ViewGroup.LayoutParams(Config.getFormWidth(), Config.getFormHeight()));
         checkBoxPlusButton.addView(saveMe);
         checkBoxPlusButton.addView(loginButton);
 
         super.addView(userName);
-        super.addView(new TransparentHorizontalLine(context, Config.getLinesTransparentHeight()));
+        super.addView(new HorizontalLine(context, Color.TRANSPARENT, Config.getLinesTransparentHeight()));
         super.addView(password);
-        super.addView(new TransparentHorizontalLine(context, Config.getLinesTransparentHeight()));
+        super.addView(new HorizontalLine(context, Color.TRANSPARENT, Config.getLinesTransparentHeight()));
         super.addView(checkBoxPlusButton);
 
         loginButton.setOnTouchListener(this);
