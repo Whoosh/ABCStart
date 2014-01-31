@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
@@ -19,14 +20,14 @@ public class ProxyEditText extends EditText {
         setInputType(InputType.TYPE_CLASS_PHONE);
         setGravity(Gravity.CENTER_HORIZONTAL);
         setTextColor(Config.getFormsTextColor());
-        setLayoutParams(new LinearLayout.LayoutParams(Config.getOctetWidth(), Config.getOctetHeight()));
-        setTextSize(Config.getOctetTextSize());
+        setLayoutParams(new LinearLayout.LayoutParams(Config.getOctetWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
+        setTextSize(GlobalConfig.getDefaultTextSize());
         setText(GlobalConfig.EMPTY_STRING);
         setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxSymbolCount)});
         setTypeface(Typeface.SERIF);
     }
 
     public void setPortLayParam() {
-        setLayoutParams(new LinearLayout.LayoutParams(Config.getPortWidth(), Config.getPortHeight()));
+        setLayoutParams(new LinearLayout.LayoutParams(Config.getPortWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 }

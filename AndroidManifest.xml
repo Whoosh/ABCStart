@@ -58,7 +58,7 @@
                 >
         </activity>
 
-        <activity android:name=".server_java.server_managers.Progress" android:theme="@style/Theme.Transparent">
+        <activity android:name=".server_java.server_managers.ProgressActivity" android:theme="@style/Theme.Transparent">
 
         </activity>
 

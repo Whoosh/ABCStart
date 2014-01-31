@@ -38,7 +38,7 @@ public class StudentList extends LinearLayout {
             super.setLayoutParams(new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.FILL_PARENT,
                     Config.getStudentListElementHeight()));
-            super.addView(new SerifTextView(context, student, GlobalConfig.HEADER_TEXT_SIZE));
+            super.addView(new SerifTextView(context, student, GlobalConfig.getHeaderTextSize()));
         }
     }
 

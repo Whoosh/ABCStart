@@ -1,7 +1,7 @@
 package nativeLibs;
 
 public class Server {
-	// TODO
+	// TODO вместо сервера БД
     static {
         System.loadLibrary("Server");
     }

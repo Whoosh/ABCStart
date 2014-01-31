@@ -35,7 +35,7 @@ public final class R {
         public static final int loginmenu=0x7f050000;
     }
     public static final class string {
-        /**  From: file:/F:/AndroidKoD/AndroidKoD/First_prj/res/values/strings.xml 
+        /**  From: file:/F:/AndroidKoD/AndroidKoD/First_prj/res/values/val_elements_size.xml
          */
         public static final int Edit=0x7f040000;
         public static final int Enter=0x7f040001;

@@ -2,16 +2,14 @@ package ru.journal.fspoPrj.settings_form.elements;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.BubbleHorizontalGradientLine;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
-import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.settings_form.config.Config;
 
 public class ThemeManager extends LinearLayout implements View.OnClickListener {
@@ -25,10 +23,8 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
     private CheckBox normal;
     private CheckBox matrix;
 
-
     public ThemeManager(Context context) {
         super(context);
-
         normal = new CheckBox(context);
         matrix = new CheckBox(context);
 
@@ -38,14 +34,15 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
         Config.setCheckBoxParam(matrix, this);
 
         super.setOrientation(VERTICAL);
-        super.addView(new SerifTextView(context, Gravity.CENTER_VERTICAL, THEME_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
+        super.addView(new SerifTextView(context, Gravity.CENTER_VERTICAL, THEME_TITLE, GlobalConfig.getHeaderTextSize()));
         super.addView(Config.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context, Config.getTransparentViewHeight()));
-        super.addView(new BubbleHorizontalGradientLine(context));
+        super.addView(new HorizontalLine(context, Color.TRANSPARENT, Config.getTransparentViewHeight()));
+        super.addView(Config.getSeparateElementLine(context));
         super.addView(matrix);
-        super.addView(new BubbleHorizontalGradientLine(context));
+        super.addView(Config.getSeparateElementLine(context));
         super.addView(normal);
-        super.addView(new BubbleHorizontalGradientLine(context));
+        super.addView(Config.getSeparateElementLine(context));
+        super.setBackgroundColor(Config.getElementBackgroundColor());
     }
 
     @Override
@@ -68,9 +65,8 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
     }
 
     private void refreshActivity() {
-        GlobalConfig.acceptPreference();
-        getContext().startActivity(new Intent(getContext(), MainSettingsActivity.class));
-        ((Activity) getContext()).finish();
+        GlobalConfig.changeThemePreference();
+        ((Activity) getContext()).recreate();
     }
 
     public void setMatrixCheck(boolean check) {

@@ -38,7 +38,7 @@ public class GroupSelector extends HorizontalScrollView implements View.OnClickL
         // все группы с 113 по 463 // TODO запросом, если такой будет
         for (int i = 100, k = 0; i <= 400; i += 100)
             for (int j = 10; j <= 60; j += 10, k++) {
-                groups[k] = new SerifTextView(context, " " + (i + j + 3) + " ", GlobalConfig.HEADER_TEXT_SIZE);
+                groups[k] = new SerifTextView(context, " " + (i + j + 3) + " ", GlobalConfig.getHeaderTextSize());
                 groups[k].setLayoutParams(groupElementParams);
                 groups[k].setOnClickListener(this);
                 groupsBuffer.addView(groups[k]);

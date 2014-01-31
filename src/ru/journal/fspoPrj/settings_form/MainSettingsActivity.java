@@ -2,11 +2,13 @@ package ru.journal.fspoPrj.settings_form;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.settings_form.config.Config;
 import ru.journal.fspoPrj.settings_form.elements.ProxyManager;
 import ru.journal.fspoPrj.settings_form.elements.SettingsHead;
@@ -26,6 +28,7 @@ public class MainSettingsActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        GlobalConfig.refreshToCurrentTheme(this);
         setElements();
         loadOldInformation();
     }
@@ -33,13 +36,13 @@ public class MainSettingsActivity extends Activity {
     @Override
     protected void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        saveProxyState(outState);
+        onRotateSaveProxyState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        loadProxyState(savedInstanceState);
+        onRotateLoadProxyState(savedInstanceState);
     }
 
     @Override
@@ -83,7 +86,7 @@ public class MainSettingsActivity extends Activity {
 
     }
 
-    private void loadProxyState(Bundle savedInstanceState) {
+    private void onRotateLoadProxyState(Bundle savedInstanceState) {
         proxyManager.loadAddress(savedInstanceState.getString(IP_KEY));
         proxyManager.loadPort(savedInstanceState.getString(PORT_KEY));
         proxyManager.setProxyCheckBoxState(savedInstanceState.getBoolean(CHECK_BOX_KEY));
@@ -92,7 +95,7 @@ public class MainSettingsActivity extends Activity {
         themeManager.setNormalCheck(!themeManager.getMatrixCheck());
     }
 
-    private void saveProxyState(Bundle outState) {
+    private void onRotateSaveProxyState(Bundle outState) {
         outState.putString(PORT_KEY, proxyManager.getPort());
         outState.putString(IP_KEY, proxyManager.getAddress());
         outState.putBoolean(CHECK_BOX_KEY, proxyManager.isProxySet());
@@ -102,27 +105,27 @@ public class MainSettingsActivity extends Activity {
 
     private void setElements() {
 
-        LinearLayout scrollableListForSettings = new LinearLayout(this);
-        LinearLayout headViewPlusScrollableListOfSettings = new LinearLayout(this);
-        ScrollView scrollPackageForSettingsList = new ScrollView(this);
+        LinearLayout scrollableList = new LinearLayout(this);
+        LinearLayout headViewPlusScrollableList = new LinearLayout(this);
+        ScrollView scrollView = new ScrollView(this);
 
         proxyManager = new ProxyManager(this);
         themeManager = new ThemeManager(this);
 
-        scrollableListForSettings.setOrientation(LinearLayout.VERTICAL);
-        scrollableListForSettings.setBackgroundColor(Config.getFormBackgroundColor());
-        headViewPlusScrollableListOfSettings.setOrientation(LinearLayout.VERTICAL);
+        scrollableList.setOrientation(LinearLayout.VERTICAL);
+        headViewPlusScrollableList.setOrientation(LinearLayout.VERTICAL);
 
-        scrollableListForSettings.addView(proxyManager);
-        scrollableListForSettings.addView(themeManager);
+        scrollableList.addView(new HorizontalLine(this, Color.TRANSPARENT, Config.getTransparentViewHeight()));
+        scrollableList.addView(proxyManager);
+        scrollableList.addView(new HorizontalLine(this, Color.TRANSPARENT, Config.getTransparentViewHeight()));
+        scrollableList.addView(themeManager);
 
-        scrollPackageForSettingsList.addView(scrollableListForSettings);
+        scrollView.addView(scrollableList);
 
-        headViewPlusScrollableListOfSettings.addView(new SettingsHead(this));
-        headViewPlusScrollableListOfSettings.addView(Config.getHeaderLine(this));
-        headViewPlusScrollableListOfSettings.addView(scrollPackageForSettingsList);
-        headViewPlusScrollableListOfSettings.setBackgroundColor(Config.getBackgroundColor());
+        headViewPlusScrollableList.addView(new SettingsHead(this));
+        headViewPlusScrollableList.addView(Config.getHeaderLine(this));
+        headViewPlusScrollableList.addView(scrollView);
 
-        setContentView(headViewPlusScrollableListOfSettings);
+        setContentView(headViewPlusScrollableList);
     }
 }

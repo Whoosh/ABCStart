@@ -1,25 +1,25 @@
 package ru.journal.fspoPrj.public_code.configs;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
-import ru.journal.fspoPrj.journal.config.Config;
+import ru.journal.fspoPrj.R;
 
 abstract public class GlobalConfig {
-//
-//@TODO Идея такая, запилить сюда при старте взятие информации о разрешении и тд..
-// и выделять размеры для елементов, в данном формате для экранов с width более 300,500 ect..
 
-    public static final byte ONE = 1;
-    public static final byte DEFAULT_TEXT_SIZE = 15;
-    public static final byte HEADER_TEXT_SIZE = 20;
     public static final String EMPTY_STRING = "";
+    public static final byte ONE = 1;
 
-    private static float DISPLAY_DENSITY_PIXEL_METRIC;
     public static boolean MATRIX_THEME;
     public static boolean NORMAL_THEME;
 
-    private static int serifTextDefaultColor;
+    private static int headerTextSize;
+    private static int defaultTextSize;
 
+    private static float DISPLAY_DENSITY_PIXEL_METRIC;
+
+    private static int serifTextDefaultColor;
+    private static Resources resources;
 
     public static void setGlobalPixelDensityInfo(Context context) {
         DISPLAY_DENSITY_PIXEL_METRIC = context.getResources().getDisplayMetrics().density;
@@ -39,21 +39,36 @@ abstract public class GlobalConfig {
         return DISPLAY_DENSITY_PIXEL_METRIC;
     }
 
-    public static void acceptPreference() {
+
+    public static void acceptSizesPreference() {
+        headerTextSize = resources.getInteger(R.integer.global__header_text_size);
+        defaultTextSize = resources.getInteger(R.integer.global__default_text_size);
 
         ru.journal.fspoPrj.login_form.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.settings_form.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.main_menu.config.Config.setDefaultElementSize();
-        Config.setDefaultElementSize();
+        ru.journal.fspoPrj.journal.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.user_profile.config.Config.setDefaultElementSize();
+    }
 
+    public static int getRealSize(int resID) {
+        return convertToRealPixels(resources.getInteger(resID));
+    }
+
+    public static void prepareGlobalPreference(Context context) {
+        resources = context.getResources();
+        GlobalConfig.setGlobalPixelDensityInfo(context);
+        GlobalConfig.acceptSizesPreference();
+    }
+
+    public static void changeThemePreference() {
         if (MATRIX_THEME) {
             setGlobalMatrixPreference();
 
             ru.journal.fspoPrj.login_form.config.Config.setMatrixThemeColors();
             ru.journal.fspoPrj.settings_form.config.Config.setMatrixThemeColors();
             ru.journal.fspoPrj.main_menu.config.Config.setMatrixThemeColors();
-            Config.setMatrixThemeColors();
+            ru.journal.fspoPrj.journal.config.Config.setMatrixThemeColors();
             ru.journal.fspoPrj.user_profile.config.Config.setMatrixThemeColors();
         } else {
             setGlobalNormalPreference();
@@ -61,10 +76,9 @@ abstract public class GlobalConfig {
             ru.journal.fspoPrj.login_form.config.Config.setNormalThemeColors();
             ru.journal.fspoPrj.settings_form.config.Config.setNormalThemeColors();
             ru.journal.fspoPrj.main_menu.config.Config.setNormalThemeColors();
-            Config.setNormalThereColors();
+            ru.journal.fspoPrj.journal.config.Config.setNormalThereColors();
             ru.journal.fspoPrj.user_profile.config.Config.setNormalThemeColors();
         }
-
     }
 
     private static void setGlobalNormalPreference() {
@@ -79,8 +93,19 @@ abstract public class GlobalConfig {
         return serifTextDefaultColor;
     }
 
-    public static int convertToRealPixels(int countOfPixels) {
-        return (int) (countOfPixels * DISPLAY_DENSITY_PIXEL_METRIC);
+    public static int convertToRealPixels(int pixels) {
+        return (int) (pixels * DISPLAY_DENSITY_PIXEL_METRIC);
     }
 
+    public static void refreshToCurrentTheme(Context context) {
+        context.setTheme(MATRIX_THEME ? R.style.Theme_matrixDark : R.style.Theme_defaultLight);
+    }
+
+    public static int getHeaderTextSize() {
+        return headerTextSize;
+    }
+
+    public static int getDefaultTextSize() {
+        return defaultTextSize;
+    }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/F:/AndroidKoD/AndroidKoD/First_prj/res/values/strings.xml -->
+    <!-- From: file:/F:/AndroidKoD/AndroidKoD/First_prj/res/values/val_elements_size.xml -->
     <string name="Edit">Edit</string>
     <string name="Enter">Войти</string>
     <string name="MoarOptions">Дополнительные настройки</string>

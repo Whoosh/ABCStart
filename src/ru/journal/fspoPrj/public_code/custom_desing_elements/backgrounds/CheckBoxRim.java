@@ -15,8 +15,8 @@ public class CheckBoxRim extends Drawable {
 
     public CheckBoxRim() {
         box = Bitmap.createBitmap(
-                Config.getCheckBoxSize(),
-                Config.getCheckBoxSize(),
+                35, // TODO если будет использоватся
+                35, // TODO
                 Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(box);
         setBoxGround(canvas);
@@ -24,11 +24,11 @@ public class CheckBoxRim extends Drawable {
 
     private void setBoxGround(Canvas canvas) {
         Paint setting = new Paint();
-        setting.setColor(Config.getCheckBoxColor());
-        canvas.drawColor(Config.getFormBackgroundColor());
+     //   setting.setColor(Config.getCheckBoxColor());
+       // canvas.drawColor(Config.getFormBackgroundColor());
 
 
-        for (int i = VOID_LEN - GlobalConfig.ONE; i < Config.getCheckBoxSize() - VOID_LEN; i++) {
+        for (int i = VOID_LEN - GlobalConfig.ONE; i < 35 - VOID_LEN; i++) {
             canvas.drawPoint(i, VOID_LEN - GlobalConfig.ONE, setting);
             canvas.drawPoint(VOID_LEN - GlobalConfig.ONE, i, setting);
             canvas.drawPoint(box.getWidth() - VOID_LEN - GlobalConfig.ONE, i, setting);

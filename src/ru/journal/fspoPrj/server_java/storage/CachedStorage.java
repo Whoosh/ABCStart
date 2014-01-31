@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.server_java.Server;
+import ru.journal.fspoPrj.server_java.might_info.CurrentRolesInfo;
 
 import java.util.Map;
 import java.util.Set;
@@ -36,15 +37,23 @@ public abstract class CachedStorage {
         futureResponsesStorage.put(queryLink, futureResponse);
     }
 
-    public static void cachedAuthorizationInfo(String queryCode) {
-        JSONObject jsonObject;
+    public static void cacheAuthorizationInfo(String queryCode) {
         try {
-            jsonObject = new JSONObject(peekResponse(queryCode));
+            JSONObject jsonObject = new JSONObject(peekResponse(queryCode));
             TOKEN = jsonObject.getString(TOKEN_KEY);
             MY_ID = jsonObject.getString(USER_ID_KEY);
             YEAR_ID = jsonObject.getString(YEAR_ID_KEY);
         } catch (JSONException e) {
+            clearToken();
             Logger.printError(e, Server.class);
+        }
+    }
+
+    public static void cacheMightInfo(String queryCode) {
+        try {
+            CurrentRolesInfo.setDataFromJson(new JSONObject(peekResponse(queryCode)).getJSONObject(ROLES_KEY));
+        } catch (JSONException e) {
+            Logger.printError(e, CachedStorage.class);
         }
     }
 
@@ -70,7 +79,7 @@ public abstract class CachedStorage {
         responseStorage.put(key, value);
     }
 
-    public static void dropFutureResponsesQuery() {
+    public static void dropFutureResponses() {
         futureResponsesStorage.clear();
     }
 
@@ -86,11 +95,11 @@ public abstract class CachedStorage {
         }
     }
 
-    public static boolean isTokenValid() {
+    public static boolean tokenIsValid() {
         return TOKEN.length() > THIS_IS_NOT_NULL_AND_NOT_TOKEN_LEN;
     }
 
-    public static boolean getFutureResponse(String queryCode) {
+    public static boolean isFutureResponseDone(String queryCode) {
         try {
             return futureResponsesStorage.get(queryCode).isDone();
         } catch (NullPointerException ex) {
@@ -101,4 +110,17 @@ public abstract class CachedStorage {
     public static void clearToken() {
         TOKEN = GlobalConfig.EMPTY_STRING;
     }
+
+    public static String getToken() {
+        return TOKEN;
+    }
+
+    public static String getMyID() {
+        return MY_ID;
+    }
+
+    public static String getYearID() {
+        return YEAR_ID;
+    }
+
 }

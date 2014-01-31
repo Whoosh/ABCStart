@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.settings_form.elements;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -10,8 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.BubbleHorizontalGradientLine;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.TransparentHorizontalLine;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.settings_form.config.Config;
 
 import static android.widget.LinearLayout.LayoutParams.FILL_PARENT;
@@ -49,24 +49,24 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
     public ProxyManager(Context context) {
         super(context);
-        super.setLayoutParams(new LayoutParams(FILL_PARENT, WRAP_CONTENT));
-        super.setOrientation(VERTICAL);
-
         this.context = context;
         ipOctet = new ProxyEditText[OCTETS_COUNT];
+        initElements();
+    }
 
-        super.addView(new SerifTextView(context, Gravity.LEFT, PROXY_TITLE, GlobalConfig.HEADER_TEXT_SIZE));
+    private void initElements() {
+        super.setLayoutParams(new LayoutParams(FILL_PARENT, WRAP_CONTENT));
+        super.setOrientation(VERTICAL);
+        super.addView(new SerifTextView(context, Gravity.LEFT, PROXY_TITLE, GlobalConfig.getHeaderTextSize()));
         super.addView(Config.getHeaderLine(context));
-        super.addView(new TransparentHorizontalLine(context, Config.getTransparentViewHeight()));
-        super.addView(new BubbleHorizontalGradientLine(context));
+        super.addView(new HorizontalLine(context, Color.TRANSPARENT, Config.getTransparentViewHeight()));
+        super.addView(Config.getSeparateElementLine(context));
         initAddress();
         super.addView(addressLay);
-        super.addView(new BubbleHorizontalGradientLine(context));
         initPort();
         super.addView(portLay);
-        super.addView(new BubbleHorizontalGradientLine(context));
-        super.addView(new TransparentHorizontalLine(context, Config.getTransparentViewHeight()));
-
+        super.addView(Config.getSeparateElementLine(context));
+        super.setBackgroundColor(Config.getElementBackgroundColor());
     }
 
     private void initPort() {

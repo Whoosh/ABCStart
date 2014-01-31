@@ -39,7 +39,7 @@ public class DateList extends HorizontalScrollView {
                     Config.getDateCellSize(),
                     Config.getDateCellSize()));
             super.setOnClickListener(this);
-            super.addView(new SerifTextView(context, date, GlobalConfig.DEFAULT_TEXT_SIZE));
+            super.addView(new SerifTextView(context, date, GlobalConfig.getDefaultTextSize()));
         }
 
         @Override

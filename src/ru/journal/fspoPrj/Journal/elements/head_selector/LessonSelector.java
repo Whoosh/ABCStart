@@ -20,7 +20,7 @@ public class LessonSelector extends LinearLayout {
                 Config.getLessonSelectorWidth(context),
                 Config.getLessonSelectorHeight()));
         super.setGravity(Gravity.CENTER);
-        lessonName = new SerifTextView(context, DEFAULT_TEXT, GlobalConfig.HEADER_TEXT_SIZE);
+        lessonName = new SerifTextView(context, DEFAULT_TEXT, GlobalConfig.getHeaderTextSize());
         super.addView(lessonName);
     }
 
