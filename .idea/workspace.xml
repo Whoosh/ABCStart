@@ -20,43 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/Authorization.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/ServerCommunicator.java" />
-      <change type="DELETED" beforePath="F:\MainBranch_impl_ect\ABCStart\src\ru\journal\fspoPrj\server_java\Server.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch_impl_ect\ABCStart\src\ru\journal\fspoPrj\server_java\storage\BufferedLinker.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch_impl_ect\ABCStart\src\ru\journal\fspoPrj\server_java\storage\CachedStorage.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/query_manager/AuthorizationExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/query_manager/AuthorizationExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/backgrounds/CheckBoxRim.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/backgrounds/CheckBoxRim.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/config/Config.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/config/Config.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/CurrentRolesInfo.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/CurrentRolesInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/FirstActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/FirstActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/configs/GlobalConfig.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/configs/GlobalConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/lines/HorizontalLine.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/lines/HorizontalLine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ItemMenu.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ItemMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ListMenu.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ListMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/backgrounds/LiteMatrixDraw.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/backgrounds/LiteMatrixDraw.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/MainSettingsActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/MainSettingsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/MenuActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/MenuActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/MightsCodes.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/MightsCodes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ProgressActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ProgressActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ProxyManager.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ProxyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/Query.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/Query.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/propertys_cell/StudentOnLessonNeeded.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/propertys_cell/StudentOnLessonNeeded.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/propertys_cell/StudentOnLessonPowerUp.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/propertys_cell/StudentOnLessonPowerUp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/Tool.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/Tool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/ToolKitsManager.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/ToolKitsManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/lines/VerticalLine.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/lines/VerticalLine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/propertys_cell/WeightOfRanking.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/propertys_cell/WeightOfRanking.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values/val_elements_size.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-large/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values-large/val_elements_size.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-normal/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values-normal/val_elements_size.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-small/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values-small/val_elements_size.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-xlarge/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values-xlarge/val_elements_size.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
@@ -125,7 +89,7 @@
       <file leaf-file-name="FirstActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/FirstActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="13" selection-start="2047" selection-end="2047" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1802">
+            <state line="59" column="13" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2057">
               <folding />
             </state>
           </provider>
@@ -134,7 +98,7 @@
       <file leaf-file-name="AuthorizationExecutor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/query_manager/AuthorizationExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="0" selection-start="2059" selection-end="2078" vertical-scroll-proportion="0.0" vertical-offset="620" max-vertical-offset="1258">
+            <state line="75" column="0" selection-start="2684" selection-end="2684" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1377">
               <folding />
             </state>
           </provider>
@@ -143,10 +107,8 @@
       <file leaf-file-name="ListMenu.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ListMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1731" selection-end="1731" vertical-scroll-proportion="-0.8412371" vertical-offset="1020" max-vertical-offset="5219">
-              <folding>
-                <element signature="e#3950#3958#0" expanded="true" />
-              </folding>
+            <state line="144" column="9" selection-start="4986" selection-end="4986" vertical-scroll-proportion="3.966229" vertical-offset="113" max-vertical-offset="4216">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -299,7 +261,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -812,6 +773,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -949,6 +911,38 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -975,38 +969,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1045,25 +1007,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
       <option name="BCName" value="" />
       <option name="IOSSimulatorSdkPath" value="" />
@@ -1097,6 +1040,25 @@
       <option name="screenWidth" value="0" />
       <option name="url" value="http://" />
       <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="false" name="fspoPrj" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1264,7 +1226,8 @@
       <workItem from="1391125210196" duration="38368000" />
       <workItem from="1391202754157" duration="4012000" />
       <workItem from="1391207025463" duration="38689000" />
-      <workItem from="1391309452035" duration="51154000" />
+      <workItem from="1391309452035" duration="51364000" />
+      <workItem from="1391372699798" duration="1785000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1382,11 +1345,15 @@
       <created>1391157322827</created>
       <updated>1391157322827</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="New  life to server logic. Some menu change.">
+      <created>1391364824664</created>
+      <updated>1391364824664</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1952127000" />
+    <option name="totallyTimeSpent" value="1954122000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1435,7 +1402,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2375189" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22340426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15045592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22692889" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
@@ -1457,7 +1424,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="Fail matrix idea" />
     <MESSAGE value="Fail matrix idea&#10;" />
     <MESSAGE value="Push time to back and refactoring." />
     <MESSAGE value="Push time to back and refactoring" />
@@ -1482,7 +1448,8 @@
     <MESSAGE value="Some structuring&#10;" />
     <MESSAGE value="Change server connection logic." />
     <MESSAGE value="Change menu, add server Executors logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change menu, add server Executors logic" />
+    <MESSAGE value="New  life to server logic. Some menu change." />
+    <option name="LAST_COMMIT_MESSAGE" value="New  life to server logic. Some menu change." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1504,6 +1471,20 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/query_manager/AuthorizationExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ListMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="3400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/transparent_theme.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="497">
@@ -1635,16 +1616,12 @@
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/java/lang/Object.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="19" selection-start="333" selection-end="333" vertical-scroll-proportion="0.29876977" vertical-offset="0" max-vertical-offset="595">
-          <folding />
-        </state>
+        <state line="11" column="19" selection-start="333" selection-end="333" vertical-scroll-proportion="0.29876977" vertical-offset="0" max-vertical-offset="595" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="12" selection-start="112" selection-end="112" vertical-scroll-proportion="0.124087594" vertical-offset="0" max-vertical-offset="714">
-          <folding />
-        </state>
+        <state line="4" column="12" selection-start="112" selection-end="112" vertical-scroll-proportion="0.124087594" vertical-offset="0" max-vertical-offset="714" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MenuShower.java">
@@ -1656,28 +1633,17 @@
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/content/SharedPreferences.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="36" selection-start="341" selection-end="341" vertical-scroll-proportion="0.3057554" vertical-offset="0" max-vertical-offset="1003">
-          <folding />
-        </state>
+        <state line="11" column="36" selection-start="341" selection-end="341" vertical-scroll-proportion="0.3057554" vertical-offset="0" max-vertical-offset="1003" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/configs/GlobalConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="65" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.36659878" vertical-offset="687" max-vertical-offset="1785">
-          <folding />
-        </state>
+        <state line="56" column="65" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.36659878" vertical-offset="687" max-vertical-offset="1785" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="71" column="9" selection-start="2441" selection-end="2441" vertical-scroll-proportion="-1.1757812" vertical-offset="1605" max-vertical-offset="2414">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/ServerCommunicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.796334" vertical-offset="0" max-vertical-offset="1088">
           <folding />
         </state>
       </provider>
@@ -1693,9 +1659,7 @@
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/java/util/Collections.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="38" selection-start="255" selection-end="255" vertical-scroll-proportion="-2.7817798" vertical-offset="1432" max-vertical-offset="2057">
-          <folding />
-        </state>
+        <state line="8" column="38" selection-start="255" selection-end="255" vertical-scroll-proportion="-2.7817798" vertical-offset="1432" max-vertical-offset="2057" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -1714,16 +1678,12 @@
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/java/io/FileInputStream.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="15" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.614433" vertical-offset="110" max-vertical-offset="595">
-          <folding />
-        </state>
+        <state line="25" column="15" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.614433" vertical-offset="110" max-vertical-offset="595" />
       </provider>
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/java/io/FileOutputStream.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="150" selection-end="150" vertical-scroll-proportion="0.17525773" vertical-offset="0" max-vertical-offset="595">
-          <folding />
-        </state>
+        <state line="6" column="13" selection-start="150" selection-end="150" vertical-scroll-proportion="0.17525773" vertical-offset="0" max-vertical-offset="595" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/Query.java">
@@ -1747,16 +1707,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/Authorization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="44" selection-start="2383" selection-end="2383" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/FirstActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="13" selection-start="2047" selection-end="2047" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1802">
+        <state line="59" column="13" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2057">
           <folding />
         </state>
       </provider>
@@ -1798,7 +1751,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/query_manager/AuthorizationExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="2059" selection-end="2078" vertical-scroll-proportion="0.0" vertical-offset="573" max-vertical-offset="1258">
+        <state line="75" column="0" selection-start="2684" selection-end="2684" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1377">
           <folding />
         </state>
       </provider>
@@ -1819,27 +1772,18 @@
     </entry>
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/java/io/PrintWriter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="150" selection-end="150" vertical-scroll-proportion="0.18008475" vertical-offset="0" max-vertical-offset="1717">
-          <folding />
-        </state>
+        <state line="6" column="13" selection-start="150" selection-end="150" vertical-scroll-proportion="0.18008475" vertical-offset="0" max-vertical-offset="1717" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ItemMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="41" selection-start="3438" selection-end="3438" vertical-scroll-proportion="0.82474226" vertical-offset="399" max-vertical-offset="969">
-          <folding>
-            <element signature="method#getName#0;class#ItemMenu#0" expanded="false" />
-            <element signature="method#initElement#0;class#ItemMenu#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="89" column="41" selection-start="3438" selection-end="3438" vertical-scroll-proportion="0.82474226" vertical-offset="399" max-vertical-offset="969" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ListMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1731" selection-end="1731" vertical-scroll-proportion="-0.8412371" vertical-offset="1020" max-vertical-offset="5219">
-          <folding>
-            <element signature="e#3950#3958#0" expanded="true" />
-          </folding>
+        <state line="144" column="9" selection-start="4986" selection-end="4986" vertical-scroll-proportion="3.966229" vertical-offset="113" max-vertical-offset="4216">
+          <folding />
         </state>
       </provider>
     </entry>

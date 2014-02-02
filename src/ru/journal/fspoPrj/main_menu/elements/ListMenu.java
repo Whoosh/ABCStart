@@ -16,7 +16,7 @@ import java.io.*;
 import java.util.*;
 
 public class ListMenu extends LinearLayout implements
-        View.OnDragListener, View.OnLongClickListener, View.OnClickListener, Collection<ItemMenu>, Iterator<ItemMenu> {
+        View.OnDragListener, View.OnLongClickListener, View.OnClickListener, Iterator<ItemMenu>, Iterable<ItemMenu> {
 
     private static final String STATE_FILE_NAME = "list collocation";
 
@@ -48,6 +48,16 @@ public class ListMenu extends LinearLayout implements
         }
     }
 
+    public boolean add(ItemMenu itemMenu) {
+        try {
+            super.addView(itemMenu);
+            this.setListenersOn(itemMenu);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     public void storeCollocation() {
         try {
             PrintWriter writer = new PrintWriter(context.openFileOutput(STATE_FILE_NAME, Context.MODE_PRIVATE));
@@ -59,6 +69,7 @@ public class ListMenu extends LinearLayout implements
         } catch (IOException ex) {
             Logger.printError(ex, getClass());
         }
+
     }
 
     public void setMenuItemsStateBack() {
@@ -206,45 +217,11 @@ public class ListMenu extends LinearLayout implements
         }
     }
 
-    @Override
-    public boolean add(ItemMenu itemMenu) {
-        try {
-            super.addView(itemMenu);
-            this.setListenersOn(itemMenu);
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends ItemMenu> itemMenus) {
-        for (ItemMenu item : itemMenus) {
-            this.add(item);
-        }
-        return true;
-    }
-
-    @Override
-    public void clear() {
-        super.removeAllViews();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return this.size() <= 0;
-    }
-
     @NotNull
     @Override
     public Iterator<ItemMenu> iterator() {
         this.itemsIndexer = 0;
         return this;
-    }
-
-    @Override
-    public int size() {
-        return countOfItems;
     }
 
     @Override
@@ -259,44 +236,8 @@ public class ListMenu extends LinearLayout implements
 
     @Override
     public void remove() {
+        this.countOfItems--;
         removeView(getChildAt(itemsIndexer));
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
-
-    @NotNull
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @NotNull
-    @Override
-    public <T> T[] toArray(@NotNull T[] ts) {
-        return null;
-    }
-
-    @Override
-    public boolean removeAll(@NotNull Collection<?> objects) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(@NotNull Collection<?> objects) {
-        return false;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(@NotNull Collection<?> objects) {
-        return false;
     }
 
     private class VisibleSetter implements Runnable {
