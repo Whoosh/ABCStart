@@ -5,15 +5,17 @@ import android.view.View;
 import android.widget.Toast;
 import ru.journal.fspoPrj.login_form.query_manager.AuthorizationExecutor;
 import ru.journal.fspoPrj.public_code.Logger;
-import ru.journal.fspoPrj.server_java.Server;
-import ru.journal.fspoPrj.server_java.storage.CachedStorage;
 import ru.journal.fspoPrj.server_java.server_info.ServerErrors;
 
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.util.Map;
 import java.util.concurrent.*;
 
-public class MainExecutor extends AsyncTask<String, Integer, Void> implements Serializable {
+
+public abstract class MainExecutor extends AsyncTask<String, Integer, Void> implements Serializable {
+
+    protected static final int DEFAULT_WAIT_TIME = 10;
 
     private static final int SHOW_PROGRESS_CODE = 0;
     private static final int STOP_EXECUTING_CODE = 1;
@@ -21,32 +23,52 @@ public class MainExecutor extends AsyncTask<String, Integer, Void> implements Se
     private static final int SHOW_SERVER_MESSAGE_DIE_CODE = 3;
     private static final int PASSWORD_IS_WRONG_CODE = 4;
 
-    protected static final int WAIT_TIME = 10;
-    protected String queryLink = "";
-
     private ProgressActivity progressActivity;
-    private static Toast errorMessageShower;
 
-    public void setOldLinkChain(ProgressActivity progressActivity) {
+    private static boolean status;
+    private static Toast errorMessageShower;
+    private static ExecutorService executorService;
+    private static ConcurrentHashMap<String, String> resultsStorage;
+    private static ConcurrentHashMap<String, Future<String>> futureResponsesStorage;
+
+    static {
+        executorService = Executors.newCachedThreadPool();
+        futureResponsesStorage = new ConcurrentHashMap<>();
+        resultsStorage = new ConcurrentHashMap<>();
+    }
+
+    public void restoreLinkToThisActivity(ProgressActivity progressActivity) {
         this.progressActivity = progressActivity;
     }
 
-    public void dropLinkChain() {
+    public void dropLinkToThisActivity() {
         progressActivity = null;
+    }
+
+    public boolean isDone() {
+        return status;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        status = false;
+        publishProgress(SHOW_PROGRESS_CODE);
+        super.onPreExecute();
     }
 
     @Override
     protected Void doInBackground(String... params) {
-        publishProgress(SHOW_PROGRESS_CODE);
         try {
-            handleQuery();
-            publishProgress(STOP_EXECUTING_CODE);
+            doExecute();
         } catch (ExecutionException e) {
             publishProgress(SHOW_SERVER_MESSAGE_DIE_CODE);
         } catch (InterruptedException | TimeoutException e) {
             publishProgress(SHOW_SERVER_MESSAGE_TTL_CODE);
         } catch (AuthorizationExecutor.WrongPasswordException e) {
             publishProgress(PASSWORD_IS_WRONG_CODE);
+        } catch (Exception e) {
+            // There is error if app is not closed manual
+            Logger.printError(e, getClass());
         }
         return null;
     }
@@ -61,44 +83,46 @@ public class MainExecutor extends AsyncTask<String, Integer, Void> implements Se
             }
             case SHOW_SERVER_MESSAGE_TTL_CODE: {
                 showErrorMessage(ServerErrors.SERVER_TTL_QUERY_ERROR);
-                Server.setExecutingErrorStatus(true);
-                progressActivity.finish();
-                break;
+                stopThisOperation();
+                return;
             }
             case SHOW_SERVER_MESSAGE_DIE_CODE: {
                 showErrorMessage(ServerErrors.SERVER_IS_DOWN);
-                Server.setExecutingErrorStatus(true);
-                progressActivity.finish(); // TODO
-                break;
-            }
-            case STOP_EXECUTING_CODE: {
-                setProgressStatus(false);
-                progressActivity.finish();
-                Server.setExecutingErrorStatus(false);
-                break;
+                stopThisOperation();
+                return;
             }
             case PASSWORD_IS_WRONG_CODE: {
                 showErrorMessage(ServerErrors.LOGIN_OR_PASSWORD_ERROR);
-                Server.setExecutingErrorStatus(true);
-                progressActivity.finish();
-                break;
+            }
+            case STOP_EXECUTING_CODE: {
+                stopThisOperation();
             }
         }
     }
 
-    protected void handleQuery() throws InterruptedException, ExecutionException, TimeoutException, WrongPasswordException {
-        handlingAllFutures();
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        status = true;
+        stopThisOperation();
+        resultsStorage.clear();
+        futureResponsesStorage.clear();
+        super.onPostExecute(aVoid);
     }
 
-    protected void handlingAllFutures() throws InterruptedException, ExecutionException, TimeoutException, WrongPasswordException {
-        try {
-            for (Map.Entry<String, Future<String>> futureRequests : CachedStorage.getFutureResponses()) {
-                CachedStorage.saveResponse(futureRequests.getKey(), futureRequests.getValue().get(WAIT_TIME, TimeUnit.SECONDS));
-            }
-        } catch (NullPointerException e) {
-            Logger.printError(e, getClass());
+    protected abstract void queryResults(ConcurrentHashMap<String, String> results)
+            throws InterruptedException, ExecutionException, AuthorizationExecutor.WrongPasswordException, TimeoutException;
+
+    protected void doExecute()
+            throws AuthorizationExecutor.WrongPasswordException, InterruptedException, ExecutionException, TimeoutException {
+        for (Map.Entry<String, Future<String>> query : futureResponsesStorage.entrySet()) {
+            resultsStorage.put(query.getKey(), query.getValue().get(DEFAULT_WAIT_TIME, TimeUnit.SECONDS));
         }
-        CachedStorage.dropFutureResponses();
+        futureResponsesStorage.clear();
+        queryResults(resultsStorage);
+    }
+
+    protected void makeQuery(String queryLink) {
+        futureResponsesStorage.put(queryLink, executorService.submit(new Query(queryLink)));
     }
 
     private void showErrorMessage(ServerErrors error) {
@@ -110,17 +134,16 @@ public class MainExecutor extends AsyncTask<String, Integer, Void> implements Se
         errorMessageShower.show();
     }
 
+    private void stopThisOperation() {
+        setProgressStatus(false);
+        progressActivity.finish();
+    }
+
     private void setProgressStatus(Boolean progressStatus) {
         try {
             progressActivity.setVisibleStatus(progressStatus ? View.VISIBLE : View.INVISIBLE);
         } catch (NullPointerException ex) {
             Logger.printError(ex, getClass());
-        }
-    }
-
-    public class WrongPasswordException extends Throwable {
-        public WrongPasswordException() {
-            CachedStorage.clearToken();
         }
     }
 }

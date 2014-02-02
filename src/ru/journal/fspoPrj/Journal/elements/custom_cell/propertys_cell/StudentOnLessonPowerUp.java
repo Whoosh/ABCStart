@@ -31,7 +31,7 @@ public class StudentOnLessonPowerUp extends View {
 
         private void initCode(int cellSize) {
             VisualElement.triangleSize = cellSize / 3;
-            VisualElement.offset = cellSize - triangleSize - GlobalConfig.ONE;
+            VisualElement.offset = cellSize - triangleSize - 1;
 
             greenTriangle = Bitmap.createBitmap(triangleSize, triangleSize, Bitmap.Config.ARGB_8888);
             redTriangle = Bitmap.createBitmap(triangleSize, triangleSize, Bitmap.Config.ARGB_8888);

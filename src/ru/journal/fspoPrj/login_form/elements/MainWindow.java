@@ -1,7 +1,6 @@
 package ru.journal.fspoPrj.login_form.elements;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.text.InputType;
@@ -12,21 +11,19 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.login_form.config.Config;
-import ru.journal.fspoPrj.main_menu.MenuActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
-import ru.journal.fspoPrj.server_java.Server;
-import ru.journal.fspoPrj.server_java.server_info.APIQuery;
-import ru.journal.fspoPrj.server_java.storage.BufferedLinker;
+import ru.journal.fspoPrj.server_java.Authorization;
 import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
-    private static final String SETTINGS_KEY = "ToolKitsManager Settings";
-    private static final String USER_NAME_KEY = "ToolKitsManager Name";
-    private static final String PASSWORD_KEY = "Password";
-    private static final String SAVE_KEY = "Save me";
+    public static final String USER_NAME_KEY = "k_name";
+    public static final String PASSWORD_KEY = "k_password";
+
+    private static final String SAVE_KEY = "k_save";
+    private static final String STATE_KEY = "k_settings";
 
     private static final String ENTER_TITLE = "Войти";
     private static final String CHECK_BOX_TITLE = "Запомнить ";
@@ -39,16 +36,12 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     private SerifTextView loginButton;
     private LoginForm userName, password;
     private SharedPreferences keyValueStorage;
+    private Authorization authorization;
 
-    private static BufferedLinker authBufferedLink; // TODO non static
-
-    static {
-        authBufferedLink = new BufferedLinker(APIQuery.EMPTY_QUERY.getLink());
-    }
-
-    public MainWindow(Context context) {
+    public MainWindow(Context context, Authorization authorization) {
         super(context);
         this.context = context;
+        this.authorization = authorization;
         initFields();
     }
 
@@ -77,7 +70,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     public void saveCurrentInfo() {
-        keyValueStorage = context.getSharedPreferences(SETTINGS_KEY, Context.MODE_PRIVATE);
+        keyValueStorage = context.getSharedPreferences(STATE_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = keyValueStorage.edit();
         editor.putString(USER_NAME_KEY, getUserName());
         editor.putString(PASSWORD_KEY, getPassword());
@@ -85,68 +78,13 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         editor.commit();
     }
 
-    public void loadOldInfoOnScreen() {
-        keyValueStorage = context.getSharedPreferences(SETTINGS_KEY, Context.MODE_PRIVATE);
+    public void restoreInfo() {
+        keyValueStorage = context.getSharedPreferences(STATE_KEY, Context.MODE_PRIVATE);
         if (keyValueStorage.getBoolean(SAVE_KEY, false)) {
             userName.setText(keyValueStorage.getString(USER_NAME_KEY, GlobalConfig.EMPTY_STRING));
             password.setText(keyValueStorage.getString(PASSWORD_KEY, GlobalConfig.EMPTY_STRING));
             saveMe.setChecked(true);
         }
-    }
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            setButtonInPressedColor();
-            startButtonLogic();
-        } else setButtonInUpColor();
-        return true;
-    }
-
-    private void startButtonLogic() {
-        if (Server.isMakingQueryNow()) {
-            return;
-        }
-        loadConnectSettings();
-        loginOnServer();
-    }
-
-    private void loadConnectSettings() {
-        keyValueStorage = context.getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
-    }
-
-    private void loginOnServer() {
-        if (isProxyON()) {
-            connectWithProxy();
-        } else {
-            defaultConnect();
-        }
-    }
-
-    private void connectWithProxy() {
-        authBufferedLink = Server.authorizationQuery(
-                userName.getText().toString(),
-                password.getText().toString(),
-                getAddress(), getPort(), context);
-    }
-
-    private void defaultConnect() {
-        authBufferedLink = Server.authorizationQuery(
-                userName.getText().toString(),
-                password.getText().toString(),
-                context);
-    }
-
-    public void startMainMenu() {
-        context.startActivity(new Intent(context, MenuActivity.class));
-    }
-
-    private void setButtonInPressedColor() {
-        loginButton.setBackgroundColor(Config.getButtonPressColor());
-    }
-
-    private void setButtonInUpColor() {
-        loginButton.setBackgroundColor(Config.getFormColor());
     }
 
     public boolean isProxyON() {
@@ -161,8 +99,34 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         return Integer.parseInt(keyValueStorage.getString(MainSettingsActivity.PORT_KEY, GlobalConfig.EMPTY_STRING));
     }
 
-    public BufferedLinker getAuthBufferedLink() {
-        return authBufferedLink;
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            loginButton.setBackgroundColor(Config.getButtonPressColor());
+            this.startButtonLogic();
+        } else {
+            loginButton.setBackgroundColor(Config.getFormColor());
+        }
+        return true;
+    }
+
+    private void startButtonLogic() {
+        if (authorization.isOver()) {
+            loadConnectSettings();
+            loginOnServer();
+        }
+    }
+
+    private void loadConnectSettings() {
+        keyValueStorage = context.getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, Context.MODE_PRIVATE);
+    }
+
+    private void loginOnServer() {
+        if (isProxyON()) {
+            authorization.authWithProxy(context, userName.getText().toString(), password.getText().toString(), getAddress(), getPort());
+        } else {
+            authorization.authNormal(context, userName.getText().toString(), password.getText().toString());
+        }
     }
 
     private void initFields() {
@@ -202,5 +166,4 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
         loginButton.setOnTouchListener(this);
     }
-
 }

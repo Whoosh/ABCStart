@@ -2,7 +2,9 @@ package ru.journal.fspoPrj.server_java.might_info.mights_function_kits;
 
 import ru.journal.fspoPrj.server_java.might_info.Functions;
 
-public class Tool {
+import java.io.Serializable;
+
+public class Tool implements Serializable {
 
     private final Class<?> toolClass;
     private final String toolText;
@@ -18,7 +20,7 @@ public class Tool {
         return toolClass;
     }
 
-    public String getToolText() {
+    public String getName() {
         return toolText;
     }
 

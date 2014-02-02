@@ -1,96 +1,175 @@
 package ru.journal.fspoPrj.main_menu.elements;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import ru.journal.fspoPrj.public_code.Logger;
+import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Tool;
 import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.ToolKitsManager;
 
+import java.io.*;
 import java.util.*;
 
-public class ListMenu extends LinearLayout implements View.OnDragListener, View.OnLongClickListener, View.OnClickListener {
+public class ListMenu extends LinearLayout implements
+        View.OnDragListener, View.OnLongClickListener, View.OnClickListener, Collection<ItemMenu>, Iterator<ItemMenu> {
 
-    public static final String STATE_KEY = "state key";
+    private static final String STATE_FILE_NAME = "list collocation";
 
     private static final int UP_SIDE = -1;
     private static final int DOWN_SIDE = 1;
 
     private ToolKitsManager toolKits;
     private Context context;
-
-    public ListMenu(Context context, ToolKitsManager toolKits) {
-        super(context);
-        init(context, toolKits);
-        addToolsOnList();
-    }
+    private int countOfItems;
+    private int itemsIndexer;
 
     public ListMenu(ToolKitsManager toolKits, Context context) {
         super(context);
         init(context, toolKits);
     }
 
-    public ListMenu(Context context, ToolKitsManager toolKits, SharedPreferences storage) {
+    public ListMenu(Context context, ToolKitsManager toolKits) {
         super(context);
         init(context, toolKits);
-        Set<String> toolNames = storage.getStringSet(STATE_KEY, null);
-        if (toolNames == null) {
-            addToolsOnList();
-            return;
-        }
-        if (isDataValid(toolNames)) {
-            int i = 0;
+        LinkedHashSet<String> toolNames = loadCollocationSet();
+        if (!toolNames.isEmpty() && isDataValid(toolNames)) {
             for (String toolName : toolNames) {
-                ItemMenu itemMenu = new ItemMenu(context, toolKits.getTool(toolName), i++);
-                setListenersOn(itemMenu);
-                addView(itemMenu);
+                this.add(new ItemMenu(context, toolKits.getTool(toolName), countOfItems++));
             }
         } else {
-            addToolsOnList();
+            for (Tool tool : toolKits.getTools()) {
+                this.add(new ItemMenu(context, tool, countOfItems++));
+            }
         }
     }
 
-
-    private void init(Context context, ToolKitsManager toolKits) {
-        super.setOrientation(VERTICAL);
-        this.toolKits = toolKits;
-        this.context = context;
-        super.setGravity(Gravity.CENTER_HORIZONTAL);
-        super.setBackgroundColor(Color.TRANSPARENT);
+    public void storeCollocation() {
+        try {
+            PrintWriter writer = new PrintWriter(context.openFileOutput(STATE_FILE_NAME, Context.MODE_PRIVATE));
+            for (ItemMenu item : this) {
+                writer.println(item.getName());
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException ex) {
+            Logger.printError(ex, getClass());
+        }
     }
 
     public void setMenuItemsStateBack() {
-        for (int i = 0; i < getChildCount(); i++) {
-            ItemMenu itemMenu = (ItemMenu) getChildAt(i);
-            if (itemMenu.isStatePressed()) {
-                itemMenu.setUPState();
+        for (ItemMenu item : this) {
+            if (item.isStatePressed()) {
+                item.setUPState();
             }
         }
     }
 
     public String[] getRotateState() {
-        String[] toolsPositionStates = new String[toolKits.getToolsCount()];
+        String[] toolsPositionStates = new String[toolKits.size()];
         for (int i = 0; i < toolsPositionStates.length; i++) {
-            toolsPositionStates[i] = ((ItemMenu) getChildAt(i)).getName();
+            toolsPositionStates[i] = getChildAt(i).getName();
         }
         return toolsPositionStates;
     }
 
-    public Set<String> getSavedState() {
-        Set<String> result = new LinkedHashSet<>();
-        Collections.addAll(result, getRotateState());
+    public void setStateWhenRotate(String[] toolsName) {
+        try {
+            removeAllViews();
+            countOfItems = 0;
+            for (String aToolsName : toolsName) {
+                ItemMenu itemMenu = new ItemMenu(context, toolKits.getTool(aToolsName), countOfItems++);
+                setListenersOn(itemMenu);
+                addView(itemMenu);
+            }
+        } catch (Exception ex) {
+            Logger.printError(ex, getClass());
+        }
+    }
+
+    private void init(Context context, ToolKitsManager toolKits) {
+        super.setOrientation(VERTICAL);
+        super.setGravity(Gravity.CENTER_HORIZONTAL);
+        super.setBackgroundColor(Color.TRANSPARENT);
+        this.countOfItems = 0;
+        this.toolKits = toolKits;
+        this.context = context;
+    }
+
+
+    private LinkedHashSet<String> loadCollocationSet() {
+        LinkedHashSet<String> result = new LinkedHashSet<>();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.openFileInput(STATE_FILE_NAME)));
+            for (String line; (line = reader.readLine()) != null; ) {
+                result.add(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            Logger.printError(e, getClass());
+            return (LinkedHashSet<String>) Collections.<String>emptySet();
+        }
         return result;
     }
 
-    private void addToolsOnList() {
-        for (int i = 0; i < toolKits.getToolsCount(); i++) {
-            ItemMenu itemMenu = new ItemMenu(context, toolKits.getTool(i), i);
-            setListenersOn(itemMenu);
-            super.addView(itemMenu);
+    private void swapDraggedElements(ItemMenu draggedPositionElement, ItemMenu selectedElement) {
+        try {
+            int firstChildIndex = draggedPositionElement.getIndexOnScreen();
+            int lastChildIndex = selectedElement.getIndexOnScreen();
+            if (firstChildIndex > lastChildIndex) {
+                for (int i = lastChildIndex; i < firstChildIndex; i++) {
+                    moveElement(getChildAt(i), i, DOWN_SIDE);
+                }
+            } else {
+                for (int i = lastChildIndex; i > firstChildIndex; i--) {
+                    moveElement(getChildAt(i), i, UP_SIDE);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printError(ex, getClass());
         }
+    }
+
+    private void moveElement(ItemMenu movingElement, int offsetIndex, int side) {
+        removeView(movingElement);
+        addView(movingElement, movingElement.getIndexOnScreen() + side);
+        movingElement.changeScreeningIndex(movingElement.getIndexOnScreen() + side);
+        getChildAt(offsetIndex).changeScreeningIndex(offsetIndex);
+    }
+
+    private boolean isDataValid(Set<String> restoredToolNames) {
+        String[] currentUserToolNames = toolKits.getToolsName();
+        if (currentUserToolNames.length != restoredToolNames.size()) {
+            return false;
+        }
+        for (String toolName : currentUserToolNames) {
+            if (!restoredToolNames.contains(toolName)) {
+                return false;
+            }
+        }
+        Arrays.sort(currentUserToolNames);
+        for (String toolName : restoredToolNames) {
+            if (Arrays.binarySearch(currentUserToolNames, toolName) < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void setListenersOn(ItemMenu itemMenu) {
+        itemMenu.setOnLongClickListener(this);
+        itemMenu.setOnClickListener(this);
+        itemMenu.setOnDragListener(this);
+    }
+
+    @Nullable
+    @Override
+    public ItemMenu getChildAt(int index) {
+        return (ItemMenu) super.getChildAt(index);
     }
 
     @Override
@@ -121,72 +200,103 @@ public class ListMenu extends LinearLayout implements View.OnDragListener, View.
 
     @Override
     public void onClick(View view) {
-        ((ItemMenu) view).setDownState();
-        ((ItemMenu) view).startFunction();
-    }
-
-    private void swapDraggedElements(ItemMenu draggedPositionElement, ItemMenu selectedElement) {
-        try {
-            int firstChildIndex = draggedPositionElement.getIndexOnScreen();
-            int lastChildIndex = selectedElement.getIndexOnScreen();
-            if (firstChildIndex > lastChildIndex) {
-                for (int i = lastChildIndex; i < firstChildIndex; i++) {
-                    moveElement((ItemMenu) getChildAt(i), i, DOWN_SIDE);
-                }
-            } else {
-                for (int i = lastChildIndex; i > firstChildIndex; i--) {
-                    moveElement((ItemMenu) getChildAt(i), i, UP_SIDE);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printError(ex, getClass());
+        if (!((ItemMenu) view).isStatePressed()) {
+            ((ItemMenu) view).setDownState();
+            ((ItemMenu) view).startFunction();
         }
     }
 
-    private void moveElement(ItemMenu movingElement, int offsetIndex, int side) {
-        removeView(movingElement);
-        addView(movingElement, movingElement.getIndexOnScreen() + side);
-        movingElement.setIndexOnScreen(movingElement.getIndexOnScreen() + side);
-        ((ItemMenu) getChildAt(offsetIndex)).setIndexOnScreen(offsetIndex);
-    }
-
-    public void setStateWhenRotate(String[] toolsName) {
+    @Override
+    public boolean add(ItemMenu itemMenu) {
         try {
-            removeAllViews();
-            for (int i = 0; i < toolsName.length; i++) {
-                ItemMenu itemMenu = new ItemMenu(context, toolKits.getTool(toolsName[i]), i);
-                setListenersOn(itemMenu);
-                addView(itemMenu);
-            }
+            super.addView(itemMenu);
+            this.setListenersOn(itemMenu);
+            return true;
         } catch (Exception ex) {
-            Logger.printError(ex, getClass());
-        }
-    }
-
-    // TODO more performance
-    private boolean isDataValid(Set<String> restoredToolNames) {
-        String[] currentUserToolNames = toolKits.getToolsName();
-        if (toolKits.getToolsName().length != restoredToolNames.size()) {
             return false;
         }
-        for (String toolName : currentUserToolNames) {
-            if (!restoredToolNames.contains(toolName)) {
-                return false;
-            }
-        }
-        Arrays.sort(currentUserToolNames);
-        for (String toolName : restoredToolNames) {
-            if (Arrays.binarySearch(currentUserToolNames, toolName) < 0) {
-                return false;
-            }
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends ItemMenu> itemMenus) {
+        for (ItemMenu item : itemMenus) {
+            this.add(item);
         }
         return true;
     }
 
-    private void setListenersOn(ItemMenu itemMenu) {
-        itemMenu.setOnLongClickListener(this);
-        itemMenu.setOnClickListener(this);
-        itemMenu.setOnDragListener(this);
+    @Override
+    public void clear() {
+        super.removeAllViews();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.size() <= 0;
+    }
+
+    @NotNull
+    @Override
+    public Iterator<ItemMenu> iterator() {
+        this.itemsIndexer = 0;
+        return this;
+    }
+
+    @Override
+    public int size() {
+        return countOfItems;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return itemsIndexer < countOfItems;
+    }
+
+    @Override
+    public ItemMenu next() {
+        return getChildAt(itemsIndexer++);
+    }
+
+    @Override
+    public void remove() {
+        removeView(getChildAt(itemsIndexer));
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        return false;
+    }
+
+    @NotNull
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @NotNull
+    @Override
+    public <T> T[] toArray(@NotNull T[] ts) {
+        return null;
+    }
+
+    @Override
+    public boolean removeAll(@NotNull Collection<?> objects) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(@NotNull Collection<?> objects) {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(@NotNull Collection<?> objects) {
+        return false;
     }
 
     private class VisibleSetter implements Runnable {

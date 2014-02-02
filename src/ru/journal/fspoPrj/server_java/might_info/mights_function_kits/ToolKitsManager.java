@@ -3,30 +3,31 @@ package ru.journal.fspoPrj.server_java.might_info.mights_function_kits;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.server_java.might_info.Functions;
 
-public class ToolKitsManager {
+import java.io.Serializable;
 
-    private final int[] toolsIndexes;
+public class ToolKitsManager implements Serializable {
+
+    private Tool[] tools;
 
     public ToolKitsManager(int... toolsIndexes) {
-        this.toolsIndexes = toolsIndexes;
+        this.tools = new Tool[toolsIndexes.length];
+        for (int i = 0; i < tools.length; i++) {
+            tools[i] = new Tool(Functions.values()[toolsIndexes[i]]);
+        }
     }
 
-    public String getToolName(int index) {
-        return getFunction(index).getToolName();
+    public Tool[] getTools() {
+        return tools;
     }
 
-    public int getToolsCount() {
-        return toolsIndexes.length;
-    }
-
-    public Tool getTool(int index) {
-        return new Tool(getFunction(index));
+    public int size() {
+        return tools.length;
     }
 
     public Tool getTool(String toolName) {
-        for (Functions function : Functions.values()) {
-            if (function.getToolName().equals(toolName)) {
-                return new Tool(function);
+        for (Tool tool : tools) {
+            if (tool.getName().equals(toolName)) {
+                return tool;
             }
         }
         try {
@@ -38,15 +39,11 @@ public class ToolKitsManager {
     }
 
     public String[] getToolsName() {
-        String[] result = new String[toolsIndexes.length];
-        for (int i = 0; i < toolsIndexes.length; i++) {
-            result[i] = getToolName(i);
+        String[] result = new String[tools.length];
+        for (int i = 0; i < tools.length; i++) {
+            result[i] = tools[i].getName();
         }
         return result;
-    }
-
-    private Functions getFunction(int index) {
-        return Functions.values()[toolsIndexes[index % toolsIndexes.length]];
     }
 
     private class NoFunctionException extends Exception {

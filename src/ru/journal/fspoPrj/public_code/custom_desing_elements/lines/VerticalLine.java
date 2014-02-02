@@ -9,6 +9,9 @@ import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 
 public class VerticalLine extends View {
+
+    public static final int DEFAULT_HEIGHT = 1;
+
     public VerticalLine(Context context, int color, int wight) {
         super(context);
         initCode(color, wight);
@@ -16,7 +19,7 @@ public class VerticalLine extends View {
 
     public VerticalLine(Context context, int color) {
         super(context);
-        initCode(color, GlobalConfig.ONE);
+        initCode(color, DEFAULT_HEIGHT);
     }
 
     private void initCode(int color, int wight) {

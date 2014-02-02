@@ -2,8 +2,8 @@ package ru.journal.fspoPrj.server_java.server_managers;
 
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
+import ru.journal.fspoPrj.server_java.ServerCommunicator;
 import ru.journal.fspoPrj.server_java.server_info.ClientInfo;
-import ru.journal.fspoPrj.server_java.Server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class Query implements Callable<String> {
         StringBuilder result = new StringBuilder(GlobalConfig.EMPTY_STRING);
 
         try {
-            Socket socket = new Socket(Server.HOST, Server.PORT);
+            Socket socket = new Socket(ServerCommunicator.HOST, ServerCommunicator.PORT);
             PrintWriter query = new PrintWriter(socket.getOutputStream());
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -46,7 +46,7 @@ public class Query implements Callable<String> {
             bufferedReader.close();
             socket.close();
         } catch (IOException e) {
-            Logger.printError(e, Server.class);
+            Logger.printError(e, getClass());
         }
         return result.substring(result.indexOf(JSON_START_SCOPE));
     }

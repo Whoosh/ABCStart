@@ -41,6 +41,10 @@ public enum MightsCodes {
         } catch (InstantiationException | IllegalAccessException e) {
             Logger.printError(e, getClass());
         }
-        return null;
+        try {
+            return (ToolKitsManager) ANONYMOUS_CODE.toolsClass.newInstance();
+        } catch (InstantiationException | IllegalAccessException ignored) {
+            return null;
+        }
     }
 }

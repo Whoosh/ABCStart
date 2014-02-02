@@ -10,7 +10,6 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import org.jetbrains.annotations.NotNull;
-import ru.journal.fspoPrj.journal.callbacks.Lessons;
 import ru.journal.fspoPrj.journal.callbacks.Switcher;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.elements.head_selector.DateSelector;
@@ -21,7 +20,6 @@ import ru.journal.fspoPrj.journal.elements.main_table.StudentList;
 import ru.journal.fspoPrj.journal.elements.main_table.TableWithMarks;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
-import ru.journal.fspoPrj.server_java.Server;
 
 import java.util.ArrayList;
 

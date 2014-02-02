@@ -51,16 +51,6 @@ public class MainSettingsActivity extends Activity {
         super.onPause();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
     private void saveFormsInfo() {
         keyValueStorage = getSharedPreferences(SETTINGS_KEY, MODE_PRIVATE);
 

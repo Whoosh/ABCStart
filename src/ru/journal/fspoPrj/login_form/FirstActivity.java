@@ -9,39 +9,45 @@ import android.view.inputmethod.InputMethodManager;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.login_form.elements.MainWindow;
 import ru.journal.fspoPrj.login_form.elements.MenuShower;
+import ru.journal.fspoPrj.main_menu.MenuActivity;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
-import ru.journal.fspoPrj.server_java.Server;
+import ru.journal.fspoPrj.server_java.Authorization;
+import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.ToolKitsManager;
 import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
 import ru.journal.fspoPrj.settings_form.elements.ThemeManager;
 
-public class FirstActivity extends Activity implements View.OnClickListener {
+public class FirstActivity extends Activity implements View.OnClickListener, Authorization.OnAuthCallBack {
 
     private MainWindow mainWindow;
-
-    private static final String USER_NAME_KEY = "ToolKitsManager name";
-    private static final String PASSWORD_KEY = "Password";
-
-    private static boolean currentTheme;
+    private static boolean themeTrigger;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
-            GlobalConfig.prepareGlobalPreference(this);
+            GlobalConfig.prepareGlobalPreference(this);  // TODO
         }
         lookAtTheme();
-        mainWindow = new MainWindow(this);
+
+        Authorization authorization = new Authorization(this);
+
+        mainWindow = new MainWindow(this, authorization);
         mainWindow.setOnClickListener(this);
+
         setContentView(mainWindow);
         startActionMode(new MenuShower(this));
     }
 
     private void lookAtTheme() {
-        currentTheme = getThemeState();
-        GlobalConfig.setMatrixTheme(currentTheme);
+        themeTrigger = getThemeState();
+        GlobalConfig.setMatrixTheme(themeTrigger);
         GlobalConfig.changeThemePreference();
         GlobalConfig.refreshToCurrentTheme(this);
+    }
+
+    private boolean getThemeState() {
+        return getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, MODE_PRIVATE).getBoolean(ThemeManager.MATRIX_CHECK_KEY, false);
     }
 
     private void refreshActivityTheme() {
@@ -50,15 +56,10 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (Server.haveErrorsWhenExecutingQuery()) return;
-        if (requestCode == mainWindow.getAuthBufferedLink().getRequestCode()) {
-            mainWindow.startMainMenu();
-        }
-    }
-
-    private boolean getThemeState() {
-        return getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, MODE_PRIVATE).getBoolean(ThemeManager.MATRIX_CHECK_KEY, false);
+    public void authSuccessful(ToolKitsManager toolKits) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        intent.putExtra(MenuActivity.INTENT_GET_TOOLS_KEY, toolKits);
+        startActivity(intent);
     }
 
     @Override
@@ -68,26 +69,32 @@ public class FirstActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
+    public void onBackPressed() {
+        System.exit(0); // TODO fking emulator
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onResume() {
-        if (currentTheme != getThemeState()) {
+        if (themeTrigger != getThemeState()) {
             refreshActivityTheme();
         }
-        mainWindow.loadOldInfoOnScreen();
+        mainWindow.restoreInfo();
         super.onResume();
     }
 
     @Override
     protected void onSaveInstanceState(@NotNull Bundle outState) {
-        outState.putString(USER_NAME_KEY, mainWindow.getUserName());
-        outState.putString(PASSWORD_KEY, mainWindow.getPassword());
+        outState.putString(MainWindow.USER_NAME_KEY, mainWindow.getUserName());
+        outState.putString(MainWindow.PASSWORD_KEY, mainWindow.getPassword());
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        mainWindow.setUserName(savedInstanceState.get(USER_NAME_KEY).toString());
-        mainWindow.setPassword(savedInstanceState.get(PASSWORD_KEY).toString());
+        mainWindow.setUserName(savedInstanceState.get(MainWindow.USER_NAME_KEY).toString());
+        mainWindow.setPassword(savedInstanceState.get(MainWindow.PASSWORD_KEY).toString());
     }
 
     @Override
@@ -98,15 +105,11 @@ public class FirstActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view.equals(mainWindow)) {
-            try {// закрываем виртуальную клавиатуру по клику на пустое место.
-                InputMethodManager method = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                method.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-            } catch (NullPointerException ex) {
-                Logger.printError(ex, getClass());
-            }
+        try {// закрываем виртуальную клавиатуру по клику на пустое место.
+            InputMethodManager method = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            method.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        } catch (NullPointerException ex) {
+            Logger.printError(ex, getClass());
         }
     }
-
-
 }

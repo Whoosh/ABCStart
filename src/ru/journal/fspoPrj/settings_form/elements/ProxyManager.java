@@ -36,6 +36,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     private static final String PORT_ERROR_MESSAGE = "Порт не может быть больше ";
     private static final String EMPTY_FIELD_ERROR_MESSAGE = "Поля не должны быть пустыми";
     private static final String FIRST_OCTET_ERROR_MESSAGE = "Адрес не может начинаться с нуля или быть пустым";
+    public static final int ONE = 1;
 
     private ProxyEditText portForm;
     private ProxyEditText[] ipOctet;
@@ -97,7 +98,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
             ipOctet[i] = new ProxyEditText(context, OCTET_LEN);
             ipOctet[i].addTextChangedListener(new AddressWatcher());
             addressLay.addView(ipOctet[i]);
-            if (i < OCTETS_COUNT - GlobalConfig.ONE) addressLay.addView(new SerifTextView(context, DOT));
+            if (i < OCTETS_COUNT - ONE) addressLay.addView(new SerifTextView(context, DOT));
         }
         addressLay.addView(proxySet);
     }
@@ -114,7 +115,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
             ipAddress.append(actet.getText());
             ipAddress.append(DOT);
         }
-        ipAddress.deleteCharAt(ipAddress.length() - GlobalConfig.ONE);
+        ipAddress.deleteCharAt(ipAddress.length() - ONE);
         return ipAddress.toString();
     }
 
@@ -130,7 +131,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
     public boolean fistOctetEqualsZero() {
         try {
-            return (Integer.parseInt(ipOctet[0].getText().toString()) < GlobalConfig.ONE);
+            return (Integer.parseInt(ipOctet[0].getText().toString()) < ONE);
         } catch (NullPointerException ex) {
             return true;
         }
@@ -145,7 +146,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
                 buff.append(GlobalConfig.EMPTY_STRING);
             } else
                 buff.append(kit.charAt(i));
-            if (kit.length() - GlobalConfig.ONE == i)
+            if (kit.length() - ONE == i)
                 ipOctet[k].setText(buff);
         }
     }
