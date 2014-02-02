@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Global config values -->
-    <integer name="global__header_text_size">20</integer>
-    <integer name="global__default_text_size">15</integer>
+    <integer name="global__header_text_size">15</integer>
+    <integer name="global__default_text_size">12</integer>
 
     <!-- Settings activity values -->
     <integer name="settings__octet_width">58</integer>

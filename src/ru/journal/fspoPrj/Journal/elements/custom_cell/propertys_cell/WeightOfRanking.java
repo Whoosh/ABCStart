@@ -43,7 +43,7 @@ public class WeightOfRanking extends View {
 
         private void initCode(int cellSize) {
             final int triangleSize = cellSize / 3;
-            offset = cellSize - triangleSize - GlobalConfig.ONE;
+            offset = cellSize - triangleSize - 1;
 
             greenTriangle = Bitmap.createBitmap(triangleSize, triangleSize, Bitmap.Config.ARGB_8888);
             redTriangle = Bitmap.createBitmap(triangleSize, triangleSize, Bitmap.Config.ARGB_8888);

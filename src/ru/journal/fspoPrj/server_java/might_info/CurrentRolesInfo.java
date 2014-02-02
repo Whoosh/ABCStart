@@ -17,6 +17,8 @@ public enum CurrentRolesInfo {
     private final String jsonKey;
     private boolean statusInQuery;
 
+    private static final String ROLES_KEY = "roles";
+
     private CurrentRolesInfo(String jsonKey, boolean statusInQuery) {
         this.jsonKey = jsonKey;
         this.statusInQuery = statusInQuery;
@@ -34,14 +36,18 @@ public enum CurrentRolesInfo {
         return jsonKey;
     }
 
-    public static void setDataFromJson(JSONObject rolesInfo) {
-        for (CurrentRolesInfo value : CurrentRolesInfo.values()) {
-            try {
+    public static void setDataFromJson(String response) {
+        try {
+            JSONObject rolesInfo = new JSONObject(response).getJSONObject(ROLES_KEY);
+            for (CurrentRolesInfo value : CurrentRolesInfo.values()) {
                 if (value.getJsonKey().isEmpty()) continue;
                 value.setStatus(rolesInfo.getBoolean(value.getJsonKey()));
-            } catch (JSONException e) {
-                value.setStatus(false);
-                Logger.printError(e, CurrentRolesInfo.class);
+            }
+        } catch (JSONException e) {
+            Logger.printError(e, CurrentRolesInfo.class);
+            for (CurrentRolesInfo back : CurrentRolesInfo.values()) {
+                if (back.getJsonKey().isEmpty()) continue;
+                back.setStatus(false);
             }
         }
     }

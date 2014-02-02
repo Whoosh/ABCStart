@@ -8,7 +8,6 @@ import ru.journal.fspoPrj.R;
 abstract public class GlobalConfig {
 
     public static final String EMPTY_STRING = "";
-    public static final byte ONE = 1;
 
     public static boolean MATRIX_THEME;
     public static boolean NORMAL_THEME;
@@ -41,8 +40,8 @@ abstract public class GlobalConfig {
 
 
     public static void acceptSizesPreference() {
-        headerTextSize = resources.getInteger(R.integer.global__header_text_size);
-        defaultTextSize = resources.getInteger(R.integer.global__default_text_size);
+        headerTextSize = getRealSize(R.integer.global__header_text_size);
+        defaultTextSize = getRealSize(R.integer.global__default_text_size);
 
         ru.journal.fspoPrj.login_form.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.settings_form.config.Config.setDefaultElementSize();

@@ -15,7 +15,7 @@ public abstract class Config extends GlobalConfig {
     public static final int LIGHT_L_GRAY = Color.parseColor("#B4D0CA");
 
     private static int buttonPressedStateColor;
-
+    // TODO
     private static int headLineHeight;
     private static int itemMenuHeight;
     private static int itemMenuWidth;

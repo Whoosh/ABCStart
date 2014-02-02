@@ -4,11 +4,12 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.ViewGroup;
-import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 
 public class HorizontalLine extends View {
+
+    public static final int DEFAULT_HEIGHT = 1;
 
     public HorizontalLine(Context context, int color, int height) {
         super(context);
@@ -17,7 +18,7 @@ public class HorizontalLine extends View {
 
     public HorizontalLine(Context context, int color) {
         super(context);
-        initCode(color, GlobalConfig.ONE);
+        initCode(color, DEFAULT_HEIGHT);
     }
 
     private void initCode(int color, int height) {

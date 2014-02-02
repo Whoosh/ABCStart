@@ -28,11 +28,11 @@ public class CheckBoxRim extends Drawable {
        // canvas.drawColor(Config.getFormBackgroundColor());
 
 
-        for (int i = VOID_LEN - GlobalConfig.ONE; i < 35 - VOID_LEN; i++) {
-            canvas.drawPoint(i, VOID_LEN - GlobalConfig.ONE, setting);
-            canvas.drawPoint(VOID_LEN - GlobalConfig.ONE, i, setting);
-            canvas.drawPoint(box.getWidth() - VOID_LEN - GlobalConfig.ONE, i, setting);
-            canvas.drawPoint(i, box.getHeight() - VOID_LEN - GlobalConfig.ONE, setting);
+        for (int i = VOID_LEN - 1; i < 35 - VOID_LEN; i++) {
+            canvas.drawPoint(i, VOID_LEN - 1, setting);
+            canvas.drawPoint(VOID_LEN - 1, i, setting);
+            canvas.drawPoint(box.getWidth() - VOID_LEN - 1, i, setting);
+            canvas.drawPoint(i, box.getHeight() - VOID_LEN - 1, setting);
         }
     }
 
