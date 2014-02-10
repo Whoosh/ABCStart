@@ -2,7 +2,7 @@ package ru.journal.fspoPrj.server_java.might_info;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.ToolKitsManager;
+import ru.journal.fspoPrj.server_java.might_info.Tools.ToolKitsManager;
 import ru.journal.fspoPrj.public_code.Logger;
 
 
@@ -36,18 +36,22 @@ public enum CurrentRolesInfo {
         return jsonKey;
     }
 
-    public static void setDataFromJson(String response) {
+    private static void setDataFromJson(String response) {
         try {
             JSONObject rolesInfo = new JSONObject(response).getJSONObject(ROLES_KEY);
             for (CurrentRolesInfo value : CurrentRolesInfo.values()) {
-                if (value.getJsonKey().isEmpty()) continue;
+                if (value.getJsonKey().isEmpty()) {
+                    continue;
+                }
                 value.setStatus(rolesInfo.getBoolean(value.getJsonKey()));
             }
         } catch (JSONException e) {
-            Logger.printError(e, CurrentRolesInfo.class);
             for (CurrentRolesInfo back : CurrentRolesInfo.values()) {
-                if (back.getJsonKey().isEmpty()) continue;
+                if (back.getJsonKey().isEmpty()) {
+                    continue;
+                }
                 back.setStatus(false);
+                Logger.printError(e, CurrentRolesInfo.class);
             }
         }
     }
@@ -62,7 +66,8 @@ public enum CurrentRolesInfo {
         return Integer.parseInt(stringBuilder.toString());
     }
 
-    public static ToolKitsManager getToolsKit() {
+    public static ToolKitsManager makeToolKits(String jsonResponse) {
+        setDataFromJson(jsonResponse);
         for (MightsCodes values : MightsCodes.values()) {
             if (values.getCode() == getCurrentMightCode()) {
                 return values.getToolsKit();

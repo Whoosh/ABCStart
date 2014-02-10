@@ -22,17 +22,13 @@ public abstract class Config extends GlobalConfig {
     private static int textColorCheckBox;
     private static int buttonPressedStateColor;
 
-    private static int loginButtonWidth;
-    private static int loginButtonHeight;
     private static int loginFormWidth;
     private static int loginFormHeight;
     private static int separatorViewHeight;
 
     public static void setDefaultElementSize() {
-        loginButtonWidth = getRealSize(R.integer.login__button_width);
-        loginButtonHeight = getRealSize(R.integer.login__button_height);
         loginFormWidth = getRealSize(R.integer.login__login_form_width);
-        loginFormHeight = getRealSize(R.integer.login__button_height);
+        loginFormHeight = getRealSize(R.integer.login__login_form_height);
         separatorViewHeight = getRealSize(R.integer.login__separator_height);
     }
 
@@ -51,17 +47,24 @@ public abstract class Config extends GlobalConfig {
     }
 
     public static Drawable getBackGround(Context context) {
-        if (MATRIX_THEME)
-            return new LiteMatrixDraw(context);
-        return context.getResources().getDrawable(R.drawable.gr_white_gray_background);
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return new LiteMatrixDraw(context);
+            case NORMAL_THEME:
+            default:
+                return context.getResources().getDrawable(R.drawable.gr_white_gray_background);
+        }
     }
 
     public static View getLogoView(Context context) {
-        if (MATRIX_THEME)
-            return new HorizontalLine(context, Color.TRANSPARENT);
-        return new IconSetter(context, R.drawable.logo);
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return new HorizontalLine(context, Color.TRANSPARENT);
+            case NORMAL_THEME:
+            default:
+                return new IconSetter(context, R.drawable.logo);
+        }
     }
-
 
     public static int getTextColor() {
         return textColorInForm;
@@ -73,14 +76,6 @@ public abstract class Config extends GlobalConfig {
 
     public static int getCheckBoxTextColor() {
         return textColorCheckBox;
-    }
-
-    public static int getLoginButtonWidth() {
-        return loginButtonWidth;
-    }
-
-    public static int getLoginButtonHeight() {
-        return loginButtonHeight;
     }
 
     public static int getFormWidth() {

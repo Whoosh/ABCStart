@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.server_java.might_info.mights_function_kits;
+package ru.journal.fspoPrj.server_java.might_info.Tools;
 
 import ru.journal.fspoPrj.server_java.might_info.Functions;
 

@@ -2,6 +2,10 @@
 <resources>
     <style name="Theme.defaultLight" parent="android:Theme.Holo.Light">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
 
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@android:color/white</item>
+    </style>
 </resources>

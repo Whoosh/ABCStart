@@ -9,20 +9,19 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import org.jetbrains.annotations.Nullable;
 import ru.journal.fspoPrj.public_code.Logger;
-import ru.journal.fspoPrj.server_java.ServerCommunicator;
 
 public class ProgressActivity extends Activity {
 
     private ProgressBar progressBar;
-    private MainExecutor oldExecutor;
+    private MainExecutor executor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (progressBar == null) createNewProgress();
-        oldExecutor = getLastNonConfigurationInstance();
-        if (oldExecutor == null) startNewExecuting();
-        oldExecutor.restoreLinkToThisActivity(this);
+        executor = getLastNonConfigurationInstance();
+        if (executor == null) startNewExecuting();
+        executor.restoreLinkToThisActivity(this);
     }
 
     public void setVisibleStatus(int status) {
@@ -37,8 +36,8 @@ public class ProgressActivity extends Activity {
 
     @Override
     public Object onRetainNonConfigurationInstance() {
-        oldExecutor.dropLinkToThisActivity();
-        return oldExecutor;
+        executor.dropLinkToThisActivity();
+        return executor;
     }
 
     private void createNewProgress() {
@@ -52,10 +51,10 @@ public class ProgressActivity extends Activity {
 
     private void startNewExecuting() {
         try {
-            Intent intent = this.getIntent();
-            oldExecutor = (MainExecutor) intent.getSerializableExtra(ServerCommunicator.SERVER_COMMUTATION_KEY);
+            Intent intent = getIntent();
+            executor = (MainExecutor) intent.getSerializableExtra(ServerCommunicator.SERVER_COMMUTATION_KEY);
             intent.removeExtra(ServerCommunicator.SERVER_COMMUTATION_KEY);
-            oldExecutor.execute();
+            executor.execute();
         } catch (NullPointerException ex) {
             Logger.printError(ex, getClass());
         }

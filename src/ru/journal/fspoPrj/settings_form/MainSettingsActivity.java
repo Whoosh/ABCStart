@@ -17,18 +17,21 @@ import ru.journal.fspoPrj.settings_form.elements.ThemeManager;
 
 public class MainSettingsActivity extends Activity {
 
+    private static final String EMPTY = "";
+
     public static final String IP_KEY = "IP";
     public static final String PORT_KEY = "Port";
     public static final String CHECK_BOX_KEY = "CheckBoxValue";
     public static final String SETTINGS_KEY = "Settings";
+    public static final int DEFAULT_VALUE = 0;
 
     private ProxyManager proxyManager;
     private ThemeManager themeManager;
     private SharedPreferences keyValueStorage;
 
     public void onCreate(Bundle savedInstanceState) {
+        GlobalConfig.setCurrentThemeFor(this);
         super.onCreate(savedInstanceState);
-        GlobalConfig.refreshToCurrentTheme(this);
         setElements();
         loadOldInformation();
     }
@@ -60,6 +63,7 @@ public class MainSettingsActivity extends Activity {
         editor.putBoolean(CHECK_BOX_KEY, proxyManager.isProxySet());
 
         editor.putBoolean(ThemeManager.MATRIX_CHECK_KEY, themeManager.getMatrixCheck());
+        editor.putInt(ThemeManager.THEME_KEY, GlobalConfig.getCurrentTheme());
 
         editor.commit();
     }
@@ -67,13 +71,13 @@ public class MainSettingsActivity extends Activity {
     private void loadOldInformation() {
         keyValueStorage = getSharedPreferences(SETTINGS_KEY, MODE_PRIVATE);
 
-        proxyManager.loadAddress(keyValueStorage.getString(IP_KEY, GlobalConfig.EMPTY_STRING));
-        proxyManager.loadPort(keyValueStorage.getString(PORT_KEY, GlobalConfig.EMPTY_STRING));
+        proxyManager.loadAddress(keyValueStorage.getString(IP_KEY, EMPTY));
+        proxyManager.loadPort(keyValueStorage.getString(PORT_KEY, EMPTY));
         proxyManager.setProxyCheckBoxState(keyValueStorage.getBoolean(CHECK_BOX_KEY, false));
 
         themeManager.setMatrixCheck(keyValueStorage.getBoolean(ThemeManager.MATRIX_CHECK_KEY, false));
         themeManager.setNormalCheck(!themeManager.getMatrixCheck());
-
+        GlobalConfig.setTheme(keyValueStorage.getInt(ThemeManager.THEME_KEY, DEFAULT_VALUE));
     }
 
     private void onRotateLoadProxyState(Bundle savedInstanceState) {

@@ -11,13 +11,15 @@ import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 
 public class LoginForm extends EditText {
 
+    private static final String EMPTY = "";
+
     public LoginForm(Context context) {
         super(context);
         setLayoutParams(new LinearLayout.LayoutParams(Config.getFormWidth(), Config.getFormHeight()));
         setBackgroundColor(Config.getFormColor());
         setTextColor(Config.getTextColor());
         setTextSize(GlobalConfig.getDefaultTextSize());
-        setText(GlobalConfig.EMPTY_STRING);
+        setText(EMPTY);
         setGravity(Gravity.CENTER_VERTICAL);
         setTypeface(Typeface.SERIF);
         setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);

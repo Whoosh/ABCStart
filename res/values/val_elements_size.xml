@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Global config values -->
-    <integer name="global__header_text_size">15</integer>
-    <integer name="global__default_text_size">12</integer>
+    <!-- Global config text values -->
+    <dimen name="global__header_text_size">15sp</dimen>
+    <dimen name="global__default_text_size">10sp</dimen>
 
     <!-- Settings activity values -->
     <integer name="settings__octet_width">58</integer>
@@ -11,8 +11,6 @@
     <integer name="settings__head_line_height">3</integer>
 
     <!-- First activity values -->
-    <integer name="login__button_width">80</integer>
-    <integer name="login__button_height">40</integer>
     <integer name="login__login_form_width">200</integer>
     <integer name="login__login_form_height">40</integer>
     <integer name="login__separator_height">5</integer>
@@ -21,9 +19,26 @@
     <integer name="menu__header_line_height">3</integer>
     <integer name="menu__item_menu_height">50</integer>
     <integer name="menu__item_menu_width">400</integer>
-    <integer name="menu__item_menu_text_tab_width">20</integer>
-    <integer name="menu__item_menu_text_size">15</integer>
     <integer name="menu__item_menu_end_start_line_height">3</integer>
     <integer name="menu__item_menu_separate_line_height">15</integer>
+    <integer name="menu__item_menu_text_tab_width">20</integer>
+    <!-- Menu activity text values -->
+    <dimen name="menu__item_menu_text_size">15sp</dimen>
+
+    <!-- Looking journal activity values -->
+    <integer name="looking_journal__evolution_size">50</integer>
+    <integer name="looking_journal__selector_group_height">50</integer>
+    <integer name="looking_journal__selector_group_width">250</integer>
+    <integer name="looking_journal__on_group_dialog_separate_line_height">5</integer>
+    <integer name="looking_journal__on_group_dialog_separate_transparent_line_height">20</integer>
+    <integer name="looking_journal__on_group_dialog_element_separate_line_size">5</integer>
+    <integer name="looking_journal__on_group_dialog_element_group_height">50</integer>
+    <integer name="looking_journal__on_group_dialog_element_group_width">70</integer>
+    <!-- Looking journal activity text values -->
+    <dimen name="looking_journal__group_element_text_size">12sp</dimen>
+    <dimen name="looking_journal__selector_group_text_size">15sp</dimen>
+    <dimen name="looking_journal__student_element_text_size">15sp</dimen>
+    <dimen name="looking_journal__date_element_text_size">15sp</dimen>
+    <dimen name="looking_journal__evolution_element_text_size">12sp</dimen>
 
 </resources>

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.backgrounds.LiteMatrixDraw;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.backgrounds.WhiteGradient;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.codeBlackWhiteHorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalGradientLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
@@ -57,9 +59,13 @@ public abstract class Config extends GlobalConfig {
     }
 
     public static View getHeaderLine(Context context) {
-        if (MATRIX_THEME)
-            return new HorizontalLine(context, Color.CYAN, headerLineHeight);
-        return new codeBlackWhiteHorizontalLine(context);
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return new HorizontalLine(context, Color.CYAN, headerLineHeight);
+            case NORMAL_THEME:
+            default:
+                return new codeBlackWhiteHorizontalLine(context);
+        }
     }
 
     public static void setCheckBoxParam(CheckBox checkBox, View.OnClickListener listener) {
@@ -70,8 +76,12 @@ public abstract class Config extends GlobalConfig {
     }
 
     public static View getSeparateElementLine(Context context) {
-        if (MATRIX_THEME)
-            return new HorizontalGradientLine(context, R.drawable.gr_blue_black_sepatator_settings_line);
-        return new HorizontalLine(context, Color.BLACK);
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return new HorizontalGradientLine(context, R.drawable.gr_blue_black_sepatator_settings_line);
+            case NORMAL_THEME:
+            default:
+                return new HorizontalLine(context, Color.BLACK);
+        }
     }
 }

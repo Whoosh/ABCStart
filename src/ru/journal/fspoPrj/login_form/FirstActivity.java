@@ -7,59 +7,76 @@ import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import org.jetbrains.annotations.NotNull;
+import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationCommunicator;
 import ru.journal.fspoPrj.login_form.elements.MainWindow;
 import ru.journal.fspoPrj.login_form.elements.MenuShower;
 import ru.journal.fspoPrj.main_menu.MenuActivity;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
-import ru.journal.fspoPrj.server_java.Authorization;
-import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.ToolKitsManager;
 import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
 import ru.journal.fspoPrj.settings_form.elements.ThemeManager;
 
-public class FirstActivity extends Activity implements View.OnClickListener, Authorization.OnAuthCallBack {
+public class FirstActivity extends Activity implements View.OnClickListener, AuthorizationCommunicator.OnAuthCallBack {
+
+    private static int theme;
+    private static AuthorizationCommunicator authorizationCommunicator;
+
+    static {
+        authorizationCommunicator = new AuthorizationCommunicator();
+    }
 
     private MainWindow mainWindow;
-    private static boolean themeTrigger;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
         if (savedInstanceState == null) {
-            GlobalConfig.prepareGlobalPreference(this);  // TODO
+            theme = getThemeState();
+            GlobalConfig.setTheme(theme);
+            GlobalConfig.setCurrentThemeFor(this);
+            GlobalConfig.setGlobalThemePreference();
+            GlobalConfig.prepareGlobalPreference(this);
+        } else {
+            GlobalConfig.setCurrentThemeFor(this);
+            theme = GlobalConfig.getCurrentTheme();
         }
-        lookAtTheme();
+        super.onCreate(savedInstanceState);
 
-        Authorization authorization = new Authorization(this);
+        authorizationCommunicator.setAuthCallBack(this);
 
-        mainWindow = new MainWindow(this, authorization);
+        mainWindow = new MainWindow(this, authorizationCommunicator);
         mainWindow.setOnClickListener(this);
 
-        setContentView(mainWindow);
         startActionMode(new MenuShower(this));
+        setContentView(mainWindow);
     }
 
-    private void lookAtTheme() {
-        themeTrigger = getThemeState();
-        GlobalConfig.setMatrixTheme(themeTrigger);
-        GlobalConfig.changeThemePreference();
-        GlobalConfig.refreshToCurrentTheme(this);
-    }
-
-    private boolean getThemeState() {
-        return getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, MODE_PRIVATE).getBoolean(ThemeManager.MATRIX_CHECK_KEY, false);
-    }
-
-    private void refreshActivityTheme() {
-        GlobalConfig.changeThemePreference();
-        this.recreate();
+    private int getThemeState() {
+        return getSharedPreferences(MainSettingsActivity.SETTINGS_KEY, MODE_PRIVATE)
+                .getInt(ThemeManager.THEME_KEY, MainSettingsActivity.DEFAULT_VALUE);
     }
 
     @Override
-    public void authSuccessful(ToolKitsManager toolKits) {
-        Intent intent = new Intent(this, MenuActivity.class);
-        intent.putExtra(MenuActivity.INTENT_GET_TOOLS_KEY, toolKits);
-        startActivity(intent);
+    protected void onResume() {
+        if (theme != GlobalConfig.getCurrentTheme()) {
+            this.recreate();
+        }
+        mainWindow.restoreInfo();
+        super.onResume();
+    }
+
+    @Override
+    public void authSuccessful(Intent resource) {
+        resource.setClass(this, MenuActivity.class);
+        startActivity(resource);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data != null) {
+            authorizationCommunicator.handleResponse(data, resultCode);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -70,18 +87,10 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
 
     @Override
     public void onBackPressed() {
-        System.exit(0); // TODO fking emulator
+        System.exit(0);//fE
         super.onBackPressed();
     }
 
-    @Override
-    protected void onResume() {
-        if (themeTrigger != getThemeState()) {
-            refreshActivityTheme();
-        }
-        mainWindow.restoreInfo();
-        super.onResume();
-    }
 
     @Override
     protected void onSaveInstanceState(@NotNull Bundle outState) {

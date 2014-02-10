@@ -1,23 +1,23 @@
 package ru.journal.fspoPrj.journal;
 
-import android.app.Activity;
+import android.app.*;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import org.jetbrains.annotations.NotNull;
-import ru.journal.fspoPrj.journal.callbacks.Switcher;
-import ru.journal.fspoPrj.journal.config.Config;
-import ru.journal.fspoPrj.journal.elements.head_selector.DateSelector;
-import ru.journal.fspoPrj.journal.elements.head_selector.GroupSelector;
-import ru.journal.fspoPrj.journal.elements.head_selector.LessonSelector;
-import ru.journal.fspoPrj.journal.elements.main_table.DateList;
-import ru.journal.fspoPrj.journal.elements.main_table.StudentList;
+import ru.journal.fspoPrj.journal.callbacks.Lessons;
+import ru.journal.fspoPrj.journal.data_get_managers.JournalsCommunicator;
+import ru.journal.fspoPrj.journal.elements.data_slider.DateSlider;
+import ru.journal.fspoPrj.journal.elements.group_selector.GroupSelectorButton;
+import ru.journal.fspoPrj.journal.elements.group_selector.GroupSelectorDialog;
+import ru.journal.fspoPrj.journal.elements.main_table.MScrollView;
 import ru.journal.fspoPrj.journal.elements.main_table.TableWithMarks;
+import ru.journal.fspoPrj.journal.elements.student_list.StudentList;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 
@@ -25,135 +25,127 @@ import java.util.ArrayList;
 
 public class LookingJournalActivity extends Activity implements View.OnTouchListener, View.OnClickListener {
 
-    private static final String DATE_KEY = "IndexOfDate";
-    private static final String GROUP_KEY = "Group";
+    public static final String EMPTY_TAG = "";
+    private static JournalsCommunicator journalsCommunicator; // TODO
 
-    private GroupSelector groupSelector;
-    private DateSelector dateSelector;
-    private DateList dateList;
+    private GroupSelectorButton selectorButton;
     private TableWithMarks tableWithMarks;
-
+    private Lessons lessonsSelector;
+    private DateSlider dateSlider;
+    private StudentList studentList;
     private LinearLayout mainLay;
+    private LinearLayout datePlusMatrix;
+    private LinearLayout groupSelectorPlusStudents;
+    private HorizontalScrollView datePlusCellMatrixScroller;
 
-    public static LessonSelector lessonSelector;
+    public void initElements() {
+        mainLay = new LinearLayout(this);
+        lessonsSelector = new Lessons(this);
+        selectorButton = new GroupSelectorButton(this);
+        dateSlider = new DateSlider(this);
+        groupSelectorPlusStudents = new LinearLayout(this);
+        tableWithMarks = new TableWithMarks(this);
+        studentList = new StudentList(this);
+        datePlusMatrix = new LinearLayout(this);
+        datePlusCellMatrixScroller = new HorizontalScrollView(this);
+    }
 
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         initElements();
+        if (journalsCommunicator == null) {
+            journalsCommunicator = new JournalsCommunicator(this);
+        }
+
+        ArrayList<String> dates = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            dates.add("" + i);
+        }
+
+        ArrayList<String> students = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            students.add("Студент такой то" + i);
+        }
+
+        studentList.setStudents(students);
+        dateSlider.setData(dates);
+
+        studentList.setOnTouchListener(this);
+        selectorButton.setOnClickListener(this);
+
+        tableWithMarks.createTable(5, 5);
+        tableWithMarks.setOnTouchListener(this);
+
+        datePlusMatrix.addView(dateSlider);
+        datePlusMatrix.addView(tableWithMarks);
+        datePlusMatrix.setOrientation(LinearLayout.VERTICAL);
+        datePlusCellMatrixScroller.addView(datePlusMatrix);
+
+        groupSelectorPlusStudents.setOrientation(LinearLayout.VERTICAL);
+        groupSelectorPlusStudents.addView(selectorButton);
+        groupSelectorPlusStudents.addView(studentList);
+
+        mainLay.addView(groupSelectorPlusStudents);
+        mainLay.addView(datePlusCellMatrixScroller);
+        mainLay.addView(new VerticalLine(this, Color.CYAN, 5)); //TODO
+
+        startActionMode(lessonsSelector);
         setContentView(mainLay);
-        lessonSelector.setOnClickListener(this);
-        startActionMode(new Switcher(this));
     }
 
     @Override
-    protected void onDestroy() {
-        setAllStaticFieldsIsNull();
-        super.onDestroy();
+    public void onBackPressed() {
+        //lessonsSelector.close();
+        journalsCommunicator = null; // TODO if close from lessons
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data != null) {
+            journalsCommunicator.cacheData(data, resultCode);
+            switch (resultCode) {
+                case JournalsCommunicator.GROUPS_LIST_QUERY: {
+                    // example
+                }
+                break;
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     protected void onSaveInstanceState(@NotNull Bundle outState) {
-        saveStateOnRotateEvent(outState);
+        lessonsSelector.saveState(outState);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        loadStateOnRotateEvent(savedInstanceState);
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        startActionMode(new Switcher(this));
+        lessonsSelector.restoreState(savedInstanceState);
     }
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-            if (view.equals(tableWithMarks))
-                dateList.scrollTo(tableWithMarks.getScrollX(), 0);
-            if (view.equals(dateList))
-                tableWithMarks.scrollTo(dateList.getScrollX(), 0);
+            if (view.equals(studentList)) {
+                tableWithMarks.scrollScrollerTo(0, studentList.getScrollY());
+            }
             return false;
         }
-        tableWithMarks.scrollTo(dateList.getScrollX(), 0);
-        dateList.scrollTo(tableWithMarks.getScrollX(), 0);
-
+        tableWithMarks.scrollScrollerTo(0, studentList.getScrollY());
+        studentList.scrollTo(0, tableWithMarks.getScrollerY());
         return true;
     }
 
+
     @Override
     public void onClick(View view) {
-     //   if (view.equals(lessonSelector))
-          //  startActionMode(new Lessons(Server.getLessons()));
-    }
-
-    private void saveStateOnRotateEvent(Bundle outState) {
-        outState.putInt(DATE_KEY, dateSelector.getIndexOfSelectedDate());
-        outState.putByte(GROUP_KEY, groupSelector.getOldFocusedIndex());
-    }
-
-    private void loadStateOnRotateEvent(Bundle savedInstanceState) {
-        dateSelector.setIndexOfSelectedDate(savedInstanceState.getInt(DATE_KEY));
-        dateSelector.refreshVisualState();
-
-        groupSelector.setOldFocusedIndex(savedInstanceState.getByte(GROUP_KEY));
-        groupSelector.refreshVisualState();
-    }
-
-
-    public static void setAllStaticFieldsIsNull() {
-        lessonSelector = null;
-    }
-
-    private void initElements() {
-        LinearLayout datePlusGroup = new LinearLayout(this);
-        LinearLayout dateListPlusLessonSelector = new LinearLayout(this);
-        LinearLayout studentsPlusTableLayout = new LinearLayout(this);
-        ScrollView studentsPlusTableScrollView = new ScrollView(this);
-
-        groupSelector = new GroupSelector(this);
-        dateSelector = new DateSelector(this);
-        lessonSelector = new LessonSelector(this);
-
-        ArrayList<String> dates = new ArrayList<>();
-        for (int i = 0; i < 30; i++) dates.add(String.valueOf(i));
-
-        ArrayList<String> students = new ArrayList<>();
-        for (int i = 0; i < 30; i++) students.add("Какойто студент С.С");
-        StudentList studentList = new StudentList(this, students);
-
-        dateList = new DateList(this, dates); // @TODO
-        dateList.setOnTouchListener(this);
-
-        tableWithMarks = new TableWithMarks(this, students.size(), dates.size()); // TODO
-        tableWithMarks.setOnTouchListener(this);
-
-        studentsPlusTableLayout.addView(studentList);
-        studentsPlusTableLayout.addView(new VerticalLine(this, Config.getSeparateLineColor()));
-        studentsPlusTableLayout.addView(tableWithMarks);
-
-        studentsPlusTableScrollView.addView(studentsPlusTableLayout);
-
-        dateListPlusLessonSelector.addView(lessonSelector);
-        dateListPlusLessonSelector.addView(new VerticalLine(this, Config.getSeparateLineColor()));
-        dateListPlusLessonSelector.addView(dateList);
-        dateListPlusLessonSelector.setBackgroundColor(Color.LTGRAY);
-
-        datePlusGroup.addView(groupSelector);
-        datePlusGroup.addView(new VerticalLine(this, Config.getSeparateLineColor()));
-        datePlusGroup.addView(dateSelector);
-
-        mainLay = new LinearLayout(this);
-        mainLay.setOrientation(LinearLayout.VERTICAL);
-        mainLay.setBackgroundDrawable(Config.getBackground(this));
-        mainLay.addView(datePlusGroup);
-        mainLay.addView(new HorizontalLine(this, Config.getSeparateLineColor()));
-        mainLay.addView(dateListPlusLessonSelector);
-        mainLay.addView(new HorizontalLine(this, Config.getSeparateLineColor()));
-        mainLay.addView(studentsPlusTableScrollView);
+        new GroupSelectorDialog(journalsCommunicator.getGroupArray()).show(getFragmentManager(), EMPTY_TAG);
     }
 
 

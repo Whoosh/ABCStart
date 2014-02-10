@@ -1,6 +1,10 @@
-package ru.journal.fspoPrj.server_java.might_info.mights_function_kits;
+package ru.journal.fspoPrj.server_java.might_info.Tools;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import org.jetbrains.annotations.Nullable;
 import ru.journal.fspoPrj.public_code.Logger;
+import ru.journal.fspoPrj.server_java.might_info.CurrentRolesInfo;
 import ru.journal.fspoPrj.server_java.might_info.Functions;
 
 import java.io.Serializable;
@@ -8,12 +12,18 @@ import java.io.Serializable;
 public class ToolKitsManager implements Serializable {
 
     private Tool[] tools;
+    private int indexer;
 
-    public ToolKitsManager(int... toolsIndexes) {
-        this.tools = new Tool[toolsIndexes.length];
-        for (int i = 0; i < tools.length; i++) {
-            tools[i] = new Tool(Functions.values()[toolsIndexes[i]]);
+    public ToolKitsManager(Functions... functions) {
+        this.tools = new Tool[functions.length];
+        for (Functions function : functions) {
+            tools[indexer++] = new Tool(function);
         }
+    }
+
+    public ToolKitsManager(Parcel parcel) {
+        tools = (Tool[]) parcel.readSerializable();
+        indexer = parcel.readInt();
     }
 
     public Tool[] getTools() {
@@ -46,6 +56,6 @@ public class ToolKitsManager implements Serializable {
         return result;
     }
 
-    private class NoFunctionException extends Exception {
+    private static class NoFunctionException extends Exception {
     }
 }

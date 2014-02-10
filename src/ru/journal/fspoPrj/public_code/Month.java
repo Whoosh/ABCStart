@@ -7,6 +7,8 @@ public enum Month {
     July("Июль"), August("Август"), September("Сентябрь"),
     October("Октябрь"), November("Ноябрь"), December("Декабрь");
 
+    public static final int JULIAN_CALENDAR = 12;
+
     private final String month;
 
     private Month(final String month) {
@@ -14,7 +16,7 @@ public enum Month {
     }
 
     public static String getMonth(int number) {
-        return values()[number % 12].thisMonth();
+        return values()[number % JULIAN_CALENDAR].thisMonth();
     }
 
     private String thisMonth() {

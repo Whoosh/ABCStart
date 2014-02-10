@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.journal.fspoPrj.public_code.Logger;
-import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Tool;
-import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.ToolKitsManager;
+import ru.journal.fspoPrj.server_java.might_info.Tools.Tool;
+import ru.journal.fspoPrj.server_java.might_info.Tools.ToolKitsManager;
 
 import java.io.*;
 import java.util.*;
@@ -25,7 +25,7 @@ public class ListMenu extends LinearLayout implements
 
     private ToolKitsManager toolKits;
     private Context context;
-    private int countOfItems;
+    private int itemCounter;
     private int itemsIndexer;
 
     public ListMenu(ToolKitsManager toolKits, Context context) {
@@ -39,22 +39,20 @@ public class ListMenu extends LinearLayout implements
         LinkedHashSet<String> toolNames = loadCollocationSet();
         if (!toolNames.isEmpty() && isDataValid(toolNames)) {
             for (String toolName : toolNames) {
-                this.add(new ItemMenu(context, toolKits.getTool(toolName), countOfItems++));
+                this.add(new ItemMenu(context, toolKits.getTool(toolName), itemCounter++));
             }
         } else {
             for (Tool tool : toolKits.getTools()) {
-                this.add(new ItemMenu(context, tool, countOfItems++));
+                this.add(new ItemMenu(context, tool, itemCounter++));
             }
         }
     }
 
-    public boolean add(ItemMenu itemMenu) {
+    public void add(ItemMenu itemMenu) {
         try {
             super.addView(itemMenu);
             this.setListenersOn(itemMenu);
-            return true;
-        } catch (Exception ex) {
-            return false;
+        } catch (Exception ignored) {
         }
     }
 
@@ -69,7 +67,6 @@ public class ListMenu extends LinearLayout implements
         } catch (IOException ex) {
             Logger.printError(ex, getClass());
         }
-
     }
 
     public void setMenuItemsStateBack() {
@@ -89,16 +86,13 @@ public class ListMenu extends LinearLayout implements
     }
 
     public void setStateWhenRotate(String[] toolsName) {
-        try {
-            removeAllViews();
-            countOfItems = 0;
-            for (String aToolsName : toolsName) {
-                ItemMenu itemMenu = new ItemMenu(context, toolKits.getTool(aToolsName), countOfItems++);
-                setListenersOn(itemMenu);
-                addView(itemMenu);
+        itemCounter = 0;
+        for (String aToolsName : toolsName) {
+            try {
+                this.add(new ItemMenu(context, toolKits.getTool(aToolsName), itemCounter++));
+            } catch (Exception ex) {
+                Logger.printError(ex, getClass());
             }
-        } catch (Exception ex) {
-            Logger.printError(ex, getClass());
         }
     }
 
@@ -106,7 +100,7 @@ public class ListMenu extends LinearLayout implements
         super.setOrientation(VERTICAL);
         super.setGravity(Gravity.CENTER_HORIZONTAL);
         super.setBackgroundColor(Color.TRANSPARENT);
-        this.countOfItems = 0;
+        this.itemCounter = 0;
         this.toolKits = toolKits;
         this.context = context;
     }
@@ -122,7 +116,7 @@ public class ListMenu extends LinearLayout implements
             reader.close();
         } catch (IOException e) {
             Logger.printError(e, getClass());
-            return (LinkedHashSet<String>) Collections.<String>emptySet();
+            return new LinkedHashSet<>();
         }
         return result;
     }
@@ -177,6 +171,13 @@ public class ListMenu extends LinearLayout implements
         itemMenu.setOnDragListener(this);
     }
 
+    private void clickedOnItem(ItemMenu itemMenu) {
+        if (!itemMenu.isStatePressed()) {
+            itemMenu.setDownState();
+            itemMenu.startFunction();
+        }
+    }
+
     @Nullable
     @Override
     public ItemMenu getChildAt(int index) {
@@ -211,10 +212,7 @@ public class ListMenu extends LinearLayout implements
 
     @Override
     public void onClick(View view) {
-        if (!((ItemMenu) view).isStatePressed()) {
-            ((ItemMenu) view).setDownState();
-            ((ItemMenu) view).startFunction();
-        }
+        clickedOnItem((ItemMenu) view);
     }
 
     @NotNull
@@ -226,7 +224,7 @@ public class ListMenu extends LinearLayout implements
 
     @Override
     public boolean hasNext() {
-        return itemsIndexer < countOfItems;
+        return itemsIndexer < itemCounter;
     }
 
     @Override
@@ -236,7 +234,7 @@ public class ListMenu extends LinearLayout implements
 
     @Override
     public void remove() {
-        this.countOfItems--;
+        this.itemCounter--;
         removeView(getChildAt(itemsIndexer));
     }
 

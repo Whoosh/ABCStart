@@ -15,24 +15,26 @@ public abstract class Config extends GlobalConfig {
     public static final int LIGHT_L_GRAY = Color.parseColor("#B4D0CA");
 
     private static int buttonPressedStateColor;
-    // TODO
+
+    private static float itemMenuTextSize;
+
     private static int headLineHeight;
     private static int itemMenuHeight;
     private static int itemMenuWidth;
-    private static int textTabWidth;
-    private static int itemMenuTextSize;
     private static int itemMenuStartEndLineHeight;
     private static int itemMenuSeparateLineHeight;
     private static int headElementColor;
+    private static int textTabWidth;
 
     public static void setDefaultElementSize() {
         headLineHeight = getRealSize(R.integer.menu__header_line_height);
         itemMenuHeight = getRealSize(R.integer.menu__item_menu_height);
         itemMenuWidth = getRealSize(R.integer.menu__item_menu_width);
-        textTabWidth = getRealSize(R.integer.menu__item_menu_text_tab_width);
         itemMenuStartEndLineHeight = getRealSize(R.integer.menu__item_menu_end_start_line_height);
         itemMenuSeparateLineHeight = getRealSize(R.integer.menu__item_menu_separate_line_height);
-        itemMenuTextSize = getRealSize(R.integer.menu__item_menu_text_size);
+        textTabWidth = getRealSize(R.integer.menu__item_menu_text_tab_width);
+
+        itemMenuTextSize = getTextSize(R.dimen.menu__item_menu_text_size);
     }
 
     public static void setNormalThemeColors() {
@@ -50,9 +52,13 @@ public abstract class Config extends GlobalConfig {
     }
 
     public static View getHeaderLine(Context context) {
-        if (GlobalConfig.MATRIX_THEME)
-            return new HorizontalLine(context, Color.CYAN, headLineHeight);
-        return new codeBlackWhiteHorizontalLine(context);
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return new HorizontalLine(context, Color.CYAN, headLineHeight);
+            case NORMAL_THEME:
+            default:
+                return new codeBlackWhiteHorizontalLine(context);
+        }
     }
 
     public static LinearLayout.LayoutParams getMenuItemParam() {
@@ -61,24 +67,32 @@ public abstract class Config extends GlobalConfig {
 
     // TODO
     public static int getItemMenuBackgroundColor() {
-        if (MATRIX_THEME)
-            return R.drawable.gr_menu_button_background;
-        return R.drawable.gr_menu_button_background;
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return R.drawable.gr_menu_button_background;
+            case NORMAL_THEME:
+            default:
+                return R.drawable.gr_menu_button_background;
+        }
     }
 
     public static int getTextTabWidth() {
         return textTabWidth;
     }
 
-    public static int getItemMenuTextSize() {
+    public static float getItemMenuTextSize() {
         return itemMenuTextSize;
     }
 
     // TODO
     public static View getItemMenuStartEndLine(Context context) {
-        if (MATRIX_THEME)
-            return new HorizontalGradientLine(context, R.drawable.gr_menu_separator_line_c_t, itemMenuStartEndLineHeight);
-        return new HorizontalGradientLine(context, R.drawable.gr_menu_separator_line_c_t, itemMenuStartEndLineHeight);
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return new HorizontalGradientLine(context, R.drawable.gr_menu_separator_line_c_t, itemMenuStartEndLineHeight);
+            case NORMAL_THEME:
+            default:
+                return new HorizontalGradientLine(context, R.drawable.gr_menu_separator_line_c_t, itemMenuStartEndLineHeight);
+        }
     }
 
     public static int getItemMenuSeparateLineHeight() {
@@ -87,9 +101,13 @@ public abstract class Config extends GlobalConfig {
 
     //TODO
     public static int getMenuBackground() {
-        if (MATRIX_THEME)
-            return R.drawable.gr_white_gray_background;
-        return R.drawable.gr_white_gray_background;
+        switch (getCurrentTheme()) {
+            case MATRIX_THEME:
+                return R.drawable.gr_white_gray_background;
+            case NORMAL_THEME:
+            default:
+                return R.drawable.gr_white_gray_background;
+        }
     }
 
     public static int getHeadElementColor() {

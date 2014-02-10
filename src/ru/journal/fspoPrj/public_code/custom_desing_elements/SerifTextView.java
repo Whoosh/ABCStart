@@ -1,8 +1,11 @@
 package ru.journal.fspoPrj.public_code.custom_desing_elements;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 
@@ -12,7 +15,7 @@ public class SerifTextView extends TextView {
 
     private String text;
 
-    public SerifTextView(Context context, String text, int textSize) {
+    public SerifTextView(Context context, String text, float textSize) {
         super(context);
         initCode(text, Gravity.CENTER, textSize);
     }
@@ -22,7 +25,7 @@ public class SerifTextView extends TextView {
         initCode(text, Gravity.CENTER, GlobalConfig.getDefaultTextSize());
     }
 
-    public SerifTextView(Context context, int gravity, String text, int textSize) {
+    public SerifTextView(Context context, int gravity, String text, float textSize) {
         super(context);
         initCode(text, gravity, textSize);
     }
@@ -32,7 +35,7 @@ public class SerifTextView extends TextView {
         initCode(text, gravity, GlobalConfig.getDefaultTextSize());
     }
 
-    private void initCode(String text, int gravity, int textSize) {
+    private void initCode(String text, int gravity, float textSize) {
         this.text = text;
         super.setTextColor(getSerifTextColor());
         super.setText(text);
@@ -40,7 +43,6 @@ public class SerifTextView extends TextView {
         super.setTypeface(Typeface.SERIF);
         super.setGravity(gravity);
     }
-
 
     public int getCurrentWight() {
         return super.getWidth();
@@ -57,5 +59,4 @@ public class SerifTextView extends TextView {
     public void setColor(int color) {
         super.setTextColor(color);
     }
-
 }

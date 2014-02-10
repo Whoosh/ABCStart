@@ -1,8 +1,6 @@
 package ru.journal.fspoPrj.server_java.server_managers;
 
 import ru.journal.fspoPrj.public_code.Logger;
-import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
-import ru.journal.fspoPrj.server_java.ServerCommunicator;
 import ru.journal.fspoPrj.server_java.server_info.ClientInfo;
 
 import java.io.BufferedReader;
@@ -15,6 +13,7 @@ import java.util.concurrent.Callable;
 public class Query implements Callable<String> {
 
     private static final String JSON_START_SCOPE = "{";
+    private static final String EMPTY = "";
 
     private String queryLink;
 
@@ -29,7 +28,7 @@ public class Query implements Callable<String> {
 
     private String sendQuery(String queryString) {
 
-        StringBuilder result = new StringBuilder(GlobalConfig.EMPTY_STRING);
+        StringBuilder result = new StringBuilder(EMPTY);
 
         try {
             Socket socket = new Socket(ServerCommunicator.HOST, ServerCommunicator.PORT);

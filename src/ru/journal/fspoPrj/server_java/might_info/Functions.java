@@ -6,6 +6,7 @@ import ru.journal.fspoPrj.main_menu.BugReportInformerActivity;
 import ru.journal.fspoPrj.user_profile.ProfileActivity;
 
 public enum Functions {
+
     // WARNING Имена не могут быть одинаковыми
     // При внесении класса, незабыть добавить его в манифест !
 
@@ -19,7 +20,6 @@ public enum Functions {
 
     RESULT_RATING("Итоговые оценки", BugReportInformerActivity.class, R.drawable.ic_result_rating),
 
-    // TODO консультация замещения и тд в 1 флаконе
     LESSONS_MANAGER("Занятия", BugReportInformerActivity.class, R.drawable.ic_lessons),
 
     SCHEDULE("Расписание", BugReportInformerActivity.class, R.drawable.ic_schedule),

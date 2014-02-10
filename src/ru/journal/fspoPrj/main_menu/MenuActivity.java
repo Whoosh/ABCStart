@@ -1,23 +1,19 @@
 package ru.journal.fspoPrj.main_menu;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import org.jetbrains.annotations.NotNull;
+import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationCommunicator;
+import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationExecutor;
 import ru.journal.fspoPrj.main_menu.config.Config;
 import ru.journal.fspoPrj.main_menu.elements.ListMenu;
 import ru.journal.fspoPrj.main_menu.elements.MenuHead;
-import ru.journal.fspoPrj.server_java.Authorization;
-import ru.journal.fspoPrj.server_java.might_info.CurrentRolesInfo;
-import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.ToolKitsManager;
+import ru.journal.fspoPrj.server_java.might_info.Tools.ToolKitsManager;
 
 
 public class MenuActivity extends Activity {
-
-    public static final String INTENT_GET_TOOLS_KEY = "intkey";
 
     private static final String STATE_KEY = "stkey";
 
@@ -28,12 +24,10 @@ public class MenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getIntent().hasExtra(INTENT_GET_TOOLS_KEY)) {
-            toolKits = (ToolKitsManager) getIntent().getSerializableExtra(INTENT_GET_TOOLS_KEY);
-            getIntent().removeExtra(INTENT_GET_TOOLS_KEY);
+        if (getIntent().hasExtra(AuthorizationExecutor.TOOLS_KIT_KEY)) {
+            toolKits = (ToolKitsManager) getIntent().getSerializableExtra(AuthorizationExecutor.TOOLS_KIT_KEY);
+            getIntent().removeExtra(AuthorizationExecutor.TOOLS_KIT_KEY);
         }
-
         if (savedInstanceState == null) {
             listMenu = new ListMenu(this, toolKits);
         } else {
@@ -45,7 +39,7 @@ public class MenuActivity extends Activity {
     @Override
     public void onBackPressed() {
         listMenu.storeCollocation();
-        new Authorization().disconnect();
+        new AuthorizationCommunicator().disconnect();
         toolKits = null;
         super.onBackPressed();
     }
@@ -60,9 +54,13 @@ public class MenuActivity extends Activity {
     protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         listMenu.setStateWhenRotate(savedInstanceState.getStringArray(STATE_KEY));
-        listMenu.setMenuItemsStateBack();
     }
 
+    @Override
+    protected void onResume() {
+        listMenu.setMenuItemsStateBack();
+        super.onResume();
+    }
 
     private void initMainLayout() {
         ScrollView scrollViewForFunctionList = new ScrollView(this);
