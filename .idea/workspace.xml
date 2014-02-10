@@ -1264,7 +1264,7 @@
       <workItem from="1391810800380" duration="13647000" />
       <workItem from="1391859789814" duration="34479000" />
       <workItem from="1391955429712" duration="30843000" />
-      <workItem from="1392005408094" duration="184000" />
+      <workItem from="1392005408094" duration="266000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1402,11 +1402,15 @@
       <created>1392005579754</created>
       <updated>1392005579754</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="... editTable canvas bitmap ect..&#10;">
+      <created>1392005621804</created>
+      <updated>1392005621804</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2195429000" />
+    <option name="totallyTimeSpent" value="2195511000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
