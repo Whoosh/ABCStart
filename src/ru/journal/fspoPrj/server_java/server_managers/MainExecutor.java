@@ -1,14 +1,15 @@
 package ru.journal.fspoPrj.server_java.server_managers;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Toast;
-import ru.journal.fspoPrj.login_form.query_manager.AuthorizationExecutor;
+import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationExecutor;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.server_java.server_info.ServerErrors;
 
 import java.io.Serializable;
-import java.sql.SQLOutput;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -23,18 +24,17 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
     private static final int SHOW_SERVER_MESSAGE_DIE_CODE = 3;
     private static final int PASSWORD_IS_WRONG_CODE = 4;
 
-    private ProgressActivity progressActivity;
+    protected ProgressActivity progressActivity;
 
-    private static boolean status;
     private static Toast errorMessageShower;
     private static ExecutorService executorService;
-    private static ConcurrentHashMap<String, String> resultsStorage;
-    private static ConcurrentHashMap<String, Future<String>> futureResponsesStorage;
+    private static HashMap<String, Future<String>> futureResponsesStorage;
+    private static HashMap<String, String> resultsStorage;
 
     static {
         executorService = Executors.newCachedThreadPool();
-        futureResponsesStorage = new ConcurrentHashMap<>();
-        resultsStorage = new ConcurrentHashMap<>();
+        futureResponsesStorage = new HashMap<>();
+        resultsStorage = new HashMap<>();
     }
 
     public void restoreLinkToThisActivity(ProgressActivity progressActivity) {
@@ -45,13 +45,8 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
         progressActivity = null;
     }
 
-    public boolean isDone() {
-        return status;
-    }
-
     @Override
     protected void onPreExecute() {
-        status = false;
         publishProgress(SHOW_PROGRESS_CODE);
         super.onPreExecute();
     }
@@ -67,7 +62,7 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
         } catch (AuthorizationExecutor.WrongPasswordException e) {
             publishProgress(PASSWORD_IS_WRONG_CODE);
         } catch (Exception e) {
-            // There is error if app is not closed manual
+            // There is error if app is not closed manual can be ignored
             Logger.printError(e, getClass());
         }
         return null;
@@ -101,15 +96,14 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
-        status = true;
-        stopThisOperation();
+    protected void onPostExecute(Void res) {
         resultsStorage.clear();
         futureResponsesStorage.clear();
-        super.onPostExecute(aVoid);
+        stopThisOperation();
+        super.onPostExecute(res);
     }
 
-    protected abstract void queryResults(ConcurrentHashMap<String, String> results)
+    protected abstract void queryResults(HashMap<String, String> results)
             throws InterruptedException, ExecutionException, AuthorizationExecutor.WrongPasswordException, TimeoutException;
 
     protected void doExecute()

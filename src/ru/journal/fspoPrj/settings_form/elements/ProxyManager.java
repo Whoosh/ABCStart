@@ -24,6 +24,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     private static final byte OCTETS_COUNT = 4;
     private static final byte OCTET_LEN = 3;
     private static final byte PORT_LEN = 5;
+    private static final int ONE = 1;
 
     private static final String DOT = ".";
     private static final String IP_TITLE = " IP :";
@@ -36,7 +37,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     private static final String PORT_ERROR_MESSAGE = "Порт не может быть больше ";
     private static final String EMPTY_FIELD_ERROR_MESSAGE = "Поля не должны быть пустыми";
     private static final String FIRST_OCTET_ERROR_MESSAGE = "Адрес не может начинаться с нуля или быть пустым";
-    public static final int ONE = 1;
+    private static final String EMPTY = "";
 
     private ProxyEditText portForm;
     private ProxyEditText[] ipOctet;
@@ -104,8 +105,8 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     }
 
     public void clearForms() {
-        portForm.setText(GlobalConfig.EMPTY_STRING);
-        for (ProxyEditText text : ipOctet) text.setText(GlobalConfig.EMPTY_STRING);
+        portForm.setText(EMPTY);
+        for (ProxyEditText text : ipOctet) text.setText(EMPTY);
         ipOctet[0].requestFocus();
     }
 
@@ -122,7 +123,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     public boolean ipIsEmpty() {
         for (byte i = 0; i < OCTETS_COUNT; i++)
             try {
-                if (ipOctet[i].getText().toString().equals(GlobalConfig.EMPTY_STRING)) return true;
+                if (ipOctet[i].getText().toString().equals(EMPTY)) return true;
             } catch (NullPointerException ex) {
                 return true;
             }
@@ -138,12 +139,12 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
     }
 
     public void loadAddress(String kit) {
-        StringBuilder buff = new StringBuilder().append(GlobalConfig.EMPTY_STRING);
+        StringBuilder buff = new StringBuilder().append(EMPTY);
         for (byte i = 0, k = 0; i < kit.length(); i++) {
             if (kit.charAt(i) == DOT.charAt(0)) {
                 ipOctet[k++].setText(buff);
                 buff = new StringBuilder();
-                buff.append(GlobalConfig.EMPTY_STRING);
+                buff.append(EMPTY);
             } else
                 buff.append(kit.charAt(i));
             if (kit.length() - ONE == i)
@@ -167,13 +168,13 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
         try {
             return portForm.getText().toString();
         } catch (NullPointerException ex) {
-            return GlobalConfig.EMPTY_STRING;
+            return EMPTY;
         }
     }
 
     public boolean portIsEmpty() {
         try {
-            return portForm.getText().toString().equals(GlobalConfig.EMPTY_STRING);
+            return portForm.getText().toString().equals(EMPTY);
         } catch (NullPointerException ex) {
             return true;
         }
@@ -267,7 +268,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
         private class PortMaxValueException extends Throwable {
             public PortMaxValueException() {
-                portForm.setText(GlobalConfig.EMPTY_STRING);
+                portForm.setText(EMPTY);
             }
         }
     }
@@ -326,7 +327,7 @@ public class ProxyManager extends LinearLayout implements View.OnClickListener {
 
         private class MaxIPValueException extends Throwable {
             MaxIPValueException(byte index) {
-                ipOctet[index].setText(GlobalConfig.EMPTY_STRING);
+                ipOctet[index].setText(EMPTY);
             }
         }
     }

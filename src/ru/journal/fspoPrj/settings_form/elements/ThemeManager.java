@@ -18,6 +18,8 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
     private static final String NORMAL_THEME_TITLE = "\tОбычная";
     private static final String MATRIX_THEME_TITLE = "\tОт разработчика";
 
+
+    public static final String THEME_KEY = "k_theme";
     public static final String MATRIX_CHECK_KEY = "matrix";
 
     private CheckBox normal;
@@ -50,14 +52,14 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
         if (view.equals(normal)) {
             if (normal.isChecked()) {
                 matrix.setChecked(false);
-                GlobalConfig.setDefaultTheme(true);
+                GlobalConfig.setTheme(GlobalConfig.NORMAL_THEME);
                 refreshActivity();
             }
             normal.setChecked(true);
         } else {
             if (matrix.isChecked()) {
                 normal.setChecked(false);
-                GlobalConfig.setMatrixTheme(true);
+                GlobalConfig.setTheme(GlobalConfig.MATRIX_THEME);
                 refreshActivity();
             }
             matrix.setChecked(true);
@@ -65,7 +67,7 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
     }
 
     private void refreshActivity() {
-        GlobalConfig.changeThemePreference();
+        GlobalConfig.setGlobalThemePreference();
         ((Activity) getContext()).recreate();
     }
 

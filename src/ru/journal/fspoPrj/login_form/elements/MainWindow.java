@@ -7,14 +7,13 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.login_form.config.Config;
+import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationCommunicator;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
-import ru.journal.fspoPrj.server_java.Authorization;
 import ru.journal.fspoPrj.settings_form.MainSettingsActivity;
 
 public class MainWindow extends LinearLayout implements View.OnTouchListener {
@@ -31,14 +30,16 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     private static final String PASSWORD_TITLE = "Пароль";
     private static final String USER_NAME_TITLE = "Имя пользователя";
 
+    private static final String EMPTY = "";
+
     private Context context;
     private CheckBox saveMe;
     private SerifTextView loginButton;
     private LoginForm userName, password;
     private SharedPreferences keyValueStorage;
-    private Authorization authorization;
+    private AuthorizationCommunicator authorization;
 
-    public MainWindow(Context context, Authorization authorization) {
+    public MainWindow(Context context, AuthorizationCommunicator authorization) {
         super(context);
         this.context = context;
         this.authorization = authorization;
@@ -49,7 +50,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         try {
             return password.getText().toString();
         } catch (NullPointerException ex) {
-            return GlobalConfig.EMPTY_STRING;
+            return EMPTY;
         }
     }
 
@@ -57,7 +58,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         try {
             return userName.getText().toString();
         } catch (NullPointerException ex) {
-            return GlobalConfig.EMPTY_STRING;
+            return EMPTY;
         }
     }
 
@@ -81,8 +82,8 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     public void restoreInfo() {
         keyValueStorage = context.getSharedPreferences(STATE_KEY, Context.MODE_PRIVATE);
         if (keyValueStorage.getBoolean(SAVE_KEY, false)) {
-            userName.setText(keyValueStorage.getString(USER_NAME_KEY, GlobalConfig.EMPTY_STRING));
-            password.setText(keyValueStorage.getString(PASSWORD_KEY, GlobalConfig.EMPTY_STRING));
+            userName.setText(keyValueStorage.getString(USER_NAME_KEY, EMPTY));
+            password.setText(keyValueStorage.getString(PASSWORD_KEY, EMPTY));
             saveMe.setChecked(true);
         }
     }
@@ -92,11 +93,11 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     public String getAddress() {
-        return keyValueStorage.getString(MainSettingsActivity.IP_KEY, GlobalConfig.EMPTY_STRING);
+        return keyValueStorage.getString(MainSettingsActivity.IP_KEY, EMPTY);
     }
 
     public int getPort() {
-        return Integer.parseInt(keyValueStorage.getString(MainSettingsActivity.PORT_KEY, GlobalConfig.EMPTY_STRING));
+        return Integer.parseInt(keyValueStorage.getString(MainSettingsActivity.PORT_KEY, EMPTY));
     }
 
     @Override
@@ -111,10 +112,8 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
     }
 
     private void startButtonLogic() {
-        if (authorization.isOver()) {
-            loadConnectSettings();
-            loginOnServer();
-        }
+        loadConnectSettings();
+        loginOnServer();
     }
 
     private void loadConnectSettings() {
@@ -144,7 +143,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         saveMe.setTextSize(GlobalConfig.getDefaultTextSize());
         saveMe.setText(CHECK_BOX_TITLE);
 
-        loginButton.setLayoutParams(new ViewGroup.LayoutParams(Config.getLoginButtonWidth(), Config.getLoginButtonHeight()));
+        loginButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
         loginButton.setTextColor(Config.getTextColor());
         loginButton.setBackgroundColor(Config.getFormColor());
 
@@ -154,7 +153,7 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         userName.setHint(USER_NAME_TITLE);
 
         LinearLayout checkBoxPlusButton = new LinearLayout(context);
-        checkBoxPlusButton.setLayoutParams(new ViewGroup.LayoutParams(Config.getFormWidth(), Config.getFormHeight()));
+        checkBoxPlusButton.setLayoutParams(new LayoutParams(Config.getFormWidth(), Config.getFormHeight()));
         checkBoxPlusButton.addView(saveMe);
         checkBoxPlusButton.addView(loginButton);
 

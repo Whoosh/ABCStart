@@ -15,6 +15,8 @@ import ru.journal.fspoPrj.settings_form.config.Config;
 
 public class ProxyEditText extends EditText {
 
+    private static final String EMPTY = "";
+
     public ProxyEditText(Context context, byte maxSymbolCount) {
         super(context);
         setInputType(InputType.TYPE_CLASS_PHONE);
@@ -22,7 +24,7 @@ public class ProxyEditText extends EditText {
         setTextColor(Config.getFormsTextColor());
         setLayoutParams(new LinearLayout.LayoutParams(Config.getOctetWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
         setTextSize(GlobalConfig.getDefaultTextSize());
-        setText(GlobalConfig.EMPTY_STRING);
+        setText(EMPTY);
         setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxSymbolCount)});
         setTypeface(Typeface.SERIF);
     }

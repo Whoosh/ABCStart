@@ -1,5 +1,6 @@
 package ru.journal.fspoPrj.public_code.configs;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -7,41 +8,27 @@ import ru.journal.fspoPrj.R;
 
 abstract public class GlobalConfig {
 
-    public static final String EMPTY_STRING = "";
+    public static final int MATRIX_THEME = 1;
+    public static final int NORMAL_THEME = 2;
 
-    public static boolean MATRIX_THEME;
-    public static boolean NORMAL_THEME;
+    private static int currentTheme;
 
-    private static int headerTextSize;
-    private static int defaultTextSize;
+    private static float headerTextSize;
+    private static float defaultTextSize;
 
     private static float DISPLAY_DENSITY_PIXEL_METRIC;
 
-    private static int serifTextDefaultColor;
+    private static int serifTextColor;
+
     private static Resources resources;
 
     public static void setGlobalPixelDensityInfo(Context context) {
         DISPLAY_DENSITY_PIXEL_METRIC = context.getResources().getDisplayMetrics().density;
     }
 
-    public static void setMatrixTheme(boolean value) {
-        MATRIX_THEME = value;
-        NORMAL_THEME = !MATRIX_THEME;
-    }
-
-    public static void setDefaultTheme(boolean value) {
-        NORMAL_THEME = value;
-        MATRIX_THEME = !NORMAL_THEME;
-    }
-
-    public static float getPixelDensity() {
-        return DISPLAY_DENSITY_PIXEL_METRIC;
-    }
-
-
-    public static void acceptSizesPreference() {
-        headerTextSize = getRealSize(R.integer.global__header_text_size);
-        defaultTextSize = getRealSize(R.integer.global__default_text_size);
+    private static void acceptSizesPreference() {
+        headerTextSize = getTextSize(R.dimen.global__header_text_size);
+        defaultTextSize = getTextSize(R.dimen.global__default_text_size);
 
         ru.journal.fspoPrj.login_form.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.settings_form.config.Config.setDefaultElementSize();
@@ -50,8 +37,16 @@ abstract public class GlobalConfig {
         ru.journal.fspoPrj.user_profile.config.Config.setDefaultElementSize();
     }
 
+    public static void setTheme(int theme) {
+        currentTheme = theme;
+    }
+
     public static int getRealSize(int resID) {
         return convertToRealPixels(resources.getInteger(resID));
+    }
+
+    public static float getTextSize(int resID) {
+        return resources.getDimension(resID);
     }
 
     public static void prepareGlobalPreference(Context context) {
@@ -60,51 +55,72 @@ abstract public class GlobalConfig {
         GlobalConfig.acceptSizesPreference();
     }
 
-    public static void changeThemePreference() {
-        if (MATRIX_THEME) {
-            setGlobalMatrixPreference();
+    public static void setGlobalThemePreference() {
+        switch (currentTheme) {
+            case MATRIX_THEME: {
+                setGlobalMatrixPreference();
 
-            ru.journal.fspoPrj.login_form.config.Config.setMatrixThemeColors();
-            ru.journal.fspoPrj.settings_form.config.Config.setMatrixThemeColors();
-            ru.journal.fspoPrj.main_menu.config.Config.setMatrixThemeColors();
-            ru.journal.fspoPrj.journal.config.Config.setMatrixThemeColors();
-            ru.journal.fspoPrj.user_profile.config.Config.setMatrixThemeColors();
-        } else {
-            setGlobalNormalPreference();
+                ru.journal.fspoPrj.login_form.config.Config.setMatrixThemeColors();
+                ru.journal.fspoPrj.settings_form.config.Config.setMatrixThemeColors();
+                ru.journal.fspoPrj.main_menu.config.Config.setMatrixThemeColors();
+                ru.journal.fspoPrj.journal.config.Config.setMatrixThemeColors();
+                ru.journal.fspoPrj.user_profile.config.Config.setMatrixThemeColors();
+            }
+            break;
+            case NORMAL_THEME:
+            default: {
+                setGlobalNormalPreference();
 
-            ru.journal.fspoPrj.login_form.config.Config.setNormalThemeColors();
-            ru.journal.fspoPrj.settings_form.config.Config.setNormalThemeColors();
-            ru.journal.fspoPrj.main_menu.config.Config.setNormalThemeColors();
-            ru.journal.fspoPrj.journal.config.Config.setNormalThereColors();
-            ru.journal.fspoPrj.user_profile.config.Config.setNormalThemeColors();
+                ru.journal.fspoPrj.login_form.config.Config.setNormalThemeColors();
+                ru.journal.fspoPrj.settings_form.config.Config.setNormalThemeColors();
+                ru.journal.fspoPrj.main_menu.config.Config.setNormalThemeColors();
+                ru.journal.fspoPrj.journal.config.Config.setNormalThereColors();
+                ru.journal.fspoPrj.user_profile.config.Config.setNormalThemeColors();
+            }
         }
     }
 
     private static void setGlobalNormalPreference() {
-        serifTextDefaultColor = Color.BLACK;
+        serifTextColor = Color.BLACK;
     }
 
     private static void setGlobalMatrixPreference() {
-        serifTextDefaultColor = Color.WHITE;
+        serifTextColor = Color.WHITE;
     }
 
     public static int getSerifTextColor() {
-        return serifTextDefaultColor;
+        return serifTextColor;
     }
 
     public static int convertToRealPixels(int pixels) {
         return (int) (pixels * DISPLAY_DENSITY_PIXEL_METRIC);
     }
 
-    public static void refreshToCurrentTheme(Context context) {
-        context.setTheme(MATRIX_THEME ? R.style.Theme_matrixDark : R.style.Theme_defaultLight);
+    public static void setCurrentThemeFor(Activity activity) {
+        switch (currentTheme) {
+            case MATRIX_THEME: {
+                activity.setTheme(R.style.Theme_matrixDark);
+            }
+            break;
+            case NORMAL_THEME:
+            default:
+                activity.setTheme(R.style.Theme_defaultLight);
+        }
     }
 
-    public static int getHeaderTextSize() {
+    public static float getHeaderTextSize() {
         return headerTextSize;
     }
 
-    public static int getDefaultTextSize() {
+    public static float getDefaultTextSize() {
         return defaultTextSize;
+    }
+
+    public static int getCurrentTheme() {
+        return currentTheme;
+    }
+
+    public static float getPixelDensity() {
+        return DISPLAY_DENSITY_PIXEL_METRIC;
     }
 }

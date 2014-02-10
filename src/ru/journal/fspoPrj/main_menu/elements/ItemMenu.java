@@ -10,7 +10,7 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.IconSetter;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
-import ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Tool;
+import ru.journal.fspoPrj.server_java.might_info.Tools.Tool;
 
 public class ItemMenu extends LinearLayout {
 

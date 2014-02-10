@@ -11,12 +11,9 @@ import android.widget.LinearLayout;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
-import ru.journal.fspoPrj.server_java.profile_info.JsonKeys;
-import ru.journal.fspoPrj.server_java.profile_info.UserProfile;
 import ru.journal.fspoPrj.user_profile.config.Config;
 import ru.journal.fspoPrj.user_profile.elements.PhotoBoard;
 import ru.journal.fspoPrj.user_profile.elements.PhotoMaker;
-import ru.journal.fspoPrj.user_profile.elements.TextInfo;
 
 import java.util.concurrent.TimeoutException;
 
@@ -27,7 +24,7 @@ public class ProfileActivity extends Activity {
     private LinearLayout mainLayout;
     private FrameLayout photoLayout;
     private LinearLayout infoLay;
-    private UserProfile userProfile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,22 +62,12 @@ public class ProfileActivity extends Activity {
     private void addInfoOnScreen() {
         infoLay.addView(new HorizontalLine(this, Color.TRANSPARENT, Config.vacuumHeight));
 
-        for (int i = 0; i < TextInfo.values().length; i++) {
-            infoLay.addView(new HorizontalLine(this, Color.LTGRAY));
-            infoLay.addView(new SerifTextView(this,
-                    Gravity.LEFT, TextInfo
-                    .values()[i]
-                    .getVisualKey() + userProfile
-                    .getInfo(TextInfo.values()[i].getChainKey()),
-                    GlobalConfig.getHeaderTextSize()));
-            infoLay.addView(new HorizontalLine(this, Color.LTGRAY));
-        }
     }
 
     private void addPhotoOnScreen() {
         ImageView photoView = new ImageView(this);
 
-        new PhotoMaker(this, photoView).execute(userProfile.getInfo(JsonKeys.PHOTO.getChainKey()));
+        //new PhotoMaker(this, photoView).execute(userProfile.getInfo(JsonKeys.PHOTO.getChainKey()));
 
         photoLayout.addView(photoView);
         photoLayout.addView(new PhotoBoard(this));
