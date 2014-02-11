@@ -8,6 +8,7 @@ import ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupsListExecut
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 import ru.journal.fspoPrj.server_java.server_info.APIQuery;
+import ru.journal.fspoPrj.server_java.server_managers.MainExecutor;
 import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 
 import java.util.ArrayList;
@@ -20,7 +21,10 @@ public class JournalsCommunicator extends ServerCommunicator {
 
     private final String groupsListKeyQuery;
     private final String lessonListKeyQuery;
+
     private GroupsList groupsList;
+
+    private MainExecutor lastQueryExecuting;
 
     public JournalsCommunicator(Activity caller) {
         groupsListKeyQuery = APIQuery.GET_GROUP_LIST.getLink(getToken(), getYearID());
@@ -29,7 +33,12 @@ public class JournalsCommunicator extends ServerCommunicator {
     }
 
     public void sendGroupsInfoQuery(Activity caller, int resultCode) {
-        super.sendQueryToServer(caller, new GroupsListExecutor(groupsListKeyQuery, lessonListKeyQuery, resultCode));
+        lastQueryExecuting = new GroupsListExecutor(groupsListKeyQuery, lessonListKeyQuery, resultCode);
+        super.sendQueryToServer(caller, lastQueryExecuting);
+    }
+
+    public void resentLastQuery(Activity caller, int resendGroupListFormRefreshButton) {
+        super.sendQueryToServer(caller, lastQueryExecuting);
     }
 
     public void cacheData(Intent data, int caller) {
@@ -65,7 +74,7 @@ public class JournalsCommunicator extends ServerCommunicator {
     public String[] getLessonsName(String group) {
         GroupLesson[] groupLessons = groupsList.getLessons(group);
         String[] lessonsName = new String[groupLessons.length];
-        for(int i =0; i<lessonsName.length; i++){
+        for (int i = 0; i < lessonsName.length; i++) {
             lessonsName[i] = groupLessons[i].getShortName();
         }
         return lessonsName;

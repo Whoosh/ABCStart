@@ -18,12 +18,12 @@ public class GroupSelector extends LinearLayout implements View.OnClickListener 
     private GroupSelectorDialog groupSelectorDialog;
     private GroupSelectorDialog.GroupSelectedCallBack callBack;
 
-    public GroupSelector(Activity caller, String[] groups, GroupSelectorDialog dialog) {
+    public GroupSelector(LookingJournalActivity caller, String[] groups, GroupSelectorDialog dialog) {
         super(caller);
         setGravity(Gravity.CENTER);
         setOrientation(VERTICAL);
         this.groupSelectorDialog = dialog;
-        this.callBack = ((LookingJournalActivity) caller).getGroupSelectorCallBack();
+        this.callBack = caller.getGroupSelectorCallBack();
         this.courses = makeCourseStructuring(groups);
 
         addView(new HorizontalLine(caller, Color.BLACK, Config.getOnGroupDialogSeparateLineHeight()));

@@ -15,13 +15,15 @@ import ru.journal.fspoPrj.journal.data_get_managers.JournalsCommunicator;
 import ru.journal.fspoPrj.journal.elements.data_slider.DateSlider;
 import ru.journal.fspoPrj.journal.elements.group_selector.GroupSelectorButton;
 import ru.journal.fspoPrj.journal.elements.group_selector.GroupSelectorDialog;
+import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorButton;
+import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorDialog;
 import ru.journal.fspoPrj.journal.elements.main_table.TableWithMarks;
 import ru.journal.fspoPrj.journal.elements.student_list.StudentList;
 
 import java.util.Arrays;
 
 public class LookingJournalActivity extends Activity implements View.OnTouchListener, View.OnClickListener
-        , GroupSelectorDialog.GroupSelectedCallBack {
+        , GroupSelectorDialog.GroupSelectedCallBack, LessonsSelector.LessonSelectedCallBack {
 
     private static final String EMPTY_TAG = "";
 
@@ -37,18 +39,23 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
     private GroupSelectorButton groupSelectorButton;
     private HorizontalScrollView datePlusCellMatrixScroller;
     private GroupSelectorDialog groupSelectorDialog;
+    private DateSelectorButton dateSelectorButton;
+    private DateSelectorDialog dateSelectorDialog;
 
     public void initElements() {
         mainLay = new LinearLayout(this);
         dateSlider = new DateSlider(this);
         studentList = new StudentList(this);
-        lessonsSelector = new LessonsSelector(this, journalsCommunicator);
+        lessonsSelector = new LessonsSelector(this);
         datePlusMatrix = new LinearLayout(this);
         tableWithMarks = new TableWithMarks(this);
         groupSelectorButton = new GroupSelectorButton(this);
         groupSelectorPlusStudents = new LinearLayout(this);
         datePlusCellMatrixScroller = new HorizontalScrollView(this);
+        dateSelectorButton = new DateSelectorButton(this);
+
         groupSelectorDialog = new GroupSelectorDialog();
+        dateSelectorDialog = new DateSelectorDialog();
 
         datePlusMatrix.addView(dateSlider);
         datePlusMatrix.addView(tableWithMarks);
@@ -73,6 +80,9 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         }
         initElements();
 
+        lessonsSelector.setDateSelectorButton(dateSelectorButton);
+
+        dateSelectorButton.setOnClickListener(this);
         studentList.setOnTouchListener(this);
         groupSelectorButton.setOnClickListener(this);
         tableWithMarks.setOnTouchListener(this);
@@ -81,7 +91,11 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         setContentView(mainLay);
     }
 
-    public GroupSelectorDialog.GroupSelectedCallBack getGroupSelectorCallBack(){
+    public GroupSelectorDialog.GroupSelectedCallBack getGroupSelectorCallBack() {
+        return this;
+    }
+
+    public LessonsSelector.LessonSelectedCallBack getLessonSelectedCallBack() {
         return this;
     }
 
@@ -107,6 +121,7 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
                 break;
                 case JournalsCommunicator.RESEND_GROUP_LIST_FORM_REFRESH_BUTTON: {
                     groupSelectorButton.setDefaultText();
+                    // TODO а должна быть куча данных
                 }
                 break;
             }
@@ -126,6 +141,7 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         groupSelectorDialog.saveState(outState);
         groupSelectorButton.saveState(outState);
         studentList.saveState(outState);
+        dateSelectorButton.saveState(outState);
         super.onSaveInstanceState(outState);
     }
 
@@ -136,6 +152,7 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         groupSelectorDialog.restoreState(savedInstanceState);
         groupSelectorButton.restoreState(savedInstanceState);
         studentList.restoreState(savedInstanceState);
+        dateSelectorButton.restoreState(savedInstanceState);
     }
 
     @Override
@@ -154,7 +171,13 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
     public void onClick(View view) {
         if (view.equals(groupSelectorButton)) {
             handleGroupButtonClick();
+        } else if (view.equals(dateSelectorButton)) {
+            handleDateButtonClick();
         }
+    }
+
+    private void handleDateButtonClick() {
+        dateSelectorDialog.show(getFragmentManager(), EMPTY_TAG);
     }
 
     private void handleGroupButtonClick() {
@@ -162,9 +185,9 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         if (groups.length > 0) {
             groupSelectorDialog.show(getFragmentManager(), EMPTY_TAG);
         } else if (groupSelectorButton.isRefreshState()) {
-            journalsCommunicator.sendGroupsInfoQuery(this, JournalsCommunicator.RESEND_GROUP_LIST_FORM_REFRESH_BUTTON);
+            journalsCommunicator.resentLastQuery(this, JournalsCommunicator.RESEND_GROUP_LIST_FORM_REFRESH_BUTTON);
         } else {
-            journalsCommunicator.sendGroupsInfoQuery(this, JournalsCommunicator.RESEND_GROUP_LIST_FROM_GROUP_BUTTON);
+            journalsCommunicator.resentLastQuery(this, JournalsCommunicator.RESEND_GROUP_LIST_FROM_GROUP_BUTTON);
         }
     }
 
@@ -174,6 +197,18 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         studentList.setStudents(journalsCommunicator.getStudentsName(group));
         lessonsSelector.setLessons(journalsCommunicator.getLessonsName(group));
         // TODO query
+    }
+
+    @Override
+    public void lessonSelected(String lesson) {
+        System.out.println(lesson);
+    }
+
+    @Override
+    public void dateSelected(String date) {
+        dateSelectorButton.setSelectedDate(date);
+
+        System.out.println(date);
     }
 }
 
