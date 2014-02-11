@@ -19,7 +19,8 @@
     </layouts>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
+    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="date select add&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fspoPrj.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
@@ -88,7 +89,7 @@
       <file leaf-file-name="LookingJournalActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="43" selection-start="3303" selection-end="3303" vertical-scroll-proportion="0.65163934" vertical-offset="498" max-vertical-offset="3281">
+            <state line="33" column="36" selection-start="1502" selection-end="1502" vertical-scroll-proportion="0.12909836" vertical-offset="498" max-vertical-offset="3281">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initElements#0;class#LookingJournalActivity#0" expanded="false" />
@@ -1310,7 +1311,7 @@
       <workItem from="1391955429712" duration="30843000" />
       <workItem from="1392005408094" duration="3392000" />
       <workItem from="1392058412151" duration="42538000" />
-      <workItem from="1392140687159" duration="12649000" />
+      <workItem from="1392140687159" duration="12962000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1468,11 +1469,15 @@
       <created>1392153398609</created>
       <updated>1392153398609</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="date select add&#10;">
+      <created>1392153416609</created>
+      <updated>1392153416609</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2253824000" />
+    <option name="totallyTimeSpent" value="2254137000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1520,7 +1525,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2246596" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2246596" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21884498" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1543,7 +1548,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="ujdyjrjl ! &#10;" />
     <MESSAGE value="JavaServerAdd" />
     <MESSAGE value="Fix main tables and student list.&#10;" />
     <MESSAGE value="Some refactoring &#10;" />
@@ -1568,7 +1572,8 @@
     <MESSAGE value="...." />
     <MESSAGE value="....&#10;" />
     <MESSAGE value="date select add" />
-    <option name="LAST_COMMIT_MESSAGE" value="date select add" />
+    <MESSAGE value="date select add&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="date select add&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1948,7 +1953,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="43" selection-start="3303" selection-end="3303" vertical-scroll-proportion="0.65163934" vertical-offset="498" max-vertical-offset="3281">
+        <state line="33" column="36" selection-start="1502" selection-end="1502" vertical-scroll-proportion="0.12909836" vertical-offset="498" max-vertical-offset="3281">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initElements#0;class#LookingJournalActivity#0" expanded="false" />
