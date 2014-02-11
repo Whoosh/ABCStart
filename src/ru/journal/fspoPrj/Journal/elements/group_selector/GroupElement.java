@@ -17,13 +17,11 @@ public class GroupElement extends Button {
         setGravity(Gravity.CENTER);
         setTextSize(Config.getGroupElementTextSize());
         setText(group);
-        setBackgroundColor(Color.LTGRAY);
         setLayoutParams(new LinearLayout.LayoutParams(Config.getOnDialogGroupElementWidth(), Config.getOnDialogGroupElementHeight()));
     }
 
     public String getGroup() {
         return group;
     }
-
 
 }

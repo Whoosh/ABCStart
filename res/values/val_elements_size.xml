@@ -34,6 +34,7 @@
     <integer name="looking_journal__on_group_dialog_element_separate_line_size">5</integer>
     <integer name="looking_journal__on_group_dialog_element_group_height">50</integer>
     <integer name="looking_journal__on_group_dialog_element_group_width">70</integer>
+    <integer name="looking_journal__journal_end_line_width">4</integer>
     <!-- Looking journal activity text values -->
     <dimen name="looking_journal__group_element_text_size">12sp</dimen>
     <dimen name="looking_journal__selector_group_text_size">15sp</dimen>

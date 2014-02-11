@@ -14,14 +14,14 @@ public class StudentElement extends TextView {
         super(context);
         setText(student);
         setTextSize(Config.getStudentElementTextSize());
-        setGravity(Gravity.CENTER);
+        setGravity(Gravity.CENTER_VERTICAL);
         setLayoutParams(new ViewGroup.LayoutParams(Config.getStudentElementWidth(), Config.getStudentElementHeight()));
         setBackgroundDrawable(new EndLine(Config.getStudentElementWidth(), Config.getStudentElementHeight()));
     }
 
     public static class EndLine extends Drawable {
 
-        public static final int LINE_WIDTH = 2;
+        public static final int LINE_WIDTH = 5;
         private static Bitmap line;
 
         public EndLine(int studentElementWidth, int studentElementHeight) {
@@ -29,7 +29,7 @@ public class StudentElement extends TextView {
                 line = Bitmap.createBitmap(studentElementWidth, studentElementHeight, Bitmap.Config.ARGB_8888);
                 Canvas drawer = new Canvas(line);
                 Paint paint = new Paint();
-                paint.setColor(Color.BLACK);
+                paint.setColor(Color.CYAN);
                 for (int i = 0; i < studentElementHeight; i++) {
                     for (int j = studentElementWidth - LINE_WIDTH; j < studentElementWidth; j++) {
                         drawer.drawPoint(j, i, paint);

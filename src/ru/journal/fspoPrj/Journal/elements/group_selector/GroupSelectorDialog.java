@@ -1,10 +1,14 @@
 package ru.journal.fspoPrj.journal.elements.group_selector;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import org.jetbrains.annotations.NotNull;
+import ru.journal.fspoPrj.journal.LookingJournalActivity;
 
 import java.util.ArrayList;
 
@@ -14,23 +18,26 @@ public class GroupSelectorDialog extends DialogFragment {
     private static final String TITLE = "Выбор группы";
 
     private String[] groups;
+    private Activity parent;
 
     public GroupSelectorDialog() {
-        //.. needed for system class starter, do not remove;
+        //.. needed for system class starter, if we make new constructor with params, do not remove;
     }
 
-    public GroupSelectorDialog(String[] groups) {
+    public void setGroups(String[] groups) {
         this.groups = groups;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        this.parent = getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(parent);
         builder.setMessage(TITLE);
         if (savedInstanceState != null) {
             groups = savedInstanceState.getStringArray(GROUPS_KEY);
         }
-        builder.setView(new GroupSelector(getActivity(), makeCourseStructuring(groups)));
+
+        builder.setView(new GroupSelector(parent, groups, this));
 
         return builder.create();
     }
@@ -41,21 +48,19 @@ public class GroupSelectorDialog extends DialogFragment {
         super.onSaveInstanceState(outState);
     }
 
-    private ArrayList<String[]> makeCourseStructuring(String[] groups) {
-        ArrayList<String> course = new ArrayList<>();
-        ArrayList<String[]> courses = new ArrayList<>();
-
-        course.add(groups[0]);
-        for (int i = 1; i < groups.length; i++) {
-            if (groups[i - 1].charAt(0) != groups[i].charAt(0)) {
-                courses.add(course.toArray(new String[course.size()]));
-                course.clear();
-            }
-            course.add(groups[i]);
-        }
-        courses.add(course.toArray(new String[course.size()]));
-        return courses;
+    public void saveState(Bundle outState) {
+        outState.putStringArray(GROUPS_KEY, groups);
     }
 
+    public void restoreState(Bundle saveInstanceState) {
+        String[] groups = saveInstanceState.getStringArray(GROUPS_KEY);
+        if (groups != null) {
+            this.groups = groups;
+        }
+    }
+
+    public static interface GroupSelectedCallBack {
+        void groupHasSelected(String group);
+    }
 
 }

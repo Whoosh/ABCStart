@@ -2,6 +2,7 @@ package ru.journal.fspoPrj.journal.data_get_managers.groups_list;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
@@ -17,6 +18,7 @@ public class Group implements Comparable<Group>, Serializable {
 
     private final int groupNumber;
     private Student[] students;
+    private GroupLesson[] groupLessons;
 
     public Group(int groupNumber, JSONArray studentsList) {
         this.groupNumber = groupNumber;
@@ -34,6 +36,21 @@ public class Group implements Comparable<Group>, Serializable {
         }
     }
 
+    public void setGroupLessons(JSONArray groupLessonsResponse) throws JSONException {
+        this.groupLessons = new GroupLesson[groupLessonsResponse.length()];
+        for (int i = 0; i < groupLessons.length; i++) {
+            groupLessons[i] = new GroupLesson(groupLessonsResponse.getJSONObject(i));
+        }
+    }
+
+    public GroupLesson[] getGroupLessons() {
+        return groupLessons;
+    }
+
+    public String getStringGroupNumber() {
+        return String.valueOf(groupNumber);
+    }
+
     public int getGroupNumber() {
         return groupNumber;
     }
@@ -48,6 +65,10 @@ public class Group implements Comparable<Group>, Serializable {
         builder.append(ENTER);
         for (Student student : students) {
             builder.append(student);
+            builder.append(ENTER);
+        }
+        for (GroupLesson lesson : groupLessons) {
+            builder.append(lesson);
             builder.append(ENTER);
         }
         return builder.toString();
