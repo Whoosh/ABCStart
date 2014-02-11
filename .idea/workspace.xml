@@ -19,8 +19,7 @@
     </layouts>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="date select add&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fspoPrj.apk" />
+    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
@@ -1311,7 +1310,7 @@
       <workItem from="1391955429712" duration="30843000" />
       <workItem from="1392005408094" duration="3392000" />
       <workItem from="1392058412151" duration="42538000" />
-      <workItem from="1392140687159" duration="12962000" />
+      <workItem from="1392140687159" duration="12968000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1473,11 +1472,15 @@
       <created>1392153416609</created>
       <updated>1392153416609</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="date select add&#10;">
+      <created>1392153727824</created>
+      <updated>1392153727824</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2254137000" />
+    <option name="totallyTimeSpent" value="2254143000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
