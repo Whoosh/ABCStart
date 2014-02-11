@@ -12,6 +12,8 @@ public abstract class Human implements Serializable {
 
     protected final static String EMPTY = "";
     protected final static String SPACE = " ";
+    protected final static String DOT = ".";
+    protected static final String TABS = "\t\t";
 
     private final String firstName;
     private final String middleName;
@@ -39,6 +41,17 @@ public abstract class Human implements Serializable {
 
     public int getIntegerID() {
         return ID;
+    }
+
+    public String getShortName() {
+        StringBuilder builder = new StringBuilder(TABS);
+        builder.append(lastName);
+        builder.append(SPACE);
+        builder.append(firstName.charAt(0));
+        builder.append(DOT);
+        builder.append(middleName.charAt(0));
+        builder.append(DOT);
+        return builder.toString();
     }
 
     public String getStringID() {

@@ -16,12 +16,14 @@ public abstract class Config extends GlobalConfig {
     private static int onDialogGroupElementHeight;
 
     private static int evolutionCellSize;
+    private static int journalEndLineWidth;
 
     private static float selectorGroupTextSize;
     private static float groupElementTextSize;
     private static float studentElementTextSize;
     private static float dateTextSize;
     private static float evolutionTextSize;
+
 
     public static void setDefaultElementSize() {
         groupElementTextSize = getTextSize(R.dimen.looking_journal__group_element_text_size);
@@ -41,6 +43,7 @@ public abstract class Config extends GlobalConfig {
         onDialogGroupElementHeight = getRealSize(R.integer.looking_journal__on_group_dialog_element_group_height);
         onDialogGroupElementWidth = getRealSize(R.integer.looking_journal__on_group_dialog_element_group_width);
 
+        journalEndLineWidth = getRealSize(R.integer.looking_journal__journal_end_line_width);
     }
 
     public static void setMatrixThemeColors() {
@@ -118,5 +121,9 @@ public abstract class Config extends GlobalConfig {
 
     public static int getEvolutionTextSize() {
         return (int) evolutionTextSize;
+    }
+
+    public static int getJournalEndLineWidth() {
+        return journalEndLineWidth;
     }
 }

@@ -8,34 +8,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import ru.journal.fspoPrj.R;
+import ru.journal.fspoPrj.journal.LookingJournalActivity;
+import ru.journal.fspoPrj.journal.data_get_managers.JournalsCommunicator;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.IconSetter;
 
 import java.util.ArrayList;
 
-public class Lessons implements ActionMode.Callback, View.OnClickListener {
+public class LessonsSelector implements ActionMode.Callback {
 
     private static final String LESSON_SAVED_KEY = "l_s_k";
 
-    private ArrayList<String> lessonList;
+    private String[] lessonList;
     private Activity caller;
     private ActionMode actionMode;
-    private Semester semester;
-    private LinearLayout customViewShower;
+    private JournalsCommunicator communicator;
 
-    public Lessons(Activity caller) {
+    public LessonsSelector(Activity caller, JournalsCommunicator communicator) {
         this.caller = caller;
-        customViewShower = new LinearLayout(caller);
-        semester = new Semester(caller);
-
-        TextView toDoPointer = new TextView(caller);
-        toDoPointer.setText("\t\t Выбор предмета");
-
-        customViewShower.addView(semester);
-        customViewShower.addView(toDoPointer);
-
-        semester.setOnClickListener(this);
+        this.communicator = communicator;
     }
 
-    public void addNewLessons(ArrayList<String> lessonList) {
+    public void setLessons(String[] lessonList) {
         this.lessonList = lessonList;
         actionMode.invalidate();
     }
@@ -43,12 +37,12 @@ public class Lessons implements ActionMode.Callback, View.OnClickListener {
     @Override
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         this.actionMode = actionMode;
-        actionMode.setCustomView(customViewShower);
         return true;
     }
 
     @Override
     public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+        menu.clear();
         if (lessonList != null) {
             for (String lesson : lessonList) {
                 menu.add(lesson);
@@ -67,23 +61,17 @@ public class Lessons implements ActionMode.Callback, View.OnClickListener {
         caller.finish();
     }
 
-    @Override
-    public void onClick(View view) {
-        semester.click();
-    }
-
     public void saveState(Bundle outState) {
-        outState.putStringArrayList(LESSON_SAVED_KEY, lessonList);
-        outState.putInt(Semester.SAVED_KEY, semester.getIndexer());
+        outState.putStringArray(LESSON_SAVED_KEY, lessonList);
     }
 
     public void restoreState(Bundle savedInstanceState) {
-        semester.setIndexer(savedInstanceState.getInt(Semester.SAVED_KEY));
-        lessonList = savedInstanceState.getStringArrayList(LESSON_SAVED_KEY);
+        lessonList = savedInstanceState.getStringArray(LESSON_SAVED_KEY);
         if (lessonList != null) {
-            addNewLessons(lessonList);
+            setLessons(lessonList);
         }
     }
+
 
 }
 

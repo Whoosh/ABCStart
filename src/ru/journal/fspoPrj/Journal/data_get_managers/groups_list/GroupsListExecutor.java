@@ -10,18 +10,21 @@ import java.util.concurrent.TimeoutException;
 public class GroupsListExecutor extends MainExecutor {
 
     private int caller;
-    private String queryKey;
+    private final String groupListQuery;
+    private final String lessonsListQuery;
 
-    public GroupsListExecutor(String query, int resultCode) {
+    public GroupsListExecutor(String groupListQuery, String lessonsListQuery, int resultCode) {
         this.caller = resultCode;
-        this.queryKey = query;
-        super.makeQuery(query);
+        this.groupListQuery = groupListQuery;
+        this.lessonsListQuery = lessonsListQuery;
+        super.makeQuery(groupListQuery);
+        super.makeQuery(lessonsListQuery);
     }
 
     @Override
     protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException, TimeoutException {
         Intent result = new Intent();
-        result.putExtra(queryKey, new GroupsList(results.remove(queryKey)));
+        result.putExtra(groupListQuery, new GroupsList(results.remove(groupListQuery), results.remove(lessonsListQuery)));
         progressActivity.setResult(caller, result);
         progressActivity.finish();
     }

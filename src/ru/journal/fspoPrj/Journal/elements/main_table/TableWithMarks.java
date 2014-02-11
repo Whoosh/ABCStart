@@ -2,10 +2,11 @@ package ru.journal.fspoPrj.journal.elements.main_table;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.elements.custom_cell.EvolutionCell;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 
 public class TableWithMarks extends LinearLayout {
 
@@ -42,8 +43,10 @@ public class TableWithMarks extends LinearLayout {
             rowStack.addView(row);
             row = new LinearLayout(context);
         }
+        rowStack.addView(new HorizontalLine(context, Color.CYAN, Config.getJournalEndLineWidth()));
         scroller.addView(rowStack);
         super.addView(scroller);
+        super.addView(new VerticalLine(context, Color.CYAN, Config.getJournalEndLineWidth()));
     }
 
     public void scrollScrollerTo(int x, int y) {

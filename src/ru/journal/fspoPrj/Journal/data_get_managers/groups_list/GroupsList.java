@@ -4,49 +4,63 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ru.journal.fspoPrj.public_code.Logger;
+import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class GroupsList implements Serializable {
 
     private static final String GROUPS_LIST_KEY = "groupsList";
+    private static final String GROUPS_JOURNALS_KEY = "groupsJournals";
     private static final int ANY_STUDENT_HERE = 1;
 
-    private ArrayList<Group> groups;
+    private HashMap<Integer, Group> groups;
 
-    public GroupsList(String jsonResponse) {
+    public GroupsList(String groupsListResponse, String groupsJournalResponse) {
+        groups = new HashMap<>();
         try {
-            JSONObject groupsList = new JSONObject(new JSONObject(jsonResponse).getString(GROUPS_LIST_KEY));
-            JSONArray groupList = groupsList.names();
-            groups = new ArrayList<>(groupList.length());
-            for (int i = 0; i < groupList.length(); i++) {
-                JSONArray group = groupsList.getJSONArray(groupList.getString(i));
+            JSONObject groupsList = new JSONObject(groupsListResponse).getJSONObject(GROUPS_LIST_KEY);
+            JSONArray groupsNumberName = groupsList.names();
+
+            for (int i = 0; i < groupsNumberName.length(); i++) {
+                JSONArray group = groupsList.getJSONArray(groupsNumberName.getString(i));
                 if (group.length() > ANY_STUDENT_HERE) {
-                    groups.add(new Group(groupList.getInt(i), group));
+                    groups.put(groupsNumberName.getInt(i), new Group(groupsNumberName.getInt(i), group));
                 }
             }
-            groups.trimToSize();
+            parseLessonForGroups(groupsJournalResponse);
         } catch (JSONException e) {
             Logger.printError(e, getClass());
         }
-        Collections.sort(groups);
     }
 
-    public String[] getGroupsArray() {
-        String[] groups = new String[this.groups.size()];
-        for (int i = 0; i < groups.length; i++) {
-            groups[i] = String.valueOf(this.groups.get(i).getGroupNumber());
+    private void parseLessonForGroups(String groupJournalResponse) throws JSONException {
+        JSONObject groupsLessonsList = new JSONObject(groupJournalResponse).getJSONObject(GROUPS_JOURNALS_KEY);
+        JSONArray groupsNumberName = groupsLessonsList.names();
+
+        for (int i = 0; i < groupsNumberName.length(); i++) {
+            Group group = groups.get(groupsNumberName.getInt(i));
+            group.setGroupLessons(groupsLessonsList.getJSONArray(groupsNumberName.getString(i)));
         }
-        return groups;
     }
 
-    public CharSequence[] getSequenceGroups() {
-        CharSequence[] groups = new CharSequence[this.groups.size()];
-        for (int i = 0; i < groups.length; i++) {
-            groups[i] = String.valueOf(this.groups.get(i).getGroupNumber());
+    public String[] getSortedGroups() {
+        Integer[] iGroups = groups.keySet().toArray(new Integer[groups.size()]);
+        String[] sGroups = new String[iGroups.length];
+        Arrays.sort(iGroups);
+        for (int i = 0; i < iGroups.length; i++) {
+            sGroups[i] = String.valueOf(iGroups[i]);
         }
-        return groups;
+        return sGroups;
     }
+
+    public Student[] getStudents(String group){
+        return groups.get(Integer.parseInt(group)).getStudents();
+    }
+
+    public GroupLesson[] getLessons(String group){
+        return groups.get(Integer.parseInt(group)).getGroupLessons();
+    }
+
 }
