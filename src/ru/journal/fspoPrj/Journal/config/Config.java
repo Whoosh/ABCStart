@@ -15,14 +15,18 @@ public abstract class Config extends GlobalConfig {
     private static int onDialogGroupElementWidth;
     private static int onDialogGroupElementHeight;
 
+    private static int dateDialogElementWidth;
+    private static int dateDialogElementHeight;
+
     private static int evolutionCellSize;
     private static int journalEndLineWidth;
 
     private static float selectorGroupTextSize;
     private static float groupElementTextSize;
     private static float studentElementTextSize;
-    private static float dateTextSize;
+    private static float dateSliderTextSize;
     private static float evolutionTextSize;
+    private static float dateDialogElementTextSize;
 
 
     public static void setDefaultElementSize() {
@@ -30,7 +34,8 @@ public abstract class Config extends GlobalConfig {
         selectorGroupTextSize = getTextSize(R.dimen.looking_journal__selector_group_text_size);
         studentElementTextSize = getTextSize(R.dimen.looking_journal__student_element_text_size);
         evolutionTextSize = getTextSize(R.dimen.looking_journal__evolution_element_text_size);
-        dateTextSize = getTextSize(R.dimen.looking_journal__date_element_text_size);
+        dateSliderTextSize = getTextSize(R.dimen.looking_journal__date_element_text_size);
+        dateDialogElementTextSize = getTextSize(R.dimen.looking_journal__on_date_dialog_element_text_size);
 
         evolutionCellSize = getRealSize(R.integer.looking_journal__evolution_size);
         selectorGroupHeight = getRealSize(R.integer.looking_journal__selector_group_height);
@@ -44,6 +49,9 @@ public abstract class Config extends GlobalConfig {
         onDialogGroupElementWidth = getRealSize(R.integer.looking_journal__on_group_dialog_element_group_width);
 
         journalEndLineWidth = getRealSize(R.integer.looking_journal__journal_end_line_width);
+
+        dateDialogElementHeight = getRealSize(R.integer.looking_journal__on_date_dialog_element_height);
+        dateDialogElementWidth = getRealSize(R.integer.looking_journal__on_date_dialog_element_width);
     }
 
     public static void setMatrixThemeColors() {
@@ -107,16 +115,16 @@ public abstract class Config extends GlobalConfig {
         return getSelectorGroupWidth();
     }
 
-    public static int getDateElementWidth() {
+    public static int getSliderDateElementWidth() {
         return getEvolutionCellSize();
     }
 
-    public static int getDateElementHeight() {
+    public static int getSliderDateElementHeight() {
         return getEvolutionCellSize();
     }
 
-    public static float getDateTextSize() {
-        return dateTextSize;
+    public static float getDateSliderTextSize() {
+        return dateSliderTextSize;
     }
 
     public static int getEvolutionTextSize() {
@@ -125,5 +133,17 @@ public abstract class Config extends GlobalConfig {
 
     public static int getJournalEndLineWidth() {
         return journalEndLineWidth;
+    }
+
+    public static float getDateDialogElementTextSize() {
+        return dateDialogElementTextSize;
+    }
+
+    public static int getDateDialogElementWidth() {
+        return dateDialogElementWidth;
+    }
+
+    public static int getDateDialogElementHeight() {
+        return dateDialogElementHeight;
     }
 }

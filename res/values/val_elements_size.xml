@@ -35,11 +35,14 @@
     <integer name="looking_journal__on_group_dialog_element_group_height">50</integer>
     <integer name="looking_journal__on_group_dialog_element_group_width">70</integer>
     <integer name="looking_journal__journal_end_line_width">4</integer>
+    <integer name="looking_journal__on_date_dialog_element_width">100</integer>
+    <integer name="looking_journal__on_date_dialog_element_height">50</integer>
     <!-- Looking journal activity text values -->
     <dimen name="looking_journal__group_element_text_size">12sp</dimen>
     <dimen name="looking_journal__selector_group_text_size">15sp</dimen>
     <dimen name="looking_journal__student_element_text_size">15sp</dimen>
     <dimen name="looking_journal__date_element_text_size">15sp</dimen>
     <dimen name="looking_journal__evolution_element_text_size">12sp</dimen>
+    <dimen name="looking_journal__on_date_dialog_element_text_size">10sp</dimen>
 
 </resources>

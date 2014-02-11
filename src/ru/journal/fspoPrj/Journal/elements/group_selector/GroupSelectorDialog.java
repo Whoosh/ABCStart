@@ -18,7 +18,7 @@ public class GroupSelectorDialog extends DialogFragment {
     private static final String TITLE = "Выбор группы";
 
     private String[] groups;
-    private Activity parent;
+    private LookingJournalActivity parent;
 
     public GroupSelectorDialog() {
         //.. needed for system class starter, if we make new constructor with params, do not remove;
@@ -30,7 +30,7 @@ public class GroupSelectorDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        this.parent = getActivity();
+        this.parent = (LookingJournalActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(parent);
         builder.setMessage(TITLE);
         if (savedInstanceState != null) {

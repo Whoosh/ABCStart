@@ -12,7 +12,7 @@ public class DateElement extends TextView {
         super(context);
         setText(date);
         setGravity(Gravity.CENTER);
-        setTextSize(Config.getDateTextSize());
-        setLayoutParams(new ViewGroup.LayoutParams(Config.getDateElementWidth(),Config.getDateElementHeight()));
+        setTextSize(Config.getDateSliderTextSize());
+        setLayoutParams(new ViewGroup.LayoutParams(Config.getSliderDateElementWidth(),Config.getSliderDateElementHeight()));
     }
 }
