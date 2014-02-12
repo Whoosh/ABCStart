@@ -1333,7 +1333,7 @@
       <workItem from="1391955429712" duration="30843000" />
       <workItem from="1392005408094" duration="3392000" />
       <workItem from="1392058412151" duration="42538000" />
-      <workItem from="1392140687159" duration="19347000" />
+      <workItem from="1392140687159" duration="19358000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1507,11 +1507,15 @@
       <created>1392165446141</created>
       <updated>1392165446141</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="date select add&#10;">
+      <created>1392165458040</created>
+      <updated>1392165458040</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2260522000" />
+    <option name="totallyTimeSpent" value="2260533000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
