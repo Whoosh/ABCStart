@@ -21,7 +21,7 @@ public class StudentElement extends TextView {
 
     public static class EndLine extends Drawable {
 
-        public static final int LINE_WIDTH = 5;
+        public static final int LINE_WIDTH = Config.getJournalEndLineWidth();
         private static Bitmap line;
 
         public EndLine(int studentElementWidth, int studentElementHeight) {
@@ -29,7 +29,7 @@ public class StudentElement extends TextView {
                 line = Bitmap.createBitmap(studentElementWidth, studentElementHeight, Bitmap.Config.ARGB_8888);
                 Canvas drawer = new Canvas(line);
                 Paint paint = new Paint();
-                paint.setColor(Color.CYAN);
+                paint.setColor(Color.BLACK);
                 for (int i = 0; i < studentElementHeight; i++) {
                     for (int j = studentElementWidth - LINE_WIDTH; j < studentElementWidth; j++) {
                         drawer.drawPoint(j, i, paint);
@@ -40,6 +40,7 @@ public class StudentElement extends TextView {
 
         @Override
         public void draw(Canvas canvas) {
+            canvas.drawColor(Color.LTGRAY);
             canvas.drawBitmap(line, 0, 0, null);
         }
 

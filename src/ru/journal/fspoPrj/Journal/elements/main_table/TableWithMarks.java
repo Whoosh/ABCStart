@@ -25,6 +25,8 @@ public class TableWithMarks extends LinearLayout {
     public void createTable(int peopleCount, int dateCount) {
         this.maxDateRange = dateCount;
         this.numOfPeople = peopleCount;
+        super.removeAllViews();
+        scroller.removeAllViews();
         initMatrix();
     }
 
@@ -43,10 +45,10 @@ public class TableWithMarks extends LinearLayout {
             rowStack.addView(row);
             row = new LinearLayout(context);
         }
-        rowStack.addView(new HorizontalLine(context, Color.CYAN, Config.getJournalEndLineWidth()));
+        rowStack.addView(new HorizontalLine(context, Color.BLACK, Config.getJournalEndLineWidth()));
         scroller.addView(rowStack);
         super.addView(scroller);
-        super.addView(new VerticalLine(context, Color.CYAN, Config.getJournalEndLineWidth()));
+        super.addView(new VerticalLine(context, Color.BLACK, Config.getJournalEndLineWidth()));
     }
 
     public void scrollScrollerTo(int x, int y) {

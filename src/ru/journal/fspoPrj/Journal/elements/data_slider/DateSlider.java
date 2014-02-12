@@ -32,7 +32,7 @@ public class DateSlider extends LinearLayout {
             datesSlider.addView(new VerticalLine(context, Color.BLACK));
         }
         datesSlider.addView(new DateElement(context, dates.get(dates.size() - 1)));
-        datesSlider.addView(new VerticalLine(context, Color.CYAN, Config.getJournalEndLineWidth())); // TODO
+        datesSlider.addView(new VerticalLine(context, Color.BLACK, Config.getJournalEndLineWidth())); // TODO
         addView(datesSlider);
     }
 
