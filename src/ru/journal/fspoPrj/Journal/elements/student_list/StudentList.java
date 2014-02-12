@@ -33,7 +33,7 @@ public class StudentList extends ScrollView {
             studentsList.addView(new HorizontalLine(context, Color.BLACK));
         }
         studentsList.addView(new StudentElement(context, students[(students.length - 1)]));
-        studentsList.addView(new HorizontalLine(context, Color.CYAN, Config.getJournalEndLineWidth()));
+        studentsList.addView(new HorizontalLine(context, Color.BLACK, Config.getJournalEndLineWidth()));
         super.addView(studentsList);
     }
 

@@ -75,10 +75,10 @@ public class EvolutionCell extends View {
         Canvas canvas = new Canvas(element);
         // TODO PARSE JSON
         addBackground(canvas, Color.WHITE);
-        //   addStudentNeededStatus(canvas, Color.RED);
-        //   addStudentPowerUPStatus(canvas, Color.BLUE);
-        //   addWeightOfRank(canvas, Color.CYAN);
-        //   addStudentComingOnLesson(canvas, Color.MAGENTA);
+        addStudentNeededStatus(canvas, Color.RED);
+        //addStudentPowerUPStatus(canvas, Color.BLUE);
+        //addWeightOfRank(canvas, Color.CYAN);
+        addStudentComingOnLesson(canvas, Color.MAGENTA);
         addStudentRank(canvas, Color.BLACK, '+');
 
         return element;
