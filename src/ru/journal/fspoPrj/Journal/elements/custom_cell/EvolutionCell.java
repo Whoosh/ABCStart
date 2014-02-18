@@ -6,11 +6,18 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import ru.journal.fspoPrj.journal.config.Config;
+import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightExercisesInfo;
+import ru.journal.fspoPrj.journal.data_get_managers.visits_light.Visit;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 
 public class EvolutionCell extends View {
+
+    private static final char ATTENTION = '!';
+    private static final char PLUS = '+';
+    private static final char NOTHING = 'н';
 
     private static final int OFFSET;
     private static final int TRIANGLE_SIZE;
@@ -24,7 +31,7 @@ public class EvolutionCell extends View {
     private static HashMap<String, Bitmap> statesBuffer;
     private static Paint drawingElementSettings;
 
-    private String jsonKey; // TODO обязательно сделать Integer[] как будут извесны данные. если это возможно.
+    private String stateKey;
 
     public static final int MARGIN_SEPARATOR = 1;
 
@@ -47,41 +54,104 @@ public class EvolutionCell extends View {
 
     }
 
-    public EvolutionCell(Context context, String stateJson) {
+    public EvolutionCell(Context context, Visit visit, LightExercisesInfo.TypeState state) {
         super(context);
-        this.jsonKey = stateJson;
+        this.stateKey = generateKey(visit, state);
         setLayoutParams(VIEW_PARAMS);
-        setState(stateJson);
+        setState(stateKey, visit, state);
     }
 
-    public void setStudentComingOnLesson() {
-        // TODO EDIT JSON;
-        setState(this.jsonKey);
-        // Для каждой клетки, имзеняется ключь в зависимости от ф-и. по ключу идём за битмапом.
-    }
-
-    private void setState(String stateJson) {
-        if (statesBuffer.containsKey(stateJson)) {
-            setBackgroundDrawable(new Setter(statesBuffer.get(stateJson)));
+    private void setState(String elementKey, Visit visit, LightExercisesInfo.TypeState state) {
+        if (statesBuffer.containsKey(elementKey)) {
+            setBackgroundDrawable(new Setter(statesBuffer.get(elementKey)));
         } else {
-            Bitmap bitmapState = createNewState(stateJson);
-            statesBuffer.put(stateJson, bitmapState);
+            Bitmap bitmapState = createNewState(visit, state.getColor());
+            statesBuffer.put(elementKey, bitmapState);
             setBackgroundDrawable(new Setter(bitmapState));
         }
     }
 
-    private Bitmap createNewState(String jsonState) {
+    private Bitmap createNewState(Visit visit, int stateBgColor) {
         Bitmap element = Bitmap.createBitmap(VIEW_PARAMS.width, VIEW_PARAMS.height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(element);
-        // TODO PARSE JSON
-        addBackground(canvas, Color.WHITE);
-        addStudentNeededStatus(canvas, Color.RED);
-        //addStudentPowerUPStatus(canvas, Color.BLUE);
-        //addWeightOfRank(canvas, Color.CYAN);
-        addStudentComingOnLesson(canvas, Color.MAGENTA);
-        addStudentRank(canvas, Color.BLACK, '+');
-
+        addBackground(canvas, stateBgColor);
+        handleVisitNeeded(canvas, visit.getVisitNeed());
+        handleVisitPoint(canvas, visit.getPoint(), visit.getMarkNeed(), visit.getDelay());
+        handleVisitPresence(canvas, visit.getPresence());
+        handleVisitPerformance(canvas, visit.getPerformance());
+        handleVisitWeightRank(canvas, visit.getWeight());
         return element;
+    }
+
+    private void handleVisitWeightRank(Canvas canvas, int weight) {
+        if (Visit.WeightState.LIGHT.ordinal() == weight) {
+            addWeightOfRank(canvas, Color.GREEN);
+        } else if (Visit.WeightState.MIDDLE.ordinal() == weight) {
+            addWeightOfRank(canvas, Color.YELLOW);
+        } else if (Visit.WeightState.OVER9000KG.ordinal() == weight) {
+            addWeightOfRank(canvas, Color.RED);
+        } else {
+            // nothing
+        }
+    }
+
+    private void handleVisitPerformance(Canvas canvas, int performance) {
+        if (Visit.PerformanceState.BAD.ordinal() == performance) {
+            addStudentPowerUPStatus(canvas, Color.RED);
+        } else if (Visit.PerformanceState.GOOD.ordinal() == performance) {
+            addStudentPowerUPStatus(canvas, Color.GREEN);
+        } else {
+            // nothing
+        }
+    }
+
+    private void handleVisitPresence(Canvas canvas, int presence) {
+        if (Visit.PresentsState.DRINK_VODKA_WITH_BEAR.ordinal() == presence) {
+            addStudentComingOnLesson(canvas, Color.RED);
+        } else {
+            addStudentComingOnLesson(canvas, Color.GREEN);
+        }
+    }
+
+    private void handleVisitPoint(Canvas canvas, int point, int marked, int delay) {
+        char[] rank;
+        int pointColor;
+
+        if (Visit.DelayState.SLOW.ordinal() == delay) {
+            pointColor = Color.BLUE;
+        } else if (Visit.DelayState.FAST.ordinal() == delay) {
+            pointColor = Color.YELLOW;
+        } else if (Visit.DelayState.BATMAN.ordinal() == delay) {
+            pointColor = Color.RED;
+        } else {
+            pointColor = Color.BLACK;
+        }
+
+        if (Visit.MarkNeedState.MARKED.ordinal() == marked) {
+            rank = new char[]{String.valueOf(point).charAt(0), ATTENTION};
+        } else {
+            rank = new char[]{String.valueOf(point).charAt(0)};
+        }
+
+        if (Visit.PointState.FAIL.ordinal() == point) {
+            // TODO
+        } else if (Visit.PointState.TRUE.ordinal() == point) {
+            // TODO
+        } else {
+            addStudentRank(canvas, pointColor, rank);
+        }
+    }
+
+    private void handleVisitNeeded(Canvas canvas, int state) {
+        if (Visit.VisitNeedState.HIGH.ordinal() == state) {
+            addStudentNeededStatus(canvas, Color.RED);
+        } else if (Visit.VisitNeedState.MIDDLE.ordinal() == state) {
+            addStudentNeededStatus(canvas, Color.YELLOW);
+        } else if (Visit.VisitNeedState.LOW.ordinal() == state) {
+            addStudentNeededStatus(canvas, Color.GREEN);
+        } else {
+            // nothing
+        }
     }
 
     private void addStudentNeededStatus(Canvas canvas, int color) {
@@ -132,6 +202,10 @@ public class EvolutionCell extends View {
                 element.drawPoint(j, i, drawingElementSettings);
             }
         }
+    }
+
+    private static String generateKey(Visit visit, LightExercisesInfo.TypeState state) {
+        return String.valueOf(state.getColor()) + Arrays.toString(visit.getAllStates());
     }
 
     private static class Setter extends Drawable {
