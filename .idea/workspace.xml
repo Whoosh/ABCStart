@@ -20,42 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/keys_manager/IKeyApi.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\.idea\libraries\android_support_v7_gridlayout.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\EditJournalActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\StudentCheckerActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\callbacks\Semester.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\callbacks\Switcher.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/ClientInfo.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/ClientInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/FirstActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/FirstActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Human.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Human.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/JournalTabs.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/JournalTabs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MenuShower.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MenuShower.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/ProfileInfo.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/ProfileInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Student.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Student.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Teacher.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Teacher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ThemeManager.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ThemeManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fspoPrj.iml" afterPath="$PROJECT_DIR$/fspoPrj.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values/val_elements_size.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
@@ -1182,7 +1146,7 @@
       <workItem from="1392709708413" duration="1000" />
       <workItem from="1392709732109" duration="1783000" />
       <workItem from="1392711858030" duration="356000" />
-      <workItem from="1392712235341" duration="39463000" />
+      <workItem from="1392712235341" duration="39609000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1364,11 +1328,15 @@
       <created>1392165469089</created>
       <updated>1392165469089</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="fresh meat">
+      <created>1392755921041</created>
+      <updated>1392755921041</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2398102000" />
+    <option name="totallyTimeSpent" value="2398248000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1392,7 +1360,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="776" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12917933" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1439,7 +1407,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="JavaServerAdd" />
     <MESSAGE value="Fix main tables and student list.&#10;" />
     <MESSAGE value="Some refactoring &#10;" />
     <MESSAGE value="some Mights" />
@@ -1464,7 +1431,8 @@
     <MESSAGE value="....&#10;" />
     <MESSAGE value="date select add" />
     <MESSAGE value="date select add&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="date select add&#10;" />
+    <MESSAGE value="fresh meat" />
+    <option name="LAST_COMMIT_MESSAGE" value="fresh meat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
