@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
+import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightExercisesInfo;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 public class DateSlider extends LinearLayout {
 
-    private ArrayList<String> dates;
+    private LightExercisesInfo[] lightExercisesInfo;
     private LinearLayout datesSlider;
     private Context context;
 
@@ -22,19 +23,22 @@ public class DateSlider extends LinearLayout {
         datesSlider = new LinearLayout(context);
     }
 
-    public void setData(ArrayList<String> dates) {
-        this.dates = dates;
+    public void setData(LightExercisesInfo[] datesInfo) {
+        this.lightExercisesInfo = datesInfo;
         super.removeAllViews();
         datesSlider.removeAllViews();
         datesSlider.addView(new VerticalLine(context, Color.BLACK));
-        for (int i = 0; i < dates.size() - 1; i++) {
-            datesSlider.addView(new DateElement(context, dates.get(i)));
+        for (int i = 0; i < datesInfo.length - 1; i++) {
+            datesSlider.addView(new DateElement(context, datesInfo[i]));
             datesSlider.addView(new VerticalLine(context, Color.BLACK));
         }
-        datesSlider.addView(new DateElement(context, dates.get(dates.size() - 1)));
-        datesSlider.addView(new VerticalLine(context, Color.BLACK, Config.getJournalEndLineWidth())); // TODO
+        datesSlider.addView(new DateElement(context, datesInfo[datesInfo.length - 1]));
+        datesSlider.addView(new VerticalLine(context, Color.BLACK, Config.getJournalEndLineWidth()));
         addView(datesSlider);
     }
 
 
+    public void restoreState(LightExercisesInfo[] exercisesInfo) {
+        setData(exercisesInfo);
+    }
 }

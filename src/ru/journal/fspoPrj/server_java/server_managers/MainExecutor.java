@@ -108,9 +108,11 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
 
     protected void doExecute()
             throws AuthorizationExecutor.WrongPasswordException, InterruptedException, ExecutionException, TimeoutException {
+
         for (Map.Entry<String, Future<String>> query : futureResponsesStorage.entrySet()) {
             resultsStorage.put(query.getKey(), query.getValue().get(DEFAULT_WAIT_TIME, TimeUnit.SECONDS));
         }
+
         futureResponsesStorage.clear();
         queryResults(resultsStorage);
     }

@@ -1,5 +1,6 @@
 package ru.journal.fspoPrj.login_form.elements;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.ActionMode;
@@ -11,6 +12,7 @@ public class MenuShower implements ActionMode.Callback {
 
     private static final String SETTINGS_TITLE = "Настройки";
     private Context context;
+    private ActionMode actionMode;
 
     public MenuShower(Context context) {
         this.context = context;
@@ -19,6 +21,7 @@ public class MenuShower implements ActionMode.Callback {
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         menu.add(SETTINGS_TITLE);
+        this.actionMode = mode;
         return true;
     }
 
@@ -37,5 +40,10 @@ public class MenuShower implements ActionMode.Callback {
     @Override
     public void onDestroyActionMode(ActionMode mode) {
         mode.finish();
+        ((Activity) context).finish();
+    }
+
+    public void close() {
+        actionMode.finish();
     }
 }

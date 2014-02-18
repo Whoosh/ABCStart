@@ -62,5 +62,4 @@ public class GroupsList implements Serializable {
     public GroupLesson[] getLessons(String group){
         return groups.get(Integer.parseInt(group)).getGroupLessons();
     }
-
 }

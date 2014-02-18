@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
+import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 public class StudentList extends ScrollView {
 
@@ -14,7 +15,7 @@ public class StudentList extends ScrollView {
 
     private Context context;
     private LinearLayout studentsList;
-    private String[] students;
+    private Student[] students;
 
     public StudentList(Context context) {
         super(context);
@@ -23,26 +24,21 @@ public class StudentList extends ScrollView {
         studentsList.setOrientation(LinearLayout.VERTICAL);
     }
 
-    public void setStudents(String[] students) {
+    public void setStudents(Student[] students) {
         this.students = students;
         super.removeAllViews();
         studentsList.removeAllViews();
         studentsList.addView(new HorizontalLine(context, Color.BLACK));
         for (int i = 0; i < students.length - 1; i++) {
-            studentsList.addView(new StudentElement(context, students[i]));
+            studentsList.addView(new StudentElement(context, students[i].getShortName()));
             studentsList.addView(new HorizontalLine(context, Color.BLACK));
         }
-        studentsList.addView(new StudentElement(context, students[(students.length - 1)]));
+        studentsList.addView(new StudentElement(context, students[(students.length - 1)].getShortName()));
         studentsList.addView(new HorizontalLine(context, Color.BLACK, Config.getJournalEndLineWidth()));
         super.addView(studentsList);
     }
 
-    public void saveState(Bundle outState) {
-        outState.putStringArray(STUDENTS_KEY, students);
-    }
-
-    public void restoreState(Bundle savedInstanceState) {
-        String[] students = savedInstanceState.getStringArray(STUDENTS_KEY);
+    public void restoreState(Student[] students) {
         if (students != null) {
             setStudents(students);
         }

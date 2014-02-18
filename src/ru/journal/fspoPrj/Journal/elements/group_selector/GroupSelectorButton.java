@@ -30,11 +30,11 @@ public class GroupSelectorButton extends Button {
         return selectedGroup;
     }
 
-    public void setDefaultText() {
-        setText(DEFAULT_TITLE);
+    public void disableRefreshState() {
+        setText(selectedGroup);
     }
 
-    public void setRefreshText() {
+    public void refreshStateON() {
         setText(REFRESH);
     }
 
@@ -43,10 +43,19 @@ public class GroupSelectorButton extends Button {
     }
 
     public void restoreState(Bundle savedInstanceState) {
-        setSelectedGroup(savedInstanceState.getString(getClass().getCanonicalName()));
+        String restoredInfo = savedInstanceState.getString(getClass().getCanonicalName());
+        if (restoredInfo.equals(REFRESH)) {
+            setText(restoredInfo);
+        } else {
+            setSelectedGroup(restoredInfo);
+        }
     }
 
     public void saveState(Bundle outState) {
-        outState.putString(getClass().getCanonicalName(), selectedGroup);
+        if (getText().toString().equals(REFRESH)) {
+            outState.putString(getClass().getCanonicalName(), REFRESH);
+        } else {
+            outState.putString(getClass().getCanonicalName(), selectedGroup);
+        }
     }
 }

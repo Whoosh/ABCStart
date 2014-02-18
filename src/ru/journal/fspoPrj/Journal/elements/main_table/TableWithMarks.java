@@ -4,16 +4,24 @@ import android.content.Context;
 import android.graphics.Color;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
+import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightExercisesInfo;
+import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
+import ru.journal.fspoPrj.journal.data_get_managers.visits_light.Visit;
 import ru.journal.fspoPrj.journal.elements.custom_cell.EvolutionCell;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
+import ru.journal.fspoPrj.public_code.humans_entity.Student;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TableWithMarks extends LinearLayout {
 
-    private int numOfPeople;
-    private int maxDateRange;
     private Context context;
     private MScrollView scroller;
+    private HashMap<Integer, Visit[]> visits;
+    private Student[] students;
+    private LightExercisesInfo[] lightExercisesInfo;
 
     public TableWithMarks(Context context) {
         super(context);
@@ -22,11 +30,14 @@ public class TableWithMarks extends LinearLayout {
         scroller = new MScrollView(context);
     }
 
-    public void createTable(int peopleCount, int dateCount) {
-        this.maxDateRange = dateCount;
-        this.numOfPeople = peopleCount;
+    public void createTable(LightVisits lightVisits, Student[] students) {
         super.removeAllViews();
         scroller.removeAllViews();
+
+        this.lightExercisesInfo = lightVisits.getExercisesInfo();
+        this.visits = lightVisits.getStudentVisits();
+        this.students = students;
+
         initMatrix();
     }
 
@@ -37,9 +48,11 @@ public class TableWithMarks extends LinearLayout {
 
         EvolutionCell element;
 
-        for (int i = 0; i < numOfPeople; i++) {
-            for (int j = 0; j < maxDateRange; j++) {
-                element = new EvolutionCell(context, " ");
+        LightExercisesInfo.TypeState[] states = LightExercisesInfo.TypeState.values();
+        for (Student student : students) {
+            int infoIndexer = 0;
+            for (Visit visit : visits.get(student.getIntegerID())) {
+                element = new EvolutionCell(context, visit, states[lightExercisesInfo[infoIndexer++].getType()]);
                 row.addView(element);
             }
             rowStack.addView(row);
@@ -61,5 +74,9 @@ public class TableWithMarks extends LinearLayout {
 
     public MScrollView getScroller() {
         return scroller;
+    }
+
+    public void restoreState(LightVisits lightVisits, Student[] students) {
+        createTable(lightVisits, students);
     }
 }

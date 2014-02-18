@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.public_code.humans_entity;
 
 import org.json.JSONObject;
+import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 public class Student extends Human {
 
@@ -9,8 +10,8 @@ public class Student extends Human {
 
     public Student(JSONObject element) {
         super(element);
-        this.group = getIntValue(element, StudKeys.GROUP);
-        this.stream = getIntValue(element, StudKeys.STREAM);
+        this.group = StudKeys.GROUP.getIntValue(element);
+        this.stream = StudKeys.STREAM.getIntValue(element);
     }
 
     public int getIntegerStream() {
@@ -21,8 +22,12 @@ public class Student extends Human {
         return group;
     }
 
+    public String getStringGroup() {
+        return String.valueOf(getIntegerGroup());
+    }
+
     public String getStringStream() {
-        return String.valueOf(stream);
+        return String.valueOf(getIntegerStream());
     }
 
     @Override
@@ -35,11 +40,8 @@ public class Student extends Human {
         return builder.toString();
     }
 
-    public String getStringGroup() {
-        return String.valueOf(group);
-    }
 
-    private static enum StudKeys implements Keys {
+    private static enum StudKeys implements IKeyApi {
         STREAM("stream"),
         GROUP("offgr");
 
@@ -52,6 +54,16 @@ public class Student extends Human {
         @Override
         public String getKey() {
             return key;
+        }
+
+        @Override
+        public int getIntValue(JSONObject element) {
+            return parser.parseInt(key, element);
+        }
+
+        @Override
+        public String getStringValue(JSONObject element) {
+            return parser.parseString(key, element);
         }
     }
 }

@@ -38,16 +38,6 @@
                 >
         </activity>
 
-        <activity android:name=".journal.EditJournalActivity"
-                  android:theme="@android:style/Theme.NoTitleBar"
-                >
-        </activity>
-
-        <activity android:name=".journal.StudentCheckerActivity"
-                  android:theme="@android:style/Theme.NoTitleBar"
-                >
-        </activity>
-
         <activity android:name=".user_profile.ProfileActivity"
                   android:theme="@android:style/Theme.NoTitleBar"
                 >
@@ -55,7 +45,6 @@
 
         <activity android:name=".main_menu.BugReportInformerActivity"
                   android:theme="@android:style/Theme.NoTitleBar"
-
                 >
         </activity>
 

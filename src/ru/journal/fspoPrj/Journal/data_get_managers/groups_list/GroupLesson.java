@@ -3,62 +3,41 @@ package ru.journal.fspoPrj.journal.data_get_managers.groups_list;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ru.journal.fspoPrj.public_code.Logger;
+import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 import java.io.Serializable;
 
 public class GroupLesson implements Serializable {
 
-    public static final String EMPTY = "";
-    public static final int NO_LESSON = 0;
-    public static final String ENTER = "\n";
-    public static final String TAB = "  \t";
-    private final int ID;
+    private final int lessonID;
+    private final int groupID;
     private final String name;
     private final String shortName;
     private final String semester;
 
-    public GroupLesson(JSONObject lesson) {
-        this.ID = parseLessonID(lesson);
-        this.name = parseLessonName(lesson);
-        this.shortName = parseLessonShortName(lesson);
-        this.semester = parseLessonSemester(lesson);
+    public GroupLesson(JSONObject element) {
+        this.lessonID = LessonKey.LESSON_ID.getIntValue(element);
+        this.groupID = LessonKey.GROUP_ID.getIntValue(element);
+        this.name = LessonKey.NAME.getStringValue(element);
+        this.shortName = LessonKey.SHORT_NAME.getStringValue(element);
+        this.semester = LessonKey.SEMESTER.getStringValue(element);
     }
 
-    private String parseLessonSemester(JSONObject lesson) {
-        return stringOrEmpty(lesson, LessonKey.SEMESTER);
+    public String getStringLessonID() {
+        return String.valueOf(getLessonID());
     }
 
-    private String parseLessonShortName(JSONObject lesson) {
-        return stringOrEmpty(lesson, LessonKey.SHORT_NAME);
+    public String getStringGroupID() {
+        return String.valueOf(getGroupID());
     }
 
-    private String parseLessonName(JSONObject lesson) {
-        return stringOrEmpty(lesson, LessonKey.NAME);
+
+    public int getLessonID() {
+        return lessonID;
     }
 
-    private String stringOrEmpty(JSONObject lesson, LessonKey key) {
-        try {
-            return lesson.getString(key.getKey());
-        } catch (JSONException e) {
-            return EMPTY;
-        }
-    }
-
-    private int parseLessonID(JSONObject lesson) {
-        try {
-            return lesson.getInt(LessonKey.LESSON_ID.getKey());
-        } catch (JSONException e) {
-            Logger.printError(e, getClass());
-            return NO_LESSON;
-        }
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public int getStringID() {
-        return ID;
+    public int getGroupID() {
+        return groupID;
     }
 
     public String getName() {
@@ -73,23 +52,10 @@ public class GroupLesson implements Serializable {
         return semester;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder(ENTER);
-        builder.append(getID());
-        builder.append(TAB);
-        builder.append(getName());
-        builder.append(TAB);
-        builder.append(getShortName());
-        builder.append(TAB);
-        builder.append(getSemester());
-        builder.append(TAB);
-        return builder.toString();
-    }
+    private static enum LessonKey implements IKeyApi {
 
-    private static enum LessonKey {
-
-        LESSON_ID("id"),
+        LESSON_ID("lesson_id"),
+        GROUP_ID("group_id"),
         NAME("name"),
         SHORT_NAME("shortname"),
         SEMESTER("semester");
@@ -100,8 +66,20 @@ public class GroupLesson implements Serializable {
             this.key = key;
         }
 
+
+        @Override
         public String getKey() {
             return key;
+        }
+
+        @Override
+        public int getIntValue(JSONObject element) {
+            return parser.parseInt(key, element);
+        }
+
+        @Override
+        public String getStringValue(JSONObject element) {
+            return parser.parseString(key, element);
         }
     }
 }

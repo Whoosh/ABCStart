@@ -26,6 +26,7 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
     }
 
     private MainWindow mainWindow;
+    private MenuShower menuShower;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,13 +42,13 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
             theme = GlobalConfig.getCurrentTheme();
         }
         super.onCreate(savedInstanceState);
-
+        menuShower = new MenuShower(this);
         authorizationCommunicator.setAuthCallBack(this);
 
         mainWindow = new MainWindow(this, authorizationCommunicator);
         mainWindow.setOnClickListener(this);
 
-        startActionMode(new MenuShower(this));
+        startActionMode(menuShower);
         setContentView(mainWindow);
     }
 
@@ -87,7 +88,8 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
 
     @Override
     public void onBackPressed() {
-        System.exit(0);//fE
+        menuShower.close();
+        // system.extit/emul
         super.onBackPressed();
     }
 

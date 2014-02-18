@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
@@ -24,9 +25,11 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
 
     private CheckBox normal;
     private CheckBox matrix;
+    private Context context;
 
     public ThemeManager(Context context) {
         super(context);
+        this.context = context;
         normal = new CheckBox(context);
         matrix = new CheckBox(context);
 
@@ -49,6 +52,8 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        Toast.makeText(context, "Cooming soon", Toast.LENGTH_SHORT).show();
+        /*/
         if (view.equals(normal)) {
             if (normal.isChecked()) {
                 matrix.setChecked(false);
@@ -64,6 +69,7 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
             }
             matrix.setChecked(true);
         }
+        /*/
     }
 
     private void refreshActivity() {

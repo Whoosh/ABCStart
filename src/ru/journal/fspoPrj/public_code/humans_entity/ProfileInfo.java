@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.public_code.humans_entity;
 
 import org.json.JSONObject;
+import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 public class ProfileInfo extends Human {
 
@@ -10,9 +11,9 @@ public class ProfileInfo extends Human {
 
     protected ProfileInfo(JSONObject element) {
         super(element);
-        this.photoLink = getStringValue(element, ProfileKeys.PHOTO);
-        this.mail = getStringValue(element, ProfileKeys.EMAIL);
-        this.phone = getStringValue(element, ProfileKeys.PHONE);
+        this.photoLink = ProfileKeys.PHOTO.getStringValue(element);
+        this.mail = ProfileKeys.EMAIL.getStringValue(element);
+        this.phone = ProfileKeys.PHONE.getStringValue(element);
     }
 
     public String getPhotoLink() {
@@ -27,7 +28,7 @@ public class ProfileInfo extends Human {
         return mail;
     }
 
-    private static enum ProfileKeys implements Keys {
+    private static enum ProfileKeys implements IKeyApi {
         PHOTO("stream"),
         EMAIL("offgr"),
         PHONE("phone");
@@ -41,6 +42,16 @@ public class ProfileInfo extends Human {
         @Override
         public String getKey() {
             return key;
+        }
+
+        @Override
+        public int getIntValue(JSONObject element) {
+            return parser.parseInt(key, element);
+        }
+
+        @Override
+        public String getStringValue(JSONObject element) {
+            return parser.parseString(key, element);
         }
     }
 }
