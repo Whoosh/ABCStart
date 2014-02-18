@@ -1,16 +1,12 @@
 package ru.journal.fspoPrj.public_code.humans_entity;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-import ru.journal.fspoPrj.public_code.Logger;
+import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 import java.io.Serializable;
 
 public abstract class Human implements Serializable {
 
-    public static final int DEFAULT_VALUE = 0;
-
-    protected final static String EMPTY = "";
     protected final static String SPACE = " ";
     protected final static String DOT = ".";
     protected static final String TABS = "\t\t";
@@ -21,10 +17,10 @@ public abstract class Human implements Serializable {
     private final int ID;
 
     protected Human(JSONObject element) {
-        this.firstName = getStringValue(element, HumanKeys.FIRST_NAME);
-        this.middleName = getStringValue(element, HumanKeys.MIDDLE_NAME);
-        this.lastName = getStringValue(element, HumanKeys.LAST_NAME);
-        this.ID = getIntValue(element, HumanKeys.HUMAN_ID);
+        this.firstName = HumanKeys.FIRST_NAME.getStringValue(element);
+        this.middleName = HumanKeys.MIDDLE_NAME.getStringValue(element);
+        this.lastName = HumanKeys.LAST_NAME.getStringValue(element);
+        this.ID = HumanKeys.HUMAN_ID.getIntValue(element);
     }
 
     public String getFirstName() {
@@ -43,6 +39,10 @@ public abstract class Human implements Serializable {
         return ID;
     }
 
+    public String getStringID() {
+        return String.valueOf(getIntegerID());
+    }
+
     public String getShortName() {
         StringBuilder builder = new StringBuilder(TABS);
         builder.append(lastName);
@@ -54,47 +54,7 @@ public abstract class Human implements Serializable {
         return builder.toString();
     }
 
-    public String getStringID() {
-        return String.valueOf(ID);
-    }
-
-    @Override
-    public String toString() {
-        // TODO
-        StringBuilder builder = new StringBuilder(ID);
-        builder.append(SPACE);
-        builder.append(firstName);
-        builder.append(SPACE);
-        builder.append(middleName);
-        builder.append(SPACE);
-        builder.append(lastName);
-        builder.append(SPACE);
-        return builder.toString();
-    }
-
-    protected String getStringValue(JSONObject element, Keys key) {
-        try {
-            return element.getString(key.getKey());
-        } catch (JSONException e) {
-            Logger.printError(e, getClass());
-            return EMPTY;
-        }
-    }
-
-    protected int getIntValue(JSONObject element, Keys key) {
-        try {
-            return element.getInt(key.getKey());
-        } catch (JSONException e) {
-            Logger.printError(e, getClass());
-            return DEFAULT_VALUE;
-        }
-    }
-
-    public static interface Keys {
-        String getKey();
-    }
-
-    public static enum HumanKeys implements Keys {
+    public static enum HumanKeys implements IKeyApi {
 
         STATUS("status"),
         LAST_NAME("lastname"),
@@ -102,17 +62,26 @@ public abstract class Human implements Serializable {
         FIRST_NAME("firstname"),
         HUMAN_ID("id");
 
-        private final String jsonKey;
+        private final String key;
 
-        private HumanKeys(String jsonKey) {
-            this.jsonKey = jsonKey;
+        private HumanKeys(String key) {
+            this.key = key;
         }
 
         @Override
         public String getKey() {
-            return jsonKey;
+            return key;
         }
 
+        @Override
+        public int getIntValue(JSONObject element) {
+            return parser.parseInt(key, element);
+        }
+
+        @Override
+        public String getStringValue(JSONObject element) {
+            return parser.parseString(key, element);
+        }
     }
 
 }

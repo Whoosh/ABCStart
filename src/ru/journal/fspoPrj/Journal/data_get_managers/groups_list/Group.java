@@ -48,7 +48,7 @@ public class Group implements Comparable<Group>, Serializable {
     }
 
     public String getStringGroupNumber() {
-        return String.valueOf(groupNumber);
+        return String.valueOf(getGroupNumber());
     }
 
     public int getGroupNumber() {

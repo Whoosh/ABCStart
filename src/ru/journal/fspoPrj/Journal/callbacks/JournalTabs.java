@@ -1,14 +1,12 @@
 package ru.journal.fspoPrj.journal.callbacks;
 
-import ru.journal.fspoPrj.journal.EditJournalActivity;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
-import ru.journal.fspoPrj.journal.StudentCheckerActivity;
 
 public enum JournalTabs {
-
+    // TODO
     LOOKING_JOURNAL_TAB("Просмотр", LookingJournalActivity.class),
-    EDIT_JOURNAL_TAB("Редактирование", EditJournalActivity.class),
-    CHECK_STUDENT_TAB("Отметить студентов", StudentCheckerActivity.class),
+    //EDIT_JOURNAL_TAB("Редактирование", EditJournalActivity.class),
+    //CHECK_STUDENT_TAB("Отметить студентов", StudentCheckerActivity.class),
     SOME_MORE("Что-то ещё", LookingJournalActivity.class);
 
     private final Tab journalTab;

@@ -5,15 +5,15 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
+import ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupLesson;
 import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorButton;
 
 public class LessonsSelector implements ActionMode.Callback {
 
-    private static final String LESSON_SAVED_KEY = "l_s_k";
     private static final String EMPTY = "";
     private static final int DATE_BUTTON_ID = 102;
 
-    private String[] lessonList;
+    private GroupLesson[] lessonList;
     private ActionMode actionMode;
     private LookingJournalActivity parent;
     private LessonSelectedCallBack selectedCallBack;
@@ -28,17 +28,12 @@ public class LessonsSelector implements ActionMode.Callback {
         this.dateSelectorButton = dateSelectorButton;
     }
 
-    public void setLessons(String[] lessonList) {
+    public void setLessons(GroupLesson[] lessonList) {
         this.lessonList = lessonList;
         actionMode.invalidate();
     }
 
-    public void saveState(Bundle outState) {
-        outState.putStringArray(LESSON_SAVED_KEY, lessonList);
-    }
-
-    public void restoreState(Bundle savedInstanceState) {
-        lessonList = savedInstanceState.getStringArray(LESSON_SAVED_KEY);
+    public void restoreState(GroupLesson[] lessonList) {
         if (lessonList != null) {
             setLessons(lessonList);
         }
@@ -55,8 +50,8 @@ public class LessonsSelector implements ActionMode.Callback {
         menu.clear();
         if (lessonList != null) {
             menu.add(Menu.NONE, DATE_BUTTON_ID, Menu.NONE, EMPTY).setActionView(dateSelectorButton);
-            for (String lesson : lessonList) {
-                menu.add(lesson);
+            for (GroupLesson lesson : lessonList) {
+                menu.add(lesson.getShortName());
             }
         }
         return true;
