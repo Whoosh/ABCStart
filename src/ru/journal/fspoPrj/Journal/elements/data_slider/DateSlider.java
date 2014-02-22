@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class DateSlider extends LinearLayout {
 
-    private LightExercisesInfo[] lightExercisesInfo;
     private LinearLayout datesSlider;
     private Context context;
 
@@ -24,7 +23,6 @@ public class DateSlider extends LinearLayout {
     }
 
     public void setData(LightExercisesInfo[] datesInfo) {
-        this.lightExercisesInfo = datesInfo;
         super.removeAllViews();
         datesSlider.removeAllViews();
         datesSlider.addView(new VerticalLine(context, Color.BLACK));
@@ -40,5 +38,9 @@ public class DateSlider extends LinearLayout {
 
     public void restoreState(LightExercisesInfo[] exercisesInfo) {
         setData(exercisesInfo);
+    }
+
+    public void dropDate() {
+        removeAllViews();
     }
 }

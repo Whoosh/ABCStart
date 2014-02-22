@@ -20,7 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/data_get_managers/AuthorizationCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/data_get_managers/AuthorizationCommunicator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelector.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorDialog.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsListExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsListExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values/val_elements_size.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\elements\head_selector\date_selector\DateSelectorButton.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\elements\head_selector\date_selector\DateSelectorDialog.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
     <ignored path="First_prj.iws" />
@@ -90,83 +114,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LookingJournalActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LookingJournalActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="15" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="3026">
+            <state line="26" column="0" selection-start="1377" selection-end="1377" vertical-scroll-proportion="-4.9732313" vertical-offset="2652" max-vertical-offset="3264">
               <folding>
                 <element signature="method#initElements#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#onCreate#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#getGroupSelectorCallBack#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#getLessonSelectedCallBack#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#onBackPressed#0;class#LookingJournalActivity#0" expanded="false" />
-                <element signature="method#sendVisitsQueryByGroupSelect#0;class#LookingJournalActivity#0" expanded="false" />
+                <element signature="method#onActivityResult#0;class#LookingJournalActivity#0" expanded="false" />
+                <element signature="method#handlingResult#0;class#LookingJournalActivity#0" expanded="false" />
+                <element signature="method#handleVisitsQuery#0;class#LookingJournalActivity#0" expanded="false" />
+                <element signature="method#onSaveInstanceState#0;class#LookingJournalActivity#0" expanded="false" />
+                <element signature="method#lessonSelected#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#sendVisitsQueryByLessonSelect#0;class#LookingJournalActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableWithMarks.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java">
+      <file leaf-file-name="GroupsList.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="30" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1241">
+            <state line="66" column="57" selection-start="2631" selection-end="2631" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EvolutionCell.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java">
+      <file leaf-file-name="SemesterButton.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="9" selection-start="5173" selection-end="5173" vertical-scroll-proportion="0.2125" vertical-offset="1989" max-vertical-offset="4029">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/config/Config.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="61" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="298" max-vertical-offset="2074">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="val_elements_size.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/val_elements_size.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="65" selection-start="2537" selection-end="2537" vertical-scroll-proportion="0.0" vertical-offset="421" max-vertical-offset="901">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Visit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="36" selection-start="763" selection-end="763" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
-              <folding>
-                <element signature="method#getAllStates#0;class#Visit#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JournalsCommunicator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="31" selection-start="3519" selection-end="3519" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LessonsSelector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="42" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+            <state line="11" column="28" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
               <folding />
             </state>
           </provider>
@@ -185,15 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelectorButton.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/TrainingMonth.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Month.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/config/Config.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelector.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelectorDialog.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentElement.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateElement.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MenuShower.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/FirstActivity.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/ClientInfo.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits/GroupExercises.java" />
@@ -202,15 +174,10 @@
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits/VisitExecutor.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/ProfileInfo.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Teacher.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Human.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Student.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits/Exercises.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/JournalTabs.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ThemeManager.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java" />
@@ -218,24 +185,38 @@
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visits.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/VisitsLight.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisit.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/keys_manager/IKeyApi.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/123" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/haha" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java" />
-        <option value="$PROJECT_DIR$/res/values/val_elements_size.xml" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsListExecutor.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/data_get_managers/AuthorizationCommunicator.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelectorButton.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelectorDialog.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelector.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java" />
+        <option value="$PROJECT_DIR$/res/values/val_elements_size.xml" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" />
       </list>
     </option>
   </component>
@@ -323,6 +304,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -409,81 +391,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="settings_form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public_code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="student_list" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -539,7 +447,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="group_selector" />
+              <option name="myItemId" value="head_selector" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -565,93 +473,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data_get_managers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
+              <option name="myItemId" value="elements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="head_selector" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_get_managers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="visits_light" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_get_managers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groups_list" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="callbacks" />
+              <option name="myItemId" value="date_selector" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -669,9 +499,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fspoPrj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ABCStart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -700,7 +547,7 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/RandomSkillTests/ServerFSPOrequester" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="148" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -742,15 +589,15 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.First_prj.FirstActivitySettings" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="ru.journal.fspoPrj" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\MainBranch\ABCStart\res\values-large" />
       <recent name="F:\MainBranch\ABCStart\res\drawable" />
       <recent name="F:\MainBranch\ABCStart\res\drawable\s" />
       <recent name="F:\MainBranchServerMix\ABCStart\res\values" />
       <recent name="F:\MainBranchServerMix\ABCStart\res\drawable" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.journal.fspoPrj" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.fspoPrj">
@@ -1146,7 +993,13 @@
       <workItem from="1392709708413" duration="1000" />
       <workItem from="1392709732109" duration="1783000" />
       <workItem from="1392711858030" duration="356000" />
-      <workItem from="1392712235341" duration="39609000" />
+      <workItem from="1392712235341" duration="41605000" />
+      <workItem from="1392758156227" duration="4361000" />
+      <workItem from="1392795598918" duration="160000" />
+      <workItem from="1392811585932" duration="20359000" />
+      <workItem from="1392893032349" duration="12474000" />
+      <workItem from="1393020641805" duration="9677000" />
+      <workItem from="1393082855986" duration="23525000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1332,11 +1185,19 @@
       <created>1392755921041</created>
       <updated>1392755921041</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="fresh meat&#10;">
+      <created>1392756029553</created>
+      <updated>1392756029553</updated>
+    </task>
+    <task id="LOCAL-00048" summary="fresh meat&#10;">
+      <created>1392756074444</created>
+      <updated>1392756074444</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2398248000" />
+    <option name="totallyTimeSpent" value="2470800000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1360,7 +1221,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="776" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12917933" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1384,8 +1245,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40015128" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1709531" sideWeight="0.5746421" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19908814" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1762481" sideWeight="0.5746421" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1656535" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22692889" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
@@ -1407,7 +1268,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="Fix main tables and student list.&#10;" />
     <MESSAGE value="Some refactoring &#10;" />
     <MESSAGE value="some Mights" />
     <MESSAGE value="Themes tests&#10;" />
@@ -1432,7 +1292,8 @@
     <MESSAGE value="date select add" />
     <MESSAGE value="date select add&#10;" />
     <MESSAGE value="fresh meat" />
-    <option name="LAST_COMMIT_MESSAGE" value="fresh meat" />
+    <MESSAGE value="fresh meat&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="fresh meat&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1458,210 +1319,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="uml://JAVA/ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group</OriginalElement>
-          <nodes>
-            <node x="" y="">ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupsList</node>
-            <node x="" y="">java.lang.Comparable</node>
-            <node x="" y="">ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupsListExecutor</node>
-            <node x="" y="">ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group</node>
-            <node x="" y="">ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupLesson</node>
-            <node x="" y="">java.io.Serializable</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.9" x="359.0" y="444.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/ru.journal.fspoPrj.public_code.humans_entity.Human">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>ru.journal.fspoPrj.public_code.humans_entity.Human</OriginalElement>
-          <nodes>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.Teacher</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.Human.HumanKeys</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.Human</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.Teacher.TeacherKeys</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.Student.StudKeys</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.Human.Keys</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.Student</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo</node>
-            <node x="" y="">java.io.Serializable</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo.ProfileKeys</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="299.0" y="465.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/ru.journal.fspoPrj.journal.elements.head_selector.LessonSelector">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>ru.journal.fspoPrj.journal.elements.head_selector.LessonSelector</OriginalElement>
-          <nodes>
-            <node x="" y="">android.widget.RemoteViews.RemoteView</node>
-            <node x="170.00000000000003" y="234.0">android.view.View.OnClickListener</node>
-            <node x="378.4166666666667" y="0.0">android.view.accessibility.AccessibilityEventSource</node>
-            <node x="134.95833333333331" y="78.0">android.view.ViewManager</node>
-            <node x="380.8333333333333" y="0.0">android.view.KeyEvent.Callback</node>
-            <node x="" y="">android.view.View</node>
-            <node x="434.2559523809524" y="156.0">ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorButton</node>
-            <node x="178.25000000000003" y="312.0">ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelector</node>
-            <node x="26.958333333333314" y="78.0">android.view.ViewParent</node>
-            <node x="" y="">android.graphics.drawable.Drawable.Callback</node>
-            <node x="0.0" y="385.0">ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorDialog</node>
-            <node x="50.50000000000003" y="312.0">ru.journal.fspoPrj.journal.elements.head_selector.LessonSelector</node>
-            <node x="113.00000000000003" y="156.0">android.view.ViewGroup</node>
-            <node x="319.2559523809524" y="156.0">ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateElement</node>
-            <node x="" y="">android.widget.LinearLayout</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="android.view.ViewGroup" target="android.view.View">
-              <point x="28.333333333333314" y="-14.0" />
-              <point x="172.08928571428572" y="126.0" />
-              <point x="366.3333333333333" y="126.0" />
-              <point x="-18.666666666666686" y="14.0" />
-            </edge>
-            <edge source="ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateElement" target="android.view.View">
-              <point x="0.0" y="-14.0" />
-              <point x="366.7559523809524" y="136.0" />
-              <point x="385.0" y="136.0" />
-              <point x="0.0" y="14.0" />
-            </edge>
-            <edge source="ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelector" target="android.widget.LinearLayout">
-              <point x="-24.0" y="-14.0" />
-              <point x="-24.0" y="14.0" />
-            </edge>
-            <edge source="ru.journal.fspoPrj.journal.elements.head_selector.LessonSelector" target="android.widget.LinearLayout">
-              <point x="-26.5" y="-14.0" />
-              <point x="287.6666666666667" y="282.0" />
-              <point x="216.41666666666669" y="282.0" />
-              <point x="24.0" y="14.0" />
-            </edge>
-            <edge source="ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorButton" target="android.view.View">
-              <point x="0.0" y="-14.0" />
-              <point x="498.2559523809524" y="136.0" />
-              <point x="403.6666666666667" y="136.0" />
-              <point x="18.666666666666686" y="14.0" />
-            </edge>
-            <edge source="android.view.ViewGroup" target="android.view.ViewParent">
-              <point x="0.0" y="-14.0" />
-              <point x="143.7559523809524" y="136.0" />
-              <point x="162.0" y="136.0" />
-              <point x="0.0" y="14.0" />
-            </edge>
-            <edge source="ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelector" target="ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateElement">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="268.0" y="170.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/ru.journal.fspoPrj.server_java.might_info.MightsCodes">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>ru.journal.fspoPrj.server_java.might_info.MightsCodes</OriginalElement>
-          <nodes>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.Tools.ToolKitsManager</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.CurrentRolesInfo</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Parent</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.MightsCodes</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.Tools.ToolKitsManager.NoFunctionException</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Student</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Admin</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Teacher</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.Tools.Tool</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.Functions</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.CurrentRolesInfo.RolesCodeException</node>
-            <node x="" y="">java.io.Serializable</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.mights_function_kits.Anonymous</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.might_info.mights_function_kits.TeacherAkaStudent</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.6" x="979.0" y="193.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator</OriginalElement>
-          <nodes>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_managers.ProgressActivity</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_info.APIQuery</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_info.ServerErrors</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_managers.MainExecutor</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_managers.Query</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_info.CommunicationInfo</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_info.ClientInfo</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="485.0" y="814.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/ClientInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="50" selection-start="245" selection-end="245" vertical-scroll-proportion="0.19476268" vertical-offset="0" max-vertical-offset="611" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ProgressActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="34" selection-start="1553" selection-end="1570" vertical-scroll-proportion="0.0" vertical-offset="409" max-vertical-offset="1020" />
@@ -1754,16 +1411,6 @@
         <state line="5" column="11" selection-start="143" selection-end="143" vertical-scroll-proportion="0.15947467" vertical-offset="0" max-vertical-offset="901" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="32" selection-start="1191" selection-end="1191" vertical-scroll-proportion="1.1442307" vertical-offset="0" max-vertical-offset="799" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="30" selection-start="3669" selection-end="3669" vertical-scroll-proportion="3.1711538" vertical-offset="0" max-vertical-offset="2363" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ThemeManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="5" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.79737335" vertical-offset="612" max-vertical-offset="1462" />
@@ -1791,11 +1438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="53" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/keys_manager/IKeyApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="21" selection-start="557" selection-end="557" vertical-scroll-proportion="0.23632812" vertical-offset="219" max-vertical-offset="799" />
@@ -1804,11 +1446,6 @@
     <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/org/json/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.17034069" vertical-offset="0" max-vertical-offset="1717" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="34" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.65384614" vertical-offset="0" max-vertical-offset="520" />
       </provider>
     </entry>
     <entry file="uml://MODULES/mdl-fspoPrj">
@@ -1821,11 +1458,12 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="54.5" y="14.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="55.0" y="14.0" />
           <SelectedNodes />
           <Categories>
             <Category>Test dependencies</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -2142,14 +1780,14 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.6" x="1753.8673341677104" y="1745.9659991656235" />
+          <settings layout="Hierarchic Group" zoom="0.6" x="1754.0" y="1746.0" />
           <SelectedNodes />
           <Categories>
+            <Category>Constructors</Category>
             <Category>Fields</Category>
             <Category>Methods</Category>
-            <Category>Constructors</Category>
-            <Category>Properties</Category>
             <Category>Inner Classes</Category>
+            <Category>Properties</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
@@ -2181,38 +1819,17 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="175.0" y="560.5" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="175.0" y="561.0" />
           <SelectedNodes />
           <Categories>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-            <Category>Methods</Category>
             <Category>Constructors</Category>
             <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+            <Category>Properties</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="276" selection-end="276" vertical-scroll-proportion="0.1037415" vertical-offset="7" max-vertical-offset="1258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="25" selection-start="2403" selection-end="2403" vertical-scroll-proportion="0.71088433" vertical-offset="500" max-vertical-offset="1088">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="26" selection-start="610" selection-end="610" vertical-scroll-proportion="0.11564626" vertical-offset="102" max-vertical-offset="765">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2223,27 +1840,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelectorButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="16" selection-start="731" selection-end="731" vertical-scroll-proportion="0.6938776" vertical-offset="0" max-vertical-offset="588">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="16" selection-start="1241" selection-end="1241" vertical-scroll-proportion="1.0986395" vertical-offset="0" max-vertical-offset="1037">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="51" selection-start="497" selection-end="497" vertical-scroll-proportion="0.4187192" vertical-offset="0" max-vertical-offset="850">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#898#899#0" expanded="false" />
+            <element signature="e#934#935#0" expanded="false" />
             <element signature="method#makeStudentsVisits#0;class#LightVisits#0" expanded="false" />
             <element signature="method#makeStudentVisits#0;class#LightVisits#0" expanded="false" />
             <element signature="method#makeExercisesInfo#0;class#LightVisits#0" expanded="false" />
@@ -2253,109 +1856,205 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2393" selection-end="2393" vertical-scroll-proportion="1.9001997" vertical-offset="0" max-vertical-offset="1122">
-          <folding>
-            <element signature="method#toString#0;class#Group#0" expanded="false" />
-            <element signature="method#compareTo#0;class#Group#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="35" column="61" selection-start="1441" selection-end="1441" vertical-scroll-proportion="-0.035416666" vertical-offset="595" max-vertical-offset="2074" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsListExecutor.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="33" selection-start="582" selection-end="582" vertical-scroll-proportion="0.3732535" vertical-offset="0" max-vertical-offset="544">
+        <state line="142" column="0" selection-start="5505" selection-end="5505" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="4063" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="34" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.67061144" vertical-offset="0" max-vertical-offset="507">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="42" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
-          <folding />
-        </state>
+        <state line="79" column="24" selection-start="2787" selection-end="2787" vertical-scroll-proportion="-1.1655518" vertical-offset="1785" max-vertical-offset="2720" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/data_get_managers/AuthorizationCommunicator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="31" selection-start="3519" selection-end="3519" vertical-scroll-proportion="0.0" vertical-offset="921" max-vertical-offset="1530">
-          <folding />
-        </state>
+        <state line="24" column="55" selection-start="916" selection-end="916" vertical-scroll-proportion="0.41734862" vertical-offset="0" max-vertical-offset="1173" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="15" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="3026">
-          <folding>
-            <element signature="method#initElements#0;class#LookingJournalActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#LookingJournalActivity#0" expanded="false" />
-            <element signature="method#getGroupSelectorCallBack#0;class#LookingJournalActivity#0" expanded="false" />
-            <element signature="method#getLessonSelectedCallBack#0;class#LookingJournalActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#LookingJournalActivity#0" expanded="false" />
-            <element signature="method#sendVisitsQueryByGroupSelect#0;class#LookingJournalActivity#0" expanded="false" />
-            <element signature="method#sendVisitsQueryByLessonSelect#0;class#LookingJournalActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="68" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.75208336" vertical-offset="489" max-vertical-offset="1122">
-          <folding>
-            <element signature="class#ExercisesKeys#0;class#LightExercisesInfo#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="488" selection-end="488" vertical-scroll-proportion="0.27145708" vertical-offset="0" max-vertical-offset="501">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="45" selection-start="622" selection-end="622" vertical-scroll-proportion="0.2035928" vertical-offset="0" max-vertical-offset="697">
+        <state line="44" column="67" selection-start="1423" selection-end="1423" vertical-scroll-proportion="0.71890146" vertical-offset="218" max-vertical-offset="850">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="763" selection-end="763" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
-          <folding>
-            <element signature="method#getAllStates#0;class#Visit#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="30" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1241">
+        <state line="29" column="36" selection-start="763" selection-end="763" vertical-scroll-proportion="0.6993671" vertical-offset="0" max-vertical-offset="2227">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/config/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="61" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="298" max-vertical-offset="2074">
+        <state line="26" column="34" selection-start="859" selection-end="859" vertical-scroll-proportion="0.4841772" vertical-offset="34" max-vertical-offset="1598">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/ClientInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="50" selection-start="245" selection-end="245" vertical-scroll-proportion="0.18829113" vertical-offset="0" max-vertical-offset="632">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="29" selection-start="855" selection-end="855" vertical-scroll-proportion="0.6452381" vertical-offset="35" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="10" selection-start="1531" selection-end="1531" vertical-scroll-proportion="0.7285714" vertical-offset="306" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="5" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="25" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.71666664" vertical-offset="379" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/val_elements_size.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="65" selection-start="2537" selection-end="2537" vertical-scroll-proportion="0.0" vertical-offset="421" max-vertical-offset="901">
+        <state line="43" column="60" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.7171381" vertical-offset="300" max-vertical-offset="901">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="9" selection-start="5173" selection-end="5173" vertical-scroll-proportion="0.2125" vertical-offset="1989" max-vertical-offset="4029">
+        <state line="13" column="32" selection-start="485" selection-end="485" vertical-scroll-proportion="0.22628951" vertical-offset="0" max-vertical-offset="601">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="8" selection-start="864" selection-end="864" vertical-scroll-proportion="0.45257902" vertical-offset="0" max-vertical-offset="731">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="35" selection-start="350" selection-end="350" vertical-scroll-proportion="0.19502868" vertical-offset="0" max-vertical-offset="523">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="48" selection-start="2348" selection-end="2348" vertical-scroll-proportion="0.5602294" vertical-offset="642" max-vertical-offset="1734">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="9" selection-start="612" selection-end="612" vertical-scroll-proportion="0.5079681" vertical-offset="0" max-vertical-offset="1037">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="48" selection-start="3389" selection-end="3389" vertical-scroll-proportion="0.332696" vertical-offset="1118" max-vertical-offset="1666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="27" selection-start="99" selection-end="99" vertical-scroll-proportion="0.09751434" vertical-offset="0" max-vertical-offset="523">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="53" selection-start="627" selection-end="627" vertical-scroll-proportion="0.22753346" vertical-offset="0" max-vertical-offset="2397">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsListExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="48" selection-start="336" selection-end="336" vertical-scroll-proportion="0.13001911" vertical-offset="0" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="32" selection-start="3209" selection-end="3209" vertical-scroll-proportion="2.6577437" vertical-offset="89" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="25" selection-start="761" selection-end="761" vertical-scroll-proportion="0.45506692" vertical-offset="0" max-vertical-offset="1547">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="57" selection-start="2631" selection-end="2631" vertical-scroll-proportion="0.0" vertical-offset="633" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="28" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="1377" selection-end="1377" vertical-scroll-proportion="-4.9732313" vertical-offset="2652" max-vertical-offset="3264">
+          <folding>
+            <element signature="method#initElements#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#getGroupSelectorCallBack#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#getLessonSelectedCallBack#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#handlingResult#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#handleVisitsQuery#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#onSaveInstanceState#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#lessonSelected#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#sendVisitsQueryByLessonSelect#0;class#LookingJournalActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

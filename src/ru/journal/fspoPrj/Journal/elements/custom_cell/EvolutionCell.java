@@ -76,7 +76,7 @@ public class EvolutionCell extends View {
         Canvas canvas = new Canvas(element);
         addBackground(canvas, stateBgColor);
         handleVisitNeeded(canvas, visit.getVisitNeed());
-        handleVisitPoint(canvas, visit.getPoint(), visit.getMarkNeed(), visit.getDelay());
+        handleVisitPoint(canvas, visit.getPoint(), visit.getMarkNeed(), visit.getDelay(), visit.getPresence());
         handleVisitPresence(canvas, visit.getPresence());
         handleVisitPerformance(canvas, visit.getPerformance());
         handleVisitWeightRank(canvas, visit.getWeight());
@@ -113,7 +113,7 @@ public class EvolutionCell extends View {
         }
     }
 
-    private void handleVisitPoint(Canvas canvas, int point, int marked, int delay) {
+    private void handleVisitPoint(Canvas canvas, int point, int marked, int delay, int presence) {
         char[] rank;
         int pointColor;
 
@@ -133,13 +133,15 @@ public class EvolutionCell extends View {
             rank = new char[]{String.valueOf(point).charAt(0)};
         }
 
-        if (Visit.PointState.FAIL.ordinal() == point) {
-            // TODO
-        } else if (Visit.PointState.TRUE.ordinal() == point) {
-            // TODO
-        } else {
-            addStudentRank(canvas, pointColor, rank);
+        if (Visit.PointState.FAIL.ordinal() == point || Visit.PointState.TRUE.ordinal() == point) {
+            if (Visit.PresentsState.DRINK_VODKA_WITH_BEAR.ordinal() == presence) {
+                rank[0] = NOTHING;
+            } else {
+                rank[0] = PLUS;
+            }
         }
+
+        addStudentRank(canvas, pointColor, rank);
     }
 
     private void handleVisitNeeded(Canvas canvas, int state) {

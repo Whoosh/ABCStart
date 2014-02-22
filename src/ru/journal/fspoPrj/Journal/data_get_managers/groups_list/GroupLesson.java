@@ -1,8 +1,6 @@
 package ru.journal.fspoPrj.journal.data_get_managers.groups_list;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 import java.io.Serializable;
@@ -14,6 +12,7 @@ public class GroupLesson implements Serializable {
     private final String name;
     private final String shortName;
     private final String semester;
+    private final int iSemester;
 
     public GroupLesson(JSONObject element) {
         this.lessonID = LessonKey.LESSON_ID.getIntValue(element);
@@ -21,6 +20,7 @@ public class GroupLesson implements Serializable {
         this.name = LessonKey.NAME.getStringValue(element);
         this.shortName = LessonKey.SHORT_NAME.getStringValue(element);
         this.semester = LessonKey.SEMESTER.getStringValue(element);
+        this.iSemester = LessonKey.SEMESTER.getIntValue(element);
     }
 
     public String getStringLessonID() {
@@ -31,6 +31,9 @@ public class GroupLesson implements Serializable {
         return String.valueOf(getGroupID());
     }
 
+    public int getISemester() {
+        return iSemester;
+    }
 
     public int getLessonID() {
         return lessonID;

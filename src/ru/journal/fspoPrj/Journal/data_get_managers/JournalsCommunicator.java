@@ -18,7 +18,7 @@ public class JournalsCommunicator extends ServerCommunicator {
     public static final int GROUPS_LIST_QUERY = 1;
     public static final int LIGHT_VISITS_QUERY = 2;
 
-    private int lastQueryID;
+    private static int lastQueryID;
 
     private String groupsListKeyQuery;
     private String lessonListKeyQuery;
@@ -93,5 +93,13 @@ public class JournalsCommunicator extends ServerCommunicator {
 
     public GroupLesson[] getLessons(String group) {
         return groupsList.getLessons(group);
+    }
+
+    public GroupLesson[] getLessons(String group, int semester) {
+        return groupsList.getLessons(group, semester);
+    }
+
+    public String getStringGroupID(String group) {
+        return groupsList.getLessons(group)[0].getStringGroupID();
     }
 }

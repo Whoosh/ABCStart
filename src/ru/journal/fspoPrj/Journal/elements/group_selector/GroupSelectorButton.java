@@ -11,23 +11,21 @@ public class GroupSelectorButton extends Button {
     private static final String DEFAULT_TITLE = "Группа ";
     private static final String REFRESH = "Обновить";
 
-    private String selectedGroup;
+    private static String selectedGroup = "";
 
     public GroupSelectorButton(Context context) {
         super(context);
-        selectedGroup = DEFAULT_TITLE;
+        if (selectedGroup.isEmpty()) {
+            selectedGroup = DEFAULT_TITLE;
+        }
         setText(selectedGroup);
         setTextSize(Config.getSelectorGroupTextSize());
         setLayoutParams(new LinearLayout.LayoutParams(Config.getSelectorGroupWidth(), Config.getSelectorGroupHeight()));
     }
 
     public void setSelectedGroup(String selectedGroup) {
-        this.selectedGroup = selectedGroup;
+        GroupSelectorButton.selectedGroup = selectedGroup;
         setText(selectedGroup);
-    }
-
-    public String getSelectedGroup() {
-        return selectedGroup;
     }
 
     public void disableRefreshState() {

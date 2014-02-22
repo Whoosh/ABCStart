@@ -6,13 +6,13 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
 
-public class DateSelectorDialog extends DialogFragment {
+public class SemesterSelectorDialog extends DialogFragment {
 
-    private static final String TITLE = "Выберете месяц";
+    private static final String TITLE = "Выберете Семестр";
 
     private LookingJournalActivity parent;
 
-    public DateSelectorDialog() {
+    public SemesterSelectorDialog() {
         //..
     }
 
@@ -21,7 +21,7 @@ public class DateSelectorDialog extends DialogFragment {
         this.parent = (LookingJournalActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(parent);
         builder.setTitle(TITLE);
-        builder.setView(new DateSelector(parent,this));
+        builder.setView(new SemesterSelector(parent,this));
         return builder.create();
     }
 }

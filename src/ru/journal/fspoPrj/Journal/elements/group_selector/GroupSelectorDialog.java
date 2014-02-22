@@ -1,16 +1,11 @@
 package ru.journal.fspoPrj.journal.elements.group_selector;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
-
-import java.util.ArrayList;
 
 public class GroupSelectorDialog extends DialogFragment {
 

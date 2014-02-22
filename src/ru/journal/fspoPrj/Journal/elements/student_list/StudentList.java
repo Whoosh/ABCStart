@@ -43,4 +43,8 @@ public class StudentList extends ScrollView {
             setStudents(students);
         }
     }
+
+    public void dropStudents() {
+        removeAllViews();
+    }
 }
