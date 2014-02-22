@@ -10,12 +10,12 @@ public class DateSelector extends LinearLayout implements View.OnClickListener {
     private static final int DROP_DOWN_COUNT = 2;
 
     private LookingJournalActivity parent;
-    private DateSelectorDialog dateSelectorDialog;
+    private SemesterSelectorDialog semesterSelectorDialog;
     private LinearLayout row;
 
-    public DateSelector(LookingJournalActivity parent, DateSelectorDialog dateSelectorDialog) {
+    public DateSelector(LookingJournalActivity parent, SemesterSelectorDialog semesterSelectorDialog) {
         super(parent);
-        this.dateSelectorDialog = dateSelectorDialog;
+        this.semesterSelectorDialog = semesterSelectorDialog;
         this.parent = parent;
         super.setOrientation(VERTICAL);
         row = new LinearLayout(parent);
@@ -37,8 +37,8 @@ public class DateSelector extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        parent.dateSelected(((DateElement) view).getText().toString());
-        dateSelectorDialog.dismiss();
+        //parent.semesterSelected(((DateElement) view).getText().toString());
+        semesterSelectorDialog.dismiss();
     }
 
     public void initOnScreen(Month month) {

@@ -99,7 +99,8 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
     protected void onPostExecute(Void res) {
         resultsStorage.clear();
         futureResponsesStorage.clear();
-        stopThisOperation();
+        setProgressStatus(false);
+        progressActivity.finish();
         super.onPostExecute(res);
     }
 
@@ -130,8 +131,9 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
         errorMessageShower.show();
     }
 
-    private void stopThisOperation() {
+    protected void stopThisOperation() {
         setProgressStatus(false);
+        progressActivity.setResult(ServerCommunicator.RESULT_FAIL);
         progressActivity.finish();
     }
 

@@ -7,6 +7,7 @@ import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Group implements Comparable<Group>, Serializable {
 
@@ -19,6 +20,8 @@ public class Group implements Comparable<Group>, Serializable {
     private final int groupNumber;
     private Student[] students;
     private GroupLesson[] groupLessons;
+    private GroupLesson[] fistSemesterLessons;
+    private GroupLesson[] lastSemesterLessons;
 
     public Group(int groupNumber, JSONArray studentsList) {
         this.groupNumber = groupNumber;
@@ -41,10 +44,25 @@ public class Group implements Comparable<Group>, Serializable {
         for (int i = 0; i < groupLessons.length; i++) {
             groupLessons[i] = new GroupLesson(groupLessonsResponse.getJSONObject(i));
         }
+        makeSortedLesson();
+    }
+
+    private void makeSortedLesson() {
+        ArrayList<GroupLesson> firstBuffer = new ArrayList<>(groupLessons.length);
+        ArrayList<GroupLesson> lastBuffer = new ArrayList<>(groupLessons.length);
+        for (GroupLesson lesson : groupLessons) {
+            (((lesson.getISemester() & 1) == 0) ? firstBuffer : lastBuffer).add(lesson);
+        }
+        fistSemesterLessons = firstBuffer.toArray(new GroupLesson[firstBuffer.size()]);
+        lastSemesterLessons = lastBuffer.toArray(new GroupLesson[lastBuffer.size()]);
     }
 
     public GroupLesson[] getGroupLessons() {
         return groupLessons;
+    }
+
+    public GroupLesson[] getGroupLessons(int semester) {
+        return (semester & 1) == 0 ? fistSemesterLessons : lastSemesterLessons;
     }
 
     public String getStringGroupNumber() {

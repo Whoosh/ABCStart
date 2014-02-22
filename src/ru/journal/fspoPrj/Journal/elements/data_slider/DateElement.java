@@ -11,7 +11,7 @@ public class DateElement extends TextView {
 
     public DateElement(Context context, LightExercisesInfo date) {
         super(context);
-        setText(date.getDateDay());
+        setText(date.getDMDate());
         setBackgroundColor(LightExercisesInfo.TypeState.values()[date.getType()].getColor());
         setGravity(Gravity.CENTER);
         setTextSize(Config.getDateSliderTextSize());

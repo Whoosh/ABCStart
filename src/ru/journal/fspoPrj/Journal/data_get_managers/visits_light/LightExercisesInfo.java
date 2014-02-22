@@ -19,7 +19,7 @@ public class LightExercisesInfo implements Serializable {
     public static enum TypeState {
         NOT_SET(Color.WHITE),
         NORMAL_LESSON(Color.WHITE),
-        LAB_WORK(Color.parseColor("#F5F5F5")),
+        LAB_WORK(Color.parseColor("#A3A3A3")),
         ATTESTATION(Color.parseColor("#F8DDED")),
         TEST(Color.parseColor("#B57EDC")),
         EXAM(Color.parseColor("#B57EDC")),

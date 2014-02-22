@@ -1,5 +1,6 @@
 package ru.journal.fspoPrj.login_form.elements;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -32,14 +33,14 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
 
     private static final String EMPTY = "";
 
-    private Context context;
+    private Activity context;
     private CheckBox saveMe;
     private SerifTextView loginButton;
     private LoginForm userName, password;
     private SharedPreferences keyValueStorage;
     private AuthorizationCommunicator authorization;
 
-    public MainWindow(Context context, AuthorizationCommunicator authorization) {
+    public MainWindow(Activity context, AuthorizationCommunicator authorization) {
         super(context);
         this.context = context;
         this.authorization = authorization;

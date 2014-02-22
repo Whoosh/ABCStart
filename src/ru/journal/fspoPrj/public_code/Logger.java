@@ -1,7 +1,7 @@
 package ru.journal.fspoPrj.public_code;
 
 public abstract class Logger {
-    // TODO
+    // TODO logging on mail
     public static final int LAST_LINE = 1;
     public static final int CALLER_CLASS_INDEX = 3;
 
@@ -14,7 +14,6 @@ public abstract class Logger {
     public static void printIKeyApiError(Exception error) {
         StackTraceElement[] elements = error.getStackTrace();
         System.out.println("================================");
-        System.err.println("FCKIGKEYNAMESERRORORORORO!!!");
         System.err.println(elements[CALLER_CLASS_INDEX]);
         System.out.println("================================");
         error.printStackTrace();

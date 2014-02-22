@@ -9,12 +9,12 @@ import java.util.concurrent.TimeoutException;
 
 public class GroupsListExecutor extends MainExecutor {
 
-    private int caller;
+    private int resultCode;
     private final String groupListQuery;
     private final String lessonsListQuery;
 
     public GroupsListExecutor(String groupListQuery, String lessonsListQuery, int resultCode) {
-        this.caller = resultCode;
+        this.resultCode = resultCode;
         this.groupListQuery = groupListQuery;
         this.lessonsListQuery = lessonsListQuery;
         super.makeQuery(groupListQuery);
@@ -25,7 +25,7 @@ public class GroupsListExecutor extends MainExecutor {
     protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException, TimeoutException {
         Intent result = new Intent();
         result.putExtra(groupListQuery, new GroupsList(results.remove(groupListQuery), results.remove(lessonsListQuery)));
-        progressActivity.setResult(caller, result);
+        progressActivity.setResult(resultCode, result);
         progressActivity.finish();
     }
 }

@@ -1,5 +1,6 @@
 package ru.journal.fspoPrj.login_form.data_get_managers;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import ru.journal.fspoPrj.public_code.Logger;
@@ -18,16 +19,16 @@ public class AuthorizationCommunicator extends ServerCommunicator {
         this.onAuthCallBack = callBack;
     }
 
-    public void authNormal(Context context, String name, String password) {
+    public void authNormal(Activity caller, String name, String password) {
         HOST = DEFAULT_HOST;
         PORT = DEFAULT_PORT;
-        sendAuthorizationQuery(context, name, password);
+        sendAuthorizationQuery(caller, name, password);
     }
 
-    public void authWithProxy(Context context, String name, String password, String address, int port) {
+    public void authWithProxy(Activity caller, String name, String password, String address, int port) {
         HOST = address;
         PORT = port;
-        sendAuthorizationQuery(context, name, password);
+        sendAuthorizationQuery(caller, name, password);
     }
 
     public void handleResponse(Intent data, int caller) {
@@ -39,8 +40,8 @@ public class AuthorizationCommunicator extends ServerCommunicator {
     }
 
     // TODO
-    private void sendAuthorizationQuery(Context context, String name, String password) {
-        super.sendQueryToServer(context, new AuthorizationExecutor(APIQuery.AUTHORIZATION.getLink(name, password), AUTH_REQUEST));
+    private void sendAuthorizationQuery(Activity caller, String name, String password) {
+        super.sendQueryToServer(caller, new AuthorizationExecutor(APIQuery.AUTHORIZATION.getLink(name, password), AUTH_REQUEST));
     }
 
     public void disconnect() {

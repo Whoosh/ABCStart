@@ -7,7 +7,10 @@ import ru.journal.fspoPrj.server_java.server_info.CommunicationInfo;
 
 public abstract class ServerCommunicator {
 
-    public static final int REQUEST_CODE = 123; // not actual
+    public static final int REQUEST_CODE = 123111; // not actual, equals empty;
+    public static final int RESULT_OK = 2519854;
+    public static final int RESULT_FAIL = 2547812;
+
     public static int PORT;
     public static String HOST;
 
@@ -34,13 +37,13 @@ public abstract class ServerCommunicator {
         ServerCommunicator.communicationInfo = communicationInfo;
     }
 
-    protected void sendQueryToServer(Context context, MainExecutor executor) {
-        startQueryHandler(context, executor);
+    protected void sendQueryToServer(Activity caller, MainExecutor executor) {
+        startQueryHandler(caller, executor);
     }
 
-    protected void startQueryHandler(Context context, MainExecutor executor) {
-        Intent intent = new Intent(context, ProgressActivity.class);
+    protected void startQueryHandler(Activity caller, MainExecutor executor) {
+        Intent intent = new Intent(caller, ProgressActivity.class);
         intent.putExtra(SERVER_COMMUTATION_KEY, executor);
-        ((Activity) context).startActivityForResult(intent, REQUEST_CODE);
+        caller.startActivityForResult(intent, REQUEST_CODE);
     }
 }

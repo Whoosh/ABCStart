@@ -1,6 +1,5 @@
 package ru.journal.fspoPrj.journal.elements.group_selector;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
