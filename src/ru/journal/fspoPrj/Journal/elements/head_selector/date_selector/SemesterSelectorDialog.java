@@ -1,5 +1,6 @@
 package ru.journal.fspoPrj.journal.elements.head_selector.date_selector;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -10,7 +11,7 @@ public class SemesterSelectorDialog extends DialogFragment {
 
     private static final String TITLE = "Выберете Семестр";
 
-    private LookingJournalActivity parent;
+    private Activity parent;
 
     public SemesterSelectorDialog() {
         //..
@@ -18,10 +19,10 @@ public class SemesterSelectorDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        this.parent = (LookingJournalActivity) getActivity();
+        this.parent = getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(parent);
         builder.setTitle(TITLE);
-        builder.setView(new SemesterSelector(parent,this));
+        builder.setView(new SemesterSelector(parent, this, (LookingJournalActivity) parent));
         return builder.create();
     }
 }

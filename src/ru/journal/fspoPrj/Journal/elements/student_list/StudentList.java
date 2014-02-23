@@ -11,11 +11,8 @@ import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 public class StudentList extends ScrollView {
 
-    private static final String STUDENTS_KEY = "s_t_k";
-
     private Context context;
     private LinearLayout studentsList;
-    private Student[] students;
 
     public StudentList(Context context) {
         super(context);
@@ -25,7 +22,6 @@ public class StudentList extends ScrollView {
     }
 
     public void setStudents(Student[] students) {
-        this.students = students;
         super.removeAllViews();
         studentsList.removeAllViews();
         studentsList.addView(new HorizontalLine(context, Color.BLACK));
@@ -42,9 +38,5 @@ public class StudentList extends ScrollView {
         if (students != null) {
             setStudents(students);
         }
-    }
-
-    public void dropStudents() {
-        removeAllViews();
     }
 }

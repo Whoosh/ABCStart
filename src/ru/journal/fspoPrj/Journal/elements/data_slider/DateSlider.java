@@ -35,12 +35,7 @@ public class DateSlider extends LinearLayout {
         addView(datesSlider);
     }
 
-
     public void restoreState(LightExercisesInfo[] exercisesInfo) {
         setData(exercisesInfo);
-    }
-
-    public void dropDate() {
-        removeAllViews();
     }
 }

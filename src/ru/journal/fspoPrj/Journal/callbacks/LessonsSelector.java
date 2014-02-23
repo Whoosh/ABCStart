@@ -1,5 +1,6 @@
 package ru.journal.fspoPrj.journal.callbacks;
 
+import android.app.Activity;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,16 +15,17 @@ public class LessonsSelector implements ActionMode.Callback {
     private static final String EMPTY = "";
     private static final int DATE_BUTTON_ID = 102;
 
-    private GroupLesson[] lessonList;
+    private Activity parent;
     private ActionMode actionMode;
-    private LookingJournalActivity parent;
-    private LessonSelectedCallBack selectedCallBack;
+    private GroupLesson[] lessonList;
     private SemesterButton semesterButton;
-    private String lastLessonSelected = "";
+    private LessonSelectedCallBack selectedCallBack;
 
-    public LessonsSelector(LookingJournalActivity parent) {
+    private String lastLessonTitle = "";
+
+    public LessonsSelector(Activity parent, LessonSelectedCallBack callBack) {
         this.parent = parent;
-        this.selectedCallBack = parent.getLessonSelectedCallBack();
+        this.selectedCallBack = callBack;
     }
 
     public void setSemesterButton(SemesterButton semesterButton) {
@@ -41,36 +43,9 @@ public class LessonsSelector implements ActionMode.Callback {
         }
     }
 
-    @Override
-    public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-        this.actionMode = actionMode;
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-        menu.clear();
-        actionMode.setCustomView(new SerifTextView(parent, lastLessonSelected));
-        if (lessonList != null) {
-            menu.add(Menu.NONE, DATE_BUTTON_ID, Menu.NONE, EMPTY).setActionView(semesterButton);
-            for (GroupLesson lesson : lessonList) {
-                menu.add(lesson.getShortName());
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        if (menuItem.getItemId() != DATE_BUTTON_ID) {
-            selectedCallBack.lessonSelected(menuItem.getTitle().toString());
-        }
-        return false;
-    }
-
-    @Override
-    public void onDestroyActionMode(ActionMode actionMode) {
-        parent.onBackPressed();
+    public void setLessonTitle(GroupLesson lesson) {
+        lastLessonTitle = getSelectedLesson((lesson != null) ? lesson.getShortName() : EMPTY);
+        actionMode.invalidate();
     }
 
     public String getSelectedLesson(String currentSelectedLesson) {
@@ -87,25 +62,51 @@ public class LessonsSelector implements ActionMode.Callback {
         }
     }
 
-    public void setLessonTitle(String lesson) {
-        lastLessonSelected = getSelectedLesson(lesson);
-        actionMode.invalidate();
+    @Override
+    public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+        this.actionMode = actionMode;
+        return true;
     }
 
-    public void removeLessonTitle() {
-        lastLessonSelected = EMPTY;
-        actionMode.invalidate();
+    @Override
+    public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+        menu.clear();
+        initNewMenu(menu);
+        return true;
     }
 
-    public void removeLessons(){
-        lessonList = new GroupLesson[0];
-        actionMode.invalidate();
+    @Override
+    public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+        if (menuItem.getItemId() != DATE_BUTTON_ID) {
+            for (GroupLesson lesson : lessonList) {
+                if (lesson.getShortName().equals(menuItem.getTitle().toString())) {
+                    selectedCallBack.lessonSelected(lesson);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void onDestroyActionMode(ActionMode actionMode) {
+        parent.onBackPressed();
+    }
+
+    private void initNewMenu(Menu menu) {
+        actionMode.setCustomView(new SerifTextView(parent, lastLessonTitle));
+        if (lessonList != null) {
+            menu.add(Menu.NONE, DATE_BUTTON_ID, Menu.NONE, EMPTY).setActionView(semesterButton);
+            for (GroupLesson lesson : lessonList) {
+                menu.add(lesson.getShortName());
+            }
+        }
     }
 
     public static interface LessonSelectedCallBack {
-        void lessonSelected(String lesson);
+        void lessonSelected(GroupLesson lesson);
 
-        void semesterSelected(int date);
+        void semesterSelected(int semester);
     }
 }
 

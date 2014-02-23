@@ -1,5 +1,6 @@
 package ru.journal.fspoPrj.journal.elements.head_selector.date_selector;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -10,13 +11,14 @@ public class SemesterSelector extends LinearLayout implements View.OnClickListen
     public static final String FIRST = "Семестр 1";
     public static final String LAST = "Семестр 2";
 
-    private LookingJournalActivity parent;
     private SemesterSelectorDialog semesterSelectorDialog;
+    private SemesterSelector.semesterCallBack callBack;
 
-    public SemesterSelector(LookingJournalActivity parent, SemesterSelectorDialog semesterSelectorDialog) {
+    public SemesterSelector(Activity parent, SemesterSelectorDialog semesterSelectorDialog, SemesterSelector.semesterCallBack callBack) {
         super(parent);
         this.semesterSelectorDialog = semesterSelectorDialog;
-        this.parent = parent;
+        this.callBack = callBack;
+
         Button first = new Button(parent);
         Button last = new Button(parent);
         first.setText(FIRST);
@@ -29,7 +31,11 @@ public class SemesterSelector extends LinearLayout implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        parent.semesterSelected(((Button) view).getText().toString().equals(FIRST) ? 1 : 2);
+        callBack.semesterSelected(((Button) view).getText().toString().equals(FIRST) ? 1 : 2);
         semesterSelectorDialog.dismiss();
+    }
+
+    public static interface semesterCallBack {
+        void semesterSelected(int semester);
     }
 }

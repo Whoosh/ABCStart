@@ -8,10 +8,9 @@ import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Group implements Comparable<Group>, Serializable {
-
-    private static final String ENTER = "\n";
 
     private static final int LOW = -1;
     private static final int UPPER = 1;
@@ -26,6 +25,14 @@ public class Group implements Comparable<Group>, Serializable {
     public Group(int groupNumber, JSONArray studentsList) {
         this.groupNumber = groupNumber;
         makeStudents(studentsList);
+    }
+
+    public Group() {
+        this.groupNumber = 0;
+    }
+
+    public boolean isEmpty() {
+        return (groupNumber == 0);
     }
 
     private void makeStudents(JSONArray studentsList) {
@@ -78,21 +85,6 @@ public class Group implements Comparable<Group>, Serializable {
     }
 
     @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder(groupNumber);
-        builder.append(ENTER);
-        for (Student student : students) {
-            builder.append(student);
-            builder.append(ENTER);
-        }
-        for (GroupLesson lesson : groupLessons) {
-            builder.append(lesson);
-            builder.append(ENTER);
-        }
-        return builder.toString();
-    }
-
-    @Override
     public boolean equals(Object element) {
         return element instanceof Group && groupNumber == ((Group) element).getGroupNumber();
     }
@@ -105,5 +97,16 @@ public class Group implements Comparable<Group>, Serializable {
             return UPPER;
         }
         return EQUALS;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "groupNumber=" + groupNumber +
+                ", students=" + Arrays.toString(students) +
+                ", groupLessons=" + Arrays.toString(groupLessons) +
+                ", fistSemesterLessons=" + Arrays.toString(fistSemesterLessons) +
+                ", lastSemesterLessons=" + Arrays.toString(lastSemesterLessons) +
+                '}';
     }
 }
