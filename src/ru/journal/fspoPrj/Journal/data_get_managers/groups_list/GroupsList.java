@@ -55,15 +55,19 @@ public class GroupsList implements Serializable {
         return sGroups;
     }
 
-    public Student[] getStudents(String group) {
-        return groups.get(Integer.parseInt(group)).getStudents();
+    public Student[] getStudents(int group) {
+        return groups.get(group).getStudents();
     }
 
-    public GroupLesson[] getLessons(String group) {
-        return groups.get(Integer.parseInt(group)).getGroupLessons();
+    public GroupLesson[] getLessons(Group group) {
+        return groups.get(group.getGroupNumber()).getGroupLessons();
     }
 
-    public GroupLesson[] getLessons(String group, int semester) {
-        return groups.get(Integer.parseInt(group)).getGroupLessons(semester);
+    public GroupLesson[] getLessons(int group, int semester) {
+        return groups.get(group).getGroupLessons(semester);
+    }
+
+    public Group getGroup(int groupNumber) {
+        return groups.get(groupNumber);
     }
 }

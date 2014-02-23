@@ -51,8 +51,33 @@ public class GroupLesson implements Serializable {
         return shortName;
     }
 
-    public String getSemester() {
-        return semester;
+    @Override
+    public boolean equals(Object element) {
+        return this == element ||
+                !(element == null || getClass() != element.getClass()) && shortName.equals(((GroupLesson) element).shortName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = lessonID;
+        result = 31 * result + groupID;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + shortName.hashCode();
+        result = 31 * result + semester.hashCode();
+        result = 31 * result + iSemester;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupLesson{" +
+                "lessonID=" + lessonID +
+                ", groupID=" + groupID +
+                ", name='" + name + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", semester='" + semester + '\'' +
+                ", iSemester=" + iSemester +
+                '}';
     }
 
     private static enum LessonKey implements IKeyApi {

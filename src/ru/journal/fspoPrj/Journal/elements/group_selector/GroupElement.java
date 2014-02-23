@@ -11,9 +11,10 @@ public class GroupElement extends Button {
 
     private String group;
 
-    public GroupElement(Context context, String group) {
+    public GroupElement(Context context, String group, OnClickListener listener) {
         super(context);
         this.group = group;
+        setOnClickListener(listener);
         setGravity(Gravity.CENTER);
         setTextSize(Config.getGroupElementTextSize());
         setText(group);

@@ -1,6 +1,5 @@
 package ru.journal.fspoPrj.journal;
 
-import android.app.*;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,63 +8,64 @@ import android.view.View;
 import android.view.Window;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.journal.callbacks.LessonsSelector;
 import ru.journal.fspoPrj.journal.config.Config;
-import ru.journal.fspoPrj.journal.data_get_managers.JournalsCommunicator;
+import ru.journal.fspoPrj.journal.data_get_managers.LookingJournalsCommunicator;
+import ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group;
 import ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupLesson;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
 import ru.journal.fspoPrj.journal.elements.data_slider.DateSlider;
 import ru.journal.fspoPrj.journal.elements.group_selector.GroupSelectorButton;
 import ru.journal.fspoPrj.journal.elements.group_selector.GroupSelectorDialog;
-import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorButton;
-import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.DateSelectorDialog;
+import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.SemesterButton;
+import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.SemesterSelector;
+import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.SemesterSelectorDialog;
 import ru.journal.fspoPrj.journal.elements.main_table.TableWithMarks;
 import ru.journal.fspoPrj.journal.elements.student_list.StudentList;
+import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 
-public class LookingJournalActivity extends Activity implements View.OnTouchListener, View.OnClickListener
-        , GroupSelectorDialog.GroupSelectedCallBack, LessonsSelector.LessonSelectedCallBack {
+public class LookingJournalActivity extends android.app.Activity implements View.OnTouchListener, View.OnClickListener
+        , GroupSelectorDialog.GroupSelectedCallBack, LessonsSelector.LessonSelectedCallBack , SemesterSelector.semesterCallBack {
 
-    private static final String EMPTY_TAG = "";
+    private static final String EMPTY = "";
+    private static final String LESSONS_FOR_SEMESTER_FAIL_ERROR = "Нет предметов для выбранного семестра";
 
-    private static JournalsCommunicator journalsCommunicator; // TODO
+    private static LookingJournalsCommunicator jC; // TODO
+    private static Group selectedGroup;
+    private static GroupLesson selectedLesson;
 
-    private static String currentSelectedGroup = "";
-    private static String currentSelectedLesson = "";
-    private static String currentSelectedGroupID = "";
-    private static String currentSelectedLessonID = "";
+    private static int selectedSemester = 1;
 
     private LessonsSelector lessonsSelector;
     private DateSlider dateSlider;
     private StudentList studentList;
     private LinearLayout mainLay;
-    private LinearLayout datePlusMatrix;
-    private LinearLayout groupSelectorPlusStudents;
     private TableWithMarks tableWithMarks;
-    private GroupSelectorButton groupSelectorButton;
-    private HorizontalScrollView datePlusCellMatrixScroller;
+    private GroupSelectorButton groupSelector;
     private GroupSelectorDialog groupSelectorDialog;
-    private DateSelectorButton dateSelectorButton;
-    private DateSelectorDialog dateSelectorDialog;
+    private SemesterButton semesterSelectedButton;
+    private SemesterSelectorDialog semesterSelectorDialog;
     private HorizontalLine groupSelectorSeparateLine;
 
     public void initElements() {
+        LinearLayout datePlusMatrix = new LinearLayout(this);
+        LinearLayout groupSelectorPlusStudents = new LinearLayout(this);
+        HorizontalScrollView datePlusCellMatrixScroller = new HorizontalScrollView(this);
+
         mainLay = new LinearLayout(this);
         dateSlider = new DateSlider(this);
         studentList = new StudentList(this);
-        lessonsSelector = new LessonsSelector(this);
-        datePlusMatrix = new LinearLayout(this);
+        lessonsSelector = new LessonsSelector(this, this);
         tableWithMarks = new TableWithMarks(this);
-        groupSelectorButton = new GroupSelectorButton(this);
-        groupSelectorPlusStudents = new LinearLayout(this);
-        datePlusCellMatrixScroller = new HorizontalScrollView(this);
-        dateSelectorButton = new DateSelectorButton(this);
+        groupSelector = new GroupSelectorButton(this);
+        semesterSelectedButton = new SemesterButton(this);
 
         groupSelectorSeparateLine = new HorizontalLine(this, Color.BLACK, Config.getJournalEndLineWidth());
-
         groupSelectorDialog = new GroupSelectorDialog();
-        dateSelectorDialog = new DateSelectorDialog();
+        semesterSelectorDialog = new SemesterSelectorDialog();
 
         datePlusMatrix.addView(dateSlider);
         datePlusMatrix.addView(new HorizontalLine(this, Color.BLACK, Config.getJournalEndLineWidth()));
@@ -74,7 +74,7 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         datePlusCellMatrixScroller.addView(datePlusMatrix);
 
         groupSelectorPlusStudents.setOrientation(LinearLayout.VERTICAL);
-        groupSelectorPlusStudents.addView(groupSelectorButton);
+        groupSelectorPlusStudents.addView(groupSelector);
         groupSelectorPlusStudents.addView(groupSelectorSeparateLine);
         groupSelectorPlusStudents.addView(studentList);
 
@@ -88,95 +88,35 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        if (journalsCommunicator == null) {
-            journalsCommunicator = new JournalsCommunicator(this);
+        if (jC == null) {
+            jC = new LookingJournalsCommunicator(this);
+            selectedGroup = new Group();
         }
 
         initElements();
         groupSelectorSeparateLine.setVisibility(View.INVISIBLE);
 
-        lessonsSelector.setDateSelectorButton(dateSelectorButton);
+        lessonsSelector.setSemesterButton(semesterSelectedButton);
 
-        dateSelectorButton.setOnClickListener(this);
+        semesterSelectedButton.setOnClickListener(this);
         studentList.setOnTouchListener(this);
-        groupSelectorButton.setOnClickListener(this);
+        groupSelector.setOnClickListener(this);
         tableWithMarks.setOnTouchListener(this);
 
+        if (!selectedGroup.isEmpty()) {
+            groupSelectorSeparateLine.setVisibility(View.VISIBLE);
+        }
         startActionMode(lessonsSelector);
         setContentView(mainLay);
     }
 
-    public GroupSelectorDialog.GroupSelectedCallBack getGroupSelectorCallBack() {
-        return this;
-    }
-
-    public LessonsSelector.LessonSelectedCallBack getLessonSelectedCallBack() {
-        return this;
-    }
-
     @Override
     public void onBackPressed() {
-        journalsCommunicator = null;
+        jC = null;
+        selectedLesson = null;
+        selectedGroup = null;
+        selectedSemester = 1;
         super.onBackPressed();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (data != null) {
-            groupSelectorButton.disableRefreshState();
-            journalsCommunicator.cacheData(data, resultCode);
-            handlingResult(resultCode);
-        } else {
-            groupSelectorButton.refreshStateON();
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void handlingResult(int resultCode) {
-        switch (resultCode) {
-            case JournalsCommunicator.GROUPS_LIST_QUERY: {
-                groupSelectorDialog.setGroups(journalsCommunicator.getSortedGroups());
-            }
-            break;
-            case JournalsCommunicator.LIGHT_VISITS_QUERY: {
-                handleVisitsQuery();
-            }
-            break;
-        }
-    }
-
-    private void handleVisitsQuery() {
-        LightVisits lightVisits = journalsCommunicator.getLightVisits();
-        dateSlider.setData(lightVisits.getExercisesInfo());
-        tableWithMarks.createTable(lightVisits, journalsCommunicator.getStudents(currentSelectedGroup));
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NotNull Bundle outState) {
-        groupSelectorDialog.saveState(outState);
-        groupSelectorButton.saveState(outState);
-        dateSelectorButton.saveState(outState);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        if (!currentSelectedGroup.isEmpty()) {
-            lessonsSelector.restoreState(journalsCommunicator.getLessons(currentSelectedGroup));
-            studentList.restoreState(journalsCommunicator.getStudents(currentSelectedGroup));
-        }
-
-        LightVisits lightVisits = journalsCommunicator.getLightVisits();
-        if (lightVisits != null) {
-            tableWithMarks.restoreState(lightVisits, journalsCommunicator.getStudents(currentSelectedGroup));
-            dateSlider.restoreState(lightVisits.getExercisesInfo());
-        }
-
-        groupSelectorDialog.restoreState(savedInstanceState);
-        groupSelectorButton.restoreState(savedInstanceState);
-        dateSelectorButton.restoreState(savedInstanceState);
     }
 
     @Override
@@ -192,84 +132,161 @@ public class LookingJournalActivity extends Activity implements View.OnTouchList
 
     @Override
     public void onClick(View view) {
-        if (view.equals(groupSelectorButton)) {
-            handleGroupButtonClick();
-        } else if (view.equals(dateSelectorButton)) {
-            handleDateButtonClick();
+        if (view.equals(groupSelector)) {
+            handleGroupClick();
+        } else if (view.equals(semesterSelectedButton)) {
+            handleSemesterClick();
         }
     }
 
     @Override
-    public void groupHasSelected(String group) {
-        if (currentSelectedGroup.equals(group)) {
+    public void lessonSelected(GroupLesson lesson) {
+        if (!selectedLesson.equals(lesson)) {
+            sendVisitsQueryByLessonSelect(lesson);
+            lessonsSelector.setLessonTitle(selectedLesson);
+        }
+    }
+
+    @Override
+    public void groupHasSelected(int groupNumber) {
+        Group group = jC.getGroup(groupNumber);
+        if (!selectedGroup.equals(group)) {
+            selectedGroup = group;
+            groupSelector.setSelectedGroup(group);
+            if (jC.getLessons(group, selectedSemester).length == 0 && !selectedGroup.isEmpty()) {
+                selectedSemester = SemesterButton.FIRST;
+                semesterSelectedButton.setSelectedSemester(selectedSemester);
+            }
+            sendVisitsQueryByGroupSelect(jC.getLessons(group, selectedSemester));
+        }
+    }
+
+    @Override
+    public void semesterSelected(int semester) {
+        if (jC.getLessons(selectedGroup, semester).length == 0) {
+            Toast.makeText(this, LESSONS_FOR_SEMESTER_FAIL_ERROR, Toast.LENGTH_SHORT).show();
             return;
         }
-        currentSelectedGroup = group;
-        GroupLesson[] groupLessons = journalsCommunicator.getLessons(group);
-        currentSelectedGroupID = groupLessons[0].getStringGroupID();
+        if (semester != selectedSemester) {
+            selectedSemester = semester;
+            semesterSelectedButton.setSelectedSemester(semester);
+            lessonsSelector.setLessons(jC.getLessons(selectedGroup, selectedSemester));
+            sendVisitsQueryByGroupSelect(jC.getLessons(selectedGroup, semester));
+        }
+    }
 
-        groupSelectorSeparateLine.setVisibility(View.VISIBLE);
-        groupSelectorButton.setSelectedGroup(group);
-        studentList.setStudents(journalsCommunicator.getStudents(group));
-        lessonsSelector.setLessons(groupLessons);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == LookingJournalsCommunicator.RESULT_FAIL) {
+            groupSelector.refreshStateON();
+            return;
+        }
+        if (data != null) {
+            groupSelector.disableRefreshState();
+            jC.cacheData(data, resultCode);
+            handlingResult(resultCode);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
-        sendVisitsQueryByGroupSelect(groupLessons);
+    @Override
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
+        groupSelectorDialog.saveState(outState);
+        groupSelector.saveState(outState);
+        semesterSelectedButton.saveState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        restoreLessonStudents();
+        restoreTable(jC.getLightVisits());
+        groupSelectorDialog.restoreState(savedInstanceState);
+        groupSelector.restoreState(savedInstanceState);
+        semesterSelectedButton.restoreState(savedInstanceState);
+    }
+
+    private void handlingResult(int resultCode) {
+        switch (resultCode) {
+            case LookingJournalsCommunicator.GROUPS_LIST_QUERY: {
+                groupSelectorDialog.setGroups(jC.getSortedGroups());
+            }
+            break;
+            case LookingJournalsCommunicator.LIGHT_VISITS_QUERY: {
+                handleVisitsQuery();
+            }
+            break;
+        }
+    }
+
+    private void handleVisitsQuery() {
+        LightVisits lightVisits = jC.getLightVisits();
+        dateSlider.setData(lightVisits.getExercisesInfo());
+        tableWithMarks.createTable(lightVisits, jC.getStudents(selectedGroup));
+        studentList.setStudents(jC.getStudents(selectedGroup));
+        if (groupSelectorSeparateLine.getVisibility() == View.INVISIBLE) {
+            groupSelectorSeparateLine.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void handleSemesterClick() {
+        semesterSelectorDialog.show(getFragmentManager(), EMPTY);
+    }
+
+    private void handleGroupClick() {
+        if (groupSelector.isRefreshState()) {
+            jC.resendLastQuery(this);
+            groupSelector.disableRefreshState();
+        } else {
+            groupSelectorDialog.show(getFragmentManager(), EMPTY);
+        }
+    }
+
+    private void restoreLessonStudents() {
+        lessonsSelector.setLessonTitle(selectedLesson);
+        if (!selectedGroup.isEmpty() && selectedLesson != null) {
+            lessonsSelector.restoreState(jC.getLessons(selectedGroup, selectedSemester));
+            studentList.restoreState(jC.getStudents(selectedGroup));
+        } else {
+            groupSelectorSeparateLine.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void restoreTable(LightVisits lightVisits) {
+        if (lightVisits != null && selectedLesson != null) {
+            try {
+                tableWithMarks.restoreState(lightVisits, jC.getStudents(selectedGroup));
+                dateSlider.restoreState(lightVisits.getExercisesInfo());
+            } catch (NullPointerException ex) {
+                Logger.printError(ex, getClass());
+            }
+        }
     }
 
     private void sendVisitsQueryByGroupSelect(GroupLesson[] groupLessons) {
-        if (currentSelectedLesson.isEmpty()) {
-            journalsCommunicator.sendGroupVisitsLightQuery(this, groupLessons[0].getStringLessonID(), currentSelectedGroupID);
-        } else {
-            for (GroupLesson lesson : groupLessons) {
-                if (lesson.getShortName().equals(currentSelectedLesson)) {
-                    journalsCommunicator.sendGroupVisitsLightQuery(this, lesson.getStringLessonID(), currentSelectedGroupID);
-                    return;
-                }
+        lessonsSelector.setLessons(groupLessons);
+        for (GroupLesson lesson : groupLessons) {
+            if (lesson.equals(selectedLesson)) {
+                jC.sendGroupVisitsLightQuery(this, lesson);
+                return;
             }
         }
-        currentSelectedLessonID = groupLessons[0].getStringLessonID();
-        journalsCommunicator.sendGroupVisitsLightQuery(this, currentSelectedLessonID, currentSelectedGroupID);
-    }
-
-    @Override
-    public void lessonSelected(String lesson) {
-        if (currentSelectedLesson.equals(lesson)) {
-            return;
+        if (groupLessons.length != 0) {
+            selectedLesson = groupLessons[0];
+            jC.sendGroupVisitsLightQuery(this, selectedLesson);
         }
-        sendVisitsQueryByLessonSelect(lesson);
+        lessonsSelector.setLessonTitle(selectedLesson);
     }
 
-    private void sendVisitsQueryByLessonSelect(String lesson) {
-        GroupLesson[] currentGroupLessons = journalsCommunicator.getLessons(currentSelectedGroup);
-        for (GroupLesson gLesson : currentGroupLessons) {
-            if (gLesson.getShortName().equals(lesson)) {
-                currentSelectedLesson = gLesson.getShortName();
-                currentSelectedLessonID = gLesson.getStringLessonID();
+    private void sendVisitsQueryByLessonSelect(GroupLesson lesson) {
+        for (GroupLesson gLesson : jC.getLessons(selectedGroup, selectedSemester)) {
+            if (gLesson.equals(lesson)) {
+                selectedLesson = gLesson;
                 break;
             }
         }
-        journalsCommunicator.sendGroupVisitsLightQuery(this, currentSelectedLessonID, currentSelectedGroupID);
+        jC.sendGroupVisitsLightQuery(this, selectedLesson);
     }
-
-    @Override
-    public void dateSelected(String date) {
-        dateSelectorButton.setSelectedDate(date);
-        // TODO query
-        System.out.println(date);
-    }
-
-    private void handleDateButtonClick() {
-        dateSelectorDialog.show(getFragmentManager(), EMPTY_TAG);
-    }
-
-    private void handleGroupButtonClick() {
-        if (journalsCommunicator.getSortedGroups().length > 0) {
-            groupSelectorDialog.show(getFragmentManager(), EMPTY_TAG);
-        } else {
-            journalsCommunicator.resendLastQuery(this);
-            groupSelectorButton.disableRefreshState();
-        }
-    }
-
 }
 

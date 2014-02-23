@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
+import ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group;
 
 public class GroupSelectorButton extends Button {
 
@@ -23,8 +24,13 @@ public class GroupSelectorButton extends Button {
         setLayoutParams(new LinearLayout.LayoutParams(Config.getSelectorGroupWidth(), Config.getSelectorGroupHeight()));
     }
 
-    public void setSelectedGroup(String selectedGroup) {
-        GroupSelectorButton.selectedGroup = selectedGroup;
+    public void setSelectedGroup(Group group) {
+        selectedGroup = group.getStringGroupNumber();
+        setText(selectedGroup);
+    }
+
+    public void setSelectedGroup(String groupNumber) {
+        selectedGroup = groupNumber;
         setText(selectedGroup);
     }
 
