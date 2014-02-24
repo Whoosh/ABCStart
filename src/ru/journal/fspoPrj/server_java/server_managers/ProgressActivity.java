@@ -28,6 +28,10 @@ public class ProgressActivity extends Activity {
         progressBar.setVisibility(status);
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     @Nullable
     @Override
     public MainExecutor getLastNonConfigurationInstance() {

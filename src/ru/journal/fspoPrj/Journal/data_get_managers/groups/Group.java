@@ -1,29 +1,33 @@
-package ru.journal.fspoPrj.journal.data_get_managers.groups_list;
+package ru.journal.fspoPrj.journal.data_get_managers.groups;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Group implements Comparable<Group>, Serializable {
 
     private static final int LOW = -1;
     private static final int UPPER = 1;
     private static final int EQUALS = 0;
+    private static final int DEFAULT_SEMESTER_COUNT = 7;
 
     private final int groupNumber;
+    private int groupID;
+
     private Student[] students;
     private GroupLesson[] groupLessons;
-    private GroupLesson[] fistSemesterLessons;
-    private GroupLesson[] lastSemesterLessons;
+    private HashMap<Integer, GroupLesson[]> sGroupLesson;
 
     public Group(int groupNumber, JSONArray studentsList) {
         this.groupNumber = groupNumber;
+        this.sGroupLesson = new HashMap<>(DEFAULT_SEMESTER_COUNT);
         makeStudents(studentsList);
     }
 
@@ -48,6 +52,7 @@ public class Group implements Comparable<Group>, Serializable {
 
     public void setGroupLessons(JSONArray groupLessonsResponse) throws JSONException {
         this.groupLessons = new GroupLesson[groupLessonsResponse.length()];
+        makeGroupID(groupLessonsResponse);
         for (int i = 0; i < groupLessons.length; i++) {
             groupLessons[i] = new GroupLesson(groupLessonsResponse.getJSONObject(i));
         }
@@ -55,13 +60,17 @@ public class Group implements Comparable<Group>, Serializable {
     }
 
     private void makeSortedLesson() {
-        ArrayList<GroupLesson> firstBuffer = new ArrayList<>(groupLessons.length);
-        ArrayList<GroupLesson> lastBuffer = new ArrayList<>(groupLessons.length);
-        for (GroupLesson lesson : groupLessons) {
-            (((lesson.getISemester() & 1) == 0) ? firstBuffer : lastBuffer).add(lesson);
+        ArrayList<GroupLesson> buffer = new ArrayList<>(groupLessons.length);
+        for (int i = 0; i < groupLessons.length; i++) {
+            if (sGroupLesson.containsKey(groupLessons[i].getSemester())) continue;
+            for (int j = i, semester = groupLessons[i].getSemester(); j < groupLessons.length; j++) {
+                if (groupLessons[j].getSemester() == semester) {
+                    buffer.add(groupLessons[j]);
+                }
+            }
+            sGroupLesson.put(groupLessons[i].getSemester(), buffer.toArray(new GroupLesson[buffer.size()]));
+            buffer.clear();
         }
-        fistSemesterLessons = firstBuffer.toArray(new GroupLesson[firstBuffer.size()]);
-        lastSemesterLessons = lastBuffer.toArray(new GroupLesson[lastBuffer.size()]);
     }
 
     public GroupLesson[] getGroupLessons() {
@@ -69,7 +78,7 @@ public class Group implements Comparable<Group>, Serializable {
     }
 
     public GroupLesson[] getGroupLessons(int semester) {
-        return (semester & 1) == 0 ? fistSemesterLessons : lastSemesterLessons;
+        return sGroupLesson.containsKey(semester) ? sGroupLesson.get(semester) : new GroupLesson[0];
     }
 
     public String getStringGroupNumber() {
@@ -82,6 +91,10 @@ public class Group implements Comparable<Group>, Serializable {
 
     public Student[] getStudents() {
         return students;
+    }
+
+    public int getGroupID() {
+        return groupID;
     }
 
     @Override
@@ -99,14 +112,23 @@ public class Group implements Comparable<Group>, Serializable {
         return EQUALS;
     }
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "groupNumber=" + groupNumber +
-                ", students=" + Arrays.toString(students) +
-                ", groupLessons=" + Arrays.toString(groupLessons) +
-                ", fistSemesterLessons=" + Arrays.toString(fistSemesterLessons) +
-                ", lastSemesterLessons=" + Arrays.toString(lastSemesterLessons) +
-                '}';
+    private void makeGroupID(JSONArray groupLessonsResponse) throws JSONException {
+        if (groupLessonsResponse.length() > 0) {
+            this.groupID = new GroupLesson(groupLessonsResponse.getJSONObject(0)).getGroupID();
+        }
+    }
+
+    public int getFirstPossiblySemester() {
+        return makeSortedSemesters()[0];
+    }
+
+    public Integer[] getAllSemesters() {
+        return makeSortedSemesters();
+    }
+
+    private Integer[] makeSortedSemesters() {
+        Integer[] semesters = sGroupLesson.keySet().toArray(new Integer[sGroupLesson.size()]);
+        Arrays.sort(semesters);
+        return semesters;
     }
 }

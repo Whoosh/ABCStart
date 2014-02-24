@@ -2,10 +2,10 @@ package ru.journal.fspoPrj.journal.data_get_managers;
 
 import android.app.Activity;
 import android.content.Intent;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupLesson;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupsList;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupsListExecutor;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupLesson;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupsList;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupsListExecutor;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisitExecutor;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
 import ru.journal.fspoPrj.public_code.Logger;
@@ -19,14 +19,14 @@ public class LookingJournalsCommunicator extends ServerCommunicator {
     public static final int GROUPS_LIST_QUERY = 1;
     public static final int LIGHT_VISITS_QUERY = 2;
 
-    private static int lastQueryID;
+    protected static int lastQueryID;
 
-    private String groupsListKeyQuery;
-    private String lessonListKeyQuery;
-    private String lightVisitsQuery;
+    protected String groupsListKeyQuery;
+    protected String lessonListKeyQuery;
+    protected String lightVisitsQuery;
 
-    private GroupsList groupsList;
-    private LightVisits lightVisits;
+    protected GroupsList groupsList;
+    protected LightVisits lightVisits;
 
     public LookingJournalsCommunicator(Activity caller) {
         sendGroupListQuery(caller);
@@ -36,7 +36,7 @@ public class LookingJournalsCommunicator extends ServerCommunicator {
         super.sendQueryToServer(caller, makeQueryExecutor());
     }
 
-    private MainExecutor makeQueryExecutor() {
+    protected MainExecutor makeQueryExecutor() {
         switch (lastQueryID) {
             case GROUPS_LIST_QUERY: {
                 return new GroupsListExecutor(groupsListKeyQuery, lessonListKeyQuery, GROUPS_LIST_QUERY);
@@ -62,7 +62,7 @@ public class LookingJournalsCommunicator extends ServerCommunicator {
         }
     }
 
-    private void sendGroupListQuery(Activity caller) {
+    protected void sendGroupListQuery(Activity caller) {
         groupsListKeyQuery = APIQuery.GET_GROUP_LIST.getLink(getToken(), getYearID());
         lessonListKeyQuery = APIQuery.GET_GROUP_JOURNAL.getLink(getToken(), getYearID());
         lastQueryID = GROUPS_LIST_QUERY;
@@ -93,19 +93,19 @@ public class LookingJournalsCommunicator extends ServerCommunicator {
         return groupsList.getStudents(group.getGroupNumber());
     }
 
-    public GroupLesson[] getLessons(Group group) {
-        return groupsList.getLessons(group);
-    }
-
     public GroupLesson[] getLessons(Group group, int semester) {
         return groupsList.getLessons(group.getGroupNumber(), semester);
     }
 
-    public String getStringGroupID(Group group) {
-        return groupsList.getLessons(group)[0].getStringGroupID();
-    }
-
     public Group getGroup(int groupNumber) {
         return groupsList.getGroup(groupNumber);
+    }
+
+    public int getFirstPossiblySemester(Group selectedGroup) {
+        return groupsList.getFirstPossiblySemester(selectedGroup);
+    }
+
+    public Integer[] getAllSemesters(Group selectedGroup) {
+        return groupsList.getAllSemesters(selectedGroup.getGroupNumber());
     }
 }

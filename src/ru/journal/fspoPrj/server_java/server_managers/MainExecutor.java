@@ -132,9 +132,7 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
     }
 
     protected void stopThisOperation() {
-        setProgressStatus(false);
         progressActivity.setResult(ServerCommunicator.RESULT_FAIL);
-        progressActivity.finish();
     }
 
     private void setProgressStatus(Boolean progressStatus) {

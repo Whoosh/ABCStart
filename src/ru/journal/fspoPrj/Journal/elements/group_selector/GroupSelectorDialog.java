@@ -7,7 +7,6 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group;
 
 public class GroupSelectorDialog extends DialogFragment {
 

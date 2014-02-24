@@ -2,6 +2,7 @@ package ru.journal.fspoPrj.server_java.might_info;
 
 import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
+import ru.journal.fspoPrj.journal.TeacherJournalsActivity;
 import ru.journal.fspoPrj.main_menu.BugReportInformerActivity;
 import ru.journal.fspoPrj.user_profile.ProfileActivity;
 
@@ -10,7 +11,7 @@ public enum Functions {
     // WARNING Имена не могут быть одинаковыми
     // При внесении класса, незабыть добавить его в манифест !
 
-    LOOK_JOURNALS("Просмотр журнала", LookingJournalActivity.class, R.drawable.ic_journal),
+    LOOK_JOURNALS("Просмотр журналов групп", LookingJournalActivity.class, R.drawable.ic_journal),
 
     PROFILE("Мой профиль", ProfileActivity.class, R.drawable.ic_my_profile),
 
@@ -20,7 +21,7 @@ public enum Functions {
 
     RESULT_RATING("Итоговые оценки", BugReportInformerActivity.class, R.drawable.ic_result_rating),
 
-    LESSONS_MANAGER("Занятия", BugReportInformerActivity.class, R.drawable.ic_lessons),
+    LESSONS_MANAGER("Мои журналы", TeacherJournalsActivity.class, R.drawable.ic_lessons),
 
     SCHEDULE("Расписание", BugReportInformerActivity.class, R.drawable.ic_schedule),
 

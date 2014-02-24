@@ -6,10 +6,7 @@ import android.widget.Button;
 
 public class SemesterButton extends Button {
 
-    private int selectedSemester = 1;
-
-    public static final int FIRST = 1;
-    public static final int LAST = 2;
+    private int selectedSemester;
 
     public SemesterButton(Context context) {
         super(context);
@@ -18,7 +15,7 @@ public class SemesterButton extends Button {
 
     public void setSelectedSemester(int semester) {
         this.selectedSemester = semester;
-        setText((semester & 1) == 0 ? SemesterSelector.LAST : SemesterSelector.FIRST);
+        setText(SemesterSelector.SEMESTER + semester);
     }
 
     public void saveState(Bundle outState) {

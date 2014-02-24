@@ -3,6 +3,7 @@ package ru.journal.fspoPrj.server_java.server_managers;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
 import ru.journal.fspoPrj.server_java.server_info.CommunicationInfo;
 
 public abstract class ServerCommunicator {
@@ -46,4 +47,6 @@ public abstract class ServerCommunicator {
         intent.putExtra(SERVER_COMMUTATION_KEY, executor);
         caller.startActivityForResult(intent, REQUEST_CODE);
     }
+
+
 }

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
 
 public class GroupSelectorButton extends Button {
 
@@ -44,6 +44,10 @@ public class GroupSelectorButton extends Button {
 
     public boolean isRefreshState() {
         return getText().toString().equals(REFRESH);
+    }
+
+    public void removeGroupTitle() {
+        selectedGroup = DEFAULT_TITLE;
     }
 
     public void restoreState(Bundle savedInstanceState) {
