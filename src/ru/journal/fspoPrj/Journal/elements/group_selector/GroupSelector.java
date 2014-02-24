@@ -1,67 +1,53 @@
 package ru.journal.fspoPrj.journal.elements.group_selector;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
-import ru.journal.fspoPrj.journal.LookingJournalActivity;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
-
-import java.util.ArrayList;
 
 public class GroupSelector extends LinearLayout implements View.OnClickListener {
 
-    private ArrayList<String[]> courses;
     private GroupSelectorDialog groupSelectorDialog;
     private GroupSelectorDialog.GroupSelectedCallBack callBack;
+    private Activity caller;
 
-    public GroupSelector(LookingJournalActivity caller, String[] groups, GroupSelectorDialog dialog) {
+    public GroupSelector(Activity caller, String[] groups, GroupSelectorDialog dialog, GroupSelectorDialog.GroupSelectedCallBack callBack) {
         super(caller);
+        this.caller = caller;
         setGravity(Gravity.CENTER);
         setOrientation(VERTICAL);
         this.groupSelectorDialog = dialog;
-        this.callBack = caller.getGroupSelectorCallBack();
-        this.courses = makeCourseStructuring(groups);
+        this.callBack = callBack;
 
         addView(new HorizontalLine(caller, Color.BLACK, Config.getOnGroupDialogSeparateLineHeight()));
         addView(new HorizontalLine(caller, Color.TRANSPARENT, Config.getOnGroupDialogTransparentSeparateLineHeight()));
 
-        for (String[] course : courses) {
-            LinearLayout row = new LinearLayout(caller);
-            for (String group : course) {
-                GroupElement element = new GroupElement(caller, group);
-                element.setOnClickListener(this);
-                row.addView(element);
-                row.addView(new VerticalLine(caller, Color.TRANSPARENT, Config.getOnGroupDialogElementTransparentSeparateLineSize()));
-            }
-            addView(row);
-            addView(new HorizontalLine(caller, Color.TRANSPARENT, Config.getOnGroupDialogElementTransparentSeparateLineSize()));
-        }
-
-    }
-
-    private ArrayList<String[]> makeCourseStructuring(String[] groups) {
-        ArrayList<String> course = new ArrayList<>();
-        ArrayList<String[]> courses = new ArrayList<>();
-
-        course.add(groups[0]);
-        for (int i = 1; i < groups.length; i++) {
-            if (groups[i - 1].charAt(0) != groups[i].charAt(0)) {
-                courses.add(course.toArray(new String[course.size()]));
-                course.clear();
-            }
-            course.add(groups[i]);
-        }
-        courses.add(course.toArray(new String[course.size()]));
-        return courses;
+        setGroups(groups);
     }
 
     @Override
     public void onClick(View view) {
         groupSelectorDialog.dismiss();
-        callBack.groupHasSelected(((GroupElement) view).getGroup());
+        callBack.groupHasSelected(Integer.parseInt(((GroupElement) view).getGroup()));
     }
 
+    private void setGroups(String[] groups) {
+        LinearLayout row = new LinearLayout(caller);
+        for (int i = 0; i < groups.length - 1; i++) {
+            if (groups[i].charAt(0) == groups[i + 1].charAt(0)) {
+                row.addView(new GroupElement(caller, groups[i], this));
+                if (i + 1 == groups.length - 1) {
+                    row.addView(new GroupElement(caller, groups[i + 1], this));
+                    super.addView(row);
+                }
+            } else {
+                row.addView(new GroupElement(caller, groups[i], this));
+                super.addView(row);
+                row = new LinearLayout(caller);
+            }
+        }
+    }
 }

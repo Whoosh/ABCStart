@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.journal.data_get_managers.groups_list;
+package ru.journal.fspoPrj.journal.data_get_managers.groups;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,15 +59,20 @@ public class GroupsList implements Serializable {
         return groups.get(group).getStudents();
     }
 
-    public GroupLesson[] getLessons(Group group) {
-        return groups.get(group.getGroupNumber()).getGroupLessons();
-    }
-
     public GroupLesson[] getLessons(int group, int semester) {
         return groups.get(group).getGroupLessons(semester);
     }
 
     public Group getGroup(int groupNumber) {
         return groups.get(groupNumber);
+    }
+
+    public int getFirstPossiblySemester(Group selectedGroup) {
+        return groups.get(selectedGroup.getGroupNumber()).getFirstPossiblySemester();
+    }
+
+
+    public Integer[] getAllSemesters(int groupNumber) {
+        return groups.get(groupNumber).getAllSemesters();
     }
 }

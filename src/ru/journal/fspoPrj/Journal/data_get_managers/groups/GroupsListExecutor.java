@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.journal.data_get_managers.groups_list;
+package ru.journal.fspoPrj.journal.data_get_managers.groups;
 
 import android.content.Intent;
 import ru.journal.fspoPrj.server_java.server_managers.MainExecutor;
@@ -26,6 +26,5 @@ public class GroupsListExecutor extends MainExecutor {
         Intent result = new Intent();
         result.putExtra(groupListQuery, new GroupsList(results.remove(groupListQuery), results.remove(lessonsListQuery)));
         progressActivity.setResult(resultCode, result);
-        progressActivity.finish();
     }
 }

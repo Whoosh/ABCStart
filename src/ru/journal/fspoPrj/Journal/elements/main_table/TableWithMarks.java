@@ -13,14 +13,13 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class TableWithMarks extends LinearLayout {
 
     private Context context;
+    private Student[] students;
     private MScrollView scroller;
     private HashMap<Integer, Visit[]> visits;
-    private Student[] students;
     private LightExercisesInfo[] lightExercisesInfo;
 
     public TableWithMarks(Context context) {
@@ -70,10 +69,6 @@ public class TableWithMarks extends LinearLayout {
 
     public int getScrollerY() {
         return scroller.getScrollY();
-    }
-
-    public MScrollView getScroller() {
-        return scroller;
     }
 
     public void restoreState(LightVisits lightVisits, Student[] students) {

@@ -18,6 +18,7 @@ public class EvolutionCell extends View {
     private static final char ATTENTION = '!';
     private static final char PLUS = '+';
     private static final char NOTHING = 'н';
+    private static final char EMPTY_STUDENT_CELL_MARK = 'x';
 
     private static final int OFFSET;
     private static final int TRIANGLE_SIZE;
@@ -74,6 +75,11 @@ public class EvolutionCell extends View {
     private Bitmap createNewState(Visit visit, int stateBgColor) {
         Bitmap element = Bitmap.createBitmap(VIEW_PARAMS.width, VIEW_PARAMS.height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(element);
+        if (visit.isEmptyCell()) {
+            addBackground(canvas, Color.WHITE);
+            handleEmptyStudentCell(canvas);
+            return element;
+        }
         addBackground(canvas, stateBgColor);
         handleVisitNeeded(canvas, visit.getVisitNeed());
         handleVisitPoint(canvas, visit.getPoint(), visit.getMarkNeed(), visit.getDelay(), visit.getPresence());
@@ -81,6 +87,10 @@ public class EvolutionCell extends View {
         handleVisitPerformance(canvas, visit.getPerformance());
         handleVisitWeightRank(canvas, visit.getWeight());
         return element;
+    }
+
+    private void handleEmptyStudentCell(Canvas canvas) {
+        addStudentRank(canvas, Color.GRAY, EMPTY_STUDENT_CELL_MARK);
     }
 
     private void handleVisitWeightRank(Canvas canvas, int weight) {

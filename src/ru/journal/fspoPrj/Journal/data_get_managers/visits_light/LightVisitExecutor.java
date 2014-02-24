@@ -25,6 +25,5 @@ public class LightVisitExecutor extends MainExecutor {
         Intent intent = new Intent();
         intent.putExtra(lightVisitQuery, new LightVisits(results.remove(lightVisitQuery)));
         progressActivity.setResult(caller, intent);
-        progressActivity.finish();
     }
 }

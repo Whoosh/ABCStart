@@ -8,13 +8,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.journal.callbacks.LessonsSelector;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.data_get_managers.LookingJournalsCommunicator;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.Group;
-import ru.journal.fspoPrj.journal.data_get_managers.groups_list.GroupLesson;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
+import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupLesson;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
 import ru.journal.fspoPrj.journal.elements.data_slider.DateSlider;
 import ru.journal.fspoPrj.journal.elements.group_selector.GroupSelectorButton;
@@ -27,17 +26,16 @@ import ru.journal.fspoPrj.journal.elements.student_list.StudentList;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 
-public class LookingJournalActivity extends android.app.Activity implements View.OnTouchListener, View.OnClickListener
-        , GroupSelectorDialog.GroupSelectedCallBack, LessonsSelector.LessonSelectedCallBack , SemesterSelector.semesterCallBack {
+public class LookingJournalActivity extends android.app.Activity implements View.OnTouchListener, View.OnClickListener,
+        GroupSelectorDialog.GroupSelectedCallBack, LessonsSelector.LessonSelectedCallBack, SemesterSelector.semesterCallBack,
+        SemesterSelectorDialog.ClosedCallBack {
 
     private static final String EMPTY = "";
-    private static final String LESSONS_FOR_SEMESTER_FAIL_ERROR = "Нет предметов для выбранного семестра";
-
     private static LookingJournalsCommunicator jC; // TODO
     private static Group selectedGroup;
     private static GroupLesson selectedLesson;
 
-    private static int selectedSemester = 1;
+    private static int selectedSemester;
 
     private LessonsSelector lessonsSelector;
     private DateSlider dateSlider;
@@ -66,6 +64,8 @@ public class LookingJournalActivity extends android.app.Activity implements View
         groupSelectorSeparateLine = new HorizontalLine(this, Color.BLACK, Config.getJournalEndLineWidth());
         groupSelectorDialog = new GroupSelectorDialog();
         semesterSelectorDialog = new SemesterSelectorDialog();
+
+        semesterSelectorDialog.setCallBack(this);
 
         datePlusMatrix.addView(dateSlider);
         datePlusMatrix.addView(new HorizontalLine(this, Color.BLACK, Config.getJournalEndLineWidth()));
@@ -115,7 +115,8 @@ public class LookingJournalActivity extends android.app.Activity implements View
         jC = null;
         selectedLesson = null;
         selectedGroup = null;
-        selectedSemester = 1;
+        selectedSemester = 0;
+        groupSelector.removeGroupTitle();
         super.onBackPressed();
     }
 
@@ -152,9 +153,10 @@ public class LookingJournalActivity extends android.app.Activity implements View
         Group group = jC.getGroup(groupNumber);
         if (!selectedGroup.equals(group)) {
             selectedGroup = group;
+            semesterSelectorDialog.setAllPossiblySemesters(jC.getAllSemesters(group));
             groupSelector.setSelectedGroup(group);
-            if (jC.getLessons(group, selectedSemester).length == 0 && !selectedGroup.isEmpty()) {
-                selectedSemester = SemesterButton.FIRST;
+            if (jC.getLessons(group, selectedSemester).length == 0) {
+                selectedSemester = jC.getFirstPossiblySemester(selectedGroup);
                 semesterSelectedButton.setSelectedSemester(selectedSemester);
             }
             sendVisitsQueryByGroupSelect(jC.getLessons(group, selectedSemester));
@@ -163,10 +165,6 @@ public class LookingJournalActivity extends android.app.Activity implements View
 
     @Override
     public void semesterSelected(int semester) {
-        if (jC.getLessons(selectedGroup, semester).length == 0) {
-            Toast.makeText(this, LESSONS_FOR_SEMESTER_FAIL_ERROR, Toast.LENGTH_SHORT).show();
-            return;
-        }
         if (semester != selectedSemester) {
             selectedSemester = semester;
             semesterSelectedButton.setSelectedSemester(semester);
@@ -207,6 +205,16 @@ public class LookingJournalActivity extends android.app.Activity implements View
         semesterSelectedButton.restoreState(savedInstanceState);
     }
 
+    @Override
+    public void semesterDialogClosed() {
+        semesterSelectedButton.setEnabled(true);
+    }
+
+    @Override
+    public void semesterDialogOpened() {
+        semesterSelectedButton.setEnabled(false);
+    }
+
     private void handlingResult(int resultCode) {
         switch (resultCode) {
             case LookingJournalsCommunicator.GROUPS_LIST_QUERY: {
@@ -231,6 +239,7 @@ public class LookingJournalActivity extends android.app.Activity implements View
     }
 
     private void handleSemesterClick() {
+        semesterDialogOpened();
         semesterSelectorDialog.show(getFragmentManager(), EMPTY);
     }
 
@@ -288,5 +297,7 @@ public class LookingJournalActivity extends android.app.Activity implements View
         }
         jC.sendGroupVisitsLightQuery(this, selectedLesson);
     }
+
+
 }
 

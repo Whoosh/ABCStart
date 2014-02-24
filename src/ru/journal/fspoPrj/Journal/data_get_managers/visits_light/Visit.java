@@ -43,10 +43,16 @@ public class Visit implements Serializable {
 
     private int visitID;
     private int exercisesID;
+    private boolean emptyCell;
 
     public Visit(JSONObject element) {
         exercisesID = VisitKey.EXERCISE_ID.getIntValue(element);
-        if (element.names().length() == EMPTY_VISIT) return;
+        if (element.names().length() == EMPTY_VISIT) {
+            emptyCell = true;
+            return;
+        }
+        System.out.println(element.names().length());
+        System.out.println(element);
 
         visitID = VisitKey.VISIT_ID.getIntValue(element);
         visitNeed = VisitKey.VISIT_NEED.getIntValue(element);
@@ -110,6 +116,10 @@ public class Visit implements Serializable {
                 getDropout(),
                 getPresence(),
                 getWeight()};
+    }
+
+    public boolean isEmptyCell() {
+        return emptyCell;
     }
 
     private static enum VisitKey implements IKeyApi {

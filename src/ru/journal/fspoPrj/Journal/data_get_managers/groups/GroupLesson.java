@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.journal.data_get_managers.groups_list;
+package ru.journal.fspoPrj.journal.data_get_managers.groups;
 
 import org.json.JSONObject;
 import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
@@ -11,16 +11,14 @@ public class GroupLesson implements Serializable {
     private final int groupID;
     private final String name;
     private final String shortName;
-    private final String semester;
-    private final int iSemester;
+    private final int semester;
 
     public GroupLesson(JSONObject element) {
         this.lessonID = LessonKey.LESSON_ID.getIntValue(element);
         this.groupID = LessonKey.GROUP_ID.getIntValue(element);
         this.name = LessonKey.NAME.getStringValue(element);
         this.shortName = LessonKey.SHORT_NAME.getStringValue(element);
-        this.semester = LessonKey.SEMESTER.getStringValue(element);
-        this.iSemester = LessonKey.SEMESTER.getIntValue(element);
+        this.semester = LessonKey.SEMESTER.getIntValue(element);
     }
 
     public String getStringLessonID() {
@@ -29,10 +27,6 @@ public class GroupLesson implements Serializable {
 
     public String getStringGroupID() {
         return String.valueOf(getGroupID());
-    }
-
-    public int getISemester() {
-        return iSemester;
     }
 
     public int getLessonID() {
@@ -51,6 +45,10 @@ public class GroupLesson implements Serializable {
         return shortName;
     }
 
+    public int getSemester() {
+        return semester;
+    }
+
     @Override
     public boolean equals(Object element) {
         return this == element ||
@@ -63,8 +61,7 @@ public class GroupLesson implements Serializable {
         result = 31 * result + groupID;
         result = 31 * result + name.hashCode();
         result = 31 * result + shortName.hashCode();
-        result = 31 * result + semester.hashCode();
-        result = 31 * result + iSemester;
+        result = 31 * result + semester;
         return result;
     }
 
@@ -76,7 +73,6 @@ public class GroupLesson implements Serializable {
                 ", name='" + name + '\'' +
                 ", shortName='" + shortName + '\'' +
                 ", semester='" + semester + '\'' +
-                ", iSemester=" + iSemester +
                 '}';
     }
 

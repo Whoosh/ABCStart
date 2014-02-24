@@ -20,20 +20,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupElement.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/EditJournalsCommunicator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/TeacherJournalsActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/TeacherLessons.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/TeacherLessonsExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Functions.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Functions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorDialog.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/LookingJournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/LookingJournalsCommunicator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ProgressActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ProgressActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\data_get_managers\JournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/LookingJournalsCommunicator.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\data_get_managers\groups_list\Group.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/Group.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\data_get_managers\groups_list\GroupLesson.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupLesson.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\data_get_managers\groups_list\GroupsList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsList.java" />
+      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\data_get_managers\groups_list\GroupsListExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsListExecutor.java" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
     <ignored path="First_prj.iws" />
@@ -103,10 +116,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LookingJournalActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LookingJournalActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="19" selection-start="2310" selection-end="2310" vertical-scroll-proportion="0.6692913" vertical-offset="0" max-vertical-offset="1394">
+            <state line="208" column="0" selection-start="8405" selection-end="8405" vertical-scroll-proportion="0.0" vertical-offset="1027" max-vertical-offset="1513">
               <folding>
                 <element signature="method#initElements#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#onCreate#0;class#LookingJournalActivity#0" expanded="false" />
@@ -119,6 +132,8 @@
                 <element signature="method#onActivityResult#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#onSaveInstanceState#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#onRestoreInstanceState#0;class#LookingJournalActivity#0" expanded="false" />
+                <element signature="method#semesterDialogClosed#0;class#LookingJournalActivity#0" expanded="false" />
+                <element signature="method#semesterDialogOpened#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#handlingResult#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#handleVisitsQuery#0;class#LookingJournalActivity#0" expanded="false" />
                 <element signature="method#handleSemesterClick#0;class#LookingJournalActivity#0" expanded="false" />
@@ -132,24 +147,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableWithMarks.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java">
+      <file leaf-file-name="TeacherJournalsActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/TeacherJournalsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="15" selection-start="1748" selection-end="1748" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1411">
+            <state line="13" column="22" selection-start="456" selection-end="456" vertical-scroll-proportion="0.16049382" vertical-offset="143" max-vertical-offset="833">
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupSelector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="5" selection-start="2044" selection-end="2044" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="748">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setGroups#0;class#GroupSelector#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -158,7 +161,16 @@
       <file leaf-file-name="SemesterSelectorDialog.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+            <state line="36" column="0" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="986">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Group.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/Group.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="130" column="31" selection-start="4121" selection-end="4121" vertical-scroll-proportion="0.0" vertical-offset="2210" max-vertical-offset="2380">
               <folding />
             </state>
           </provider>
@@ -177,30 +189,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits/VisitExecuter.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits/VisitExecutor.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/ProfileInfo.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Teacher.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Human.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits/Exercises.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/JournalTabs.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ThemeManager.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/ExercisesLight.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visits.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/VisitsLight.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisit.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/keys_manager/IKeyApi.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/123" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/haha" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsListExecutor.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/data_get_managers/AuthorizationCommunicator.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/DateSelectorButton.java" />
@@ -209,11 +202,7 @@
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java" />
         <option value="$PROJECT_DIR$/res/values/val_elements_size.xml" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/JournalsCommunicator.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/LookingJournalsCommunicator.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupElement.java" />
@@ -223,11 +212,34 @@
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Student.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorDialog.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" />
-        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java" />
         <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/TeacherJournalsAcitivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Functions.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupLesson.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/TeacherJournalsActivity.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/TeacherLesson.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/EditJournalsCommunicator.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/tes" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/TeacherLessons.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/TeacherLessonsExecutor.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsListExecutor.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/LookingJournalsCommunicator.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ProgressActivity.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsList.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/Group.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/ss" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" />
+        <option value="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java" />
       </list>
     </option>
   </component>
@@ -315,7 +327,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -402,6 +413,54 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="server_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fspoPrj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ABCStart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fspoPrj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server_info" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fspoPrj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ABCStart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fspoPrj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="journal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -429,70 +488,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="head_selector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ABCStart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fspoPrj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="journal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="head_selector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="date_selector" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -531,6 +526,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -600,15 +596,15 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.First_prj.FirstActivitySettings" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.journal.fspoPrj" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\MainBranch\ABCStart\res\values-large" />
       <recent name="F:\MainBranch\ABCStart\res\drawable" />
       <recent name="F:\MainBranch\ABCStart\res\drawable\s" />
       <recent name="F:\MainBranchServerMix\ABCStart\res\values" />
       <recent name="F:\MainBranchServerMix\ABCStart\res\drawable" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="ru.journal.fspoPrj" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.fspoPrj">
@@ -1010,7 +1006,9 @@
       <workItem from="1392811585932" duration="20359000" />
       <workItem from="1392893032349" duration="12474000" />
       <workItem from="1393020641805" duration="9677000" />
-      <workItem from="1393082855986" duration="43307000" />
+      <workItem from="1393082855986" duration="44168000" />
+      <workItem from="1393173728538" duration="33162000" />
+      <workItem from="1393269986741" duration="4568000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1208,11 +1206,15 @@
       <created>1393110071991</created>
       <updated>1393110071991</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Nothing seriously">
+      <created>1393134293570</created>
+      <updated>1393134293571</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2490582000" />
+    <option name="totallyTimeSpent" value="2529173000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1240,33 +1242,33 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12917933" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29027355" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28517398" sideWeight="0.42535788" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19908814" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1762481" sideWeight="0.5746421" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18844984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1550152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3524229" sideWeight="0.47657394" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27963525" sideWeight="0.47657394" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29027355" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19908814" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28517398" sideWeight="0.42535788" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22340426" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.0075987843" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3524962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40015128" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24130106" sideWeight="0.5746421" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2218845" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22692889" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4012158" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1283,7 +1285,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="some Mights" />
     <MESSAGE value="Themes tests&#10;" />
     <MESSAGE value="Cells and Table refactoring" />
     <MESSAGE value="Some refactoring" />
@@ -1308,7 +1309,8 @@
     <MESSAGE value="fresh meat" />
     <MESSAGE value="fresh meat&#10;" />
     <MESSAGE value="LookingJournal, pre refactoring, last working version." />
-    <option name="LAST_COMMIT_MESSAGE" value="LookingJournal, pre refactoring, last working version." />
+    <MESSAGE value="Nothing seriously" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nothing seriously" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1334,484 +1336,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/lines/VerticalLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="373" selection-end="373" vertical-scroll-proportion="0.1440678" vertical-offset="0" max-vertical-offset="590" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="632" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/ProfileInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="5" selection-start="683" selection-end="683" vertical-scroll-proportion="0.5604396" vertical-offset="0" max-vertical-offset="935" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Teacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="11" selection-start="695" selection-end="695" vertical-scroll-proportion="0.8717949" vertical-offset="0" max-vertical-offset="663" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Human.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1176" selection-end="1176" vertical-scroll-proportion="1.0525328" vertical-offset="0" max-vertical-offset="1360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/JournalTabs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="11" selection-start="143" selection-end="143" vertical-scroll-proportion="0.15947467" vertical-offset="0" max-vertical-offset="901" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/elements/ThemeManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="5" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.79737335" vertical-offset="612" max-vertical-offset="1462" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/MainSettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="19" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.51031893" vertical-offset="0" max-vertical-offset="2023" />
-      </provider>
-    </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/app/Activity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="39" selection-start="3325" selection-end="3325" vertical-scroll-proportion="0.3326923" vertical-offset="1187" max-vertical-offset="5831" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="64" selection-start="1635" selection-end="1666" vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="1054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/keys_manager/IKeyApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="21" selection-start="557" selection-end="557" vertical-scroll-proportion="0.23632812" vertical-offset="219" max-vertical-offset="799" />
-      </provider>
-    </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/org/json/JSONObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.17034069" vertical-offset="0" max-vertical-offset="1717" />
-      </provider>
-    </entry>
-    <entry file="uml://MODULES/mdl-fspoPrj">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MODULES</ID>
-          <OriginalElement>mdl-fspoPrj</OriginalElement>
-          <nodes>
-            <node x="" y="">mdl-fspoPrj</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="55.0" y="14.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Test dependencies</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://Flash/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>Flash</ID>
-          <OriginalElement />
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.1" x="2204.0" y="811.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>PRIVATE</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="" y="">values-mcc260-ko</node>
-            <node x="" y="">values-mcc232-zh-rCN</node>
-            <node x="" y="">values-lt-rLT</node>
-            <node x="" y="">values-fr</node>
-            <node x="" y="">values-mcc232-zh-rTW</node>
-            <node x="" y="">values-da-rDK</node>
-            <node x="" y="">values-mcc262-cs</node>
-            <node x="" y="">values-fa</node>
-            <node x="" y="">values-mcc204-ru</node>
-            <node x="" y="">values-hu-rHU</node>
-            <node x="" y="">values-mcc262-da</node>
-            <node x="" y="">values-fi</node>
-            <node x="" y="">drawable-en-mdpi</node>
-            <node x="" y="">values-mcc230-nl</node>
-            <node x="" y="">values-mcc234-fr</node>
-            <node x="" y="">values-ro-rRO</node>
-            <node x="" y="">values-it-rCH</node>
-            <node x="" y="">values-mcc262-de</node>
-            <node x="" y="">values-mcc262-sv</node>
-            <node x="" y="">values-fi-rFI</node>
-            <node x="" y="">values-en-rNZ</node>
-            <node x="" y="">drawable-nodpi</node>
-            <node x="" y="">values-in-rID</node>
-            <node x="" y="">drawable-land-ldpi</node>
-            <node x="" y="">raw-fr</node>
-            <node x="" y="">values-es-rES</node>
-            <node x="" y="">values-hr-rHR</node>
-            <node x="" y="">values-mcc232-ja</node>
-            <node x="" y="">values-mcc232-it</node>
-            <node x="" y="">values-mcc234-el</node>
-            <node x="" y="">values-mcc204-sv</node>
-            <node x="" y="">values-large</node>
-            <node x="" y="">xml-mdpi</node>
-            <node x="" y="">values-mcc262-tr</node>
-            <node x="" y="">values-mcc234-es</node>
-            <node x="" y="">raw-fi</node>
-            <node x="" y="">raw-it</node>
-            <node x="" y="">res</node>
-            <node x="" y="">raw-iw</node>
-            <node x="" y="">values-zh-rTW</node>
-            <node x="" y="">values-mcc262-el</node>
-            <node x="" y="">drawable-xlarge-nodpi</node>
-            <node x="" y="">values-zh-rCN</node>
-            <node x="" y="">layout-land</node>
-            <node x="" y="">raw-ja</node>
-            <node x="" y="">values-mcc260-it</node>
-            <node x="" y="">values-mcc262-es</node>
-            <node x="" y="">values-vi</node>
-            <node x="" y="">values-uk</node>
-            <node x="" y="">values-mcc262-zh-rCN</node>
-            <node x="" y="">drawable-hdpi</node>
-            <node x="" y="">values-mcc204-es-rUS</node>
-            <node x="" y="">values-mcc230-pl</node>
-            <node x="" y="">values-cs-rCZ</node>
-            <node x="" y="">values-mcc260-ja</node>
-            <node x="" y="">values-mcc204-tr</node>
-            <node x="" y="">values-de</node>
-            <node x="" y="">values-nl-rBE</node>
-            <node x="" y="">values-mcc262-zh-rTW</node>
-            <node x="" y="">values-da</node>
-            <node x="" y="">raw-hu</node>
-            <node x="" y="">values-mcc204-cs</node>
-            <node x="" y="">values-mcc230-pt</node>
-            <node x="" y="">values-mcc260-es-rUS</node>
-            <node x="" y="">values-el</node>
-            <node x="" y="">values-es</node>
-            <node x="" y="">drawable-land-mdpi</node>
-            <node x="" y="">values-mcc262-fr</node>
-            <node x="" y="">values-tl</node>
-            <node x="" y="">values-mcc204-de</node>
-            <node x="" y="">values-mcc230-pt-rPT</node>
-            <node x="" y="">values-mcc230-zh-rTW</node>
-            <node x="" y="">values-tr</node>
-            <node x="" y="">values-mcc262-es-rUS</node>
-            <node x="" y="">values-el-rGR</node>
-            <node x="" y="">values-mcc204-da</node>
-            <node x="" y="">com</node>
-            <node x="" y="">raw-pt-rBR</node>
-            <node x="" y="">values-pt-rPT</node>
-            <node x="" y="">raw-cs</node>
-            <node x="" y="">values-de-rAT</node>
-            <node x="" y="">values-sv-rSE</node>
-            <node x="" y="">values-mcc234-tr</node>
-            <node x="" y="">values-mcc260-pl</node>
-            <node x="" y="">raw-ru</node>
-            <node x="" y="">values</node>
-            <node x="" y="">javax</node>
-            <node x="" y="">values-mcc204-nl</node>
-            <node x="" y="">values-ja</node>
-            <node x="" y="">raw-rm</node>
-            <node x="" y="">values-de-rDE</node>
-            <node x="" y="">values-fr-rFR</node>
-            <node x="" y="">raw-th</node>
-            <node x="" y="">values-mcc204-zh-rCN</node>
-            <node x="" y="">values-nl-rNL</node>
-            <node x="" y="">values-mcc230-ru</node>
-            <node x="" y="">xml</node>
-            <node x="" y="">values-mcc260-pt</node>
-            <node x="" y="">values-mcc232-nl</node>
-            <node x="" y="">values-en-rZA</node>
-            <node x="" y="">assets</node>
-            <node x="" y="">values-ko</node>
-            <node x="" y="">values-de-rCH</node>
-            <node x="" y="">ru</node>
-            <node x="" y="">values-mcc204-zh-rTW</node>
-            <node x="" y="">raw</node>
-            <node x="" y="">values-land</node>
-            <node x="" y="">android</node>
-            <node x="" y="">values-mcc262-it</node>
-            <node x="" y="">values-hu</node>
-            <node x="" y="">raw-es</node>
-            <node x="" y="">values-hr</node>
-            <node x="" y="">values-mcc230-de</node>
-            <node x="" y="">values-mcc234-ru</node>
-            <node x="" y="">values-mcc230-sv</node>
-            <node x="" y="">values-mcc262-ja</node>
-            <node x="" y="">values-mcc204-pl</node>
-            <node x="" y="">values-mcc230-tr</node>
-            <node x="" y="">values-uk-rUA</node>
-            <node x="" y="">values-mcc204-pt</node>
-            <node x="" y="">values-mcc450-ko</node>
-            <node x="" y="">raw-tr</node>
-            <node x="" y="">values-mcc234-da</node>
-            <node x="" y="">values-mcc234-de</node>
-            <node x="" y="">values-iw</node>
-            <node x="" y="">values-mcc260-nl</node>
-            <node x="" y="">values-it</node>
-            <node x="" y="">junit</node>
-            <node x="" y="">values-in</node>
-            <node x="" y="">values-mcc234-sv</node>
-            <node x="" y="">META-INF</node>
-            <node x="" y="">values-tl-rPH</node>
-            <node x="" y="">animator</node>
-            <node x="" y="">values-mcc230-da</node>
-            <node x="" y="">values-mcc234-cs</node>
-            <node x="" y="">values-mcc232-ko</node>
-            <node x="" y="">color</node>
-            <node x="" y="">raw-da</node>
-            <node x="" y="">values-mcc230-cs</node>
-            <node x="" y="">java</node>
-            <node x="" y="">raw-de</node>
-            <node x="" y="">values-mcc204-ko</node>
-            <node x="" y="">values-ca-rES</node>
-            <node x="" y="">values-mcc260-cs</node>
-            <node x="" y="">drawable</node>
-            <node x="" y="">values-port-mdpi</node>
-            <node x="" y="">xml-land</node>
-            <node x="" y="">values-fr-rCH</node>
-            <node x="" y="">values-mcc232-es-rUS</node>
-            <node x="" y="">values-mcc260-tr</node>
-            <node x="" y="">values-tr-rTR</node>
-            <node x="" y="">values-mcc260</node>
-            <node x="" y="">values-mcc230-el</node>
-            <node x="" y="">values-mcc262</node>
-            <node x="" y="">values-mcc234-pl</node>
-            <node x="" y="">values-mcc232-pl</node>
-            <node x="" y="">values-mcc230-es</node>
-            <node x="" y="">values-it-rIT</node>
-            <node x="" y="">values-mcc232-pt</node>
-            <node x="" y="">values-mcc234-zh-rCN</node>
-            <node x="" y="">raw-zh-rCN</node>
-            <node x="" y="">values-pt-rBR</node>
-            <node x="" y="">raw-nl</node>
-            <node x="" y="">menu</node>
-            <node x="" y="">values-en-rGB</node>
-            <node x="" y="">values-fr-rCA</node>
-            <node x="" y="">values-mcc234-pt</node>
-            <node x="" y="">xml-xlarge</node>
-            <node x="" y="">values-nl</node>
-            <node x="" y="">interpolator</node>
-            <node x="" y="">values-mcc204-ja</node>
-            <node x="" y="">xml-en</node>
-            <node x="" y="">values-pl-rPL</node>
-            <node x="" y="">values-mcc260-de</node>
-            <node x="" y="">values-mcc262-ko</node>
-            <node x="" y="">values-mcc260-sv</node>
-            <node x="" y="">values-mcc260-da</node>
-            <node x="" y="">raw-ar</node>
-            <node x="" y="">values-mcc204-it</node>
-            <node x="" y="">values-mcc230-fr</node>
-            <node x="" y="">drawable-land-hdpi</node>
-            <node x="" y="">anim</node>
-            <node x="" y="">values-mcc204-pt-rPT</node>
-            <node x="" y="">values-mcc230-zh-rCN</node>
-            <node x="" y="">values-fr-rBE</node>
-            <node x="" y="">build</node>
-            <node x="" y="">values-ar-rEG</node>
-            <node x="" y="">org</node>
-            <node x="" y="">values-th-rTH</node>
-            <node x="" y="">values-mcc260-ru</node>
-            <node x="" y="">values-mcc234-nl</node>
-            <node x="" y="">mipmap-ldpi</node>
-            <node x="" y="">values-mcc234-pt-rPT</node>
-            <node x="" y="">values-hi-rIN</node>
-            <node x="" y="">values-mcc230-es-rUS</node>
-            <node x="" y="">values-nb</node>
-            <node x="" y="">raw-pl</node>
-            <node x="" y="">values-en-rIE</node>
-            <node x="" y="">values-mcc234-zh-rTW</node>
-            <node x="" y="">values-mcc232-ru</node>
-            <node x="" y="">values-mcc262-nl</node>
-            <node x="" y="">values-en-rIN</node>
-            <node x="" y="">layout-port</node>
-            <node x="" y="">values-xlarge-land</node>
-            <node x="" y="">values-lt</node>
-            <node x="" y="">values-lv</node>
-            <node x="" y="">drawable-mdpi</node>
-            <node x="" y="">values-sr-rRS</node>
-            <node x="" y="">values-nb-rNO</node>
-            <node x="" y="">values-sv</node>
-            <node x="" y="">values-mcc260-pt-rPT</node>
-            <node x="" y="">mipmap-mdpi</node>
-            <node x="" y="">drawable-xlarge-mdpi</node>
-            <node x="" y="">values-sr</node>
-            <node x="" y="">raw-ko</node>
-            <node x="" y="">layout-xlarge</node>
-            <node x="" y="">values-mcc234-ko</node>
-            <node x="" y="">values-mcc232-sv</node>
-            <node x="" y="">values-mcc232-fr</node>
-            <node x="" y="">values-ru-rRU</node>
-            <node x="" y="">values-sl</node>
-            <node x="" y="">values-mcc230-ja</node>
-            <node x="" y="">values-sk</node>
-            <node x="" y="">values-bg-rBG</node>
-            <node x="" y="">values-mcc204-fr</node>
-            <node x="" y="">values-de-rLI</node>
-            <node x="" y="">values-mcc230-it</node>
-            <node x="" y="">values-ko-rKR</node>
-            <node x="" y="">values-th</node>
-            <node x="" y="">values-en-rSG</node>
-            <node x="" y="">values-en-rAU</node>
-            <node x="" y="">values-mcc232-tr</node>
-            <node x="" y="">values-bg</node>
-            <node x="" y="">values-mcc232-pt-rPT</node>
-            <node x="" y="">nativeLibs</node>
-            <node x="" y="">values-mcc262-pt</node>
-            <node x="" y="">values-mcc234-es-rUS</node>
-            <node x="" y="">values-mcc234</node>
-            <node x="" y="">values-ca</node>
-            <node x="" y="">values-ru</node>
-            <node x="" y="">values-mcc232-el</node>
-            <node x="" y="">values-ro</node>
-            <node x="" y="">values-mcc262-pl</node>
-            <node x="" y="">values-rm-rCH</node>
-            <node x="" y="">values-rm</node>
-            <node x="" y="">values-en-rCA</node>
-            <node x="" y="">values-mcc232-es</node>
-            <node x="" y="">values-mcc260-zh-rCN</node>
-            <node x="" y="">values-mcc204-es</node>
-            <node x="" y="">values-cs</node>
-            <node x="" y="">values-lv-rLV</node>
-            <node x="" y="">values-iw-rIL</node>
-            <node x="" y="">drawable-en-hdpi</node>
-            <node x="" y="">values-xlarge</node>
-            <node x="" y="">values-mcc204-el</node>
-            <node x="" y="">values-mcc232</node>
-            <node x="" y="">values-mcc230</node>
-            <node x="" y="">values-mcc204</node>
-            <node x="" y="">values-ar-rIL</node>
-            <node x="" y="">values-mcc234-it</node>
-            <node x="" y="">values-ja-rJP</node>
-            <node x="" y="">values-es-rUS</node>
-            <node x="" y="">values-mcc262-pt-rPT</node>
-            <node x="" y="">raw-zh-rTW</node>
-            <node x="" y="">values-mcc260-es</node>
-            <node x="" y="">values-sl-rSI</node>
-            <node x="" y="">values-en-rUS</node>
-            <node x="" y="">mipmap-hdpi</node>
-            <node x="" y="">values-mcc234-ja</node>
-            <node x="" y="">values-mcc260-el</node>
-            <node x="" y="">layout</node>
-            <node x="" y="">values-mcc260-zh-rTW</node>
-            <node x="" y="">values-mcc262-ru</node>
-            <node x="" y="">values-mcc230-ko</node>
-            <node x="" y="">values-vi-rVN</node>
-            <node x="" y="">drawable-en-ldpi</node>
-            <node x="" y="">drawable-xlarge-hdpi</node>
-            <node x="" y="">values-pt</node>
-            <node x="" y="">values-mcc232-cs</node>
-            <node x="" y="">dalvik</node>
-            <node x="" y="">values-pl</node>
-            <node x="" y="">values-ar</node>
-            <node x="" y="">values-mcc260-fr</node>
-            <node x="" y="">drawable-ldpi</node>
-            <node x="" y="">raw-en-rGB</node>
-            <node x="" y="">values-mcc232-de</node>
-            <node x="" y="">values-sk-rSK</node>
-            <node x="" y="">values-mcc232-da</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.6" x="1754.0" y="1746.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/ru.journal.fspoPrj">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>ru.journal.fspoPrj</OriginalElement>
-          <nodes>
-            <node x="" y="">ru.journal.fspoPrj.R</node>
-            <node x="" y="">ru.journal.fspoPrj.user_profile</node>
-            <node x="" y="">ru.journal.fspoPrj.Manifest.permission_group</node>
-            <node x="" y="">ru.journal.fspoPrj.public_code</node>
-            <node x="" y="">ru.journal.fspoPrj.login_form</node>
-            <node x="" y="">ru.journal.fspoPrj.R.style</node>
-            <node x="" y="">ru.journal.fspoPrj.R.drawable</node>
-            <node x="" y="">ru.journal.fspoPrj.R.dimen</node>
-            <node x="" y="">ru.journal.fspoPrj.Manifest.permission</node>
-            <node x="" y="">ru.journal.fspoPrj.Manifest</node>
-            <node x="" y="">ru.journal.fspoPrj.journal</node>
-            <node x="" y="">ru.journal.fspoPrj.R.integer</node>
-            <node x="" y="">ru.journal.fspoPrj.BuildConfig</node>
-            <node x="" y="">ru.journal.fspoPrj.server_java</node>
-            <node x="" y="">ru.journal.fspoPrj.settings_form</node>
-            <node x="" y="">ru.journal.fspoPrj.main_menu</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="175.0" y="561.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Constructors</Category>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="51" selection-start="497" selection-end="497" vertical-scroll-proportion="0.4187192" vertical-offset="0" max-vertical-offset="850">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#898#899#0" expanded="false" />
-            <element signature="e#934#935#0" expanded="false" />
-            <element signature="method#makeStudentsVisits#0;class#LightVisits#0" expanded="false" />
-            <element signature="method#makeStudentVisits#0;class#LightVisits#0" expanded="false" />
-            <element signature="method#makeExercisesInfo#0;class#LightVisits#0" expanded="false" />
-            <element signature="method#makeTeachers#0;class#LightVisits#0" expanded="false" />
-            <element signature="class#VisitsKey#0;class#LightVisits#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="61" selection-start="1441" selection-end="1441" vertical-scroll-proportion="-0.035416666" vertical-offset="595" max-vertical-offset="2074" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="34" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.67061144" vertical-offset="0" max-vertical-offset="507">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java">
@@ -1822,20 +1349,6 @@
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/data_get_managers/AuthorizationCommunicator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="55" selection-start="916" selection-end="916" vertical-scroll-proportion="0.41734862" vertical-offset="0" max-vertical-offset="1173" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="67" selection-start="1423" selection-end="1423" vertical-scroll-proportion="0.71890146" vertical-offset="218" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="763" selection-end="763" vertical-scroll-proportion="0.6993671" vertical-offset="0" max-vertical-offset="2227">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java">
@@ -1868,9 +1381,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="32" selection-start="485" selection-end="485" vertical-scroll-proportion="0.22628951" vertical-offset="0" max-vertical-offset="601">
-          <folding />
-        </state>
+        <state line="13" column="32" selection-start="485" selection-end="485" vertical-scroll-proportion="0.22628951" vertical-offset="0" max-vertical-offset="601" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/Logger.java">
@@ -1880,44 +1391,190 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="53" selection-start="627" selection-end="627" vertical-scroll-proportion="0.22753346" vertical-offset="0" max-vertical-offset="2397">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsListExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="48" selection-start="336" selection-end="336" vertical-scroll-proportion="0.13001911" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupsList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2614" selection-end="2614" vertical-scroll-proportion="2.037328" vertical-offset="0" max-vertical-offset="1224">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/LookingJournalsCommunicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="105" selection-start="3032" selection-end="3032" vertical-scroll-proportion="0.38976377" vertical-offset="839" max-vertical-offset="1751">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="35" selection-start="510" selection-end="510" vertical-scroll-proportion="0.36811024" vertical-offset="0" max-vertical-offset="508">
+        <state line="16" column="35" selection-start="510" selection-end="510" vertical-scroll-proportion="0.36811024" vertical-offset="0" max-vertical-offset="508" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="542" selection-end="542" vertical-scroll-proportion="0.13385826" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/widget/LinearLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.2007874" vertical-offset="0" max-vertical-offset="1530" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="38" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.9035433" vertical-offset="0" max-vertical-offset="986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="-0.56889766" vertical-offset="357" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="458" selection-end="458" vertical-scroll-proportion="0.13449366" vertical-offset="0" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="316" selection-end="316" vertical-scroll-proportion="0.10759494" vertical-offset="0" max-vertical-offset="1054" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/JournalTabs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="11" selection-start="143" selection-end="143" vertical-scroll-proportion="0.03164557" vertical-offset="65" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="15" selection-start="1748" selection-end="1748" vertical-scroll-proportion="0.9738134" vertical-offset="0" max-vertical-offset="1207">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/MenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="29" selection-start="730" selection-end="730" vertical-scroll-proportion="0.25040916" vertical-offset="0" max-vertical-offset="1360" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Tools/ToolKitsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="430" selection-end="430" vertical-scroll-proportion="0.1613924" vertical-offset="0" max-vertical-offset="986" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="5" selection-start="2044" selection-end="2044" vertical-scroll-proportion="0.8836834" vertical-offset="65" max-vertical-offset="748" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/main_menu/elements/ItemMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="40" selection-start="895" selection-end="895" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Functions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="631" selection-end="631" vertical-scroll-proportion="0.33406115" vertical-offset="51" max-vertical-offset="867">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Tools/Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="22" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="64" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/content/Intent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="353" column="34" selection-start="25298" selection-end="25298" vertical-scroll-proportion="-0.629717" vertical-offset="6251" max-vertical-offset="7701" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/TeacherLessons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="62" selection-start="1259" selection-end="1259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#makeJsonObjLesson#0;class#TeacherLessons#0" expanded="false" />
+            <element signature="method#toString#0;class#TeacherLessons#0" expanded="false" />
+            <element signature="class#TeacherLesson#0;class#TeacherLessons#0" expanded="false" />
+            <element signature="class#TeacherLessonKey#0;class#TeacherLessons#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="51" selection-start="994" selection-end="994" vertical-scroll-proportion="0.6712329" vertical-offset="29" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsListExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="55" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.69634706" vertical-offset="69" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="22" selection-start="493" selection-end="493" vertical-scroll-proportion="-0.70776254" vertical-offset="395" max-vertical-offset="2363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/teacher_lessons/TeacherLessonsExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="48" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="833">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/EditJournalsCommunicator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="47" selection-start="1512" selection-end="1512" vertical-scroll-proportion="1.4444444" vertical-offset="0" max-vertical-offset="1037">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupLesson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="47" selection-start="749" selection-end="749" vertical-scroll-proportion="-0.08510638" vertical-offset="341" max-vertical-offset="1564">
+          <folding>
+            <element signature="method#toString#0;class#GroupLesson#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="0" selection-start="1617" selection-end="1617" vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/java/util/Arrays.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="23" selection-start="6707" selection-end="6707" vertical-scroll-proportion="-1.0752509" vertical-offset="3193" max-vertical-offset="3791" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="1" selection-start="801" selection-end="801" vertical-scroll-proportion="0.720339" vertical-offset="0" max-vertical-offset="590">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/callbacks/LessonsSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.93700784" vertical-offset="0" max-vertical-offset="884">
+        <state line="33" column="16" selection-start="1140" selection-end="1140" vertical-scroll-proportion="0.55482817" vertical-offset="18" max-vertical-offset="884">
           <folding>
             <element signature="method#LessonsSelector#0;class#LessonsSelector#0" expanded="false" />
             <element signature="method#setLessons#0;class#LessonsSelector#0" expanded="false" />
@@ -1934,120 +1591,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterButton.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ProgressActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="315" selection-end="315" vertical-scroll-proportion="0.3011811" vertical-offset="0" max-vertical-offset="595">
+        <state line="31" column="23" selection-start="952" selection-end="952" vertical-scroll-proportion="0.70961887" vertical-offset="0" max-vertical-offset="1088">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/student_list/StudentList.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/LookingJournalsCommunicator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="462" selection-end="462" vertical-scroll-proportion="0.16732283" vertical-offset="0" max-vertical-offset="697">
+        <state line="104" column="41" selection-start="3929" selection-end="3929" vertical-scroll-proportion="2.7767694" vertical-offset="0" max-vertical-offset="1751">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/data_slider/DateSlider.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="542" selection-end="542" vertical-scroll-proportion="0.13385826" vertical-offset="0" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/Group.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="16" selection-start="581" selection-end="581" vertical-scroll-proportion="0.36811024" vertical-offset="0" max-vertical-offset="1598">
+        <state line="70" column="67" selection-start="2705" selection-end="2705" vertical-scroll-proportion="1.6969147" vertical-offset="0" max-vertical-offset="1173">
           <folding>
-            <element signature="method#getStringGroupNumber#0;class#Group#0" expanded="false" />
-            <element signature="method#toString#0;class#Group#0" expanded="false" />
+            <element signature="method#getSortedGroups#0;class#GroupsList#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/widget/LinearLayout.class">
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/Group.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.2007874" vertical-offset="0" max-vertical-offset="1530">
+        <state line="130" column="31" selection-start="4121" selection-end="4121" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/SDKAnd/SDK/sdk/platforms/android-11/android.jar!/android/app/Fragment.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="25" selection-start="1883" selection-end="1883" vertical-scroll-proportion="0.33271375" vertical-offset="569" max-vertical-offset="2295" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="42" selection-start="673" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="51" selection-start="1420" selection-end="1420" vertical-scroll-proportion="0.9505376" vertical-offset="408" max-vertical-offset="2210">
+          <folding>
+            <element signature="method#getAllStates#0;class#Visit#0" expanded="false" />
+            <element signature="e#2988#2989#0" expanded="true" />
+            <element signature="e#3020#3021#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="46" selection-start="923" selection-end="923" vertical-scroll-proportion="-1.3892473" vertical-offset="918" max-vertical-offset="4233">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="319" selection-end="319" vertical-scroll-proportion="0.02952756" vertical-offset="53" max-vertical-offset="1122">
+        <state line="9" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="-1.308642" vertical-offset="704" max-vertical-offset="1190">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups_list/GroupLesson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="-0.77362204" vertical-offset="461" max-vertical-offset="969">
-          <folding>
-            <element signature="method#equals#0;class#GroupLesson#0" expanded="false" />
-            <element signature="method#hashCode#0;class#GroupLesson#0" expanded="false" />
-            <element signature="method#toString#0;class#GroupLesson#0" expanded="false" />
-            <element signature="class#LessonKey#0;class#GroupLesson#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="33" selection-start="754" selection-end="754" vertical-scroll-proportion="0.46850392" vertical-offset="0" max-vertical-offset="731">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelectorDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="38" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.9035433" vertical-offset="0" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/group_selector/GroupSelector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="5" selection-start="2044" selection-end="2044" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="748">
+        <state line="31" column="35" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.52469134" vertical-offset="0" max-vertical-offset="493">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setGroups#0;class#GroupSelector#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/head_selector/date_selector/SemesterSelectorDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="-0.56889766" vertical-offset="357" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/custom_cell/EvolutionCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="490" selection-end="490" vertical-scroll-proportion="0.16732283" vertical-offset="0" max-vertical-offset="4063">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/elements/main_table/TableWithMarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="15" selection-start="1748" selection-end="1748" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1411">
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#SemesterSelector#0;class#SemesterSelector#0" expanded="false" />
+            <element signature="method#onClick#0;class#SemesterSelector#0" expanded="false" />
+            <element signature="method#callBackSemesterIndex#0;class#SemesterSelector#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/LookingJournalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="19" selection-start="2310" selection-end="2310" vertical-scroll-proportion="0.6692913" vertical-offset="0" max-vertical-offset="1394">
+        <state line="208" column="0" selection-start="8405" selection-end="8405" vertical-scroll-proportion="0.0" vertical-offset="1027" max-vertical-offset="1513">
           <folding>
             <element signature="method#initElements#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#onCreate#0;class#LookingJournalActivity#0" expanded="false" />
@@ -2060,6 +1691,8 @@
             <element signature="method#onActivityResult#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#onSaveInstanceState#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#onRestoreInstanceState#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#semesterDialogClosed#0;class#LookingJournalActivity#0" expanded="false" />
+            <element signature="method#semesterDialogOpened#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#handlingResult#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#handleVisitsQuery#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#handleSemesterClick#0;class#LookingJournalActivity#0" expanded="false" />
@@ -2068,6 +1701,15 @@
             <element signature="method#restoreTable#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#sendVisitsQueryByGroupSelect#0;class#LookingJournalActivity#0" expanded="false" />
             <element signature="method#sendVisitsQueryByLessonSelect#0;class#LookingJournalActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/TeacherJournalsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="22" selection-start="456" selection-end="456" vertical-scroll-proportion="0.16049382" vertical-offset="143" max-vertical-offset="833">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
