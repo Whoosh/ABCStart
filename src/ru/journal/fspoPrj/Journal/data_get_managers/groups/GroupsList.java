@@ -3,22 +3,25 @@ package ru.journal.fspoPrj.journal.data_get_managers.groups;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLessons;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class GroupsList implements Serializable {
-
+    // TODO
     private static final String GROUPS_LIST_KEY = "groupsList";
     private static final String GROUPS_JOURNALS_KEY = "groupsJournals";
     private static final int ANY_STUDENT_HERE = 1;
+    private static final int DEFAULT_GROUP_COUNT = 24;
 
     private HashMap<Integer, Group> groups;
 
     public GroupsList(String groupsListResponse, String groupsJournalResponse) {
-        groups = new HashMap<>();
+        groups = new HashMap<>(DEFAULT_GROUP_COUNT);
         try {
             JSONObject groupsList = new JSONObject(groupsListResponse).getJSONObject(GROUPS_LIST_KEY);
             JSONArray groupsNumberName = groupsList.names();
@@ -74,5 +77,13 @@ public class GroupsList implements Serializable {
 
     public Integer[] getAllSemesters(int groupNumber) {
         return groups.get(groupNumber).getAllSemesters();
+    }
+
+    public void removeNonTeacherLessons(TeacherLessons teacherLessons) {
+        for (Iterator<Map.Entry<Integer, Group>> iterator = groups.entrySet().iterator(); iterator.hasNext(); ) {
+            if (!iterator.next().getValue().hasTeacherLessons(teacherLessons)) {
+                iterator.remove();
+            }
+        }
     }
 }

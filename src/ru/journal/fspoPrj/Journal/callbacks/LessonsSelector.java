@@ -1,9 +1,9 @@
 package ru.journal.fspoPrj.journal.callbacks;
 
-import android.app.Activity;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+import ru.journal.fspoPrj.journal.JournalActivity;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupLesson;
 import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.SemesterButton;
 import ru.journal.fspoPrj.public_code.Logger;
@@ -13,8 +13,9 @@ public class LessonsSelector implements ActionMode.Callback {
 
     private static final String EMPTY = "";
     private static final int DATE_BUTTON_ID = 102;
+    public static final int POSSIBLY_SELECTED_LESSONS = 1;
 
-    private Activity parent;
+    private JournalActivity parent;
     private ActionMode actionMode;
     private GroupLesson[] lessonList;
     private SemesterButton semesterButton;
@@ -22,9 +23,9 @@ public class LessonsSelector implements ActionMode.Callback {
 
     private String lastLessonTitle = "";
 
-    public LessonsSelector(Activity parent, LessonSelectedCallBack callBack) {
+    public LessonsSelector(JournalActivity parent) {
         this.parent = parent;
-        this.selectedCallBack = callBack;
+        this.selectedCallBack = parent;
     }
 
     public void setSemesterButton(SemesterButton semesterButton) {
@@ -96,16 +97,16 @@ public class LessonsSelector implements ActionMode.Callback {
         actionMode.setCustomView(new SerifTextView(parent, lastLessonTitle));
         if (lessonList != null) {
             menu.add(Menu.NONE, DATE_BUTTON_ID, Menu.NONE, EMPTY).setActionView(semesterButton);
-            for (GroupLesson lesson : lessonList) {
-                menu.add(lesson.getShortName());
+            if (lessonList.length > POSSIBLY_SELECTED_LESSONS) {
+                for (GroupLesson lesson : lessonList) {
+                    menu.add(lesson.getShortName());
+                }
             }
         }
     }
 
     public static interface LessonSelectedCallBack {
         void lessonSelected(GroupLesson lesson);
-
-        void semesterSelected(int semester);
     }
 }
 

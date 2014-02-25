@@ -2,7 +2,9 @@ package ru.journal.fspoPrj.journal.elements.main_table;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.View;
 import android.widget.LinearLayout;
+import ru.journal.fspoPrj.journal.JournalActivity;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightExercisesInfo;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
@@ -21,12 +23,17 @@ public class TableWithMarks extends LinearLayout {
     private MScrollView scroller;
     private HashMap<Integer, Visit[]> visits;
     private LightExercisesInfo[] lightExercisesInfo;
+    private OnClickListener listener;
 
     public TableWithMarks(Context context) {
         super(context);
         this.context = context;
         setBackgroundColor(Color.BLACK);
         scroller = new MScrollView(context);
+    }
+
+    public void setOnCellClickListener(OnClickListener listener) {
+        this.listener = listener;
     }
 
     public void createTable(LightVisits lightVisits, Student[] students) {
@@ -52,6 +59,7 @@ public class TableWithMarks extends LinearLayout {
             int infoIndexer = 0;
             for (Visit visit : visits.get(student.getIntegerID())) {
                 element = new EvolutionCell(context, visit, states[lightExercisesInfo[infoIndexer++].getType()]);
+                element.setOnClickListener(listener);
                 row.addView(element);
             }
             rowStack.addView(row);
