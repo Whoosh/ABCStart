@@ -20,6 +20,7 @@ public abstract class ServerCommunicator {
     protected static final String DEFAULT_HOST = "fspo.segrys.ru";
     protected static final char DEFAULT_PORT = 80;
 
+    protected static int lastQueryID;
     protected static CommunicationInfo communicationInfo;
 
     public String getToken() {

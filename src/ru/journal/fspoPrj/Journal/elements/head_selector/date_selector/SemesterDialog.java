@@ -6,23 +6,24 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import ru.journal.fspoPrj.journal.JournalActivity;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
 
-public class SemesterSelectorDialog extends DialogFragment {
+public class SemesterDialog extends DialogFragment {
 
     private static final String TITLE = "Выберете Семестр";
     private static Integer[] allPossiblySemesters; // TODO
 
     private ClosedCallBack callBack;
 
-    public SemesterSelectorDialog() {
-        //..
+    public SemesterDialog() {
+        allPossiblySemesters = new Integer[]{0};
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         callBack.semesterDialogOpened();
-        Activity parent = getActivity();
+        JournalActivity parent = (JournalActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(parent);
         builder.setTitle(TITLE);
         builder.setView(new SemesterSelector(allPossiblySemesters, parent, this));

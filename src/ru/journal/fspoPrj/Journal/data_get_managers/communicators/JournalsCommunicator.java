@@ -1,7 +1,7 @@
-package ru.journal.fspoPrj.journal.data_get_managers;
+package ru.journal.fspoPrj.journal.data_get_managers.communicators;
 
-import android.app.Activity;
 import android.content.Intent;
+import ru.journal.fspoPrj.journal.JournalActivity;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupLesson;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupsList;
@@ -14,12 +14,7 @@ import ru.journal.fspoPrj.server_java.server_info.APIQuery;
 import ru.journal.fspoPrj.server_java.server_managers.MainExecutor;
 import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 
-public class LookingJournalsCommunicator extends ServerCommunicator {
-
-    public static final int GROUPS_LIST_QUERY = 1;
-    public static final int LIGHT_VISITS_QUERY = 2;
-
-    protected static int lastQueryID;
+public abstract class JournalsCommunicator extends ServerCommunicator implements JournalCommunicator {
 
     protected String groupsListKeyQuery;
     protected String lessonListKeyQuery;
@@ -27,13 +22,20 @@ public class LookingJournalsCommunicator extends ServerCommunicator {
 
     protected GroupsList groupsList;
     protected LightVisits lightVisits;
+    protected JournalActivity parentCaller;
 
-    public LookingJournalsCommunicator(Activity caller) {
-        sendGroupListQuery(caller);
+    public JournalsCommunicator(JournalActivity parentCaller) {
+        this.parentCaller = parentCaller;
+        sendGroupListQuery();
     }
 
-    public void resendLastQuery(Activity caller) {
-        super.sendQueryToServer(caller, makeQueryExecutor());
+    @Override
+    public void setCallerLink(JournalActivity parentCaller) {
+        this.parentCaller = parentCaller;
+    }
+
+    public void resendLastQuery() {
+        super.sendQueryToServer(parentCaller, makeQueryExecutor());
     }
 
     protected MainExecutor makeQueryExecutor() {
@@ -62,18 +64,11 @@ public class LookingJournalsCommunicator extends ServerCommunicator {
         }
     }
 
-    protected void sendGroupListQuery(Activity caller) {
-        groupsListKeyQuery = APIQuery.GET_GROUP_LIST.getLink(getToken(), getYearID());
-        lessonListKeyQuery = APIQuery.GET_GROUP_JOURNAL.getLink(getToken(), getYearID());
-        lastQueryID = GROUPS_LIST_QUERY;
-        super.sendQueryToServer(caller, makeQueryExecutor());
-    }
-
-    public void sendGroupVisitsLightQuery(Activity caller, GroupLesson lesson) {
+    public void sendGroupVisitsLightQuery(GroupLesson lesson) {
         lightVisitsQuery = APIQuery.GET_JOURNAL_VISITS_BY_GROUP_LIGHT
                 .getLink(getToken(), getYearID(), lesson.getStringLessonID(), lesson.getStringGroupID());
         lastQueryID = LIGHT_VISITS_QUERY;
-        super.sendQueryToServer(caller, makeQueryExecutor());
+        super.sendQueryToServer(parentCaller, makeQueryExecutor());
     }
 
     public LightVisits getLightVisits() {
@@ -107,5 +102,12 @@ public class LookingJournalsCommunicator extends ServerCommunicator {
 
     public Integer[] getAllSemesters(Group selectedGroup) {
         return groupsList.getAllSemesters(selectedGroup.getGroupNumber());
+    }
+
+    protected void sendGroupListQuery() {
+        groupsListKeyQuery = APIQuery.GET_GROUP_LIST.getLink(getToken(), getYearID());
+        lessonListKeyQuery = APIQuery.GET_GROUP_JOURNAL.getLink(getToken(), getYearID());
+        lastQueryID = GROUPS_LIST_QUERY;
+        super.sendQueryToServer(parentCaller, makeQueryExecutor());
     }
 }

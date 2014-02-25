@@ -51,8 +51,6 @@ public class Visit implements Serializable {
             emptyCell = true;
             return;
         }
-        System.out.println(element.names().length());
-        System.out.println(element);
 
         visitID = VisitKey.VISIT_ID.getIntValue(element);
         visitNeed = VisitKey.VISIT_NEED.getIntValue(element);
@@ -115,7 +113,13 @@ public class Visit implements Serializable {
                 getPoint(),
                 getDropout(),
                 getPresence(),
-                getWeight()};
+                getWeight(),
+                getEmptyCell()
+        };
+    }
+
+    public int getEmptyCell() {
+        return isEmptyCell() ? 1 : 0;
     }
 
     public boolean isEmptyCell() {

@@ -1,26 +1,26 @@
 package ru.journal.fspoPrj.journal.elements.group_selector;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
+import ru.journal.fspoPrj.journal.JournalActivity;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 
 public class GroupSelector extends LinearLayout implements View.OnClickListener {
 
-    private GroupSelectorDialog groupSelectorDialog;
-    private GroupSelectorDialog.GroupSelectedCallBack callBack;
-    private Activity caller;
+    private GroupDialog groupDialog;
+    private GroupDialog.GroupSelectedCallBack callBack;
+    private JournalActivity caller;
 
-    public GroupSelector(Activity caller, String[] groups, GroupSelectorDialog dialog, GroupSelectorDialog.GroupSelectedCallBack callBack) {
+    public GroupSelector(JournalActivity caller, String[] groups, GroupDialog dialog) {
         super(caller);
         this.caller = caller;
         setGravity(Gravity.CENTER);
         setOrientation(VERTICAL);
-        this.groupSelectorDialog = dialog;
-        this.callBack = callBack;
+        this.groupDialog = dialog;
+        this.callBack = caller;
 
         addView(new HorizontalLine(caller, Color.BLACK, Config.getOnGroupDialogSeparateLineHeight()));
         addView(new HorizontalLine(caller, Color.TRANSPARENT, Config.getOnGroupDialogTransparentSeparateLineHeight()));
@@ -30,8 +30,8 @@ public class GroupSelector extends LinearLayout implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        groupSelectorDialog.dismiss();
-        callBack.groupHasSelected(Integer.parseInt(((GroupElement) view).getGroup()));
+        groupDialog.dismiss();
+        callBack.groupSelected(Integer.parseInt(((GroupElement) view).getGroup()));
     }
 
     private void setGroups(String[] groups) {

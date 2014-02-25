@@ -2,14 +2,11 @@ package ru.journal.fspoPrj.journal.elements.data_slider;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.widget.HorizontalScrollView;
+import android.view.View;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightExercisesInfo;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
-
-import java.util.ArrayList;
 
 public class DateSlider extends LinearLayout {
 

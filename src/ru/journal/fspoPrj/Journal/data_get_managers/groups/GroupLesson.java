@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.journal.data_get_managers.groups;
 
 import org.json.JSONObject;
+import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLessons;
 import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 import java.io.Serializable;
@@ -74,6 +75,10 @@ public class GroupLesson implements Serializable {
                 ", shortName='" + shortName + '\'' +
                 ", semester='" + semester + '\'' +
                 '}';
+    }
+
+    public boolean equalsTeacher(TeacherLessons.TeacherLesson teacherLesson) {
+        return teacherLesson.getLessonID() == getLessonID() && teacherLesson.getSemester() == getSemester();
     }
 
     private static enum LessonKey implements IKeyApi {

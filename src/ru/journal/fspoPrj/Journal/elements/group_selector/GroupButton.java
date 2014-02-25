@@ -7,14 +7,14 @@ import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
 
-public class GroupSelectorButton extends Button {
+public class GroupButton extends Button {
 
     private static final String DEFAULT_TITLE = "Группа ";
     private static final String REFRESH = "Обновить";
 
     private static String selectedGroup = "";
 
-    public GroupSelectorButton(Context context) {
+    public GroupButton(Context context) {
         super(context);
         if (selectedGroup.isEmpty()) {
             selectedGroup = DEFAULT_TITLE;

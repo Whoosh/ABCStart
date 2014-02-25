@@ -15,19 +15,15 @@ public class TeacherLessons implements Serializable {
 
     private TeacherLesson[] lessons;
 
-    public TeacherLessons(JSONArray lessons) {
-        this.lessons = new TeacherLesson[lessons.length()];
-        for (int i = 0; i < this.lessons.length; i++) {
-            this.lessons[i] = makeJsonObjLesson(lessons, i);
-        }
-    }
-
-    private TeacherLesson makeJsonObjLesson(JSONArray lessons, int i) {
+    public TeacherLessons(String jsonResponse) {
         try {
-            return new TeacherLesson(lessons.getJSONObject(i));
+            JSONArray lessons = new JSONObject(jsonResponse).getJSONArray(TEACHER_LESSONS_KEY);
+            this.lessons = new TeacherLesson[lessons.length()];
+            for (int i = 0; i < this.lessons.length; i++) {
+                this.lessons[i] = new TeacherLesson(lessons.getJSONObject(i));
+            }
         } catch (JSONException e) {
             Logger.printError(e, getClass());
-            return null;
         }
     }
 

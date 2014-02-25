@@ -2,16 +2,15 @@ package ru.journal.fspoPrj.journal.data_get_managers.groups;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLessons;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Group implements Comparable<Group>, Serializable {
+    // TODO refactoring
 
     private static final int LOW = -1;
     private static final int UPPER = 1;
@@ -60,7 +59,9 @@ public class Group implements Comparable<Group>, Serializable {
     }
 
     private void makeSortedLesson() {
+        sGroupLesson = new HashMap<>(DEFAULT_SEMESTER_COUNT);
         ArrayList<GroupLesson> buffer = new ArrayList<>(groupLessons.length);
+
         for (int i = 0; i < groupLessons.length; i++) {
             if (sGroupLesson.containsKey(groupLessons[i].getSemester())) continue;
             for (int j = i, semester = groupLessons[i].getSemester(); j < groupLessons.length; j++) {
@@ -70,6 +71,31 @@ public class Group implements Comparable<Group>, Serializable {
             }
             sGroupLesson.put(groupLessons[i].getSemester(), buffer.toArray(new GroupLesson[buffer.size()]));
             buffer.clear();
+        }
+    }
+
+    public boolean hasTeacherLessons(TeacherLessons teacherlessons) {
+        ArrayList<GroupLesson> bufferedLessons = new ArrayList<>(Arrays.asList(groupLessons));
+        for (Iterator<GroupLesson> iterator = bufferedLessons.iterator(); iterator.hasNext(); ) {
+            lookOn(teacherlessons, iterator);
+        }
+        return bufferStateIsGood(bufferedLessons);
+    }
+
+    private boolean bufferStateIsGood(ArrayList<GroupLesson> bufferedLessons) {
+        groupLessons = bufferedLessons.toArray(new GroupLesson[bufferedLessons.size()]);
+        if (bufferedLessons.size() > 0) {
+            makeSortedLesson();
+            return true;
+        }
+        return false;
+    }
+
+    private void lookOn(TeacherLessons teacherlessons, Iterator<GroupLesson> groupLesson) {
+        for (TeacherLessons.TeacherLesson teacherLesson : teacherlessons.getLessons()) {
+            if (!groupLesson.next().equalsTeacher(teacherLesson)) {
+                groupLesson.remove();
+            }
         }
     }
 

@@ -37,7 +37,7 @@
                   android:theme="@android:style/Theme.Holo.Light">
         </activity>
 
-        <activity android:name=".journal.TeacherJournalsActivity"
+        <activity android:name=".journal.TeacherJournalActivity"
                   android:theme="@android:style/Theme.Holo.Light">
         </activity>
 

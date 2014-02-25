@@ -6,16 +6,17 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import org.jetbrains.annotations.NotNull;
+import ru.journal.fspoPrj.journal.JournalActivity;
 import ru.journal.fspoPrj.journal.LookingJournalActivity;
 
-public class GroupSelectorDialog extends DialogFragment {
+public class GroupDialog extends DialogFragment {
 
     private static final String GROUPS_KEY = "c_k";
     private static final String TITLE = "Выбор группы";
 
     private String[] groups;
 
-    public GroupSelectorDialog() {
+    public GroupDialog() {
         //.. needed for system class starter, if we make new constructor with params, do not remove;
     }
 
@@ -25,7 +26,7 @@ public class GroupSelectorDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Activity parent = getActivity();
+        JournalActivity parent = (JournalActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(parent);
         builder.setMessage(TITLE);
 
@@ -33,7 +34,7 @@ public class GroupSelectorDialog extends DialogFragment {
             groups = savedInstanceState.getStringArray(GROUPS_KEY);
         }
 
-        builder.setView(new GroupSelector(parent, groups, this, (LookingJournalActivity) parent));
+        builder.setView(new GroupSelector(parent, groups, this));
         return builder.create();
     }
 
@@ -55,7 +56,7 @@ public class GroupSelectorDialog extends DialogFragment {
     }
 
     public static interface GroupSelectedCallBack {
-        void groupHasSelected(int group);
+        void groupSelected(int group);
     }
 
 }
