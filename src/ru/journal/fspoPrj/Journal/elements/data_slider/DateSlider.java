@@ -12,6 +12,7 @@ public class DateSlider extends LinearLayout {
 
     private LinearLayout datesSlider;
     private Context context;
+    private OnClickListener listener;
 
     public DateSlider(Context context) {
         super(context);
@@ -23,13 +24,29 @@ public class DateSlider extends LinearLayout {
         super.removeAllViews();
         datesSlider.removeAllViews();
         datesSlider.addView(new VerticalLine(context, Color.BLACK));
+        DateElement element;
+
         for (int i = 0; i < datesInfo.length - 1; i++) {
-            datesSlider.addView(new DateElement(context, datesInfo[i]));
+            element = new DateElement(context, datesInfo[i], i);
+            setListener(element);
+            datesSlider.addView(element);
             datesSlider.addView(new VerticalLine(context, Color.BLACK));
         }
-        datesSlider.addView(new DateElement(context, datesInfo[datesInfo.length - 1]));
+
+        element = new DateElement(context, datesInfo[datesInfo.length - 1], datesInfo.length - 1);
+        datesSlider.addView(element);
         datesSlider.addView(new VerticalLine(context, Color.BLACK, Config.getJournalEndLineWidth()));
         addView(datesSlider);
+    }
+
+    private void setListener(DateElement element) {
+        if (listener != null) {
+            element.setOnClickListener(listener);
+        }
+    }
+
+    public void setClickListener(OnClickListener listener) {
+        this.listener = listener;
     }
 
     public void restoreState(LightExercisesInfo[] exercisesInfo) {

@@ -36,6 +36,10 @@ public class LightExercisesInfo implements Serializable {
         public int getColor() {
             return color;
         }
+
+        public int getEnID() {
+            return ordinal();
+        }
     }
 
     public LightExercisesInfo(JSONObject element) {

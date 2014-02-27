@@ -19,12 +19,14 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLin
 
 public class LookingJournalActivity extends JournalActivity {
 
+    protected LinearLayout datePlusMatrix;
 
     @Override
     public void initElements() {
         super.initElements();
 
-        LinearLayout datePlusMatrix = new LinearLayout(this);
+        datePlusMatrix = new LinearLayout(this);
+
         LinearLayout groupSelectorPlusStudents = new LinearLayout(this);
         HorizontalScrollView datePlusCellMatrixScroller = new HorizontalScrollView(this);
 

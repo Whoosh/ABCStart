@@ -45,4 +45,11 @@
     <dimen name="looking_journal__evolution_element_text_size">20sp</dimen>
     <dimen name="looking_journal__on_date_dialog_element_text_size">10sp</dimen>
 
+    <!-- Teacher journal activity values -->
+    <integer name="teacher_journal_cell_dialog_transparent_separator_line_height">20</integer>
+    <integer name="teacher_journal_cell_dialog_height">300</integer>
+    <integer name="teacher_journal_cell_dialog_weight">500</integer>
+    <!-- Teacher journal activity text values -->
+    <dimen name="teacher_journal__dialog_buttons_text_size">10sp</dimen>
+
 </resources>

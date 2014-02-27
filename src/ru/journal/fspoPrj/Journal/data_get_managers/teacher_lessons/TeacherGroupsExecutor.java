@@ -37,18 +37,19 @@ public class TeacherGroupsExecutor extends MainExecutor {
     @Override
     protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException, TimeoutException {
         handleResult(results);
-        Intent result = new Intent();
-        result.putExtra(groupsQuery, groupsList);
-        progressActivity.setResult(resultCode, result);
+        // Intent result = new Intent();
+        // result.putExtra(groupsQuery, groupsList);
+        //progressActivity.setResult(resultCode, result);
     }
 
     private void handleResult(HashMap<String, String> result) {
-        groupsList = new GroupsList(result.remove(groupsQuery), result.remove(lessonsQuery));
+        //groupsList = new GroupsList(result.remove(groupsQuery), result.remove(lessonsQuery));
         teacherLessons = new TeacherLessons(result.remove(teacherLessonsQuery));
         prepareGroupList();
     }
 
     private void prepareGroupList() {
-        groupsList.removeNonTeacherLessons(teacherLessons);
+        //  groupsList.removeNonTeacherLessons(teacherLessons);
     }
+
 }
