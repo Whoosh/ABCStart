@@ -126,6 +126,38 @@ public class Visit implements Serializable {
         return emptyCell;
     }
 
+    public void setPresence(PresentsState state) {
+        this.presence = state.ordinal();
+    }
+
+    public void setVisitNeed(VisitNeedState state) {
+        this.visitNeed = state.ordinal();
+    }
+
+    public void setPoint(PointState state) {
+        this.point = state.ordinal();
+    }
+
+    public void setDelay(DelayState state) {
+        this.delay = state.ordinal();
+    }
+
+    public void setDropout(DropoutState state) {
+        this.dropout = state.ordinal();
+    }
+
+    public void setPerformance(PerformanceState state) {
+        this.performance = state.ordinal();
+    }
+
+    public void setWeight(WeightState state) {
+        this.weight = state.ordinal();
+    }
+
+    public void setMarkNeed(MarkNeedState state) {
+        this.markNeed = state.ordinal();
+    }
+
     private static enum VisitKey implements IKeyApi {
 
         VISIT_ID("visit_id"),

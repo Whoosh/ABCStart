@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class TeacherLessons implements Serializable {
 
-    public final static String TEACHER_LESSONS_KEY = "lessons";
+    public final static String TEACHER_LESSONS_KEY = "teacherLessons";
 
     private TeacherLesson[] lessons;
 
@@ -20,7 +20,8 @@ public class TeacherLessons implements Serializable {
             JSONArray lessons = new JSONObject(jsonResponse).getJSONArray(TEACHER_LESSONS_KEY);
             this.lessons = new TeacherLesson[lessons.length()];
             for (int i = 0; i < this.lessons.length; i++) {
-                this.lessons[i] = new TeacherLesson(lessons.getJSONObject(i));
+                System.out.println(lessons.getString(i));
+               this.lessons[i] = new TeacherLesson(lessons.getJSONObject(i));
             }
         } catch (JSONException e) {
             Logger.printError(e, getClass());
@@ -30,61 +31,4 @@ public class TeacherLessons implements Serializable {
     public TeacherLesson[] getLessons() {
         return lessons;
     }
-
-    @Override
-    public String toString() {
-        return "TeacherLessons{" + "lessons=" + Arrays.toString(lessons) + '}';
-    }
-
-    public static class TeacherLesson implements Serializable {
-
-        private final int lessonID;
-        private final int semester;
-
-        public TeacherLesson(JSONObject element) {
-            this.lessonID = TeacherLessonKey.LESSON_ID.getIntValue(element);
-            this.semester = TeacherLessonKey.SEMESTER.getIntValue(element);
-        }
-
-        public int getLessonID() {
-            return lessonID;
-        }
-
-        public int getSemester() {
-            return semester;
-        }
-
-        @Override
-        public String toString() {
-            return "TeacherLesson{" + "lessonID=" + lessonID + ", semester=" + semester + '}';
-        }
-    }
-
-    public static enum TeacherLessonKey implements IKeyApi {
-
-        LESSON_ID("les_id"),
-        SEMESTER("semester");
-
-        private final String key;
-
-        private TeacherLessonKey(String key) {
-            this.key = key;
-        }
-
-        @Override
-        public String getKey() {
-            return key;
-        }
-
-        @Override
-        public int getIntValue(JSONObject element) {
-            return parser.parseInt(key, element);
-        }
-
-        @Override
-        public String getStringValue(JSONObject element) {
-            return parser.parseString(key, element);
-        }
-    }
-
 }

@@ -35,6 +35,7 @@ public class SemesterSelector extends LinearLayout implements View.OnClickListen
 
     private void callBackSemesterIndex(View view) {
         String semester = ((Button) view).getText().toString();
+        System.out.println(semester);
         try {
             callBack.semesterSelected(Integer.parseInt(semester.substring(semester.lastIndexOf(SPACE) + 1)));
         } catch (Exception ex) {

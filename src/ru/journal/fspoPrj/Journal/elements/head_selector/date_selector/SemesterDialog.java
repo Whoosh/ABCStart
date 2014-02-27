@@ -17,7 +17,7 @@ public class SemesterDialog extends DialogFragment {
     private ClosedCallBack callBack;
 
     public SemesterDialog() {
-        allPossiblySemesters = new Integer[]{0};
+
     }
 
     @Override

@@ -27,6 +27,10 @@ public abstract class Config extends GlobalConfig {
     private static float dateSliderTextSize;
     private static float evolutionTextSize;
     private static float dateDialogElementTextSize;
+    private static float teacherJournalDialogButtonsTextSize;
+    private static int functionDialogTransparentSeparateLineHeight;
+    private static int cellFunctionDialogHeight;
+    private static int cellFunctionDialogWidth;
 
 
     public static void setDefaultElementSize() {
@@ -36,6 +40,7 @@ public abstract class Config extends GlobalConfig {
         evolutionTextSize = getTextSize(R.dimen.looking_journal__evolution_element_text_size);
         dateSliderTextSize = getTextSize(R.dimen.looking_journal__date_element_text_size);
         dateDialogElementTextSize = getTextSize(R.dimen.looking_journal__on_date_dialog_element_text_size);
+        teacherJournalDialogButtonsTextSize = getTextSize(R.dimen.teacher_journal__dialog_buttons_text_size);
 
         evolutionCellSize = getRealSize(R.integer.looking_journal__evolution_size);
         selectorGroupHeight = getRealSize(R.integer.looking_journal__selector_group_height);
@@ -52,6 +57,10 @@ public abstract class Config extends GlobalConfig {
 
         dateDialogElementHeight = getRealSize(R.integer.looking_journal__on_date_dialog_element_height);
         dateDialogElementWidth = getRealSize(R.integer.looking_journal__on_date_dialog_element_width);
+
+        functionDialogTransparentSeparateLineHeight = getRealSize(R.integer.teacher_journal_cell_dialog_transparent_separator_line_height);
+        cellFunctionDialogHeight = getRealSize(R.integer.teacher_journal_cell_dialog_height);
+        cellFunctionDialogWidth = getRealSize(R.integer.teacher_journal_cell_dialog_weight);
     }
 
     public static void setMatrixThemeColors() {
@@ -145,5 +154,21 @@ public abstract class Config extends GlobalConfig {
 
     public static int getDateDialogElementHeight() {
         return dateDialogElementHeight;
+    }
+
+    public static float getTeacherJournalDialogButtonsTextSize() {
+        return teacherJournalDialogButtonsTextSize;
+    }
+
+    public static int getFunctionDialogTransparentSeparateLineHeight() {
+        return functionDialogTransparentSeparateLineHeight;
+    }
+
+    public static int getCellFunctionDialogHeight() {
+        return cellFunctionDialogHeight;
+    }
+
+    public static int getCellFunctionDialogWidth() {
+        return cellFunctionDialogWidth;
     }
 }

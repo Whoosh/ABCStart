@@ -33,6 +33,8 @@ public class EvolutionCell extends View {
     private static Paint drawingElementSettings;
 
     private String stateKey;
+    private Visit visit;
+    private LightExercisesInfo.TypeState state;
 
     public static final int MARGIN_SEPARATOR = 1;
 
@@ -57,9 +59,50 @@ public class EvolutionCell extends View {
 
     public EvolutionCell(Context context, Visit visit, LightExercisesInfo.TypeState state) {
         super(context);
+        this.visit = visit;
+        this.state = state;
         this.stateKey = generateKey(visit, state);
         setLayoutParams(VIEW_PARAMS);
         setState(stateKey, visit, state);
+    }
+
+    public void changeComingStatus() {
+        if (visit.getPresence() == Visit.PresentsState.DRINK_VODKA_WITH_BEAR.ordinal()) {
+            visit.setPresence(Visit.PresentsState.COMING_ON_LESSON);
+        } else {
+            visit.setPresence(Visit.PresentsState.DRINK_VODKA_WITH_BEAR);
+        }
+        acceptChange();
+    }
+
+    public void changePoint(int point) {
+        visit.setPoint(Visit.PointState.values()[point]);
+        acceptChange();
+    }
+
+    public void changeNeededStatus(int index) {
+        visit.setVisitNeed(Visit.VisitNeedState.values()[index]);
+        acceptChange();
+    }
+
+    public void changeStudentSlowStatus(int index) {
+        visit.setDelay(Visit.DelayState.values()[index]);
+        acceptChange();
+    }
+
+    public void changePointWeight(int index) {
+        visit.setWeight(Visit.WeightState.values()[index]);
+        acceptChange();
+    }
+
+    public void changePointMark(int index) {
+        visit.setMarkNeed(Visit.MarkNeedState.values()[index]);
+        acceptChange();
+    }
+
+    public void changeStudentPerformance(int index) {
+        visit.setPerformance(Visit.PerformanceState.values()[index]);
+        acceptChange();
     }
 
     private void setState(String elementKey, Visit visit, LightExercisesInfo.TypeState state) {
@@ -217,7 +260,12 @@ public class EvolutionCell extends View {
     }
 
     private static String generateKey(Visit visit, LightExercisesInfo.TypeState state) {
-        return String.valueOf(state.getColor()) + Arrays.toString(visit.getAllStates());
+        return String.valueOf(state.getEnID()) + Arrays.toString(visit.getAllStates());
+    }
+
+    private void acceptChange() {
+        this.stateKey = generateKey(visit, state);
+        setState(stateKey, visit, state);
     }
 
     private static class Setter extends Drawable {
@@ -248,6 +296,4 @@ public class EvolutionCell extends View {
             return 0;
         }
     }
-
-
 }

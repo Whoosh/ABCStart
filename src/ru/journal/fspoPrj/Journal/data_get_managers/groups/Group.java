@@ -74,13 +74,15 @@ public class Group implements Comparable<Group>, Serializable {
         }
     }
 
-    public boolean hasTeacherLessons(TeacherLessons teacherlessons) {
-        ArrayList<GroupLesson> bufferedLessons = new ArrayList<>(Arrays.asList(groupLessons));
-        for (Iterator<GroupLesson> iterator = bufferedLessons.iterator(); iterator.hasNext(); ) {
-            lookOn(teacherlessons, iterator);
+    /*/
+        public boolean hasTeacherLessons(TeacherLessons teacherlessons) {
+            ArrayList<GroupLesson> bufferedLessons = new ArrayList<>(Arrays.asList(groupLessons));
+            for (Iterator<GroupLesson> iterator = bufferedLessons.iterator(); iterator.hasNext(); ) {
+                lookOn(teacherlessons, iterator);
+            }
+            return bufferStateIsGood(bufferedLessons);
         }
-        return bufferStateIsGood(bufferedLessons);
-    }
+    /*/
 
     private boolean bufferStateIsGood(ArrayList<GroupLesson> bufferedLessons) {
         groupLessons = bufferedLessons.toArray(new GroupLesson[bufferedLessons.size()]);
@@ -91,6 +93,7 @@ public class Group implements Comparable<Group>, Serializable {
         return false;
     }
 
+    /*/
     private void lookOn(TeacherLessons teacherlessons, Iterator<GroupLesson> groupLesson) {
         for (TeacherLessons.TeacherLesson teacherLesson : teacherlessons.getLessons()) {
             if (!groupLesson.next().equalsTeacher(teacherLesson)) {
@@ -98,7 +101,7 @@ public class Group implements Comparable<Group>, Serializable {
             }
         }
     }
-
+/*/
     public GroupLesson[] getGroupLessons() {
         return groupLessons;
     }

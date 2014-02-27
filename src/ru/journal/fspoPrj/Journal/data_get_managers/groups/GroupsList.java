@@ -78,7 +78,7 @@ public class GroupsList implements Serializable {
     public Integer[] getAllSemesters(int groupNumber) {
         return groups.get(groupNumber).getAllSemesters();
     }
-
+/*/
     public void removeNonTeacherLessons(TeacherLessons teacherLessons) {
         for (Iterator<Map.Entry<Integer, Group>> iterator = groups.entrySet().iterator(); iterator.hasNext(); ) {
             if (!iterator.next().getValue().hasTeacherLessons(teacherLessons)) {
@@ -86,4 +86,5 @@ public class GroupsList implements Serializable {
             }
         }
     }
+    /*/
 }

@@ -77,10 +77,11 @@ public class GroupLesson implements Serializable {
                 '}';
     }
 
-    public boolean equalsTeacher(TeacherLessons.TeacherLesson teacherLesson) {
-        return teacherLesson.getLessonID() == getLessonID() && teacherLesson.getSemester() == getSemester();
-    }
-
+    /*/
+        public boolean equalsTeacher(TeacherLessons.TeacherLesson teacherLesson) {
+          return teacherLesson.getLessonID() == getLessonID() && teacherLesson.getSemester() == getSemester();
+        }
+    /*/
     private static enum LessonKey implements IKeyApi {
 
         LESSON_ID("lesson_id"),
