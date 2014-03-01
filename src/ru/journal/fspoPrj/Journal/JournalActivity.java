@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
-import ru.journal.fspoPrj.journal.callbacks.LessonsSelector;
+import ru.journal.fspoPrj.journal.action_bar.LessonsSelector;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.data_get_managers.communicators.JournalCommunicator;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupLesson;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
-import ru.journal.fspoPrj.journal.elements.data_slider.DateSlider;
-import ru.journal.fspoPrj.journal.elements.group_selector.GroupButton;
-import ru.journal.fspoPrj.journal.elements.group_selector.GroupDialog;
-import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.SemesterButton;
-import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.SemesterSelector;
-import ru.journal.fspoPrj.journal.elements.head_selector.date_selector.SemesterDialog;
-import ru.journal.fspoPrj.journal.elements.main_table.TableWithMarks;
-import ru.journal.fspoPrj.journal.elements.student_list.StudentList;
+import ru.journal.fspoPrj.journal.looking_journal.elements.data_slider.DateSlider;
+import ru.journal.fspoPrj.journal.looking_journal.elements.group_selector.GroupButton;
+import ru.journal.fspoPrj.journal.looking_journal.elements.group_selector.GroupDialog;
+import ru.journal.fspoPrj.journal.looking_journal.elements.head_selector.date_selector.SemesterButton;
+import ru.journal.fspoPrj.journal.looking_journal.elements.head_selector.date_selector.SemesterSelector;
+import ru.journal.fspoPrj.journal.looking_journal.elements.head_selector.date_selector.SemesterDialog;
+import ru.journal.fspoPrj.journal.looking_journal.elements.main_table.TableWithMarks;
+import ru.journal.fspoPrj.journal.looking_journal.elements.student_list.StudentList;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 
@@ -79,6 +79,7 @@ public abstract class JournalActivity extends Activity implements
 
         groupButton = new GroupButton(this);
         groupDialog = new GroupDialog();
+
         semesterButton = new SemesterButton(this);
         semesterDialog = new SemesterDialog();
     }
@@ -108,7 +109,7 @@ public abstract class JournalActivity extends Activity implements
     }
 
     protected void handleVisitsQuery() {
-        LightVisits lightVisits = jC.getLightVisits();
+        LightVisits lightVisits = jC.getVisits();
         dateSlider.setData(lightVisits.getExercisesInfo());
         tableWithMarks.createTable(lightVisits, jC.getStudents(selectedGroup));
         studentList.setStudents(jC.getStudents(selectedGroup));
@@ -156,13 +157,13 @@ public abstract class JournalActivity extends Activity implements
         lessonsSelector.setLessons(groupLessons);
         for (GroupLesson lesson : groupLessons) {
             if (lesson.equals(selectedLesson)) {
-                jC.sendGroupVisitsLightQuery(lesson);
+                jC.sendGroupVisitsQuery(lesson);
                 return;
             }
         }
         if (groupLessons.length != 0) {
             selectedLesson = groupLessons[0];
-            jC.sendGroupVisitsLightQuery(selectedLesson);
+            jC.sendGroupVisitsQuery(selectedLesson);
         }
         lessonsSelector.setLessonTitle(selectedLesson);
     }
@@ -174,6 +175,6 @@ public abstract class JournalActivity extends Activity implements
                 break;
             }
         }
-        jC.sendGroupVisitsLightQuery(selectedLesson);
+        jC.sendGroupVisitsQuery(selectedLesson);
     }
 }

@@ -17,39 +17,23 @@ public class TeacherGroupsExecutor extends MainExecutor {
 
     private int resultCode;
     private String teacherLessonsQuery;
-    private String groupsQuery;
-    private String lessonsQuery;
-
     private TeacherLessons teacherLessons;
-    private GroupsList groupsList;
 
-    public TeacherGroupsExecutor(String teacherLessonsQuery, String groupsQuery, String lessonsQuery, int resultCode) {
+    public TeacherGroupsExecutor(String teacherLessonsQuery, int resultCode) {
         this.resultCode = resultCode;
         this.teacherLessonsQuery = teacherLessonsQuery;
-        this.groupsQuery = groupsQuery;
-        this.lessonsQuery = lessonsQuery;
-
         super.makeQuery(teacherLessonsQuery);
-        super.makeQuery(groupsQuery);
-        super.makeQuery(lessonsQuery);
     }
 
     @Override
     protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException, TimeoutException {
         handleResult(results);
-        // Intent result = new Intent();
-        // result.putExtra(groupsQuery, groupsList);
-        //progressActivity.setResult(resultCode, result);
+        Intent result = new Intent();
+        result.putExtra(teacherLessonsQuery,teacherLessons);
+        progressActivity.setResult(resultCode, result);
     }
 
     private void handleResult(HashMap<String, String> result) {
-        //groupsList = new GroupsList(result.remove(groupsQuery), result.remove(lessonsQuery));
         teacherLessons = new TeacherLessons(result.remove(teacherLessonsQuery));
-        prepareGroupList();
     }
-
-    private void prepareGroupList() {
-        //  groupsList.removeNonTeacherLessons(teacherLessons);
-    }
-
 }

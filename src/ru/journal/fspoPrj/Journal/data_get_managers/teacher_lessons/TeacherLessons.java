@@ -7,6 +7,7 @@ import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TeacherLessons implements Serializable {
@@ -20,8 +21,7 @@ public class TeacherLessons implements Serializable {
             JSONArray lessons = new JSONObject(jsonResponse).getJSONArray(TEACHER_LESSONS_KEY);
             this.lessons = new TeacherLesson[lessons.length()];
             for (int i = 0; i < this.lessons.length; i++) {
-                System.out.println(lessons.getString(i));
-               this.lessons[i] = new TeacherLesson(lessons.getJSONObject(i));
+                this.lessons[i] = new TeacherLesson(lessons.getJSONObject(i));
             }
         } catch (JSONException e) {
             Logger.printError(e, getClass());
@@ -30,5 +30,15 @@ public class TeacherLessons implements Serializable {
 
     public TeacherLesson[] getLessons() {
         return lessons;
+    }
+
+    public String[] getGroupNames() {
+        ArrayList<String> names = new ArrayList<>();
+        for (TeacherLesson lesson : lessons) {
+            for (TeacherGroup group : lesson.getGroups()) {
+                names.add(group.getGroupName());
+            }
+        }
+        return names.toArray(new String[names.size()]);
     }
 }

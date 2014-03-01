@@ -31,6 +31,10 @@ public abstract class Config extends GlobalConfig {
     private static int functionDialogTransparentSeparateLineHeight;
     private static int cellFunctionDialogHeight;
     private static int cellFunctionDialogWidth;
+    private static int groupSelectorDialogWidth;
+    private static int groupSelectorDialogHeight;
+    private static float groupSelectorDialogTitleTextSize;
+    private static float editJournalLessonLabelTextSize;
 
 
     public static void setDefaultElementSize() {
@@ -41,6 +45,8 @@ public abstract class Config extends GlobalConfig {
         dateSliderTextSize = getTextSize(R.dimen.looking_journal__date_element_text_size);
         dateDialogElementTextSize = getTextSize(R.dimen.looking_journal__on_date_dialog_element_text_size);
         teacherJournalDialogButtonsTextSize = getTextSize(R.dimen.teacher_journal__dialog_buttons_text_size);
+        groupSelectorDialogTitleTextSize = getTextSize(R.dimen.journal__group_title_dialog_text_size);
+        editJournalLessonLabelTextSize = getTextSize(R.dimen.teacher_journal__lesson_label__text_size);
 
         evolutionCellSize = getRealSize(R.integer.looking_journal__evolution_size);
         selectorGroupHeight = getRealSize(R.integer.looking_journal__selector_group_height);
@@ -61,6 +67,9 @@ public abstract class Config extends GlobalConfig {
         functionDialogTransparentSeparateLineHeight = getRealSize(R.integer.teacher_journal_cell_dialog_transparent_separator_line_height);
         cellFunctionDialogHeight = getRealSize(R.integer.teacher_journal_cell_dialog_height);
         cellFunctionDialogWidth = getRealSize(R.integer.teacher_journal_cell_dialog_weight);
+
+        groupSelectorDialogHeight = getRealSize(R.integer.journal__group_dialog_height);
+        groupSelectorDialogWidth = getRealSize(R.integer.journal__group_dialog_width);
     }
 
     public static void setMatrixThemeColors() {
@@ -76,11 +85,11 @@ public abstract class Config extends GlobalConfig {
         return selectorGroupTextSize;
     }
 
-    public static int getSelectorGroupWidth() {
+    public static int getSelectorGroupOrLabelWidth() {
         return selectorGroupWidth;
     }
 
-    public static int getSelectorGroupHeight() {
+    public static int getSelectorGroupOrLabelHeight() {
         return selectorGroupHeight;
     }
 
@@ -121,7 +130,7 @@ public abstract class Config extends GlobalConfig {
     }
 
     public static int getStudentElementWidth() {
-        return getSelectorGroupWidth();
+        return getSelectorGroupOrLabelWidth();
     }
 
     public static int getSliderDateElementWidth() {
@@ -170,5 +179,21 @@ public abstract class Config extends GlobalConfig {
 
     public static int getCellFunctionDialogWidth() {
         return cellFunctionDialogWidth;
+    }
+
+    public static int getGroupSelectorDialogWidth() {
+        return groupSelectorDialogWidth;
+    }
+
+    public static int getGroupSelectorDialogHeight() {
+        return groupSelectorDialogHeight;
+    }
+
+    public static float getGroupSelectorDialogTitleTextSize() {
+        return groupSelectorDialogTitleTextSize;
+    }
+
+    public static float getEditJournalLessonLabelTextSize() {
+        return editJournalLessonLabelTextSize;
     }
 }

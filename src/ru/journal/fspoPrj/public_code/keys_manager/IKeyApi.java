@@ -20,11 +20,9 @@ public interface IKeyApi {
 
         public int parseInt(String key, JSONObject data) {
             try {
-                try {
-                    return Integer.parseInt(data.getString(key));
-                } catch (NumberFormatException ex) {
-                    return DEFAULT_INT;
-                }
+                return Integer.parseInt(data.getString(key));
+            } catch (NumberFormatException ex) {
+                return DEFAULT_INT;
             } catch (JSONException e) {
                 Logger.printIKeyApiError(e);
                 return DEFAULT_INT;
@@ -33,7 +31,12 @@ public interface IKeyApi {
 
         public String parseString(String key, JSONObject data) {
             try {
-                return data.getString(key);
+                String result = data.getString(key);
+                if (result.equals("null")) {
+                    return DEFAULT_STRING;
+                } else {
+                    return result;
+                }
             } catch (JSONException e) {
                 Logger.printIKeyApiError(e);
                 return DEFAULT_STRING;

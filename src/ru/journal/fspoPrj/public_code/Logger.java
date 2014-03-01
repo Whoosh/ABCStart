@@ -1,5 +1,7 @@
 package ru.journal.fspoPrj.public_code;
 
+import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
+
 public abstract class Logger {
     // TODO logging on mail
     public static final int LAST_LINE = 1;
@@ -12,10 +14,13 @@ public abstract class Logger {
     }
 
     public static void printIKeyApiError(Exception error) {
+        // FIXME что то вменяемое, когда к примеру профиля действительно нет ключа.
+        /*/ для трассировки, можно врубать.
         StackTraceElement[] elements = error.getStackTrace();
         System.out.println("================================");
         System.err.println(elements[CALLER_CLASS_INDEX]);
         System.out.println("================================");
         error.printStackTrace();
+        /*/
     }
 }

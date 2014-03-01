@@ -34,7 +34,7 @@ abstract public class GlobalConfig {
         ru.journal.fspoPrj.settings_form.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.main_menu.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.journal.config.Config.setDefaultElementSize();
-        ru.journal.fspoPrj.user_profile.config.Config.setDefaultElementSize();
+        ru.journal.fspoPrj.search_users.config.Config.setDefaultElementSize();
     }
 
     public static void setTheme(int theme) {
@@ -64,7 +64,7 @@ abstract public class GlobalConfig {
                 ru.journal.fspoPrj.settings_form.config.Config.setMatrixThemeColors();
                 ru.journal.fspoPrj.main_menu.config.Config.setMatrixThemeColors();
                 ru.journal.fspoPrj.journal.config.Config.setMatrixThemeColors();
-                ru.journal.fspoPrj.user_profile.config.Config.setMatrixThemeColors();
+                ru.journal.fspoPrj.search_users.config.Config.setMatrixThemeColors();
             }
             break;
             case NORMAL_THEME:
@@ -75,7 +75,7 @@ abstract public class GlobalConfig {
                 ru.journal.fspoPrj.settings_form.config.Config.setNormalThemeColors();
                 ru.journal.fspoPrj.main_menu.config.Config.setNormalThemeColors();
                 ru.journal.fspoPrj.journal.config.Config.setNormalThereColors();
-                ru.journal.fspoPrj.user_profile.config.Config.setNormalThemeColors();
+                ru.journal.fspoPrj.search_users.config.Config.setNormalThemeColors();
             }
         }
     }
