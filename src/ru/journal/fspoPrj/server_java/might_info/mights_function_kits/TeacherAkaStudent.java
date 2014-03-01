@@ -16,9 +16,7 @@ public class TeacherAkaStudent extends ToolKitsManager {
                 Functions.RESULT_RATING,
                 Functions.LESSONS_MANAGER,
                 Functions.SCHEDULE,
-                Functions.STUDENTS,
-                Functions.TEACHERS,
-                Functions.TEST7
+                Functions.TEACHERS
         );
     }
 }

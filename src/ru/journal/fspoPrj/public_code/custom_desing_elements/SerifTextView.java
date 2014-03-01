@@ -35,6 +35,7 @@ public class SerifTextView extends TextView {
         initCode(text, gravity, GlobalConfig.getDefaultTextSize());
     }
 
+
     private void initCode(String text, int gravity, float textSize) {
         this.text = text;
         super.setTextColor(getSerifTextColor());

@@ -23,6 +23,16 @@ public abstract class Human implements Serializable {
         this.ID = HumanKeys.HUMAN_ID.getIntValue(element);
     }
 
+    @Override
+    public String toString() {
+        return "Human{" +
+                "firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", ID=" + ID +
+                '}';
+    }
+
     public String getFirstName() {
         return firstName;
     }

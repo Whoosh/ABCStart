@@ -1,10 +1,10 @@
 package ru.journal.fspoPrj.server_java.might_info;
 
 import ru.journal.fspoPrj.R;
-import ru.journal.fspoPrj.journal.LookingJournalActivity;
-import ru.journal.fspoPrj.journal.TeacherJournalActivity;
+import ru.journal.fspoPrj.journal.edit_journal.TeacherJournalActivity;
+import ru.journal.fspoPrj.journal.looking_journal.LookingJournalActivity;
 import ru.journal.fspoPrj.main_menu.BugReportInformerActivity;
-import ru.journal.fspoPrj.user_profile.ProfileActivity;
+import ru.journal.fspoPrj.search_users.search_all.SearchAllProfilesActivity;
 
 public enum Functions {
 
@@ -13,7 +13,9 @@ public enum Functions {
 
     LOOK_JOURNALS("Просмотр журналов групп", LookingJournalActivity.class, R.drawable.ic_journal),
 
-    PROFILE("Мой профиль", ProfileActivity.class, R.drawable.ic_my_profile),
+    PROFILE("Поиск пользователя", SearchAllProfilesActivity.class, R.drawable.ic_people),
+
+    LESSONS_MANAGER("Мои журналы", TeacherJournalActivity.class, R.drawable.ic_lessons),
 
     ERROR_INFORMER("Свяжитесь с автором", BugReportInformerActivity.class, R.drawable.ic_some_wrong),
 
@@ -21,15 +23,9 @@ public enum Functions {
 
     RESULT_RATING("Итоговые оценки", BugReportInformerActivity.class, R.drawable.ic_result_rating),
 
-    LESSONS_MANAGER("Мои журналы", TeacherJournalActivity.class, R.drawable.ic_lessons),
-
     SCHEDULE("Расписание", BugReportInformerActivity.class, R.drawable.ic_schedule),
 
-    STUDENTS("Студенты", BugReportInformerActivity.class, R.drawable.ic_people),
-
-    TEACHERS("Преподователи", BugReportInformerActivity.class, R.drawable.ic_people),
-
-    TEST7("TEST7", BugReportInformerActivity.class, R.drawable.ic_some_wrong);
+    TEACHERS("Преподователи", BugReportInformerActivity.class, R.drawable.ic_people);
 
     private final Class<?> functionClass;
     private final String functionName;

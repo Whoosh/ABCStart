@@ -64,14 +64,14 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
         }
     }
 
-    public void sendGroupVisitsLightQuery(GroupLesson lesson) {
+    public void sendGroupVisitsQuery(GroupLesson lesson) {
         lightVisitsQuery = APIQuery.GET_JOURNAL_VISITS_BY_GROUP_LIGHT
                 .getLink(getToken(), getYearID(), lesson.getStringLessonID(), lesson.getStringGroupID());
         lastQueryID = LIGHT_VISITS_QUERY;
         super.sendQueryToServer(parentCaller, makeQueryExecutor());
     }
 
-    public LightVisits getLightVisits() {
+    public LightVisits getVisits() {
         return lightVisits;
     }
 
@@ -85,14 +85,15 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
     }
 
     public Student[] getStudents(Group group) {
-        return groupsList.getStudents(group.getGroupNumber());
+        return groupsList.getStudents(group.getStringGroupNumber());
     }
 
     public GroupLesson[] getLessons(Group group, int semester) {
-        return groupsList.getLessons(group.getGroupNumber(), semester);
+        return groupsList.getLessons(group.getStringGroupNumber(), semester);
     }
 
-    public Group getGroup(int groupNumber) {
+    @Override
+    public Group getGroup(String groupNumber) {
         return groupsList.getGroup(groupNumber);
     }
 
@@ -101,7 +102,7 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
     }
 
     public Integer[] getAllSemesters(Group selectedGroup) {
-        return groupsList.getAllSemesters(selectedGroup.getGroupNumber());
+        return groupsList.getAllSemesters(selectedGroup.getStringGroupNumber());
     }
 
     protected void sendGroupListQuery() {

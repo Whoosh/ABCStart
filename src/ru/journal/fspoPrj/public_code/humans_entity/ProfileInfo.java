@@ -1,6 +1,8 @@
 package ru.journal.fspoPrj.public_code.humans_entity;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 public class ProfileInfo extends Human {
@@ -8,12 +10,27 @@ public class ProfileInfo extends Human {
     private final String phone; // TODO может быть несколько если стандартизируют формат
     private final String photoLink;
     private final String mail;
+    private int group;
 
-    protected ProfileInfo(JSONObject element) {
+    public ProfileInfo(JSONObject element) {
         super(element);
         this.photoLink = ProfileKeys.PHOTO.getStringValue(element);
         this.mail = ProfileKeys.EMAIL.getStringValue(element);
         this.phone = ProfileKeys.PHONE.getStringValue(element);
+    }
+
+    public ProfileInfo(JSONObject element, int group) {
+        this(element);
+        this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "ProfileInfo{" +
+                "phone='" + phone + '\'' +
+                ", photoLink='" + photoLink + '\'' +
+                ", mail='" + mail + '\'' +
+                "} " + super.toString();
     }
 
     public String getPhotoLink() {
@@ -28,10 +45,14 @@ public class ProfileInfo extends Human {
         return mail;
     }
 
+    public String getStringGroup() {
+        return String.valueOf(group);
+    }
+
     private static enum ProfileKeys implements IKeyApi {
-        PHOTO("stream"),
-        EMAIL("offgr"),
-        PHONE("phone");
+        PHOTO("photo"),
+        EMAIL("mail"),
+        PHONE("email");
 
         private final String key;
 

@@ -2,7 +2,6 @@ package ru.journal.fspoPrj.journal.data_get_managers.communicators;
 
 import android.content.Intent;
 import ru.journal.fspoPrj.journal.JournalActivity;
-import ru.journal.fspoPrj.journal.LookingJournalActivity;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupLesson;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
@@ -13,9 +12,9 @@ public interface JournalCommunicator {
     int GROUPS_LIST_QUERY = 1;
     int LIGHT_VISITS_QUERY = 2;
 
-    Group getGroup(int groupNumber);
+    Group getGroup(String groupNumber);
 
-    LightVisits getLightVisits();
+    LightVisits getVisits();
 
     Integer[] getAllSemesters(Group group);
 
@@ -31,7 +30,7 @@ public interface JournalCommunicator {
 
     void resendLastQuery();
 
-    void sendGroupVisitsLightQuery(GroupLesson lesson);
+    void sendGroupVisitsQuery(GroupLesson lesson);
 
     void setCallerLink(JournalActivity parentCaller);
 }

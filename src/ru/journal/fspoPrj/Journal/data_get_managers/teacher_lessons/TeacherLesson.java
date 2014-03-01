@@ -27,7 +27,7 @@ public class TeacherLesson implements Serializable {
             JSONArray groups = element.getJSONArray(TeacherLessonKey.LESSONS_GROUP.getKey());
             this.groups = new TeacherGroup[groups.length()];
             for (int i = 0; i < groups.length(); i++) {
-                this.groups[i] = new TeacherGroup(groups.getJSONObject(i));
+                this.groups[i] = new TeacherGroup(groups.getJSONObject(i), lessonID, name);
             }
         } catch (JSONException e) {
             Logger.printError(e, getClass());

@@ -25,6 +25,13 @@
     <!-- Menu activity text values -->
     <dimen name="menu__item_menu_text_size">15sp</dimen>
 
+
+    <!-- Journal activity values -->
+    <integer name="journal__group_dialog_height">400</integer>
+    <integer name="journal__group_dialog_width">600</integer>
+    <!-- Journal activity text values -->
+    <dimen name="journal__group_title_dialog_text_size">15sp</dimen>
+
     <!-- Looking journal activity values -->
     <integer name="looking_journal__evolution_size">50</integer>
     <integer name="looking_journal__selector_group_height">50</integer>
@@ -51,5 +58,16 @@
     <integer name="teacher_journal_cell_dialog_weight">500</integer>
     <!-- Teacher journal activity text values -->
     <dimen name="teacher_journal__dialog_buttons_text_size">10sp</dimen>
+    <dimen name="teacher_journal__lesson_label__text_size">15sp</dimen>
+
+    <!-- SearchProfile activity values -->
+    <integer name="search__profile_user_slider_element_height">100</integer>
+    <integer name="search__profile_user_slider_element_width">700</integer>
+    <integer name="search__profile_user_slider_element_photo_height">80</integer>
+    <integer name="search__profile_user_slider_element_photo_width">80</integer>
+    <integer name="search__profile_user_slider_names_separate_line_width">60</integer>
+    <!-- Teacher journal activity text values -->
+    <dimen name="search__profile_user_slider_names_text_size">15sp</dimen>
+
 
 </resources>

@@ -11,10 +11,9 @@ public enum APIQuery {
     GET_GROUP_LIST("GET /api/getGroupsList/?ssid=", "&year_id="),
     GET_TEACHER_LESSON("GET /api/getTeacherLessons/?ssid=", "&year_id=", "&user_id="),
     GET_GROUP_JOURNAL("GET /api/getGroupsJournals/?ssid=", "&year_id="),
-    GET_JOURNAL_VISITS_BY_GROUP_FULL("GET /api/getJournalVisitsByOffGroup/?ssid=",
-            "&year_id=", "&lesson_id=", "&group_id="),
-    GET_JOURNAL_VISITS_BY_GROUP_LIGHT("GET /api/getJournalVisitsByOffGroupLight/?ssid=",
-            "&year_id=", "&lesson_id=", "&group_id="),
+    GET_JOURNAL_VISITS_BY_GROUP_FULL("GET /api/getJournalVisitsByOffGroup/?ssid=", "&year_id=", "&lesson_id=", "&group_id="),
+    GET_JOURNAL_VISITS_BY_GROUP_LIGHT("GET /api/getJournalVisitsByOffGroupLight/?ssid=", "&year_id=", "&lesson_id=", "&group_id="),
+    GET_USERS_LIST("GET /api/getuserslist/?ssid=", "&year_id="),
     EMPTY_QUERY("GET /api");
 
     private final String[] keys;

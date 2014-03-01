@@ -33,20 +33,20 @@
                 >
         </activity>
 
-        <activity android:name=".journal.LookingJournalActivity"
+        <activity android:name=".journal.looking_journal.LookingJournalActivity"
                   android:theme="@android:style/Theme.Holo.Light">
         </activity>
 
-        <activity android:name=".journal.TeacherJournalActivity"
+        <activity android:name=".journal.edit_journal.TeacherJournalActivity"
                   android:theme="@android:style/Theme.Holo.Light">
         </activity>
 
-        <activity android:name=".user_profile.ProfileActivity"
-                  android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:name=".search_users.search_all.SearchAllProfilesActivity"
+                  android:theme="@android:style/Theme.Holo.Light">
         </activity>
 
         <activity android:name=".main_menu.BugReportInformerActivity"
-                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:theme="@android:style/Theme.Holo.Light"
                 >
         </activity>
 

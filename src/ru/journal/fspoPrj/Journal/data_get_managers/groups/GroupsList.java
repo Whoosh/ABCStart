@@ -18,7 +18,7 @@ public class GroupsList implements Serializable {
     private static final int ANY_STUDENT_HERE = 1;
     private static final int DEFAULT_GROUP_COUNT = 24;
 
-    private HashMap<Integer, Group> groups;
+    private HashMap<String, Group> groups;
 
     public GroupsList(String groupsListResponse, String groupsJournalResponse) {
         groups = new HashMap<>(DEFAULT_GROUP_COUNT);
@@ -29,7 +29,7 @@ public class GroupsList implements Serializable {
             for (int i = 0; i < groupsNumberName.length(); i++) {
                 JSONArray group = groupsList.getJSONArray(groupsNumberName.getString(i));
                 if (group.length() > ANY_STUDENT_HERE) {
-                    groups.put(groupsNumberName.getInt(i), new Group(groupsNumberName.getInt(i), group));
+                    groups.put(groupsNumberName.getString(i), new Group(groupsNumberName.getInt(i), group));
                 }
             }
             parseLessonForGroups(groupsJournalResponse);
@@ -43,39 +43,35 @@ public class GroupsList implements Serializable {
         JSONArray groupsNumberName = groupsLessonsList.names();
 
         for (int i = 0; i < groupsNumberName.length(); i++) {
-            Group group = groups.get(groupsNumberName.getInt(i));
+            Group group = groups.get(groupsNumberName.getString(i));
             group.setGroupLessons(groupsLessonsList.getJSONArray(groupsNumberName.getString(i)));
         }
     }
 
     public String[] getSortedGroups() {
-        Integer[] iGroups = groups.keySet().toArray(new Integer[groups.size()]);
-        String[] sGroups = new String[iGroups.length];
-        Arrays.sort(iGroups);
-        for (int i = 0; i < iGroups.length; i++) {
-            sGroups[i] = String.valueOf(iGroups[i]);
-        }
+        String[] sGroups = groups.keySet().toArray(new String[groups.size()]);
+        Arrays.sort(sGroups);
         return sGroups;
     }
 
-    public Student[] getStudents(int group) {
+    public Student[] getStudents(String group) {
         return groups.get(group).getStudents();
     }
 
-    public GroupLesson[] getLessons(int group, int semester) {
+    public GroupLesson[] getLessons(String group, int semester) {
         return groups.get(group).getGroupLessons(semester);
     }
 
-    public Group getGroup(int groupNumber) {
+    public Group getGroup(String groupNumber) {
         return groups.get(groupNumber);
     }
 
     public int getFirstPossiblySemester(Group selectedGroup) {
-        return groups.get(selectedGroup.getGroupNumber()).getFirstPossiblySemester();
+        return groups.get(selectedGroup.getStringGroupNumber()).getFirstPossiblySemester();
     }
 
 
-    public Integer[] getAllSemesters(int groupNumber) {
+    public Integer[] getAllSemesters(String groupNumber) {
         return groups.get(groupNumber).getAllSemesters();
     }
 /*/

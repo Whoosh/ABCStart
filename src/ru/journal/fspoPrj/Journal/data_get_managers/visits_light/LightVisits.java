@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class LightVisits implements Serializable {
 
-    private int[] teacherID;
+    private int[] teachersID;
     private LightExercisesInfo[] exercisesInfo;
     private HashMap<Integer, Visit[]> studentVisits;
 
@@ -66,9 +66,9 @@ public class LightVisits implements Serializable {
     private void makeTeachers(JSONObject element) throws JSONException {
         JSONArray teachers = element.getJSONArray(VisitsKey.LESSON_TEACHERS.getKey());
         int len = teachers.length();
-        teacherID = new int[len];
+        teachersID = new int[len];
         for (int i = 0; i < len; i++) {
-            teacherID[i] = teachers.getJSONObject(i).getInt(VisitsKey.TEACHER_ID.getKey());
+            teachersID[i] = teachers.getJSONObject(i).getInt(VisitsKey.TEACHER_ID.getKey());
         }
     }
 
