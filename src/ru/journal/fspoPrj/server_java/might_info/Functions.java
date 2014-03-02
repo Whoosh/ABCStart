@@ -13,7 +13,7 @@ public enum Functions {
 
     LOOK_JOURNALS("Просмотр журналов групп", LookingJournalActivity.class, R.drawable.ic_journal),
 
-    PROFILE("Поиск пользователя", SearchAllProfilesActivity.class, R.drawable.ic_people),
+    PROFILE("Все пользователи", SearchAllProfilesActivity.class, R.drawable.ic_people),
 
     LESSONS_MANAGER("Мои журналы", TeacherJournalActivity.class, R.drawable.ic_lessons),
 

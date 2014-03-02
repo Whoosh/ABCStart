@@ -66,8 +66,19 @@
     <integer name="search__profile_user_slider_element_photo_height">80</integer>
     <integer name="search__profile_user_slider_element_photo_width">80</integer>
     <integer name="search__profile_user_slider_names_separate_line_width">60</integer>
-    <!-- Teacher journal activity text values -->
+    <!-- SearchProfile activity text values -->
     <dimen name="search__profile_user_slider_names_text_size">15sp</dimen>
+
+
+    <!-- ExtendUserInfo activity values -->
+    <integer name="extend_profile__photo_width">300</integer>
+    <integer name="extend_profile__photo_height">300</integer>
+    <integer name="extend_profile__separate_names_line_width">20</integer>
+    <integer name="extend_profile__separate_main_info_line_height">3</integer>
+    <integer name="extend_profile__separate_names_transparent_line_height">10</integer>
+
+    <!-- ExtendUserInfo activity text values -->
+    <dimen name="extend_profile__names_text_size">16sp</dimen>
 
 
 </resources>

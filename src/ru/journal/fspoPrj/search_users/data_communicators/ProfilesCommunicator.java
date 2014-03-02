@@ -7,11 +7,9 @@ import ru.journal.fspoPrj.server_java.server_info.APIQuery;
 import ru.journal.fspoPrj.server_java.server_managers.MainExecutor;
 import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 
 public class ProfilesCommunicator extends ServerCommunicator {
 
@@ -65,34 +63,65 @@ public class ProfilesCommunicator extends ServerCommunicator {
         return usersInfo;
     }
 
-    public void sortUsersByFirstName() {
+    public void sortUsersByFirstNameASC() {
         Collections.sort(usersInfo, new Comparator<ProfileInfo>() {
             @Override
             public int compare(ProfileInfo profileInfo, ProfileInfo profileInfo2) {
-                return compareAnyName(profileInfo.getFirstName(), profileInfo2.getFirstName());
+                return compareAnyNameASC(profileInfo.getFirstName(), profileInfo2.getFirstName());
             }
         });
     }
 
-    public void sortUsersByLastName() {
+    public void sortUsersByLastNameASC() {
         Collections.sort(usersInfo, new Comparator<ProfileInfo>() {
             @Override
             public int compare(ProfileInfo profileInfo, ProfileInfo profileInfo2) {
-                return compareAnyName(profileInfo.getLastName(), profileInfo2.getLastName());
+                return compareAnyNameASC(profileInfo.getLastName(), profileInfo2.getLastName());
             }
         });
     }
 
-    public void sortUsersByMiddleName() {
+    public void sortUsersByMiddleNameASC() {
         Collections.sort(usersInfo, new Comparator<ProfileInfo>() {
             @Override
             public int compare(ProfileInfo profileInfo, ProfileInfo profileInfo2) {
-                return compareAnyName(profileInfo.getMiddleName(), profileInfo2.getMiddleName());
+                return compareAnyNameASC(profileInfo.getMiddleName(), profileInfo2.getMiddleName());
             }
         });
     }
 
-    private int compareAnyName(String name, String name2) {
+    public void sortUsersByFirstNameDESC() {
+        Collections.sort(usersInfo, new Comparator<ProfileInfo>() {
+            @Override
+            public int compare(ProfileInfo profileInfo, ProfileInfo profileInfo2) {
+                return compareAnyNameDESC(profileInfo.getFirstName(), profileInfo2.getFirstName());
+            }
+        });
+    }
+
+    public void sortUsersByLastNameDESC() {
+        Collections.sort(usersInfo, new Comparator<ProfileInfo>() {
+            @Override
+            public int compare(ProfileInfo profileInfo, ProfileInfo profileInfo2) {
+                return compareAnyNameDESC(profileInfo.getLastName(), profileInfo2.getLastName());
+            }
+        });
+    }
+
+    public void sortUsersByMiddleNameDESC() {
+        Collections.sort(usersInfo, new Comparator<ProfileInfo>() {
+            @Override
+            public int compare(ProfileInfo profileInfo, ProfileInfo profileInfo2) {
+                return compareAnyNameDESC(profileInfo.getMiddleName(), profileInfo2.getMiddleName());
+            }
+        });
+    }
+
+    private int compareAnyNameASC(String name, String name2) {
         return name.charAt(0) < name2.charAt(0) ? LOWER : name.charAt(0) > name2.charAt(0) ? UPPER : EQUALS;
+    }
+
+    private int compareAnyNameDESC(String name, String name2) {
+        return name.charAt(0) < name2.charAt(0) ? UPPER : name.charAt(0) > name2.charAt(0) ? LOWER : EQUALS;
     }
 }

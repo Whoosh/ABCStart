@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.*;
+import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
 import ru.journal.fspoPrj.search_users.action_bars.SearchBar;
 import ru.journal.fspoPrj.search_users.adapters.UserProfileAdapter;
@@ -15,12 +16,12 @@ import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 
 import java.util.ArrayList;
 
-public class SearchAllProfilesActivity extends Activity implements View.OnClickListener,
-        SearchBar.AvailableUsersProfileCallBack {
+public class SearchAllProfilesActivity extends Activity implements SearchBar.AvailableUsersProfileCallBack {
 
     private static ProfilesCommunicator pC;
 
-    private int colorLightGray = Color.rgb(222, 222, 222);
+    private static final int CL_GRAY = Color.rgb(222, 222, 222);
+
     private LinearLayout mainLayout;
     private SearchBar searchBar;
     private ListView usersList;
@@ -31,8 +32,9 @@ public class SearchAllProfilesActivity extends Activity implements View.OnClickL
         searchBar = new SearchBar(this);
         usersList = new ListView(this);
 
+
         searchBar.setAvailableProfilesCallBack(this);
-        mainLayout.setBackgroundColor(colorLightGray);
+        mainLayout.setBackgroundColor(CL_GRAY);
         mainLayout.addView(usersList);
         setUserInfoInToSearchBar();
     }
@@ -47,6 +49,7 @@ public class SearchAllProfilesActivity extends Activity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         initElements();
         startActionMode(searchBar);
         setContentView(mainLayout);
@@ -55,7 +58,7 @@ public class SearchAllProfilesActivity extends Activity implements View.OnClickL
     private void setUserInfoInToSearchBar() {
         ArrayList<ProfileInfo> profilesInfo = pC.getUsersInfo();
         if (profilesInfo != null) {
-            searchBar.setProfilesInfo(profilesInfo);
+            searchBar.setCommunicator(pC);
             usersList.setAdapter(new UserProfileAdapter(profilesInfo, this));
         }
     }
@@ -82,8 +85,15 @@ public class SearchAllProfilesActivity extends Activity implements View.OnClickL
     }
 
     @Override
-    public void onClick(View view) {
-        // TODO
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
+        searchBar.saveState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        searchBar.restoreState(savedInstanceState, pC);
     }
 
     @Override
