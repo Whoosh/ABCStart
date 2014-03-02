@@ -63,4 +63,8 @@ public class UserSliderElement extends LinearLayout {
             photoMaker.execute(profileInfo.getPhotoLink());
         }
     }
+
+    public ProfileInfo getUserInfo() {
+        return profileInfo;
+    }
 }

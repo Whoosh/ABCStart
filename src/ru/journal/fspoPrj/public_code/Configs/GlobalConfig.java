@@ -35,6 +35,7 @@ abstract public class GlobalConfig {
         ru.journal.fspoPrj.main_menu.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.journal.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.search_users.config.Config.setDefaultElementSize();
+        ru.journal.fspoPrj.search_users.profile.config.Config.setDefaultElementSize();
     }
 
     public static void setTheme(int theme) {

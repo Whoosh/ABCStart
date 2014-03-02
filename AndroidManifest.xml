@@ -9,6 +9,11 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="com.android.email.permission.READ_ATTACHMENT"/>
+    <uses-permission android:name="com.android.email.permission.ACCESS_PROVIDER"/>
 
     <application android:icon="@drawable/aplogo"
                  android:allowBackup="true">
@@ -42,6 +47,10 @@
         </activity>
 
         <activity android:name=".search_users.search_all.SearchAllProfilesActivity"
+                  android:theme="@android:style/Theme.Holo.Light">
+        </activity>
+
+        <activity android:name=".search_users.profile.ExtendUserProfileInfoActivity"
                   android:theme="@android:style/Theme.Holo.Light">
         </activity>
 

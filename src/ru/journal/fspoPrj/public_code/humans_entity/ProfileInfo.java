@@ -37,7 +37,7 @@ public class ProfileInfo extends Human {
         return photoLink;
     }
 
-    public String getPhones() {
+    public String getPhone() {
         return phone;
     }
 
@@ -51,8 +51,8 @@ public class ProfileInfo extends Human {
 
     private static enum ProfileKeys implements IKeyApi {
         PHOTO("photo"),
-        EMAIL("mail"),
-        PHONE("email");
+        EMAIL("email"),
+        PHONE("phone");
 
         private final String key;
 
