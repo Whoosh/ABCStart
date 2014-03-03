@@ -124,4 +124,8 @@ abstract public class GlobalConfig {
     public static float getPixelDensity() {
         return DISPLAY_DENSITY_PIXEL_METRIC;
     }
+
+    public static int getTestValue() {
+        return getRealSize(R.integer.testValue);
+    }
 }

@@ -80,5 +80,6 @@
     <!-- ExtendUserInfo activity text values -->
     <dimen name="extend_profile__names_text_size">16sp</dimen>
 
-
+    <!-- TODO DEll -->
+    <integer name="testValue">10</integer>
 </resources>

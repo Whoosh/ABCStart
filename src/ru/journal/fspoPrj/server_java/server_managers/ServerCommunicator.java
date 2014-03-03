@@ -8,8 +8,7 @@ import ru.journal.fspoPrj.server_java.server_info.CommunicationInfo;
 
 public abstract class ServerCommunicator {
 
-    public static final int REQUEST_CODE = 123111; // not actual, equals empty;
-    public static final int RESULT_OK = 2519854;
+    public static final int REQUEST_CODE = 123111;
     public static final int RESULT_FAIL = 2547812;
 
     public static int PORT;
@@ -43,12 +42,9 @@ public abstract class ServerCommunicator {
         startQueryHandler(caller, executor);
     }
 
-    protected void startQueryHandler(Activity caller, MainExecutor executor) {
+    private void startQueryHandler(Activity caller, MainExecutor executor) {
         Intent intent = new Intent(caller, ProgressActivity.class);
         intent.putExtra(SERVER_COMMUTATION_KEY, executor);
         caller.startActivityForResult(intent, REQUEST_CODE);
     }
-
-
-
 }

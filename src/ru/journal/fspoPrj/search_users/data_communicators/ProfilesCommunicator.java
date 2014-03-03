@@ -63,6 +63,10 @@ public class ProfilesCommunicator extends ServerCommunicator {
         return usersInfo;
     }
 
+    public void resendLastQuery() {
+        sendQueryToServer(parent, makeExecutor());
+    }
+
     public void sortUsersByFirstNameASC() {
         Collections.sort(usersInfo, new Comparator<ProfileInfo>() {
             @Override
@@ -124,4 +128,5 @@ public class ProfilesCommunicator extends ServerCommunicator {
     private int compareAnyNameDESC(String name, String name2) {
         return name.charAt(0) < name2.charAt(0) ? UPPER : name.charAt(0) > name2.charAt(0) ? LOWER : EQUALS;
     }
+
 }

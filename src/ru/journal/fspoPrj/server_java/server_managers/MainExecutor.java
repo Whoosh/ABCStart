@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 
 public abstract class MainExecutor extends AsyncTask<String, Integer, Void> implements Serializable {
 
-    protected static final int DEFAULT_WAIT_TIME = 60;
+    protected static final int DEFAULT_WAIT_TIME = 10;
 
     private static final int SHOW_PROGRESS_CODE = 0;
     private static final int STOP_EXECUTING_CODE = 1;

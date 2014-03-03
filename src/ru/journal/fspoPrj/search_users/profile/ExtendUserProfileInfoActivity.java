@@ -3,8 +3,8 @@ package ru.journal.fspoPrj.search_users.profile;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +19,7 @@ import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
 import ru.journal.fspoPrj.search_users.action_bars.ExtendUserProfileBar;
 import ru.journal.fspoPrj.search_users.profile.config.Config;
 import ru.journal.fspoPrj.search_users.search_all.elements.PhotoMaker;
+import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 
 public class ExtendUserProfileInfoActivity extends Activity implements View.OnClickListener {
 
@@ -31,14 +32,18 @@ public class ExtendUserProfileInfoActivity extends Activity implements View.OnCl
     public static final String GROUP = "Группа : ";
     public static final String MAIL = "Почта : ";
     public static final String TELL = "Телефон : ";
-    public static final String SEND_MESSAGE_IN_SYSTEM = "Написать в систему";
-    public static final String PHONE = "tel:";
+    public static final String SEND_MESSAGE_IN_SYSTEM = "Написать сообщение";
+    public static final String SPACE = " ";
+    public static final String TEXT_PLAIN = "text/plain";
+    public static final String TEACHER_AKA_STUDENT = "Студент/Преподаватель";
+
+    public static final int DEFAULT_REQUEST = 1;
 
     private ProfileInfo userInfo;
     private LinearLayout mainLayout;
-    private ExtendUserProfileBar userProfileBar;
     private ImageView photo;
     private PhotoMaker photoMaker;
+    private ExtendUserProfileBar userProfileBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,34 @@ public class ExtendUserProfileInfoActivity extends Activity implements View.OnCl
         setContentView(mainLayout);
         startActionMode(userProfileBar);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.drawable.ic_launcher_phone: {
+                makeUserMyFriends();
+            }
+            break;
+            case R.drawable.ic_mail_to: {
+                mailToUser();
+            }
+            break;
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
+        outState.putSerializable(getClass().getCanonicalName(), userInfo);
+        stopDoAny();
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        this.userInfo = (ProfileInfo) savedInstanceState.getSerializable(getClass().getCanonicalName());
+        addInfoOnElements();
     }
 
     private void addInfoOnElements() {
@@ -65,18 +98,19 @@ public class ExtendUserProfileInfoActivity extends Activity implements View.OnCl
         LinearLayout infoLay = new LinearLayout(this);
 
         infoLay.setOrientation(LinearLayout.VERTICAL);
-        setInfo(MAIL + userInfo.getMail(), R.drawable.ic_mail_to, infoLay);
-        setInfo(TELL + userInfo.getPhone(), R.drawable.ic_launcher_phone, infoLay);
+        if (!userInfo.getMail().isEmpty())
+            setInfo(MAIL + userInfo.getMail(), R.drawable.ic_mail_to, infoLay);
+        if (!userInfo.getPhone().isEmpty())
+            setInfo(TELL + userInfo.getPhone(), R.drawable.ic_launcher_phone, infoLay);
         setInfo(SEND_MESSAGE_IN_SYSTEM, R.drawable.ic_send_in_system, infoLay);
 
         scroller.addView(infoLay);
-        System.out.println(userInfo.getMail() + " " + userInfo.getPhone());
         mainLayout.addView(scroller);
     }
 
     private void setInfo(String text, int res_id, LinearLayout informer) {
         LinearLayout horizontalLay = new LinearLayout(this);
-        ImageButton actionButton = new ImageButton(this);
+        ImageView actionButton = new ImageView(this);
         actionButton.setImageResource(res_id);
         actionButton.setOnClickListener(this);
         actionButton.setId(res_id);
@@ -111,12 +145,15 @@ public class ExtendUserProfileInfoActivity extends Activity implements View.OnCl
         setName(MIDDLE_NAME + userInfo.getMiddleName(), names);
         setName(LAST_NAME + userInfo.getLastName(), names);
 
-        if (userInfo.getStringGroup().isEmpty()) {
+        if (userInfo.isTeacher()) {
             setName(STATUS + TEACHER, names);
-        } else {
+        } else if (userInfo.isStudent()) {
             setName(STATUS + STUDENT, names);
             setName(GROUP + userInfo.getStringGroup(), names);
+        } else {
+            setName(STATUS + TEACHER_AKA_STUDENT, names);
         }
+
         names.addView(new HorizontalLine(this, Color.TRANSPARENT, Config.getExtendUserInfoAfterNameSeparateHorizontalLineHeight()));
 
         mainLayout.addView(photoPlusNames);
@@ -144,20 +181,6 @@ public class ExtendUserProfileInfoActivity extends Activity implements View.OnCl
         mainLayout.setBackgroundColor(Color.LTGRAY);
     }
 
-    @Override
-    protected void onSaveInstanceState(@NotNull Bundle outState) {
-        outState.putSerializable(getClass().getCanonicalName(), userInfo);
-        stopDoAny();
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        this.userInfo = (ProfileInfo) savedInstanceState.getSerializable(getClass().getCanonicalName());
-        addInfoOnElements();
-    }
-
     private void stopDoAny() {
         if (photoMaker != null && !photoMaker.isCancelled()) {
             photoMaker.cancel(true);
@@ -175,27 +198,21 @@ public class ExtendUserProfileInfoActivity extends Activity implements View.OnCl
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.drawable.ic_launcher_phone: {
-                callToUser();
-            }
-            break;
-            case R.drawable.ic_mail_to: {
-                mailToUser();
-            }
-            break;
-        }
-    }
-
     private void mailToUser() {
-        startActivity(new Intent(Intent.EXTRA_EMAIL, Uri.parse(userInfo.getMail())));
-        // TODO
+        Intent mailTo = new Intent();
+        mailTo.setAction(Intent.ACTION_SEND);
+        mailTo.setType(TEXT_PLAIN);
+        mailTo.putExtra(android.content.Intent.EXTRA_EMAIL, userInfo.getMail());
+        startActivityForResult(mailTo, DEFAULT_REQUEST);
     }
 
-    private void callToUser() {
-        // TODO
-        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(PHONE + userInfo.getPhone())));
+    private void makeUserMyFriends() {
+        Intent data = new Intent(ContactsContract.Intents.Insert.ACTION, ContactsContract.Contacts.CONTENT_URI);
+        data.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+        data.putExtra(ContactsContract.Intents.Insert.NAME,
+                userInfo.getFirstName() + SPACE + userInfo.getMiddleName() + SPACE + userInfo.getLastName());
+        data.putExtra(ContactsContract.Intents.Insert.EMAIL, userInfo.getMail());
+        data.putExtra(ContactsContract.Intents.Insert.PHONE, userInfo.getPhone());
+        startActivity(data);
     }
 }

@@ -7,10 +7,13 @@ import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 public class ProfileInfo extends Human {
 
-    private final String phone; // TODO может быть несколько если стандартизируют формат
+    public static enum Status {TEACHER, STUDENT, TEACHER_AKA_STUDENT}
+
+    private final String phone;
     private final String photoLink;
     private final String mail;
     private int group;
+    private Status status;
 
     public ProfileInfo(JSONObject element) {
         super(element);
@@ -22,15 +25,12 @@ public class ProfileInfo extends Human {
     public ProfileInfo(JSONObject element, int group) {
         this(element);
         this.group = group;
+        this.status = Status.STUDENT;
     }
 
-    @Override
-    public String toString() {
-        return "ProfileInfo{" +
-                "phone='" + phone + '\'' +
-                ", photoLink='" + photoLink + '\'' +
-                ", mail='" + mail + '\'' +
-                "} " + super.toString();
+    public ProfileInfo(JSONObject element, Status status) {
+        this(element);
+        this.status = status;
     }
 
     public String getPhotoLink() {
@@ -45,8 +45,41 @@ public class ProfileInfo extends Human {
         return mail;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public String getStringGroup() {
         return String.valueOf(group);
+    }
+
+    public boolean isTeacher() {
+        return status == Status.TEACHER;
+    }
+
+    public boolean isStudent() {
+        return status == Status.STUDENT;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "ProfileInfo{" +
+                "phone='" + phone + '\'' +
+                ", photoLink='" + photoLink + '\'' +
+                ", mail='" + mail + '\'' +
+                ", group=" + group +
+                ", status=" + status +
+                "} " + super.toString();
     }
 
     private static enum ProfileKeys implements IKeyApi {
@@ -75,4 +108,5 @@ public class ProfileInfo extends Human {
             return parser.parseString(key, element);
         }
     }
+
 }
