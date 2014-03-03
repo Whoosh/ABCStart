@@ -32,6 +32,9 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
         this.context = context;
         normal = new CheckBox(context);
         matrix = new CheckBox(context);
+        // TODO when TODO
+        normal.setEnabled(false);
+        matrix.setEnabled(false);
 
         normal.setText(NORMAL_THEME_TITLE);
         Config.setCheckBoxParam(normal, this);
@@ -52,8 +55,6 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(context, "Cooming soon", Toast.LENGTH_SHORT).show();
-        /*/
         if (view.equals(normal)) {
             if (normal.isChecked()) {
                 matrix.setChecked(false);
@@ -69,7 +70,6 @@ public class ThemeManager extends LinearLayout implements View.OnClickListener {
             }
             matrix.setChecked(true);
         }
-        /*/
     }
 
     private void refreshActivity() {

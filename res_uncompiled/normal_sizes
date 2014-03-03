@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Menu activity values -->
+    <integer name="menu__item_menu_height">50</integer>
+    <integer name="menu__item_menu_width">290</integer>
+    <integer name="menu__item_menu_separate_line_height">30</integer>
+    <integer name="menu__item_menu_text_tab_width">20</integer>
+    <!-- Menu activity text values -->
+    <dimen name="menu__item_menu_text_size">10sp</dimen>
+
+    <!-- SearchProfile activity values -->
+    <integer name="search__profile_user_slider_element_height">60</integer>
+    <integer name="search__profile_user_slider_element_photo_height">58</integer>
+    <integer name="search__profile_user_slider_element_photo_width">58</integer>
+    <integer name="search__profile_user_slider_names_separate_line_width">30</integer>
+    <!-- SearchProfile activity text values -->
+    <dimen name="search__profile_user_slider_names_text_size">8sp</dimen>
+
+    <!-- ExtendUserInfo activity values -->
+    <integer name="extend_profile__photo_width">150</integer>
+    <integer name="extend_profile__photo_height">150</integer>
+    <integer name="extend_profile__separate_names_line_width">10</integer>
+    <integer name="extend_profile__separate_main_info_line_height">2</integer>
+    <integer name="extend_profile__separate_names_transparent_line_height">5</integer>
+
+    <!-- ExtendUserInfo activity text values -->
+    <dimen name="extend_profile__names_text_size">8sp</dimen>
+
+</resources>

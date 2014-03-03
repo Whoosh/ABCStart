@@ -11,13 +11,13 @@ public enum Functions {
     // WARNING Имена не могут быть одинаковыми
     // При внесении класса, незабыть добавить его в манифест !
 
-    LOOK_JOURNALS("Просмотр журналов групп", LookingJournalActivity.class, R.drawable.ic_journal),
+    LOOK_JOURNALS("Журналы групп", LookingJournalActivity.class, R.drawable.ic_journal),
 
-    PROFILE("Все пользователи", SearchAllProfilesActivity.class, R.drawable.ic_people),
+    PROFILE("Пользователи", SearchAllProfilesActivity.class, R.drawable.ic_people),
 
     LESSONS_MANAGER("Мои журналы", TeacherJournalActivity.class, R.drawable.ic_lessons),
 
-    ERROR_INFORMER("Свяжитесь с автором", BugReportInformerActivity.class, R.drawable.ic_some_wrong),
+    ERROR_INFORMER("Связь с автором", BugReportInformerActivity.class, R.drawable.ic_some_wrong),
 
     MESSAGES("Сообщения", BugReportInformerActivity.class, R.drawable.ic_chat),
 

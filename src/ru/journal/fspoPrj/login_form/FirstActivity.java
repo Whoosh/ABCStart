@@ -30,7 +30,6 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         if (savedInstanceState == null) {
             theme = getThemeState();
             GlobalConfig.setTheme(theme);
@@ -89,7 +88,6 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
     @Override
     public void onBackPressed() {
         menuShower.close();
-        // system.extit/emul
         super.onBackPressed();
     }
 
@@ -116,7 +114,11 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
 
     @Override
     public void onClick(View view) {
-        try {// закрываем виртуальную клавиатуру по клику на пустое место.
+        closeVirtualKeyBoard();
+    }
+
+    private void closeVirtualKeyBoard() {
+        try {
             InputMethodManager method = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             method.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         } catch (NullPointerException ex) {

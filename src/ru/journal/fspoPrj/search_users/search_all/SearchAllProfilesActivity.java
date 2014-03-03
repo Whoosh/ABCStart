@@ -26,25 +26,6 @@ public class SearchAllProfilesActivity extends Activity implements SearchBar.Ava
     private SearchBar searchBar;
     private ListView usersList;
 
-    private void initElements() {
-        makeCommunicator();
-        mainLayout = new LinearLayout(this);
-        searchBar = new SearchBar(this);
-        usersList = new ListView(this);
-
-
-        searchBar.setAvailableProfilesCallBack(this);
-        mainLayout.setBackgroundColor(CL_GRAY);
-        mainLayout.addView(usersList);
-        setUserInfoInToSearchBar();
-    }
-
-    @Override
-    public void onBackPressed() {
-        pC = null;
-        super.onBackPressed();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,33 +36,21 @@ public class SearchAllProfilesActivity extends Activity implements SearchBar.Ava
         setContentView(mainLayout);
     }
 
-    private void setUserInfoInToSearchBar() {
-        ArrayList<ProfileInfo> profilesInfo = pC.getUsersInfo();
-        if (profilesInfo != null) {
-            searchBar.setCommunicator(pC);
-            usersList.setAdapter(new UserProfileAdapter(profilesInfo, this));
-        }
-    }
-
-    private void makeCommunicator() {
-        if (pC == null) {
-            pC = new ProfilesCommunicator(this);
-        } else {
-            pC.setCaller(this);
-        }
+    @Override
+    public void onBackPressed() {
+        pC = null;
+        super.onBackPressed();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == ServerCommunicator.RESULT_FAIL) {
+            searchBar.setStateToRefresh();
             return;
         }
-        if (data != null) {
-            pC.cacheData(data, resultCode);
-        }
-        if (resultCode == ProfilesCommunicator.ALL_PROFILES_QUERY) {
-            setUserInfoInToSearchBar();
-        }
+        if (data != null) pC.cacheData(data, resultCode);
+        if (searchBar.isStateRefresh()) searchBar.setStateIsNormal();
+        if (resultCode == ProfilesCommunicator.ALL_PROFILES_QUERY) setUserInfoInToSearchBar();
     }
 
     @Override
@@ -100,5 +69,34 @@ public class SearchAllProfilesActivity extends Activity implements SearchBar.Ava
     public void availableListSelected(ArrayList<ProfileInfo> profiles) {
         usersList.setAdapter(new UserProfileAdapter(profiles, this));
         usersList.invalidate();
+    }
+
+    private void setUserInfoInToSearchBar() {
+        ArrayList<ProfileInfo> profilesInfo = pC.getUsersInfo();
+        if (profilesInfo != null) {
+            searchBar.setCommunicator(pC);
+            usersList.setAdapter(new UserProfileAdapter(profilesInfo, this));
+        }
+    }
+
+    private void makeCommunicator() {
+        if (pC == null) {
+            pC = new ProfilesCommunicator(this);
+        } else {
+            pC.setCaller(this);
+        }
+    }
+
+    private void initElements() {
+        makeCommunicator();
+        mainLayout = new LinearLayout(this);
+        searchBar = new SearchBar(this);
+        usersList = new ListView(this);
+
+        searchBar.setCommunicator(pC);
+        searchBar.setAvailableProfilesCallBack(this);
+        mainLayout.setBackgroundColor(CL_GRAY);
+        mainLayout.addView(usersList);
+        setUserInfoInToSearchBar();
     }
 }
