@@ -7,22 +7,31 @@ import android.os.AsyncTask;
 import android.widget.ImageView;
 import ru.journal.fspoPrj.R;
 
+import java.io.*;
+import java.net.URL;
+
 public class PhotoMaker extends AsyncTask<String, String, Bitmap> {
 
-    private final static String photoAddress = "http://fspo.segrys.ru/img/users/";
-
+    private final static String PHOTO_ADDRESS = "http://fspo.segrys.ru/img/users/";
     private ImageView photoView;
     private Context context;
+    private InputStream link;
 
     public PhotoMaker(Context context, ImageView photoView) {
         this.context = context;
         this.photoView = photoView;
     }
 
+    public void cancel() {
+        closeLink();
+        super.cancel(true);
+    }
+
     @Override
     protected Bitmap doInBackground(String... url) {
         try {
-            return BitmapFactory.decodeStream(new java.net.URL(photoAddress + url[0]).openStream());
+            link = new URL(PHOTO_ADDRESS + url[0]).openStream();
+            return BitmapFactory.decodeStream(link);
         } catch (Exception e) {
             return BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_ghost);
         }
@@ -31,5 +40,13 @@ public class PhotoMaker extends AsyncTask<String, String, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap result) {
         photoView.setImageBitmap(result);
+        closeLink();
+    }
+
+    private void closeLink() {
+        try {
+            link.close();
+        } catch (Exception ignored) {
+        }
     }
 }

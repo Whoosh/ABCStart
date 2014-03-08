@@ -6,13 +6,14 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.SearchView;
 import ru.journal.fspoPrj.R;
+import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLesson;
 import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
 import ru.journal.fspoPrj.search_users.data_communicators.ProfilesCommunicator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextListener, SearchView.OnCloseListener, View.OnClickListener {
+public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextListener, SearchView.OnCloseListener,View.OnClickListener {
 
     private static final String LAST_NAMES = "Фамилии";
     private static final String FIRST_NAME = "Имена";
@@ -22,7 +23,6 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
     private static final String REFRESH = "Обновить";
     private static final String EMPTY = "";
 
-    private static final int LAST_CHAR = 1;
     private static final int SUB_MENU_SORT_UP = 6;
     private static final int SUB_MENU_SORT_DOWN = 7;
     private static final int LAST_NAME_SORT_DOWN = 4;
@@ -42,7 +42,6 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
     private AvailableUsersProfileCallBack availableUsersProfileCallBack;
 
     private String userSearchInput = "";
-    private boolean eventBeforeClosed;
 
     public SearchBar(Activity parent) {
         this.parent = parent;
@@ -52,7 +51,6 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
 
         peopleSearcher = new PeopleSearcher(parent);
         peopleSearcher.setOnQueryTextListener(this);
-        peopleSearcher.setOnCloseListener(this);
     }
 
     public void setCommunicator(ProfilesCommunicator pC) {
@@ -64,9 +62,11 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
     }
 
     public void restoreState(Bundle savedInstanceState, ProfilesCommunicator pC) {
-        this.pC = pC;
-        userSearchInput = savedInstanceState.getString(getClass().getCanonicalName());
-        onQueryTextChange(userSearchInput);
+        if (pC != null) {
+            this.pC = pC;
+            userSearchInput = savedInstanceState.getString(getClass().getCanonicalName());
+            onQueryTextChange(userSearchInput);
+        }
     }
 
     public void saveState(Bundle outState) {
@@ -129,20 +129,15 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
 
     @Override
     public boolean onQueryTextChange(String input) {
-        if (!eventBeforeClosed && !deletedByCloseEvent(input)) {
-            userSearchInput = input;
-            acceptChange();
-        } else if (input.isEmpty() && userSearchInput.length() == LAST_CHAR) {
+        if (input != null && pC != null && pC.getUsersInfo() != null) {
             availableUsersProfileCallBack.availableListSelected(makeSearchedList(input));
-        } else {
-            eventBeforeClosed = false;
         }
+        userSearchInput = input;
         return true;
     }
 
     @Override
     public boolean onClose() {
-        eventBeforeClosed = true;
         return false;
     }
 
@@ -219,7 +214,7 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
     private ArrayList<ProfileInfo> makeDefaultSearch(ArrayList<ProfileInfo> profilesInfo, String input) {
         for (Iterator<ProfileInfo> iterator = profilesInfo.iterator(); iterator.hasNext(); ) {
             ProfileInfo info = iterator.next();
-            if (!info.getFirstName().contains(input) && !info.getLastName().contains(input) && !info.getMiddleName().contains(input)) {
+            if (!(hasNames(info, input) || hasLesson(info, input))) {
                 iterator.remove();
             }
         }
@@ -237,16 +232,26 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
         return profilesInfo;
     }
 
-    private boolean deletedByCloseEvent(String input) {
-        return ((userSearchInput.length() - input.length()) == userSearchInput.length());
-    }
-
     private boolean inputIsValidNumeric(String input) {
         try {
             return Integer.parseInt(input) >= 0;
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    private boolean hasLesson(ProfileInfo info, String input) {
+        if (!info.hasLessons()) return false;
+        for (TeacherLesson lesson : info.getLessons()) {
+            if (lesson.getName().contains(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasNames(ProfileInfo info, String input) {
+        return info.getFirstName().contains(input) || info.getLastName().contains(input) || info.getMiddleName().contains(input);
     }
 
     public static interface AvailableUsersProfileCallBack {

@@ -2,6 +2,7 @@ package ru.journal.fspoPrj.search_users.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -23,6 +24,7 @@ public class UserProfileAdapter extends BaseAdapter implements View.OnClickListe
     public UserProfileAdapter(ArrayList<ProfileInfo> usersInfo, Activity parent) {
         this.usersInfo = usersInfo;
         this.parent = parent;
+
         elementParams = new AbsListView.LayoutParams(Config.getUserSliderWidth(parent), Config.getUserSliderHeight());
     }
 
@@ -32,6 +34,7 @@ public class UserProfileAdapter extends BaseAdapter implements View.OnClickListe
     }
 
     private void handleItemClick(UserSliderElement element) {
+
         Intent packagesInfo = new Intent(parent, ExtendUserProfileInfoActivity.class);
         packagesInfo.putExtra(ExtendUserProfileInfoActivity.class.getCanonicalName(), element.getUserInfo());
         parent.startActivity(packagesInfo);
@@ -55,13 +58,13 @@ public class UserProfileAdapter extends BaseAdapter implements View.OnClickListe
     @Nullable
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if (view instanceof UserSliderElement) {
-            ((UserSliderElement) view).stopDoAny();
+        if (view != null) {
+            ((UserSliderElement) view).loadInfo(usersInfo.get(i));
+        } else {
+            view = new UserSliderElement(parent, usersInfo.get(i));
+            view.setLayoutParams(elementParams);
+            view.setOnClickListener(this);
         }
-        view = new UserSliderElement(parent, usersInfo.get(i));
-        view.setLayoutParams(elementParams);
-        view.setOnClickListener(this);
         return view;
     }
-
 }

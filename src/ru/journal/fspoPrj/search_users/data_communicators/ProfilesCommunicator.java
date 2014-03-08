@@ -42,7 +42,7 @@ public class ProfilesCommunicator extends ServerCommunicator {
     private MainExecutor makeExecutor() {
         switch (lastQueryID) {
             case ALL_PROFILES_QUERY: {
-                return new UsersProfileExecutor(usersProfileQuery, lastQueryID);
+                return new UsersProfileExecutor(usersProfileQuery, lastQueryID, getToken(),getYearID());
             }
         }
         return null;

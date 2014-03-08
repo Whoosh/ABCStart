@@ -4,8 +4,10 @@ import android.content.Intent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationExecutor;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
+import ru.journal.fspoPrj.server_java.server_info.APIQuery;
 import ru.journal.fspoPrj.server_java.server_managers.MainExecutor;
 
 import java.util.*;
@@ -22,19 +24,29 @@ public class UsersProfileExecutor extends MainExecutor {
     private ArrayList<ProfileInfo> profilesInfo;
     private String profilesQuery;
     private int resultCode;
+    private String token;
+    private String yearID;
 
-    public UsersProfileExecutor(String usersProfileQuery, int resultCode) {
+    public UsersProfileExecutor(String usersProfileQuery, int resultCode, String token, String yearID) {
         this.profilesQuery = usersProfileQuery;
         this.resultCode = resultCode;
+        this.token = token;
+        this.yearID = yearID;
         profilesInfo = new ArrayList<>(SOME_CAPACITY);
         super.makeQuery(profilesQuery);
     }
 
     @Override
-    protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException, TimeoutException {
-        prepareInfo(makeJsonObject(results.get(profilesQuery), USER_LIST_KEY));
-        handlingInfo();
-        commitResult();
+    protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException
+            , TimeoutException, AuthorizationExecutor.WrongPasswordException {
+        if (profilesInfo.isEmpty()) {
+            prepareInfo(makeJsonObject(results.remove(profilesQuery), USER_LIST_KEY));
+            handlingInfo();
+            doExecute();
+        } else {
+            setsLessons(results);
+            commitResult();
+        }
     }
 
     private void prepareInfo(JSONObject jsonObject) {
@@ -46,6 +58,16 @@ public class UsersProfileExecutor extends MainExecutor {
         }
     }
 
+    private void setsLessons(HashMap<String, String> result) {
+        for (Map.Entry<String, String> stored : result.entrySet()) {
+            for (ProfileInfo profileInfo : profilesInfo) {
+                if (profileInfo.getStringID().equals(stored.getKey())) {
+                    profileInfo.setLessons(stored.getValue());
+                }
+            }
+        }
+    }
+
     private void addTeachersOnList(JSONArray teachers) throws JSONException {
         for (int i = 0; i < teachers.length(); i++) {
             ProfileInfo profileInfo = new ProfileInfo(teachers.getJSONObject(i), ProfileInfo.Status.TEACHER);
@@ -54,6 +76,7 @@ public class UsersProfileExecutor extends MainExecutor {
             } else {
                 profilesInfo.add(profileInfo);
             }
+            super.makeQuery(APIQuery.GET_TEACHER_LESSON.getLink(token, yearID, profileInfo.getStringID()), profileInfo.getStringID());
         }
     }
 

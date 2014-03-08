@@ -71,14 +71,19 @@
 
 
     <!-- ExtendUserInfo activity values -->
-    <integer name="extend_profile__photo_width">300</integer>
-    <integer name="extend_profile__photo_height">300</integer>
-    <integer name="extend_profile__separate_names_line_width">20</integer>
+    <integer name="extend_profile__photo_width">200</integer>
+    <integer name="extend_profile__photo_height">200</integer>
+    <integer name="extend_profile__separate_names_line_width">10</integer>
     <integer name="extend_profile__separate_main_info_line_height">3</integer>
     <integer name="extend_profile__separate_names_transparent_line_height">10</integer>
+    <integer name="extend_profile__lessons_element_height">40</integer>
+    <integer name="extend_profile__cyan_horizontal_line_height">2</integer>
+    <integer name="extend_profile__transparent_horizontal_line_height">10</integer>
+    <integer name="extend_profile__bold_logic_horizontal_line_height">2</integer>
 
     <!-- ExtendUserInfo activity text values -->
     <dimen name="extend_profile__names_text_size">16sp</dimen>
+    <dimen name="extend_profile__lessons_text_size">12sp</dimen>
 
     <!-- TODO DEll -->
     <integer name="testValue">10</integer>

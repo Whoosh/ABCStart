@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:baselineAligned="false">
+    <fragment android:name="ru.journal.fspoPrj.search_users.profile.elements.PhotoFragment"
+              android:id="@+id/photoFragment"
+              android:tag="photoFragment"
+              android:layout_weight="5"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent" />
+    <fragment android:name="ru.journal.fspoPrj.search_users.profile.elements.InformerFragment"
+              android:id="@+id/informerFragment"
+              android:tag="informerFragment"
+              android:layout_weight="7"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />
+</LinearLayout>

@@ -3,7 +3,7 @@ package ru.journal.fspoPrj.server_java.might_info;
 import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.journal.edit_journal.TeacherJournalActivity;
 import ru.journal.fspoPrj.journal.looking_journal.LookingJournalActivity;
-import ru.journal.fspoPrj.main_menu.BugReportInformerActivity;
+import ru.journal.fspoPrj.bug_reporter.BugReportInformerActivity;
 import ru.journal.fspoPrj.search_users.search_all.SearchAllProfilesActivity;
 
 public enum Functions {
