@@ -2,6 +2,8 @@ package ru.journal.fspoPrj.public_code.humans_entity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLesson;
+import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLessons;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
@@ -12,8 +14,10 @@ public class ProfileInfo extends Human {
     private final String phone;
     private final String photoLink;
     private final String mail;
+
     private int group;
     private Status status;
+    private TeacherLessons teacherLessons;
 
     public ProfileInfo(JSONObject element) {
         super(element);
@@ -31,6 +35,18 @@ public class ProfileInfo extends Human {
     public ProfileInfo(JSONObject element, Status status) {
         this(element);
         this.status = status;
+    }
+
+    public void setLessons(String value) {
+        teacherLessons = new TeacherLessons(value);
+    }
+
+    public TeacherLesson[] getLessons() {
+        return teacherLessons.getLessons();
+    }
+
+    public boolean hasLessons() {
+        return teacherLessons != null;
     }
 
     public String getPhotoLink() {
@@ -69,17 +85,6 @@ public class ProfileInfo extends Human {
     @Override
     public int hashCode() {
         return super.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "ProfileInfo{" +
-                "phone='" + phone + '\'' +
-                ", photoLink='" + photoLink + '\'' +
-                ", mail='" + mail + '\'' +
-                ", group=" + group +
-                ", status=" + status +
-                "} " + super.toString();
     }
 
     private static enum ProfileKeys implements IKeyApi {

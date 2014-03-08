@@ -122,6 +122,10 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
         futureResponsesStorage.put(queryLink, executorService.submit(new Query(queryLink)));
     }
 
+    protected void makeQuery(String queryLink,String storedKey) {
+        futureResponsesStorage.put(storedKey, executorService.submit(new Query(queryLink)));
+    }
+
     private void showErrorMessage(ServerErrors error) {
         if (errorMessageShower == null) {
             errorMessageShower = Toast.makeText(progressActivity, error.message(), Toast.LENGTH_SHORT);

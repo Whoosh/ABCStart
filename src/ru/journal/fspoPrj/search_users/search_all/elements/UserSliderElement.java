@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.search_users.search_all.elements;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
@@ -14,8 +15,8 @@ public class UserSliderElement extends LinearLayout {
 
     public static final String TAB = " \t";
 
+    private volatile ImageView photoShower;
     private ProfileInfo profileInfo;
-    private ImageView photoShower;
     private Context context;
     private PhotoMaker photoMaker;
 
@@ -28,10 +29,13 @@ public class UserSliderElement extends LinearLayout {
         addElements();
     }
 
-    public void stopDoAny() {
+    public void loadInfo(ProfileInfo profileInfo) {
         if (photoMaker != null && !photoMaker.isCancelled()) {
-            photoMaker.cancel(true);
+            photoMaker.cancel();
         }
+        this.profileInfo = profileInfo;
+        removeAllViews();
+        addElements();
     }
 
     private void addElements() {
