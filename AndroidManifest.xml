@@ -56,6 +56,11 @@
                 >
         </activity>
 
+        <activity android:name=".schedule.ScheduleActivity"
+                  android:theme="@android:style/Theme.Holo.Light"
+                >
+        </activity>
+
         <activity android:name=".server_java.server_managers.ProgressActivity" android:theme="@style/Theme.Transparent">
 
         </activity>

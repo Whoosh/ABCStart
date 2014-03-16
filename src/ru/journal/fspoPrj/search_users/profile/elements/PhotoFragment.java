@@ -3,6 +3,7 @@ package ru.journal.fspoPrj.search_users.profile.elements;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class PhotoFragment extends Fragment {
         this.userInfo = userInfo;
         startDownloadPhoto();
         mainLayout.setOrientation(LinearLayout.VERTICAL);
+        mainLayout.setGravity(Gravity.CENTER);
     }
 
     private void initElements() {

@@ -1,21 +1,21 @@
 package ru.journal.fspoPrj.search_users.search_all.elements;
 
 import android.content.Context;
-import android.graphics.Rect;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 import ru.journal.fspoPrj.R;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
+import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
 import ru.journal.fspoPrj.search_users.config.Config;
 
 public class UserSliderElement extends LinearLayout {
 
-    public static final String TAB = " \t";
 
-    private volatile ImageView photoShower;
+    private ImageView photoShower;
     private ProfileInfo profileInfo;
     private Context context;
     private PhotoMaker photoMaker;
@@ -27,6 +27,10 @@ public class UserSliderElement extends LinearLayout {
         this.setOrientation(VERTICAL);
         setGravity(Gravity.CENTER);
         addElements();
+    }
+
+    public ProfileInfo getUserInfo() {
+        return profileInfo;
     }
 
     public void loadInfo(ProfileInfo profileInfo) {
@@ -42,19 +46,38 @@ public class UserSliderElement extends LinearLayout {
         LinearLayout horizontalLay = new LinearLayout(context);
         horizontalLay.setGravity(Gravity.CENTER_VERTICAL);
         createPhoto();
-        horizontalLay.addView(separateLine());
         horizontalLay.addView(photoShower);
-        horizontalLay.addView(
-                createTextView(TAB + profileInfo.getFirstName() + TAB + profileInfo.getMiddleName() + TAB + profileInfo.getLastName()));
+        horizontalLay.addView(getSeparateLine());
+        horizontalLay.addView(getVerticalInfo());
         addView(horizontalLay);
     }
 
-    private VerticalLine separateLine() {
-        return new VerticalLine(context, Config.getSeparateLineUserSliderNamesSize());
+    private View getVerticalInfo() {
+        LinearLayout verticalLay = new LinearLayout(context);
+        verticalLay.setOrientation(VERTICAL);
+        verticalLay.setGravity(Gravity.CENTER_VERTICAL);
+        verticalLay.addView(createTextView(profileInfo.getPointedFirstName()));
+        verticalLay.addView(getDGHLine());
+        verticalLay.addView(createTextView(profileInfo.getPointedMiddleName()));
+        verticalLay.addView(getDGHLine());
+        verticalLay.addView(createTextView(profileInfo.getPointedLastName()));
+        verticalLay.addView(getDGHLine());
+        return verticalLay;
     }
 
-    private SerifTextView createTextView(String text) {
-        return new SerifTextView(context, text, Config.getUserSliderTextSize());
+    private HorizontalLine getDGHLine() {
+        return new HorizontalLine(context, Color.DKGRAY);
+    }
+
+    private VerticalLine getSeparateLine() {
+        return new VerticalLine(context, Color.TRANSPARENT, Config.getInfoSeparateLineWidth());
+    }
+
+    private View createTextView(String text) {
+        TextView textView = new TextView(context);
+        textView.setTypeface(Typeface.SANS_SERIF);
+        textView.setText(text);
+        return textView;
     }
 
     private void createPhoto() {
@@ -68,7 +91,4 @@ public class UserSliderElement extends LinearLayout {
         }
     }
 
-    public ProfileInfo getUserInfo() {
-        return profileInfo;
-    }
 }

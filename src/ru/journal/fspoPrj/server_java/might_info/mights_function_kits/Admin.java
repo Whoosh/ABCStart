@@ -6,6 +6,6 @@ import ru.journal.fspoPrj.server_java.might_info.Tools.ToolKitsManager;
 public class Admin extends ToolKitsManager {
 
     public Admin() {
-        super(Functions.PROFILE); // TODO
+        super(Functions.USERS_PROFILES); // TODO
     }
 }

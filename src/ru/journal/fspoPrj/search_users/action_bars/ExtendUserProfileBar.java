@@ -5,9 +5,13 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import ru.journal.fspoPrj.R;
+import ru.journal.fspoPrj.public_code.MailSender;
 import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
+import ru.journal.fspoPrj.search_users.profile.elements.AskSaveFragment;
 
 public class ExtendUserProfileBar implements ActionMode.Callback {
+
+    private static final String EMPTY = "";
 
     private Activity parentCaller;
     private ProfileInfo userProfile;
@@ -27,14 +31,33 @@ public class ExtendUserProfileBar implements ActionMode.Callback {
     @Override
     public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
         menu.clear();
-        parentCaller.getMenuInflater().inflate(R.menu.action_buttons_extend_user_info, menu);
+        if (userProfile != null) {
+            if (!userProfile.getMail().isEmpty())
+                parentCaller.getMenuInflater().inflate(R.menu.send_mail_extend_user_info, menu);
+            if (!userProfile.getPhone().isEmpty())
+                parentCaller.getMenuInflater().inflate(R.menu.save_extendet_user_info, menu);
+            parentCaller.getMenuInflater().inflate(R.menu.send_message_in_system_extendet_user_info, menu);
+        }
         return true;
     }
 
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        // TODO
-        return true;
+        switch (menuItem.getItemId()) {
+            case R.id.extend_user_info_add: {
+                new AskSaveFragment(userProfile).show(parentCaller.getFragmentManager(), EMPTY);
+                return true;
+            }
+            case R.id.extend_user_info_mail_to: {
+                MailSender.mailToUser(parentCaller, userProfile.getMail());
+                return true;
+            }
+            case R.id.extend_user_info_send_message_on_system: {
+                // TODO
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -44,6 +67,6 @@ public class ExtendUserProfileBar implements ActionMode.Callback {
 
     public void setUserProfile(ProfileInfo userProfile) {
         this.userProfile = userProfile;
-        actionMode.invalidate();
+        if (actionMode != null) actionMode.invalidate();
     }
 }

@@ -3,8 +3,8 @@ package ru.journal.fspoPrj.search_users.search_all;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.*;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +12,7 @@ import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
 import ru.journal.fspoPrj.search_users.action_bars.SearchBar;
 import ru.journal.fspoPrj.search_users.adapters.UserProfileAdapter;
 import ru.journal.fspoPrj.search_users.data_communicators.ProfilesCommunicator;
+import ru.journal.fspoPrj.search_users.profile.config.Config;
 import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 
 import java.util.ArrayList;
@@ -19,8 +20,6 @@ import java.util.ArrayList;
 public class SearchAllProfilesActivity extends Activity implements SearchBar.AvailableUsersProfileCallBack {
 
     private static ProfilesCommunicator pC;
-
-    private static final int CL_GRAY = Color.rgb(222, 222, 222);
 
     private LinearLayout mainLayout;
     private SearchBar searchBar;
@@ -93,9 +92,12 @@ public class SearchAllProfilesActivity extends Activity implements SearchBar.Ava
         searchBar = new SearchBar(this);
         usersList = new ListView(this);
 
+        usersList.setDivider(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0, Color.CYAN, Color.CYAN}));
+        usersList.setDividerHeight(Config.getDivideHeight());
+
         searchBar.setCommunicator(pC);
         searchBar.setAvailableProfilesCallBack(this);
-        mainLayout.setBackgroundColor(CL_GRAY);
+        mainLayout.setBackgroundColor(Color.TRANSPARENT);
         mainLayout.addView(usersList);
         setUserInfoInToSearchBar();
     }

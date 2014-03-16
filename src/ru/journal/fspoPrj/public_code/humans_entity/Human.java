@@ -11,6 +11,10 @@ public abstract class Human implements Serializable {
     protected final static String DOT = ".";
     protected static final String TABS = "\t\t";
 
+    private static final String FIRST_NAME = "Имя : ";
+    private static final String MIDDLE_NAME = "Отчество : ";
+    private static final String LAST_NAME = "Фамилия : ";
+
     private final String firstName;
     private final String middleName;
     private final String lastName;
@@ -56,6 +60,18 @@ public abstract class Human implements Serializable {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getPointedFirstName() {
+        return FIRST_NAME + firstName;
+    }
+
+    public String getPointedMiddleName() {
+        return MIDDLE_NAME+ middleName;
+    }
+
+    public String getPointedLastName() {
+        return LAST_NAME+lastName;
     }
 
     public int getIntegerID() {

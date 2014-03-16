@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/extend_user_info_mail_to"
+          android:title="Отправить сообщение на почту"
+          android:icon="@drawable/ic_mail"
+          android:showAsAction="ifRoom"
+            />
+</menu>

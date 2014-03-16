@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 public class ContactElement extends LinearLayout {
 
-    private static final int DEFAULT_COLOR = Color.parseColor("#C6C8C7");
-    private static final int PRESSED_COLOR = Color.parseColor("#98F1E9");
+    private static final int DEFAULT_COLOR = Color.parseColor("#E6E5E5");
+    private static final int PRESSED_COLOR = Color.parseColor("#A8FAF2");
 
     private TextView textElement;
 
@@ -20,7 +20,6 @@ public class ContactElement extends LinearLayout {
         super.setOnClickListener(clickListener);
         textElement = new TextView(context);
         textElement.setText(text);
-        // textElement.setTextSize(Config.getExtendUserInfoNamesTextSize());
         textElement.setTypeface(Typeface.SANS_SERIF);
         super.addView(textElement);
     }

@@ -8,7 +8,7 @@ public class Teacher extends ToolKitsManager {
     public Teacher() {
         super(
                 Functions.LOOK_JOURNALS,
-                Functions.PROFILE,
+                Functions.USERS_PROFILES,
                 Functions.ERROR_INFORMER); // TODO
     }
 }
