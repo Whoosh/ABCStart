@@ -19,13 +19,10 @@ public class UserProfileAdapter extends BaseAdapter implements View.OnClickListe
 
     private Activity parent;
     private ArrayList<ProfileInfo> usersInfo;
-    private AbsListView.LayoutParams elementParams;
 
     public UserProfileAdapter(ArrayList<ProfileInfo> usersInfo, Activity parent) {
         this.usersInfo = usersInfo;
         this.parent = parent;
-
-        elementParams = new AbsListView.LayoutParams(Config.getUserSliderWidth(parent), Config.getUserSliderHeight());
     }
 
     @Override
@@ -62,7 +59,6 @@ public class UserProfileAdapter extends BaseAdapter implements View.OnClickListe
             ((UserSliderElement) view).loadInfo(usersInfo.get(i));
         } else {
             view = new UserSliderElement(parent, usersInfo.get(i));
-            view.setLayoutParams(elementParams);
             view.setOnClickListener(this);
         }
         return view;

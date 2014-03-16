@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.server_java.server_info.CommunicationInfo;
+import ru.journal.fspoPrj.server_java.server_managers.MainExecutor;
 import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 import ru.journal.fspoPrj.server_java.server_info.APIQuery;
 import ru.journal.fspoPrj.server_java.server_managers.Query;
@@ -53,6 +54,11 @@ public class AuthorizationCommunicator extends ServerCommunicator {
         } catch (NullPointerException ex) {
             Logger.printError(ex, getClass());
         }
+    }
+
+    @Override
+    protected MainExecutor makeExecutor() {
+        return null;
     }
 
     public static interface OnAuthCallBack {

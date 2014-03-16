@@ -47,4 +47,6 @@ public abstract class ServerCommunicator {
         intent.putExtra(SERVER_COMMUTATION_KEY, executor);
         caller.startActivityForResult(intent, REQUEST_CODE);
     }
+
+    protected abstract MainExecutor makeExecutor();
 }

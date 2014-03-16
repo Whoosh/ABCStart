@@ -7,7 +7,6 @@ import android.widget.ImageButton;
 import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
-import ru.journal.fspoPrj.search_users.profile.ExtendUserProfileInfoActivity;
 
 public abstract class Config extends GlobalConfig {
 
@@ -20,10 +19,11 @@ public abstract class Config extends GlobalConfig {
     private static int extendUserInfoLessonsHeight;
     private static int CYANHorizontalLineHeight;
     private static int separateTransparentNamesLineHeight;
+    private static int boldLogicHorizontalSeparateLineHeight;
+    private static int divideHeight;
 
     private static float extendUserInfoNamesTextSize;
     private static float extendUserInfoLessonsTextSize;
-    private static int boldLogicHorizontalSeparateLineHeight;
 
     public static void setDefaultElementSize() {
         extendUserInfoPhotoHeight = getRealSize(R.integer.extend_profile__photo_height);
@@ -35,6 +35,7 @@ public abstract class Config extends GlobalConfig {
         CYANHorizontalLineHeight = getRealSize(R.integer.extend_profile__cyan_horizontal_line_height);
         separateTransparentNamesLineHeight = getRealSize(R.integer.extend_profile__transparent_horizontal_line_height);
         boldLogicHorizontalSeparateLineHeight = getRealSize(R.integer.extend_profile__bold_logic_horizontal_line_height);
+        divideHeight = getRealSize(R.integer.search__profile_user_slider_divide_height);
 
         extendUserInfoNamesTextSize = getTextSize(R.dimen.extend_profile__names_text_size);
         extendUserInfoLessonsTextSize = getTextSize(R.dimen.extend_profile__lessons_text_size);
@@ -87,5 +88,9 @@ public abstract class Config extends GlobalConfig {
 
     public static int getBoldLogicHorizontalSeparateLineHeight() {
         return boldLogicHorizontalSeparateLineHeight;
+    }
+
+    public static int getDivideHeight() {
+        return divideHeight;
     }
 }

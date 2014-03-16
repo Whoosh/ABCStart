@@ -36,14 +36,15 @@ public class EditJournalsCommunicator extends ServerCommunicator {
     private void sendTeacherLessonsQuery() {
         teacherLessonsQuery = APIQuery.GET_TEACHER_LESSON.getLink(getToken(), getYearID(), getMyID());
         lastQueryID = TEACHER_LESSONS_QUERY;
-        sendQueryToServer(parentCaller, makeQueryExecutor());
+        sendQueryToServer(parentCaller, makeExecutor());
     }
 
     public void resendLastQuery() {
-        super.sendQueryToServer(parentCaller, makeQueryExecutor());
+        super.sendQueryToServer(parentCaller, makeExecutor());
     }
 
-    protected MainExecutor makeQueryExecutor() {
+    @Override
+    protected MainExecutor makeExecutor() {
         switch (lastQueryID) {
             case TEACHER_LESSONS_QUERY: {
                 return new TeacherGroupsExecutor(teacherLessonsQuery, lastQueryID);
@@ -91,6 +92,6 @@ public class EditJournalsCommunicator extends ServerCommunicator {
         visitsQuery = APIQuery.GET_JOURNAL_VISITS_BY_GROUP_LIGHT.
                 getLink(getToken(), getYearID(), "96", "10");
         lastQueryID = FULL_VISITS_QUERY;
-        super.sendQueryToServer(parentCaller, makeQueryExecutor());
+        super.sendQueryToServer(parentCaller, makeExecutor());
     }
 }

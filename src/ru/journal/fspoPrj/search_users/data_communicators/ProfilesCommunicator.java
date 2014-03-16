@@ -15,10 +15,6 @@ public class ProfilesCommunicator extends ServerCommunicator {
 
     public static final int ALL_PROFILES_QUERY = 1;
 
-    private static final int UPPER = 1;
-    private static final int LOWER = -1;
-    private static final int EQUALS = 0;
-
     private Activity parent;
     private ArrayList<ProfileInfo> usersInfo;
 
@@ -39,10 +35,11 @@ public class ProfilesCommunicator extends ServerCommunicator {
         super.sendQueryToServer(parent, makeExecutor());
     }
 
-    private MainExecutor makeExecutor() {
+    @Override
+    protected MainExecutor makeExecutor() {
         switch (lastQueryID) {
             case ALL_PROFILES_QUERY: {
-                return new UsersProfileExecutor(usersProfileQuery, lastQueryID, getToken(),getYearID());
+                return new UsersProfileExecutor(usersProfileQuery, lastQueryID, getToken(), getYearID());
             }
         }
         return null;
@@ -122,11 +119,10 @@ public class ProfilesCommunicator extends ServerCommunicator {
     }
 
     private int compareAnyNameASC(String name, String name2) {
-        return name.charAt(0) < name2.charAt(0) ? LOWER : name.charAt(0) > name2.charAt(0) ? UPPER : EQUALS;
+        return name.compareTo(name2);
     }
 
     private int compareAnyNameDESC(String name, String name2) {
-        return name.charAt(0) < name2.charAt(0) ? UPPER : name.charAt(0) > name2.charAt(0) ? LOWER : EQUALS;
+        return name.compareTo(name2) * -1;
     }
-
 }

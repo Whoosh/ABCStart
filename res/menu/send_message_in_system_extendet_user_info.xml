@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/extend_user_info_send_message_on_system"
+          android:title="Написать сообщение в систему"
+          android:icon="@drawable/ic_send_system_message"
+          android:showAsAction="ifRoom"
+            />
+</menu>

@@ -35,10 +35,11 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
     }
 
     public void resendLastQuery() {
-        super.sendQueryToServer(parentCaller, makeQueryExecutor());
+        super.sendQueryToServer(parentCaller, makeExecutor());
     }
 
-    protected MainExecutor makeQueryExecutor() {
+    @Override
+    protected MainExecutor makeExecutor() {
         switch (lastQueryID) {
             case GROUPS_LIST_QUERY: {
                 return new GroupsListExecutor(groupsListKeyQuery, lessonListKeyQuery, GROUPS_LIST_QUERY);
@@ -68,7 +69,7 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
         lightVisitsQuery = APIQuery.GET_JOURNAL_VISITS_BY_GROUP_LIGHT
                 .getLink(getToken(), getYearID(), lesson.getStringLessonID(), lesson.getStringGroupID());
         lastQueryID = LIGHT_VISITS_QUERY;
-        super.sendQueryToServer(parentCaller, makeQueryExecutor());
+        super.sendQueryToServer(parentCaller, makeExecutor());
     }
 
     public LightVisits getVisits() {
@@ -109,6 +110,6 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
         groupsListKeyQuery = APIQuery.GET_GROUP_LIST.getLink(getToken(), getYearID());
         lessonListKeyQuery = APIQuery.GET_GROUP_JOURNAL.getLink(getToken(), getYearID());
         lastQueryID = GROUPS_LIST_QUERY;
-        super.sendQueryToServer(parentCaller, makeQueryExecutor());
+        super.sendQueryToServer(parentCaller, makeExecutor());
     }
 }

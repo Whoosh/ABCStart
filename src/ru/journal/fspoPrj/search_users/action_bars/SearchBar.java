@@ -13,7 +13,7 @@ import ru.journal.fspoPrj.search_users.data_communicators.ProfilesCommunicator;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextListener, SearchView.OnCloseListener,View.OnClickListener {
+public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextListener, SearchView.OnCloseListener, View.OnClickListener {
 
     private static final String LAST_NAMES = "Фамилии";
     private static final String FIRST_NAME = "Имена";
@@ -225,7 +225,7 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
     private ArrayList<ProfileInfo> makeSearchedByNumeric(ArrayList<ProfileInfo> profilesInfo, String input) {
         for (Iterator<ProfileInfo> iterator = profilesInfo.iterator(); iterator.hasNext(); ) {
             ProfileInfo info = iterator.next();
-            if (!info.getStringGroup().contains(input)) {
+            if (!contains(info.getStringGroup(), input)) {
                 iterator.remove();
             }
         }
@@ -243,15 +243,21 @@ public class SearchBar implements ActionMode.Callback, SearchView.OnQueryTextLis
     private boolean hasLesson(ProfileInfo info, String input) {
         if (!info.hasLessons()) return false;
         for (TeacherLesson lesson : info.getLessons()) {
-            if (lesson.getName().contains(input)) {
+            if (contains(lesson.getName(), input)) {
                 return true;
             }
         }
         return false;
     }
 
+    private boolean contains(final String one, final String two) {
+        return one.toLowerCase().contains(two.toLowerCase());
+    }
+
     private boolean hasNames(ProfileInfo info, String input) {
-        return info.getFirstName().contains(input) || info.getLastName().contains(input) || info.getMiddleName().contains(input);
+        return contains(info.getFirstName(), input) ||
+                contains(info.getLastName(), input) ||
+                contains(info.getMiddleName(), input);
     }
 
     public static interface AvailableUsersProfileCallBack {

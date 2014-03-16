@@ -25,7 +25,9 @@ public class ExtendUserProfileInfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.extendet_profile_fragments_layout);
         startFirst(savedInstanceState);
-        this.userProfileBar = new ExtendUserProfileBar(this, userInfo);
+
+        userProfileBar = new ExtendUserProfileBar(this, userInfo);
+
         startActionMode(userProfileBar);
         setPhotoOnPhotoFragment();
         setInfoOnInfoFragment();

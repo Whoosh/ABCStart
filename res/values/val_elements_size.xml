@@ -66,6 +66,8 @@
     <integer name="search__profile_user_slider_element_photo_height">80</integer>
     <integer name="search__profile_user_slider_element_photo_width">80</integer>
     <integer name="search__profile_user_slider_names_separate_line_width">60</integer>
+    <integer name="search__profile_user_slider_divide_height">3</integer>
+    <integer name="search__profile_user_slider_separate_line_info_width">10</integer>
     <!-- SearchProfile activity text values -->
     <dimen name="search__profile_user_slider_names_text_size">15sp</dimen>
 
