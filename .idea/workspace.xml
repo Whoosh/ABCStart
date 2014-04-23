@@ -43,65 +43,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: ru.journal.fspoPrj" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="Lazzy commit.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/A" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/B" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/action_crud/CreateExerciseExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/action_crud/DeleteExerciseExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentComingStatusExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentExclusivePointStateExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/edit_visit_full/StudentExercises.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentNeededStatusChangeExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentPointImportantStatusChangeExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentPowerChangeExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentRankChangeQuery.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentRemoveStatusPointExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/cell_change_params_executors/StudentSlowerStatusChangeExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/edit_visit_full/TeacherVisits.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/edit_visit_full/TeacherVisitsExecutor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/action_crud/UpdateTypeExerciseExecutor.java" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\res\layout-land\schedule_main_lay.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\res\layout\schedule_main_lay.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\data_get_managers\visit_full\FullGroupExercise.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\data_get_managers\visit_full\FullVisits.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\data_get_managers\visit_full\FullVisitsExecutor.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\schedule\ScheduleActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\schedule\comunicators\ScheduleCommunicator.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\schedule\executors\ScheduleExecutor.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_info/APIQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/cell_status_setters/CellLongClickDialog.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/cell_status_setters/CellLongClickDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/cell_status_setters/CellStatusLayout.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/cell_status_setters/CellStatusLayout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/data_slider/DateElement.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/data_slider/DateElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/data_slider/DateSlider.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/data_slider/DateSlider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/EditJournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/EditJournalsCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Functions.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/Functions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/Group.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/groups/GroupsList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Human.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/Human.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/search_users/profile/elements/InformerFragment.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/search_users/profile/elements/InformerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/JournalCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/JournalCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/JournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/JournalsCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/lable/LessonLabel.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/lable/LessonLabel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightExercisesInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisitExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/MainExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/MainSettingsActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/settings_form/MainSettingsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/ProfileInfo.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/humans_entity/ProfileInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/right_side_journal_menu/RightSideJournalMenu.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/right_side_journal_menu/RightSideJournalMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/ServerCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/student_list/StudentList.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/student_list/StudentList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/main_table/TableWithMarks.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/main_table/TableWithMarks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/TeacherAkaStudent.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/TeacherAkaStudent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/date_slider/TeacherDateSlider.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/date_slider/TeacherDateSlider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/TeacherJournalActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/TeacherJournalActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/action_bar/TeacherJournalInfoBar.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/action_bar/TeacherJournalInfoBar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/main_table/TeacherTableWithMarks.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/main_table/TeacherTableWithMarks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/Visit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/val_elements_size.xml" afterPath="$PROJECT_DIR$/res/values/val_elements_size.xml" />
+    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\Journal\public_journal_elements\custom_cell\EvolutionCell.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/EvolutionCell.java" />
     </list>
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
     <ignored path="First_prj.iws" />
@@ -174,17 +117,9 @@
       <file leaf-file-name="TeacherJournalActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/TeacherJournalActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1398" max-vertical-offset="9809">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="10982">
               <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#initElements#0;class#TeacherJournalActivity#0" expanded="false" />
-                <element signature="method#onCreate#0;class#TeacherJournalActivity#0" expanded="false" />
-                <element signature="method#onActivityResult#0;class#TeacherJournalActivity#0" expanded="false" />
-                <element signature="method#onBackPressed#0;class#TeacherJournalActivity#0" expanded="false" />
-                <element signature="e#29111#29112#0" expanded="true" />
-                <element signature="e#29198#29199#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -192,14 +127,9 @@
       <file leaf-file-name="TeacherDateSlider.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/elements/date_slider/TeacherDateSlider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1422" max-vertical-offset="2040">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2108" max-vertical-offset="2397">
               <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-              <folding>
-                <element signature="e#3888#3889#0" expanded="true" />
-                <element signature="e#3958#3959#0" expanded="true" />
-                <element signature="e#4120#4121#0" expanded="true" />
-                <element signature="e#4153#4154#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,11 +137,9 @@
       <file leaf-file-name="EditJournalsCommunicator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/EditJournalsCommunicator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47486034" vertical-offset="153" max-vertical-offset="4063">
-              <caret line="43" column="55" selection-start-line="43" selection-start-column="55" selection-end-line="43" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.68659127" vertical-offset="153" max-vertical-offset="3995">
+              <caret line="53" column="42" selection-start-line="43" selection-start-column="55" selection-end-line="53" selection-end-column="42" />
               <folding>
-                <element signature="e#8014#8015#0" expanded="true" />
-                <element signature="e#8069#8070#0" expanded="true" />
                 <element signature="method#changeStudentRankQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
                 <element signature="method#makeStudentComingCellStatusChangeQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
                 <element signature="method#changeStudentPowerQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
@@ -222,8 +150,6 @@
                 <element signature="method#removePointStatusQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
                 <element signature="method#getStudentInfo#0;class#EditJournalsCommunicator#0" expanded="false" />
                 <element signature="method#getDMDate#0;class#EditJournalsCommunicator#0" expanded="false" />
-                <element signature="e#13210#13211#0" expanded="true" />
-                <element signature="e#13288#13289#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -232,7 +158,7 @@
       <file leaf-file-name="LightVisits.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1955">
+            <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="2295">
               <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding />
             </state>
@@ -391,6 +317,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -973,7 +900,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1267,21 +1193,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <extension name="scalaCoverage" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -1300,6 +1211,21 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
       <method />
     </configuration>
     <configuration default="false" name="fspoPrj" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1532,7 +1458,8 @@
       <workItem from="1397569280802" duration="47955000" />
       <workItem from="1397676725791" duration="50430000" />
       <workItem from="1398146189950" duration="17305000" />
-      <workItem from="1398240688683" duration="13843000" />
+      <workItem from="1398240688683" duration="14729000" />
+      <workItem from="1398263223198" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1770,11 +1697,15 @@
       <created>1394995321831</created>
       <updated>1394995321831</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="j save state">
+      <created>1398262722673</created>
+      <updated>1398262722674</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3079745000" />
+    <option name="totallyTimeSpent" value="3080658000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1798,38 +1729,38 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="776" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12917933" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23860182" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28517398" sideWeight="0.42535788" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19908814" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20121029" sideWeight="0.5746421" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12462006" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19452888" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27963525" sideWeight="0.47657394" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22036473" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="true" weight="0.0075987843" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16109422" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23860182" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19908814" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28517398" sideWeight="0.42535788" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.0075987843" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3524962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16109422" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40015128" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20121029" sideWeight="0.5746421" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12462006" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25189108" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19452888" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22036473" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1850,7 +1781,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="Some structuring&#10;" />
     <MESSAGE value="Change server connection logic." />
     <MESSAGE value="Change menu, add server Executors logic" />
     <MESSAGE value="New  life to server logic. Some menu change." />
@@ -1875,7 +1805,8 @@
     <MESSAGE value="apk" />
     <MESSAGE value="Lazzy commit." />
     <MESSAGE value="....." />
-    <option name="LAST_COMMIT_MESSAGE" value="....." />
+    <MESSAGE value="j save state" />
+    <option name="LAST_COMMIT_MESSAGE" value="j save state" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1951,106 +1882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="578">
           <caret line="560" column="18" selection-start-line="560" selection-start-column="18" selection-end-line="560" selection-end-column="18" />
-          <folding>
-            <element signature="e#35#7180#0" expanded="false" />
-            <element signature="e#41#222#0" expanded="false" />
-            <element signature="e#228#410#0" expanded="false" />
-            <element signature="e#416#598#0" expanded="false" />
-            <element signature="e#604#786#0" expanded="false" />
-            <element signature="e#792#974#0" expanded="false" />
-            <element signature="e#980#1162#0" expanded="false" />
-            <element signature="e#1168#1350#0" expanded="false" />
-            <element signature="e#1356#1538#0" expanded="false" />
-            <element signature="e#1544#1726#0" expanded="false" />
-            <element signature="e#1732#1914#0" expanded="false" />
-            <element signature="e#1920#2102#0" expanded="false" />
-            <element signature="e#2108#2290#0" expanded="false" />
-            <element signature="e#2296#2478#0" expanded="false" />
-            <element signature="e#2484#2666#0" expanded="false" />
-            <element signature="e#2672#2854#0" expanded="false" />
-            <element signature="e#2860#3042#0" expanded="false" />
-            <element signature="e#3048#3230#0" expanded="false" />
-            <element signature="e#3236#3418#0" expanded="false" />
-            <element signature="e#3424#3606#0" expanded="false" />
-            <element signature="e#3612#3794#0" expanded="false" />
-            <element signature="e#3800#3982#0" expanded="false" />
-            <element signature="e#3988#4170#0" expanded="false" />
-            <element signature="e#4176#4358#0" expanded="false" />
-            <element signature="e#4364#4546#0" expanded="false" />
-            <element signature="e#4552#4734#0" expanded="false" />
-            <element signature="e#4740#4922#0" expanded="false" />
-            <element signature="e#4928#5110#0" expanded="false" />
-            <element signature="e#5116#5298#0" expanded="false" />
-            <element signature="e#5304#5486#0" expanded="false" />
-            <element signature="e#5492#5674#0" expanded="false" />
-            <element signature="e#5680#5862#0" expanded="false" />
-            <element signature="e#5868#6050#0" expanded="false" />
-            <element signature="e#6056#6238#0" expanded="false" />
-            <element signature="e#6244#6426#0" expanded="false" />
-            <element signature="e#6432#6614#0" expanded="false" />
-            <element signature="e#6620#6802#0" expanded="false" />
-            <element signature="e#6808#6990#0" expanded="false" />
-            <element signature="e#6996#7178#0" expanded="false" />
-            <element signature="e#7199#15316#0" expanded="false" />
-            <element signature="e#7205#7510#0" expanded="false" />
-            <element signature="e#7516#7803#0" expanded="false" />
-            <element signature="e#7809#8102#0" expanded="false" />
-            <element signature="e#8108#8407#0" expanded="false" />
-            <element signature="e#8413#8712#0" expanded="false" />
-            <element signature="e#8718#8993#0" expanded="false" />
-            <element signature="e#8999#9292#0" expanded="false" />
-            <element signature="e#9298#9573#0" expanded="false" />
-            <element signature="e#9579#9896#0" expanded="false" />
-            <element signature="e#9902#10201#0" expanded="false" />
-            <element signature="e#10207#10482#0" expanded="false" />
-            <element signature="e#10488#10757#0" expanded="false" />
-            <element signature="e#10763#11074#0" expanded="false" />
-            <element signature="e#11080#11361#0" expanded="false" />
-            <element signature="e#11367#11666#0" expanded="false" />
-            <element signature="e#11672#11971#0" expanded="false" />
-            <element signature="e#11977#12270#0" expanded="false" />
-            <element signature="e#12276#12551#0" expanded="false" />
-            <element signature="e#12557#12880#0" expanded="false" />
-            <element signature="e#12886#13179#0" expanded="false" />
-            <element signature="e#13185#13502#0" expanded="false" />
-            <element signature="e#13508#13819#0" expanded="false" />
-            <element signature="e#13825#14142#0" expanded="false" />
-            <element signature="e#14148#14435#0" expanded="false" />
-            <element signature="e#14441#14728#0" expanded="false" />
-            <element signature="e#14734#15021#0" expanded="false" />
-            <element signature="e#15027#15314#0" expanded="false" />
-            <element signature="e#15350#27742#0" expanded="false" />
-            <element signature="e#15686#16002#0" expanded="false" />
-            <element signature="e#16012#16328#0" expanded="false" />
-            <element signature="e#16338#16654#0" expanded="false" />
-            <element signature="e#16664#16980#0" expanded="false" />
-            <element signature="e#27755#40147#0" expanded="false" />
-            <element signature="e#40160#52552#0" expanded="false" />
-            <element signature="e#52565#64957#0" expanded="false" />
-            <element signature="e#64970#77362#0" expanded="false" />
-            <element signature="e#77375#89768#0" expanded="false" />
-            <element signature="e#89781#102174#0" expanded="false" />
-            <element signature="e#102187#114580#0" expanded="false" />
-            <element signature="e#114593#126986#0" expanded="false" />
-            <element signature="e#126999#139392#0" expanded="false" />
-            <element signature="e#139405#151798#0" expanded="false" />
-            <element signature="e#151811#164204#0" expanded="false" />
-            <element signature="e#164217#176610#0" expanded="false" />
-            <element signature="e#176623#189016#0" expanded="false" />
-            <element signature="e#189029#201422#0" expanded="false" />
-            <element signature="e#201435#213828#0" expanded="false" />
-            <element signature="e#213841#226234#0" expanded="false" />
-            <element signature="e#226247#238640#0" expanded="false" />
-            <element signature="e#238653#251046#0" expanded="false" />
-            <element signature="e#251059#263452#0" expanded="false" />
-            <element signature="e#263465#275858#0" expanded="false" />
-            <element signature="e#275871#288264#0" expanded="false" />
-            <element signature="e#288277#300670#0" expanded="false" />
-            <element signature="e#300683#313076#0" expanded="false" />
-            <element signature="e#313089#325482#0" expanded="false" />
-            <element signature="e#325495#337888#0" expanded="false" />
-            <element signature="e#337901#350294#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2072,7 +1903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2095,39 +1925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10625" vertical-offset="0" max-vertical-offset="26860">
           <caret line="1247" column="32" selection-start-line="1247" selection-start-column="32" selection-end-line="1247" selection-end-column="32" />
-          <folding>
-            <element signature="e#35#135#0" expanded="false" />
-            <element signature="e#41#68#0" expanded="false" />
-            <element signature="e#74#101#0" expanded="false" />
-            <element signature="e#107#133#0" expanded="false" />
-            <element signature="e#155#25043#0" expanded="false" />
-            <element signature="e#66780#108740#0" expanded="false" />
-            <element signature="e#108753#150717#0" expanded="false" />
-            <element signature="e#150730#192684#0" expanded="false" />
-            <element signature="e#192697#234655#0" expanded="false" />
-            <element signature="e#234668#276630#0" expanded="false" />
-            <element signature="e#276643#318608#0" expanded="false" />
-            <element signature="e#318621#360583#0" expanded="false" />
-            <element signature="e#360596#402559#0" expanded="false" />
-            <element signature="e#402572#444537#0" expanded="false" />
-            <element signature="e#444550#486512#0" expanded="false" />
-            <element signature="e#486525#528483#0" expanded="false" />
-            <element signature="e#528496#570453#0" expanded="false" />
-            <element signature="e#570466#612428#0" expanded="false" />
-            <element signature="e#612441#654401#0" expanded="false" />
-            <element signature="e#654414#696373#0" expanded="false" />
-            <element signature="e#696386#738349#0" expanded="false" />
-            <element signature="e#738362#780321#0" expanded="false" />
-            <element signature="e#780334#822294#0" expanded="false" />
-            <element signature="e#822307#864266#0" expanded="false" />
-            <element signature="e#864279#906244#0" expanded="false" />
-            <element signature="e#906257#948215#0" expanded="false" />
-            <element signature="e#948228#990189#0" expanded="false" />
-            <element signature="e#990202#1032166#0" expanded="false" />
-            <element signature="e#1032179#1074143#0" expanded="false" />
-            <element signature="e#1074156#1116120#0" expanded="false" />
-            <element signature="e#1116133#1158099#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2212,10 +2009,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="218" max-vertical-offset="799">
           <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-          <folding>
-            <element signature="e#852#853#0" expanded="false" />
-            <element signature="e#903#904#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2265,7 +2058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.201581" vertical-offset="106" max-vertical-offset="1173">
           <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2302,7 +2094,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="439" max-vertical-offset="1071">
           <caret line="55" column="68" selection-start-line="55" selection-start-column="68" selection-end-line="55" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2337,7 +2128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23385689" vertical-offset="750" max-vertical-offset="5236">
           <caret line="62" column="78" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2345,7 +2135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5543478" vertical-offset="0" max-vertical-offset="552">
           <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2361,7 +2150,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36862004" vertical-offset="213" max-vertical-offset="969">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2369,7 +2157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.610586" vertical-offset="0" max-vertical-offset="561">
           <caret line="29" column="64" selection-start-line="29" selection-start-column="64" selection-end-line="29" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2377,7 +2164,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18545455" vertical-offset="493" max-vertical-offset="2822">
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2393,12 +2179,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1422" max-vertical-offset="2040">
           <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-          <folding>
-            <element signature="e#3888#3889#0" expanded="true" />
-            <element signature="e#3958#3959#0" expanded="true" />
-            <element signature="e#4120#4121#0" expanded="true" />
-            <element signature="e#4153#4154#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2406,7 +2187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49454546" vertical-offset="0" max-vertical-offset="550">
           <caret line="21" column="132" selection-start-line="21" selection-start-column="132" selection-end-line="21" selection-end-column="132" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2418,37 +2198,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1955">
-          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/edit_journal/TeacherJournalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1398" max-vertical-offset="9809">
           <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initElements#0;class#TeacherJournalActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#TeacherJournalActivity#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#TeacherJournalActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#TeacherJournalActivity#0" expanded="false" />
-            <element signature="e#29111#29112#0" expanded="true" />
-            <element signature="e#29198#29199#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/EditJournalsCommunicator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47486034" vertical-offset="153" max-vertical-offset="4063">
-          <caret line="43" column="55" selection-start-line="43" selection-start-column="55" selection-end-line="43" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.68659127" vertical-offset="153" max-vertical-offset="3995">
+          <caret line="53" column="42" selection-start-line="43" selection-start-column="55" selection-end-line="53" selection-end-column="42" />
           <folding>
-            <element signature="e#8014#8015#0" expanded="true" />
-            <element signature="e#8069#8070#0" expanded="true" />
             <element signature="method#changeStudentRankQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
             <element signature="method#makeStudentComingCellStatusChangeQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
             <element signature="method#changeStudentPowerQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
@@ -2459,9 +2221,15 @@
             <element signature="method#removePointStatusQuery#0;class#EditJournalsCommunicator#0" expanded="false" />
             <element signature="method#getStudentInfo#0;class#EditJournalsCommunicator#0" expanded="false" />
             <element signature="method#getDMDate#0;class#EditJournalsCommunicator#0" expanded="false" />
-            <element signature="e#13210#13211#0" expanded="true" />
-            <element signature="e#13288#13289#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/visits_light/LightVisits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1955">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
