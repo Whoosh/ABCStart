@@ -14,6 +14,8 @@ import ru.journal.fspoPrj.server_java.server_info.APIQuery;
 import ru.journal.fspoPrj.server_java.server_managers.MainExecutor;
 import ru.journal.fspoPrj.server_java.server_managers.ServerCommunicator;
 
+import java.util.ArrayList;
+
 public abstract class JournalsCommunicator extends ServerCommunicator implements JournalCommunicator {
 
     protected String groupsListKeyQuery;
@@ -85,7 +87,7 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
         }
     }
 
-    public Student[] getStudents(Group group) {
+    public ArrayList<Student> getStudents(Group group) {
         return groupsList.getStudents(group.getStringGroupNumber());
     }
 

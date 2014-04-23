@@ -1,27 +1,30 @@
 package ru.journal.fspoPrj.journal.looking_journal.elements.main_table;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.view.View;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightExercisesInfo;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.Visit;
-import ru.journal.fspoPrj.journal.public_journal_elements.custom_cell.EvolutionCell;
+import ru.journal.fspoPrj.journal.EvolutionCell;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TableWithMarks extends LinearLayout {
 
     private Context context;
     private MScrollView scroller;
-    private Student[] students;
-    private HashMap<Integer, Visit[]> visits;
-    private LightExercisesInfo[] lightExercisesInfo;
+    private ArrayList<Student> students;
+    private HashMap<Integer,ArrayList<Visit>> visits;
+    private ArrayList<LightExercisesInfo> lightExercisesInfo;
 
     public TableWithMarks(Context context) {
         super(context);
@@ -30,14 +33,13 @@ public class TableWithMarks extends LinearLayout {
         scroller = new MScrollView(context);
     }
 
-    public void createTable(LightVisits lightVisits, Student[] students) {
+    public void createTable(LightVisits lightVisits, ArrayList<Student> students) {
         super.removeAllViews();
         scroller.removeAllViews();
 
         this.lightExercisesInfo = lightVisits.getExercisesInfo();
         this.visits = lightVisits.getStudentVisits();
         this.students = students;
-
         initMatrix();
     }
 
@@ -49,9 +51,9 @@ public class TableWithMarks extends LinearLayout {
         LightExercisesInfo.TypeState[] states = LightExercisesInfo.TypeState.values();
 
         for (Student student : students) {
-            Visit[] sVisits = visits.get(student.getIntegerID());
-            for (int j = 0; j < sVisits.length; j++) {
-                row.addView(new EvolutionCell(context, sVisits[j], states[lightExercisesInfo[j].getType()]));
+            ArrayList<Visit> sVisits = visits.get(student.getIntegerID());
+            for (int j = 0; j < sVisits.size(); j++) {
+                row.addView(new EvolutionCell(context, sVisits.get(j), states[lightExercisesInfo.get(j).getType()]));
             }
             rowStack.addView(row);
             row = new LinearLayout(context);
@@ -71,7 +73,7 @@ public class TableWithMarks extends LinearLayout {
         return scroller.getScrollY();
     }
 
-    public void restoreState(LightVisits lightVisits, Student[] students) {
+    public void restoreState(LightVisits lightVisits, ArrayList<Student> students) {
         createTable(lightVisits, students);
     }
 }

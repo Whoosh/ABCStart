@@ -11,21 +11,36 @@ public class DateElement extends TextView {
 
     private LightExercisesInfo date;
     private int tableIndex;
+    private int cellColor;
+
+    public DateElement(Context context) {
+        super(context);
+        setLayoutParams(new ViewGroup.LayoutParams(Config.getSliderDateElementWidth(), Config.getSliderDateElementHeight()));
+        setGravity(Gravity.CENTER);
+    }
 
     public DateElement(Context context, LightExercisesInfo date, int tableIndex) {
         super(context);
         this.date = date;
         this.tableIndex = tableIndex;
-
+        this.cellColor = LightExercisesInfo.TypeState.values()[date.getType()].getColor();
         setText(date.getDMDate());
-        setBackgroundColor(LightExercisesInfo.TypeState.values()[date.getType()].getColor());
+        setBackgroundColor(cellColor);
         setGravity(Gravity.CENTER);
         setTextSize(Config.getDateSliderTextSize());
         setLayoutParams(new ViewGroup.LayoutParams(Config.getSliderDateElementWidth(), Config.getSliderDateElementHeight()));
     }
 
+    public boolean isEmpty() {
+        return (date == null);
+    }
+
     public String getDate() {
         return date.getDMDate();
+    }
+
+    public int getCellColor() {
+        return cellColor;
     }
 
     public int getTableIndex() {

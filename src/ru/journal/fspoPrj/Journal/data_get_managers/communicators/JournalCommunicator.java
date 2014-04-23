@@ -7,6 +7,9 @@ import ru.journal.fspoPrj.journal.data_get_managers.groups.GroupLesson;
 import ru.journal.fspoPrj.journal.data_get_managers.visits_light.LightVisits;
 import ru.journal.fspoPrj.public_code.humans_entity.Student;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
 public interface JournalCommunicator {
 
     int GROUPS_LIST_QUERY = 1;
@@ -22,7 +25,7 @@ public interface JournalCommunicator {
 
     String[] getSortedGroups();
 
-    Student[] getStudents(Group selectedGroup);
+    ArrayList<Student> getStudents(Group selectedGroup);
 
     int getFirstPossiblySemester(Group selectedGroup);
 

@@ -7,15 +7,18 @@ import ru.journal.fspoPrj.public_code.Logger;
 import ru.journal.fspoPrj.public_code.keys_manager.IKeyApi;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LightVisits implements Serializable {
 
-    private int[] teachersID;
-    private LightExercisesInfo[] exercisesInfo;
-    private HashMap<Integer, Visit[]> studentVisits;
+    protected int[] teachersID;
+    protected ArrayList<LightExercisesInfo> exercisesInfo;
+    protected HashMap<Integer, ArrayList<Visit>> studentVisits;
+    protected boolean reverse;
 
-    public LightVisits(String visitsResponse) {
+    public LightVisits(String visitsResponse, boolean fuckingReverse) {
+        this.reverse = fuckingReverse;
         try {
             JSONObject element = new JSONObject(visitsResponse);
             makeTeachers(element);
@@ -26,53 +29,77 @@ public class LightVisits implements Serializable {
         }
     }
 
-    public HashMap<Integer, Visit[]> getStudentVisits() {
+    public HashMap<Integer, ArrayList<Visit>> getStudentVisits() {
         return studentVisits;
     }
 
-    public LightExercisesInfo[] getExercisesInfo() {
+    public ArrayList<LightExercisesInfo> getExercisesInfo() {
         return exercisesInfo;
     }
 
-    private void makeStudentsVisits(JSONObject element) throws JSONException {
+    protected void makeStudentsVisits(JSONObject element) throws JSONException {
         JSONObject visitExercises = element.getJSONObject(VisitsKey.VISITS_EXERCISES.getKey());
         JSONArray studentsID = visitExercises.names();
         int studCount = studentsID.length();
         studentVisits = new HashMap<>(studCount);
         for (int i = 0; i < studCount; i++) {
             String studID = studentsID.getString(i);
-            makeStudentVisits(visitExercises.getJSONArray(studID), studID);
+            if (reverse)
+                makeStudentVisitRevers(visitExercises.getJSONArray(studID), studID);
+            else
+                makeStudentVisitsNormal(visitExercises.getJSONArray(studID), studID);
         }
     }
 
-    private void makeStudentVisits(JSONArray visitExercises, String studentsID) throws JSONException {
-        int visitCount = visitExercises.length();
-        Visit[] visits = new Visit[visitCount];
-        for (int i = 0; i < visitCount; i++) {
-            visits[i] = new Visit(visitExercises.getJSONObject(i));
+    private void makeStudentVisitsNormal(JSONArray visitExercises, String studentID) {
+        Integer studID = Integer.valueOf(studentID);
+        ArrayList<Visit> visits = new ArrayList<>(exercisesInfo.size());
+        for (int i = 0; i < exercisesInfo.size(); i++) {
+            try {
+                visits.add(new Visit(visitExercises.getJSONObject(i), studID));
+            } catch (JSONException e) {
+                visits.add(new Visit());
+            }
         }
-        studentVisits.put(Integer.valueOf(studentsID), visits);
+        studentVisits.put(studID, visits);
+    }
+
+    private void makeStudentVisitRevers(JSONArray visitExercises, String studentID) {
+        Integer studID = Integer.valueOf(studentID);
+        ArrayList<Visit> visits = new ArrayList<>(exercisesInfo.size());
+        for (int i = 0; i < exercisesInfo.size(); i++) {
+            try {
+                visits.add(new Visit(visitExercises.getJSONObject(exercisesInfo.size() - i - 1), studID));
+            } catch (JSONException e) {
+                visits.add(new Visit());
+            }
+        }
+        studentVisits.put(studID, visits);
     }
 
     private void makeExercisesInfo(JSONObject element) throws JSONException {
         JSONArray exercisesInfo = element.getJSONArray(VisitsKey.GROUP_EXERCISES.getKey());
         int len = exercisesInfo.length();
-        this.exercisesInfo = new LightExercisesInfo[len];
+        this.exercisesInfo = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            this.exercisesInfo[i] = new LightExercisesInfo(exercisesInfo.getJSONObject(i));
+            this.exercisesInfo.add(new LightExercisesInfo(exercisesInfo.getJSONObject(i)));
         }
     }
 
-    private void makeTeachers(JSONObject element) throws JSONException {
-        JSONArray teachers = element.getJSONArray(VisitsKey.LESSON_TEACHERS.getKey());
-        int len = teachers.length();
-        teachersID = new int[len];
-        for (int i = 0; i < len; i++) {
-            teachersID[i] = teachers.getJSONObject(i).getInt(VisitsKey.TEACHER_ID.getKey());
+    private void makeTeachers(JSONObject element) {
+        try {
+            JSONArray teachers = element.getJSONArray(VisitsKey.LESSON_TEACHERS.getKey());
+            int len = teachers.length();
+            teachersID = new int[len];
+            for (int i = 0; i < len; i++) {
+                teachersID[i] = teachers.getJSONObject(i).getInt(VisitsKey.TEACHER_ID.getKey());
+            }
+        } catch (JSONException e) {
+            Logger.printError(e, getClass());
         }
     }
 
-    private static enum VisitsKey implements IKeyApi {
+    public static enum VisitsKey implements IKeyApi {
 
         LESSON_TEACHERS("lessonTeachers"),
         GROUP_EXERCISES("groupExercises"),

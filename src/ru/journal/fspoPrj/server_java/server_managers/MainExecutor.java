@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 
 public abstract class MainExecutor extends AsyncTask<String, Integer, Void> implements Serializable {
 
-    protected static final int DEFAULT_WAIT_TIME = 10;
+    protected static final int DEFAULT_WAIT_TIME = 60;
 
     private static final int SHOW_PROGRESS_CODE = 0;
     private static final int STOP_EXECUTING_CODE = 1;
@@ -62,6 +62,7 @@ public abstract class MainExecutor extends AsyncTask<String, Integer, Void> impl
         } catch (AuthorizationExecutor.WrongPasswordException e) {
             publishProgress(PASSWORD_IS_WRONG_CODE);
         } catch (Exception e) {
+
             // There is error if app is not closed manual can be ignored
             Logger.printError(e, getClass());
         }

@@ -21,6 +21,7 @@ public class ProfileInfo extends Human {
 
     public ProfileInfo(JSONObject element) {
         super(element);
+        System.out.println(element);
         this.photoLink = ProfileKeys.PHOTO.getStringValue(element);
         this.mail = ProfileKeys.EMAIL.getStringValue(element);
         this.phone = ProfileKeys.PHONE.getStringValue(element);

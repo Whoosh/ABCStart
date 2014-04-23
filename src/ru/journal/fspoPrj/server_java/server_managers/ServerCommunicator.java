@@ -3,6 +3,7 @@ package ru.journal.fspoPrj.server_java.server_managers;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import ru.journal.fspoPrj.journal.EvolutionCell;
 import ru.journal.fspoPrj.journal.data_get_managers.groups.Group;
 import ru.journal.fspoPrj.server_java.server_info.CommunicationInfo;
 
@@ -49,4 +50,5 @@ public abstract class ServerCommunicator {
     }
 
     protected abstract MainExecutor makeExecutor();
+
 }

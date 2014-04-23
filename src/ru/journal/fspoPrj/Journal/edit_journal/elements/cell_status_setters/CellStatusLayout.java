@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import ru.journal.fspoPrj.journal.config.Config;
-import ru.journal.fspoPrj.journal.public_journal_elements.custom_cell.EvolutionCell;
+import ru.journal.fspoPrj.journal.EvolutionCell;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 

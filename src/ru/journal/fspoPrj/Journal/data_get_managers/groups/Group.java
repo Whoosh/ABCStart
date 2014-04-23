@@ -20,7 +20,7 @@ public class Group implements Comparable<Group>, Serializable {
     private final int groupNumber;
     private int groupID;
 
-    private Student[] students;
+    private ArrayList<Student> students;
     private GroupLesson[] groupLessons;
     private HashMap<Integer, GroupLesson[]> sGroupLesson;
 
@@ -39,10 +39,10 @@ public class Group implements Comparable<Group>, Serializable {
     }
 
     private void makeStudents(JSONArray studentsList) {
-        students = new Student[studentsList.length()];
+        students = new ArrayList<>(studentsList.length());
         for (int i = 0; i < studentsList.length(); i++) {
             try {
-                students[i] = new Student(studentsList.getJSONObject(i));
+                students.add(new Student(studentsList.getJSONObject(i)));
             } catch (JSONException e) {
                 Logger.printError(e, getClass());
             }
@@ -74,16 +74,6 @@ public class Group implements Comparable<Group>, Serializable {
         }
     }
 
-    /*/
-        public boolean hasTeacherLessons(TeacherLessons teacherlessons) {
-            ArrayList<GroupLesson> bufferedLessons = new ArrayList<>(Arrays.asList(groupLessons));
-            for (Iterator<GroupLesson> iterator = bufferedLessons.iterator(); iterator.hasNext(); ) {
-                lookOn(teacherlessons, iterator);
-            }
-            return bufferStateIsGood(bufferedLessons);
-        }
-    /*/
-
     private boolean bufferStateIsGood(ArrayList<GroupLesson> bufferedLessons) {
         groupLessons = bufferedLessons.toArray(new GroupLesson[bufferedLessons.size()]);
         if (bufferedLessons.size() > 0) {
@@ -93,15 +83,6 @@ public class Group implements Comparable<Group>, Serializable {
         return false;
     }
 
-    /*/
-    private void lookOn(TeacherLessons teacherlessons, Iterator<GroupLesson> groupLesson) {
-        for (TeacherLessons.TeacherLesson teacherLesson : teacherlessons.getLessons()) {
-            if (!groupLesson.next().equalsTeacher(teacherLesson)) {
-                groupLesson.remove();
-            }
-        }
-    }
-/*/
     public GroupLesson[] getGroupLessons() {
         return groupLessons;
     }
@@ -118,7 +99,7 @@ public class Group implements Comparable<Group>, Serializable {
         return groupNumber;
     }
 
-    public Student[] getStudents() {
+    public ArrayList<Student> getStudents() {
         return students;
     }
 

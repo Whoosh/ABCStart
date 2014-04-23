@@ -17,13 +17,13 @@
 
     <!-- Menu activity values -->
     <integer name="menu__header_line_height">3</integer>
-    <integer name="menu__item_menu_height">50</integer>
-    <integer name="menu__item_menu_width">400</integer>
+    <integer name="menu__item_menu_height">40</integer>
+    <integer name="menu__item_menu_width">300</integer>
     <integer name="menu__item_menu_end_start_line_height">3</integer>
     <integer name="menu__item_menu_separate_line_height">15</integer>
     <integer name="menu__item_menu_text_tab_width">20</integer>
     <!-- Menu activity text values -->
-    <dimen name="menu__item_menu_text_size">15sp</dimen>
+    <dimen name="menu__item_menu_text_size">12sp</dimen>
 
 
     <!-- Journal activity values -->
@@ -35,7 +35,7 @@
     <!-- Looking journal activity values -->
     <integer name="looking_journal__evolution_size">50</integer>
     <integer name="looking_journal__selector_group_height">50</integer>
-    <integer name="looking_journal__selector_group_width">250</integer>
+    <integer name="looking_journal__selector_group_width">200</integer>
     <integer name="looking_journal__on_group_dialog_separate_line_height">5</integer>
     <integer name="looking_journal__on_group_dialog_separate_transparent_line_height">20</integer>
     <integer name="looking_journal__on_group_dialog_element_separate_line_size">5</integer>
@@ -46,8 +46,8 @@
     <integer name="looking_journal__on_date_dialog_element_height">50</integer>
     <!-- Looking journal activity text values -->
     <dimen name="looking_journal__group_element_text_size">12sp</dimen>
-    <dimen name="looking_journal__selector_group_text_size">15sp</dimen>
-    <dimen name="looking_journal__student_element_text_size">15sp</dimen>
+    <dimen name="looking_journal__selector_group_text_size">13sp</dimen>
+    <dimen name="looking_journal__student_element_text_size">10sp</dimen>
     <dimen name="looking_journal__date_element_text_size">10sp</dimen>
     <dimen name="looking_journal__evolution_element_text_size">20sp</dimen>
     <dimen name="looking_journal__on_date_dialog_element_text_size">10sp</dimen>

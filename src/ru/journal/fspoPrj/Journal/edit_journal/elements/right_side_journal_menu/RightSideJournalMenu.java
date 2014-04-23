@@ -34,21 +34,21 @@ public class RightSideJournalMenu extends LinearLayout implements View.OnClickLi
     private void initElements() {
         removeButton = new ImageButton(context);
         removeButton.setOnClickListener(this);
-        removeButton.setImageResource(R.drawable.ic_remove);
+        removeButton.setImageResource(R.drawable.ic_right_side_menu_remove);
 
-        plusButton =  new ImageButton(context);
+        plusButton = new ImageButton(context);
         plusButton.setOnClickListener(this);
-        plusButton.setImageResource(R.drawable.ic_plus);
+        plusButton.setImageResource(R.drawable.ic_right_side_menu_add);
 
-        editButton =  new ImageButton(context);
+        editButton = new ImageButton(context);
         editButton.setOnClickListener(this);
-        editButton.setImageResource(R.drawable.ic_edit);
+        editButton.setImageResource(R.drawable.ic_right_side_menu_edit);
 
         setOrientation(LinearLayout.VERTICAL);
 
         addView(plusButton);
-        addView(removeButton);
         addView(editButton);
+        addView(removeButton);
         setLayoutParams(new ViewGroup.LayoutParams
                 (ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
         setBackgroundColor(Color.WHITE);

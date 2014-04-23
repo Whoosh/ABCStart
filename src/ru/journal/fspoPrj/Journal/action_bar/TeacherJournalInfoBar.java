@@ -8,18 +8,19 @@ import ru.journal.fspoPrj.journal.data_get_managers.communicators.EditJournalsCo
 import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherGroup;
 import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLesson;
 import ru.journal.fspoPrj.journal.data_get_managers.teacher_lessons.TeacherLessons;
-import ru.journal.fspoPrj.public_code.custom_desing_elements.SerifTextView;
 
 public class TeacherJournalInfoBar implements ActionMode.Callback, View.OnClickListener {
 
     private static final int REFRESH_BUTTON_ID = 12;
     private static final String EMPTY = "";
     private static final String REFRESH = "Обновить";
+    private static final String SEMESTER = " - Семестр ";
     private ActionMode actionMode;
     private Activity callerParent;
     private TeacherLessons teacherLessons;
     private OnGroupSelected onGroupSelected;
     private EditJournalsCommunicator jC;
+    private static boolean refreshMode;
 
     public TeacherJournalInfoBar(Activity callerParent) {
         this.callerParent = callerParent;
@@ -35,15 +36,17 @@ public class TeacherJournalInfoBar implements ActionMode.Callback, View.OnClickL
     @Override
     public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
         menu.clear();
+        if (refreshMode) {
+            addRefreshButton(menu);
+            return true;
+        }
         if (teacherLessons != null) {
             for (TeacherLesson lesson : teacherLessons.getLessons()) {
-                SubMenu subMenu = menu.addSubMenu(lesson.getName() + " - Семестр " + lesson.getSemester());
+                SubMenu subMenu = menu.addSubMenu(lesson.getName() + SEMESTER + lesson.getSemester());
                 for (TeacherGroup group : lesson.getGroups()) {
                     subMenu.add(group.getGroupName()).setActionView(new LessonElement(callerParent, group));
                 }
             }
-        } else {
-            addRefreshButton(menu);
         }
         return true;
     }
@@ -70,13 +73,27 @@ public class TeacherJournalInfoBar implements ActionMode.Callback, View.OnClickL
 
     public void setState(EditJournalsCommunicator jC) {
         this.jC = jC;
-        teacherLessons = jC.getTeacherLessons();
+        teacherLessons = jC.getTeacherJournal();
         actionMode.invalidate();
+    }
+
+    public void enableRefreshMode() {
+        refreshMode = true;
+    }
+
+    public void disableRefreshMode() {
+        refreshMode = false;
+        setState(jC);
+    }
+
+    public void setJC(EditJournalsCommunicator jC) {
+        this.jC = jC;
     }
 
     @Override
     public void onClick(View view) {
         jC.resendLastQuery();
+        disableRefreshMode();
     }
 
     public static interface OnGroupSelected {
