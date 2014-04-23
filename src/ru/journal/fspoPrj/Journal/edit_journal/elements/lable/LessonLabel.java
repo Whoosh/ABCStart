@@ -13,7 +13,7 @@ public class LessonLabel extends SerifTextView {
 
     public LessonLabel(Context context, String text) {
         super(context, text);
-        setLayoutParams(new ViewGroup.LayoutParams(Config.getSelectorGroupOrLabelWidth(),Config.getSelectorGroupOrLabelHeight()));
+        setLayoutParams(new ViewGroup.LayoutParams(Config.getSelectorGroupOrLabelWidth(), Config.getSelectorGroupOrLabelHeight()));
     }
 
     public void setSelectedLesson(TeacherGroup group) {

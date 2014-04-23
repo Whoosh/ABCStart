@@ -11,9 +11,22 @@ public enum APIQuery {
     GET_GROUP_LIST("GET /api/getGroupsList/?ssid=", "&year_id="),
     GET_TEACHER_LESSON("GET /api/getTeacherLessons/?ssid=", "&year_id=", "&user_id="),
     GET_GROUP_JOURNAL("GET /api/getGroupsJournals/?ssid=", "&year_id="),
-    GET_JOURNAL_VISITS_BY_GROUP_FULL("GET /api/getJournalVisitsByOffGroup/?ssid=", "&year_id=", "&lesson_id=", "&group_id="),
-    GET_JOURNAL_VISITS_BY_GROUP_LIGHT("GET /api/getJournalVisitsByOffGroupLight/?ssid=", "&year_id=", "&lesson_id=", "&group_id="),
+    GET_JOURNAL_VISITS_BY_GROUP_FULL
+            ("GET /api/getJournalVisitsByOffGroup/?ssid=", "&year_id=", "&lesson_id=", "&group_id="),
+    GET_JOURNAL_VISITS_BY_GROUP_LIGHT
+            ("GET /api/getJournalVisitsByOffGroupLight/?ssid=", "&year_id=", "&lesson_id=", "&group_id="),
+    GET_TEACHER_JOURNAL_VISITS_BY_GROUP_LIGHT
+            ("GET /api/getTeacherJournalVisitsByGroupLight/?ssid=", "&year_id=", "&teacherlesson_id=", "&group_id="),
     GET_USERS_LIST("GET /api/getuserslist/?ssid=", "&year_id="),
+    GET_EXERCISES("GET /api/getTeacherJournalExercises/?ssid=", "&year_id=", "&group_id=", "&teacherlesson_id="),
+    GET_GROUP_STUDENTS("GET /api/getGroupStudents/?ssid=", "&group_id=", "&year_id="),
+    GET_TEACHER_JOURNAL_VISITS("GET /api/getTeacherJournalVisitsByGroupLight?ssid=", "&teacherlesson_id=", "&group_id=", "&year_id="),
+    GET_CELL_STATUS_CHANGE("GET /api/updateVisit?ssid=", "&visit_id=", "&field=", "&value="),
+    GET_CREATE_NEW_EXERCISE("GET /api/createNewExercise?ssid=", "&year_id=", "&teacherlesson_id=", "&type=", "&group_id=", "&period="
+            , "&topic=", "&get_visits="),
+    GET_UPDATE_EXERCISE("GET /api/updateExerciseInfo?ssid=", "&exercise_id=", "&topic=", "&type="),
+    GET_DELETE_EXERCISE("GET /api/deleteExercise?ssid=", "&exercise_id="),
+
     EMPTY_QUERY("GET /api");
 
     private final String[] keys;

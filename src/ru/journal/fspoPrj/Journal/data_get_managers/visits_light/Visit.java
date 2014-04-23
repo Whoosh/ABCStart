@@ -31,7 +31,7 @@ public class Visit implements Serializable {
 
     private int performance;
 
-    public static enum PerformanceState {NOT_SET, BAD, GOOD}
+    public static enum PerformanceState {NOT_SET, HIGH, LOW}
 
     private int weight;
 
@@ -44,9 +44,22 @@ public class Visit implements Serializable {
     private int visitID;
     private int exercisesID;
     private boolean emptyCell;
+    private int studentID;
 
-    public Visit(JSONObject element) {
+    public Visit() {
+        emptyCell = true;
+    }
+
+    public Visit(int exercisesID, int studentID,int visitID) {
+        this.exercisesID = exercisesID;
+        this.studentID = studentID;
+        this.presence = PresentsState.COMING_ON_LESSON.ordinal();
+        this.visitID = visitID;
+    }
+
+    public Visit(JSONObject element, int studentID) {
         exercisesID = VisitKey.EXERCISE_ID.getIntValue(element);
+        this.studentID = studentID;
         if (element.names().length() == EMPTY_VISIT) {
             emptyCell = true;
             return;
@@ -61,6 +74,14 @@ public class Visit implements Serializable {
         performance = VisitKey.PERFORMANCE.getIntValue(element);
         weight = VisitKey.WEIGHT.getIntValue(element);
         markNeed = VisitKey.MARK_NEED.getIntValue(element);
+    }
+
+    public String getStringStudentID() {
+        return String.valueOf(studentID);
+    }
+
+    public int getStudentID() {
+        return studentID;
     }
 
     public int getVisitID() {

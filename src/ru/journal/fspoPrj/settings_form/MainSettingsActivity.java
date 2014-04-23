@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import org.jetbrains.annotations.NotNull;
@@ -105,6 +106,7 @@ public class MainSettingsActivity extends Activity {
 
         proxyManager = new ProxyManager(this);
         themeManager = new ThemeManager(this);
+        themeManager.setVisibility(View.INVISIBLE);
 
         scrollableList.setOrientation(LinearLayout.VERTICAL);
         headViewPlusScrollableList.setOrientation(LinearLayout.VERTICAL);

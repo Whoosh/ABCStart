@@ -36,7 +36,6 @@ public class InformerFragment extends Fragment implements View.OnClickListener {
     private static final String SPACE = " ";
 
     private static final int CL_HOLO = Color.parseColor("#33b5e5");
-    private static final int BG_COLOR = Color.parseColor("#EFF1F0");
 
     private LinearLayout scrolledLayout;
     private ProfileInfo userInfo;
@@ -76,7 +75,6 @@ public class InformerFragment extends Fragment implements View.OnClickListener {
 
     private void setInfoNames() {
         if (userInfo != null) {
-            layout.setBackgroundColor(BG_COLOR);
             addNames();
             addStatus();
             addLessons();
@@ -156,7 +154,7 @@ public class InformerFragment extends Fragment implements View.OnClickListener {
     private void addNames() {
         addTransparentHorizontalLine();
         addName(userInfo.getPointedFirstName());
-        addName(userInfo.getMiddleName());
+        addName(userInfo.getPointedMiddleName());
         addName(userInfo.getPointedLastName());
     }
 

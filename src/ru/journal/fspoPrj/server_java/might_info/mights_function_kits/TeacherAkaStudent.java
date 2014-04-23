@@ -13,7 +13,6 @@ public class TeacherAkaStudent extends ToolKitsManager {
                 Functions.MESSAGES,
                 Functions.RESULT_RATING,
                 Functions.LESSONS_MANAGER,
-                Functions.SCHEDULE,
                 Functions.TEACHERS
         );
     }

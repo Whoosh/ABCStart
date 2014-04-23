@@ -1,4 +1,4 @@
-package ru.journal.fspoPrj.journal.public_journal_elements.custom_cell;
+package ru.journal.fspoPrj.journal;
 
 import android.content.Context;
 import android.graphics.*;
@@ -57,6 +57,12 @@ public class EvolutionCell extends View {
 
     }
 
+    public EvolutionCell(Context context) {
+        super(context);
+        setLayoutParams(VIEW_PARAMS);
+        setState(generateKey(new Visit(), LightExercisesInfo.TypeState.NOT_SET), new Visit(), LightExercisesInfo.TypeState.NOT_SET);
+    }
+
     public EvolutionCell(Context context, Visit visit, LightExercisesInfo.TypeState state) {
         super(context);
         this.visit = visit;
@@ -64,6 +70,18 @@ public class EvolutionCell extends View {
         this.stateKey = generateKey(visit, state);
         setLayoutParams(VIEW_PARAMS);
         setState(stateKey, visit, state);
+    }
+
+    public Visit getVisit() {
+        return visit;
+    }
+
+    public String getStringVisitID() {
+        return String.valueOf(visit.getVisitID());
+    }
+
+    public int getComingCellStatus() {
+        return visit.getPresence();
     }
 
     public void changeComingStatus() {
@@ -149,9 +167,9 @@ public class EvolutionCell extends View {
     }
 
     private void handleVisitPerformance(Canvas canvas, int performance) {
-        if (Visit.PerformanceState.BAD.ordinal() == performance) {
+        if (Visit.PerformanceState.HIGH.ordinal() == performance) {
             addStudentPowerUPStatus(canvas, Color.RED);
-        } else if (Visit.PerformanceState.GOOD.ordinal() == performance) {
+        } else if (Visit.PerformanceState.LOW.ordinal() == performance) {
             addStudentPowerUPStatus(canvas, Color.GREEN);
         } else {
             // nothing
@@ -271,6 +289,15 @@ public class EvolutionCell extends View {
     public void changeStatusForDelete(int color) {
         // TODO
     }
+
+    public boolean isEmpty() {
+        return visit.isEmptyCell();
+    }
+
+    public boolean hasPoint() {
+        return visit.getPoint() != 0 && visit.getPoint() != 1;
+    }
+
 
     private static class Setter extends Drawable {
 

@@ -1,47 +1,44 @@
 package ru.journal.fspoPrj.journal.edit_journal.elements.cell_status_setters;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
 import ru.journal.fspoPrj.journal.JournalActivity;
 import ru.journal.fspoPrj.journal.config.Config;
-import ru.journal.fspoPrj.journal.public_journal_elements.custom_cell.EvolutionCell;
+import ru.journal.fspoPrj.journal.EvolutionCell;
 
-public class CellLongClickDialog extends DialogFragment {
+public class CellLongClickDialog extends DialogFragment implements DialogInterface.OnClickListener,View.OnCreateContextMenuListener {
 
     private EvolutionCell evolutionCell;
 
-    public CellLongClickDialog() {
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Dialog dialog = getDialog();
-        if (dialog != null) {
-            dialog.getWindow().setLayout(Config.getCellFunctionDialogWidth(), Config.getCellFunctionDialogHeight());
-        }
-    }
-
-    @Override
-    public void onPause() {
-        if (isAdded()) {
-            dismiss();
-        }
-        super.onPause();
-    }
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        JournalActivity parent = (JournalActivity) getActivity();
-        AlertDialog.Builder builder = new AlertDialog.Builder(parent);
-        builder.setView(new CellStatusLayout(getActivity(), evolutionCell));
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("111");
+
         return builder.create();
     }
 
     public void setPreparingCell(EvolutionCell cell) {
         evolutionCell = cell;
+    }
+
+    @Override
+    public void onClick(DialogInterface dialogInterface, int i) {
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add("1000");
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

@@ -29,10 +29,7 @@ public abstract class Human implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Human human = (Human) o;
-        return ID == human.ID;
+        return this == o || !(o == null || getClass() != o.getClass()) && ID == ((Human) o).ID;
     }
 
     @Override
@@ -67,11 +64,11 @@ public abstract class Human implements Serializable {
     }
 
     public String getPointedMiddleName() {
-        return MIDDLE_NAME+ middleName;
+        return MIDDLE_NAME + middleName;
     }
 
     public String getPointedLastName() {
-        return LAST_NAME+lastName;
+        return LAST_NAME + lastName;
     }
 
     public int getIntegerID() {

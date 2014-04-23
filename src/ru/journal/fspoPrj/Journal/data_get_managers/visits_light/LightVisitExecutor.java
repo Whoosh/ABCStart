@@ -23,7 +23,7 @@ public class LightVisitExecutor extends MainExecutor {
     @Override
     protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException, TimeoutException {
         Intent intent = new Intent();
-        intent.putExtra(lightVisitQuery, new LightVisits(results.remove(lightVisitQuery)));
+        intent.putExtra(lightVisitQuery, new LightVisits(results.remove(lightVisitQuery), false));
         progressActivity.setResult(caller, intent);
     }
 }
