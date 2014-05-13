@@ -11,7 +11,8 @@ public enum MightsCodes {
     STUDENT_CODE(Student.class, CurrentRolesInfo.STUDENT),
     PARENT_CODE(Parent.class, CurrentRolesInfo.PARENT),
     ADMIN_CODE(Admin.class, CurrentRolesInfo.ADMIN),
-    STUDENT_AKA_TEACHER(TeacherAkaStudent.class, generateCode(TEACHER_CODE.code, STUDENT_CODE.code));
+    STUDENT_AKA_TEACHER(TeacherAkaStudent.class, generateCode(TEACHER_CODE.code, STUDENT_CODE.code)),
+    TEACHER_AKA_ADMIN(TeacherAkaAdmin.class,generateCode(TEACHER_CODE.code,ADMIN_CODE.code));
 
     private static int generateCode(int... codes) {
         StringBuilder builder = new StringBuilder();

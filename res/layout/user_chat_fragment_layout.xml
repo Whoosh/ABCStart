@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <fragment android:name="ru.journal.fspoPrj.messages.fragments.ChatShowerFragment"
+              android:id="@+id/chatShowerFragment"
+              android:tag="chatShowerFragment"
+              android:layout_weight="2"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="6">
+        <fragment android:name="ru.journal.fspoPrj.messages.fragments.ChatSenderFragment"
+                  android:id="@+id/chatSenderFragment"
+                  android:tag="chatSenderFragment"
+                  android:layout_weight="2"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                />
+        <fragment android:name="ru.journal.fspoPrj.messages.fragments.ChatButtonFragment"
+                  android:id="@+id/chatButtonFragment"
+                  android:tag="chatSenderButton"
+                  android:layout_weight="3"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                />
+    </LinearLayout>
+</LinearLayout>

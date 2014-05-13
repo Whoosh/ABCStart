@@ -26,6 +26,9 @@ public enum APIQuery {
             , "&topic=", "&get_visits="),
     GET_UPDATE_EXERCISE("GET /api/updateExerciseInfo?ssid=", "&exercise_id=", "&topic=", "&type="),
     GET_DELETE_EXERCISE("GET /api/deleteExercise?ssid=", "&exercise_id="),
+    GET_MY_MESSAGE("GET /api/getMyMessages/?ssid=", "&year_id="),
+    GET_CHAT_MESSAGE("GET /api/getChatMessages?ssid=","&chat_user_id="),
+    GET_SENT_MESSAGE("GET /api/sendMessage?ssid=","&receiver_id=","&text="),
 
     EMPTY_QUERY("GET /api");
 

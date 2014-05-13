@@ -4,6 +4,7 @@ import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.journal.edit_journal.TeacherJournalActivity;
 import ru.journal.fspoPrj.journal.looking_journal.LookingJournalActivity;
 import ru.journal.fspoPrj.bug_reporter.BugReportInformerActivity;
+import ru.journal.fspoPrj.messages.MainMessageActivity;
 import ru.journal.fspoPrj.search_users.search_all.SearchAllProfilesActivity;
 
 public enum Functions {
@@ -19,11 +20,12 @@ public enum Functions {
 
     ERROR_INFORMER("Связь с автором", BugReportInformerActivity.class, R.drawable.ic_some_wrong),
 
-    MESSAGES("Сообщения", BugReportInformerActivity.class, R.drawable.ic_chat),
+    TEACHERS("Преподователи", SearchAllProfilesActivity.class, R.drawable.ic_people),
 
-    RESULT_RATING("Итоговые оценки", BugReportInformerActivity.class, R.drawable.ic_result_rating),
+    MESSAGES("Сообщения", MainMessageActivity.class, R.drawable.ic_chat),
 
-    TEACHERS("Преподователи", SearchAllProfilesActivity.class, R.drawable.ic_people);
+    RESULT_RATING("Успеваемость", BugReportInformerActivity.class, R.drawable.ic_result_rating);
+
 
     private final Class<?> functionClass;
     private final String functionName;

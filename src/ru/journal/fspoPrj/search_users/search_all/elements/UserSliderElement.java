@@ -56,11 +56,11 @@ public class UserSliderElement extends LinearLayout {
         LinearLayout verticalLay = new LinearLayout(context);
         verticalLay.setOrientation(VERTICAL);
         verticalLay.setGravity(Gravity.CENTER_VERTICAL);
+        verticalLay.addView(createTextView(profileInfo.getPointedLastName()));
+        verticalLay.addView(getDGHLine());
         verticalLay.addView(createTextView(profileInfo.getPointedFirstName()));
         verticalLay.addView(getDGHLine());
         verticalLay.addView(createTextView(profileInfo.getPointedMiddleName()));
-        verticalLay.addView(getDGHLine());
-        verticalLay.addView(createTextView(profileInfo.getPointedLastName()));
         verticalLay.addView(getDGHLine());
         return verticalLay;
     }

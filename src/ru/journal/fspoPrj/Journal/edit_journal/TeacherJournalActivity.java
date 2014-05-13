@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.*;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class TeacherJournalActivity extends Activity implements
     public static final String SLOWER_STUDENT_STATUS_SLOW_TITLE = "Опоздал";
     public static final String SLOWER_STUDENT_STATUS_FAST_TITLE = "Ушёл раньше";
     public static final String SLOWER_STUDENT_STATUS_PUSHED_OFF_TITLE = "Выгнан";
-    public static final String STUDENT_SLOWER_TITLE = "Задержка студента";
+    public static final String STUDENT_SLOWER_TITLE = "Дополнительно";
     public static final String WEIGHT_POINT_STATUS_TITLE = "Вес оценки";
     public static final String POINT_WEIGHT_HIGH_STATUS_TITLE = "Высокий";
     public static final String POINT_WEIGHT_MIDDLE_STATUS_TITLE = "Средний";
@@ -56,7 +57,6 @@ public class TeacherJournalActivity extends Activity implements
     public static final String SELECT_DATE_FOR_EDIT_MESSAGE = "Выберете дату для редактирования";
     public static final String TYPE_LESSON_MESSAGE = "Тип занятия";
     public static final String EDIT_MENU_TITLE = "Доступные возможности";
-    public static final String TITLE_OF_LESSON_BUTTON_MESSAGE = "Тема занятия";
     public static final String TYPE_CHANGE_DEFAULT_LESSON_TITLE = "Лекция";
     public static final String TYPE_CHANGE_LAB_WORK_TITLE = "Лабораторная";
     public static final String TYPE_CHANGE_PRACTICAL_LESSON_TITLE = "Практическая";
@@ -65,7 +65,6 @@ public class TeacherJournalActivity extends Activity implements
     public static final String TYPE_CHANGE_SAVE_POINT_TITLE = "Зачёт";
     public static final String TYPE_CHANGE_EXAM_WORK_TITLE = "Экзамен";
 
-    public static final int REMOVED_POINT_VALUE_ID = 0;
     public static final int RANK_CHANGE_REMOVE_ID = 1;
     public static final int RANK_CHANGE_TWO_ID = 2;
     public static final int RANK_CHANGE_THREE_ID = 3;
@@ -108,8 +107,8 @@ public class TeacherJournalActivity extends Activity implements
     private static int slowerBuffer;
     private static int importantWeightBuffer;
     private static int exclusivePointStatusBuffer;
-    private static int lastJournalAction;
     private static int lessonTypeChangeBuffer;
+    private static int lastJournalAction;
     private static int lastExerciseSelected;
 
     private LinearLayout mainLay;
@@ -547,8 +546,6 @@ public class TeacherJournalActivity extends Activity implements
         typeChange.add(Menu.NONE, TYPE_CHANGE_ATTESTATION_ID, Menu.NONE, TYPE_CHANGE_ATTESTATION_TITLE);
         typeChange.add(Menu.NONE, TYPE_CHANGE_SAVE_POINT_ID, Menu.NONE, TYPE_CHANGE_SAVE_POINT_TITLE);
         typeChange.add(Menu.NONE, TYPE_CHANGE_EXAM_WORK_ID, Menu.NONE, TYPE_CHANGE_EXAM_WORK_TITLE);
-
-        menu.add(TITLE_OF_LESSON_BUTTON_MESSAGE);
     }
 
     private void handleRemoveClick() {
@@ -571,10 +568,10 @@ public class TeacherJournalActivity extends Activity implements
         if (lastClickedCell.hasPoint())
             addImportantPointWeight(menu);
         addPowerUp(menu);
-        addStudentSlowerStatus(menu);
         addStudentNeeded(menu);
         if (lastClickedCell.hasPoint())
             addExclusiveImportantStatusPoint(menu);
+        addStudentSlowerStatus(menu);
     }
 
     private void addExclusiveImportantStatusPoint(ContextMenu menu) {
