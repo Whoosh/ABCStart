@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import ru.journal.fspoPrj.R;
+import ru.journal.fspoPrj.messages.Config;
 
 abstract public class GlobalConfig {
 
@@ -36,6 +37,7 @@ abstract public class GlobalConfig {
         ru.journal.fspoPrj.journal.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.search_users.config.Config.setDefaultElementSize();
         ru.journal.fspoPrj.search_users.profile.config.Config.setDefaultElementSize();
+        ru.journal.fspoPrj.messages.Config.setDefaultElementSize();
     }
 
     public static void setTheme(int theme) {

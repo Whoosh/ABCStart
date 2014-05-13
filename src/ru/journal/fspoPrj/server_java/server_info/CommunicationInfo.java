@@ -13,7 +13,7 @@ public class CommunicationInfo implements Serializable {
     private static final String USER_ID_KEY = "user_id";
     private static final String YEAR_ID_KEY = "year_id";
 
-    private String token;
+    private String token = "";
     private String yearID;
     private String myID;
 

@@ -12,7 +12,8 @@
     <uses-permission android:name="com.android.email.permission.READ_ATTACHMENT"/>
     <uses-permission android:name="com.android.email.permission.ACCESS_PROVIDER"/>
 
-    <application android:icon="@drawable/aplogo"
+    <application android:icon="@drawable/ic_launcher"
+                 android:label="FJournal"
                  android:allowBackup="true">
         <activity android:name=".login_form.FirstActivity"
                   android:theme="@android:style/Theme.NoTitleBar">
@@ -52,17 +53,18 @@
         </activity>
 
         <activity android:name=".bug_reporter.BugReportInformerActivity"
-                  android:theme="@android:style/Theme.Holo.Light"
-                >
+                  android:theme="@android:style/Theme.Holo.Light">
         </activity>
 
-        <activity android:name=".schedule.ScheduleActivity"
-                  android:theme="@android:style/Theme.Holo.Light"
-                >
+        <activity android:name=".messages.MainMessageActivity"
+                  android:theme="@android:style/Theme.Holo.Light">
+        </activity>
+
+        <activity android:name=".messages.ChatMessageActivity"
+                  android:theme="@android:style/Theme.Holo.Light">
         </activity>
 
         <activity android:name=".server_java.server_managers.ProgressActivity" android:theme="@style/Theme.Transparent">
-
         </activity>
 
     </application>

@@ -2,6 +2,7 @@ package ru.journal.fspoPrj.journal.edit_journal.elements.date_slider;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.View;
 import android.widget.LinearLayout;
 import ru.journal.fspoPrj.journal.config.Config;
 import ru.journal.fspoPrj.journal.data_get_managers.communicators.EditJournalsCommunicator;
@@ -11,7 +12,7 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.VerticalLine;
 
 import java.util.ArrayList;
 
-public class TeacherDateSlider extends LinearLayout {
+public class TeacherDateSlider extends LinearLayout implements View.OnLongClickListener {
 
     private LinearLayout datesSlider;
     private Context context;
@@ -67,6 +68,7 @@ public class TeacherDateSlider extends LinearLayout {
     private void setListener(DateElement element) {
         if (listener != null) {
             element.setOnClickListener(listener);
+            element.setOnLongClickListener(this);
         }
     }
 
@@ -132,5 +134,11 @@ public class TeacherDateSlider extends LinearLayout {
                 break;
             }
         }
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        // TODO show TITLE OF LESSON
+        return false;
     }
 }
