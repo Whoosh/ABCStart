@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.messages.communication.ChatMessageCommunicator;
@@ -28,15 +29,14 @@ public class ChatMessageActivity extends Activity implements ChatButtonFragment.
     public static final String EMPTY = "";
     public static final String WEB_SPACE = "%20";
     public static final String REGULAR_EXPRESSION_SPACE = "\\s+";
+    public static final String MESSAGE_SEND = "Сообщение отправлено";
 
     private static ChatMessageCommunicator cMC;
-    private static String chatID = "";
 
     private ChatMessageFunctionBar chatMessageFunctionBar;
     private ChatShowerFragment chatShowerFragment;
     private ChatButtonFragment chatButtonFragment;
 
-    private String oldTypedMessage = "";
     private ChatSenderFragment chatSenderFragment;
 
     @Override
@@ -47,8 +47,7 @@ public class ChatMessageActivity extends Activity implements ChatButtonFragment.
         Intent data = getIntent();
         if (data != null && cMC == null) {
             if (data.hasExtra(CHAT_ID_KEY)) {
-                chatID = data.getStringExtra(CHAT_ID_KEY);
-                cMC = new ChatMessageCommunicator(this, chatID);
+                cMC = new ChatMessageCommunicator(this, data.getStringExtra(CHAT_ID_KEY));
             } else if (data.hasExtra(NEW_USER_CHAT_KEY)) {
                 cMC = new ChatMessageCommunicator(this);
                 cMC.setSearchedUserID(data.getStringExtra(NEW_USER_CHAT_KEY));
@@ -60,21 +59,18 @@ public class ChatMessageActivity extends Activity implements ChatButtonFragment.
     private void initElements() {
         chatMessageFunctionBar = new ChatMessageFunctionBar(this);
         startActionMode(chatMessageFunctionBar);
+        addInfoOnElements();
     }
 
     private void addInfoOnElements() {
-        try {
-            chatShowerFragment = (ChatShowerFragment) getFragmentManager().findFragmentByTag(CHAT_SHOWER_FRAGMENT_TAG);
-            chatSenderFragment = (ChatSenderFragment) getFragmentManager().findFragmentByTag(CHAT_SENDER_FRAGMENT_TAG);
-            chatButtonFragment = (ChatButtonFragment) getFragmentManager().findFragmentByTag(CHAT_SENDER_BUTTON_TAG);
+        chatShowerFragment = (ChatShowerFragment) getFragmentManager().findFragmentByTag(CHAT_SHOWER_FRAGMENT_TAG);
+        chatSenderFragment = (ChatSenderFragment) getFragmentManager().findFragmentByTag(CHAT_SENDER_FRAGMENT_TAG);
+        chatButtonFragment = (ChatButtonFragment) getFragmentManager().findFragmentByTag(CHAT_SENDER_BUTTON_TAG);
 
-            chatShowerFragment.setChatData(this, cMC.getChatMessages());
-            chatButtonFragment.setOnSendMessageClickListener(this);
-            chatButtonFragment.setChatSenderFragment(chatSenderFragment);
-            chatSenderFragment.setOldTypedMessage(oldTypedMessage);
-        } catch (Exception ex) {
-            Logger.printError(ex, getClass());
-        }
+        chatButtonFragment.setOnSendMessageClickListener(this);
+
+        chatShowerFragment.setChatData(this, cMC.getChatMessages());
+        chatButtonFragment.setChatSenderFragment(chatSenderFragment);
     }
 
 
@@ -84,18 +80,6 @@ public class ChatMessageActivity extends Activity implements ChatButtonFragment.
             outState.putString(OLD_MESSAGE_KEY, chatSenderFragment.getCurrentTypedText());
         }
         super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        if (cMC != null && cMC.getChatMessages() != null) {
-            if (savedInstanceState != null) {
-                oldTypedMessage = savedInstanceState.getString(OLD_MESSAGE_KEY);
-                oldTypedMessage = oldTypedMessage == null ? EMPTY : oldTypedMessage;
-            }
-            addInfoOnElements();
-        }
-        super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
@@ -111,7 +95,12 @@ public class ChatMessageActivity extends Activity implements ChatButtonFragment.
                 }
                 break;
                 case ChatMessageCommunicator.SEND_MESSAGE_QUERY: {
-                    cMC = new ChatMessageCommunicator(this, chatID);
+                    Toast.makeText(this, MESSAGE_SEND, Toast.LENGTH_SHORT).show();
+                    chatSenderFragment.clearOldMessage();
+                    if (!cMC.getChatID().equals(EMPTY)) {
+                        String b = cMC.getChatID();
+                        cMC = new ChatMessageCommunicator(this, b);
+                    }
                 }
                 break;
             }
@@ -129,7 +118,9 @@ public class ChatMessageActivity extends Activity implements ChatButtonFragment.
 
     @Override
     public void onMessageSendClick(String message) {
-        message = message.replaceAll(REGULAR_EXPRESSION_SPACE, WEB_SPACE);
-        cMC.sendMessageQuery(message, cMC.getChatMemberID());
+        if (!message.equals(EMPTY)) {
+            message = message.replaceAll(REGULAR_EXPRESSION_SPACE, WEB_SPACE);
+            cMC.sendMessageQuery(message, cMC.getChatMemberID());
+        }
     }
 }

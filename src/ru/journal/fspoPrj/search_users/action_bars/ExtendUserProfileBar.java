@@ -1,10 +1,12 @@
 package ru.journal.fspoPrj.search_users.action_bars;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import ru.journal.fspoPrj.R;
+import ru.journal.fspoPrj.messages.ChatMessageActivity;
 import ru.journal.fspoPrj.public_code.MailSender;
 import ru.journal.fspoPrj.public_code.humans_entity.ProfileInfo;
 import ru.journal.fspoPrj.search_users.profile.elements.AskSaveFragment;
@@ -53,7 +55,11 @@ public class ExtendUserProfileBar implements ActionMode.Callback {
                 return true;
             }
             case R.id.extend_user_info_send_message_on_system: {
-                // TODO
+                Intent starter = new Intent();
+                starter.setClass(parentCaller, ChatMessageActivity.class);
+                starter.putExtra(ChatMessageActivity.NEW_USER_CHAT_KEY, userProfile.getStringID());
+                parentCaller.startActivity(starter);
+                //parentCaller.finish();
                 return true;
             }
         }

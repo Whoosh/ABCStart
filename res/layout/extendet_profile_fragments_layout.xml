@@ -6,13 +6,13 @@
     <fragment android:name="ru.journal.fspoPrj.search_users.profile.elements.PhotoFragment"
               android:id="@+id/photoFragment"
               android:tag="photoFragment"
-              android:layout_weight="1"
+              android:layout_weight="6"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" />
     <fragment android:name="ru.journal.fspoPrj.search_users.profile.elements.InformerFragment"
               android:id="@+id/informerFragment"
               android:tag="informerFragment"
-              android:layout_weight="2"
+              android:layout_weight="1"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" />
+              android:layout_height="wrap_content" />
 </LinearLayout>

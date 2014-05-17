@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- @TODO DEFAULT VAL -->
+    <string name="string_el_size">default_values</string>
+
     <!-- Global config text values -->
     <dimen name="global__header_text_size">15sp</dimen>
     <dimen name="global__default_text_size">10sp</dimen>
@@ -89,6 +92,5 @@
     <integer name="light_messages_photo_height">70</integer>
     <integer name="light_messages_photo_width">70</integer>
 
-    <!-- TODO DEll -->
-    <integer name="testValue">10</integer>
+
 </resources>

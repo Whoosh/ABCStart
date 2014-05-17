@@ -127,7 +127,4 @@ abstract public class GlobalConfig {
         return DISPLAY_DENSITY_PIXEL_METRIC;
     }
 
-    public static int getTestValue() {
-        return getRealSize(R.integer.testValue);
-    }
 }

@@ -22,12 +22,17 @@ public class ChatMessageCommunicator extends ServerCommunicator {
 
     public ChatMessageCommunicator(Activity parent) {
         this.parent = parent;
+        this.chatID = "";
     }
 
     public ChatMessageCommunicator(Activity parent, String chatID) {
         this.parent = parent;
         this.chatID = chatID;
         makeChatQuery();
+    }
+
+    public String getChatID() {
+        return searchedUserID;
     }
 
     public ChatInfoBuffer getChatMessages() {
@@ -74,6 +79,8 @@ public class ChatMessageCommunicator extends ServerCommunicator {
     }
 
     public String getChatMemberID() {
+        if (chatInfoBuffer == null)
+            return searchedUserID;
         if (chatInfoBuffer.getChatMessages().size() > 0) {
             if (chatInfoBuffer.getChatMessages().get(0).isMyMessage())
                 return chatInfoBuffer.getChatMessages().get(0).getTOIDString();
