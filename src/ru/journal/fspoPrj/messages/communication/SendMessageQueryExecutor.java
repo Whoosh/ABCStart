@@ -22,9 +22,6 @@ public class SendMessageQueryExecutor extends MainExecutor {
     @Override
     protected void queryResults(HashMap<String, String> results) throws InterruptedException, ExecutionException, TimeoutException {
         Intent result = new Intent();
-
-        System.out.println(results.get(sendMessageQuery));
-        
         result.putExtra(sendMessageQuery, results.get(sendMessageQuery));
         progressActivity.setResult(requestCode, result);
     }

@@ -42,9 +42,11 @@ public class ChatShowerFragment extends Fragment {
     }
 
     public void setChatData(Activity parent, ChatInfoBuffer chatInfoBuffer) {
-        this.chatInfoBuffer = chatInfoBuffer;
         this.parent = parent;
-        setAdapter();
+        if (chatInfoBuffer != null) {
+            this.chatInfoBuffer = chatInfoBuffer;
+            setAdapter();
+        }
     }
 
     private void setAdapter() {

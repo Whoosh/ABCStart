@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import org.jetbrains.annotations.NotNull;
+import ru.journal.fspoPrj.R;
 import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationCommunicator;
 import ru.journal.fspoPrj.login_form.elements.MainWindow;
 import ru.journal.fspoPrj.login_form.elements.MenuShower;
@@ -41,6 +42,9 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
             theme = GlobalConfig.getCurrentTheme();
         }
         super.onCreate(savedInstanceState);
+
+        System.err.println("SIZE IS  = "+getResources().getString(R.string.string_el_size));
+
         menuShower = new MenuShower(this);
         authorizationCommunicator.setAuthCallBack(this);
 

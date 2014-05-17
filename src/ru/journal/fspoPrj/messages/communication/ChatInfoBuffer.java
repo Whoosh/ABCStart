@@ -17,10 +17,13 @@ public class ChatInfoBuffer {
 
     public ChatInfoBuffer(String jsonResponse) {
         JSONArray messages = makeJsonArray(jsonResponse);
+        System.out.println(jsonResponse);
+
         chatMessages = new ArrayList<>();
         for (int i = messages.length() - 1; i >= 0; i--) {
             chatMessages.add(new ChatMessage(getJObject(messages, i)));
         }
+        System.out.println("!!!");
     }
 
     public void markMessages(String myID) {
@@ -32,7 +35,7 @@ public class ChatInfoBuffer {
         if (chatMessages.get(0).isMyMessage()) {
             normalFromPhotoLink = chatMessages.get(0).getFromPhotoLink();
             normalToPhotoLink = chatMessages.get(0).getToPhotoLink();
-        }else {
+        } else {
             normalToPhotoLink = chatMessages.get(0).getFromPhotoLink();
             normalFromPhotoLink = chatMessages.get(0).getToPhotoLink();
         }

@@ -58,7 +58,7 @@ public class ChatButtonFragment extends Fragment implements View.OnClickListener
         try {
             onMessageSendClickListener.onMessageSendClick(chatSenderFragment.getCurrentTypedText());
         } catch (Exception ex) {
-            System.out.println("AHAA");
+            ex.printStackTrace();
         }
     }
 

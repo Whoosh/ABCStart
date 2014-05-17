@@ -15,17 +15,18 @@ import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLin
 public class ChatSenderFragment extends Fragment {
 
     private static final String EMPTY = "";
+    private static final String OLD_M_KEY = "ol_k";
 
     private LinearLayout mainLayout;
     private EditText typedBox;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        initElements();
+        initElements(savedInstanceState);
         super.onCreate(savedInstanceState);
     }
 
-    private void initElements() {
+    private void initElements(Bundle saved) {
         mainLayout = new LinearLayout(getActivity());
         mainLayout.setGravity(Gravity.BOTTOM);
         mainLayout.setOrientation(LinearLayout.VERTICAL);
@@ -33,8 +34,18 @@ public class ChatSenderFragment extends Fragment {
         typedBox = new EditText(getActivity());
         typedBox.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         typedBox.setText(EMPTY);
-
+        if (saved != null && saved.containsKey(OLD_M_KEY)) {
+            typedBox.setText(saved.getString(OLD_M_KEY));
+        }
         mainLayout.addView(typedBox);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        if(outState!=null){
+            outState.putString(OLD_M_KEY,typedBox.getText().toString());
+        }
+        super.onSaveInstanceState(outState);
     }
 
     @Nullable
@@ -48,12 +59,11 @@ public class ChatSenderFragment extends Fragment {
             String text = typedBox.getText().toString();
             return text == null ? EMPTY : text;
         } catch (Exception ex) {
-            ex.printStackTrace();
             return EMPTY;
         }
     }
 
-    public void setOldTypedMessage(String oldTypedMessage) {
-        typedBox.setText(oldTypedMessage);
+    public void clearOldMessage() {
+        typedBox.setText(EMPTY);
     }
 }

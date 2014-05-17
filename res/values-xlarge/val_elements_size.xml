@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- TODO  xlarge -->
-    <integer name="testValue">100000</integer>
+    <string name="string_el_size">x_large</string>
+
+    <!-- Global config text values -->
+    <dimen name="global__header_text_size">18sp</dimen>
+    <dimen name="global__default_text_size">14sp</dimen>
+
+    <!-- Settings activity values -->
+    <integer name="settings__octet_width">100</integer>
+    <integer name="settings__port_width">200</integer>
+    <integer name="settings__horizontal_empty_view_height">15</integer>
+    <integer name="settings__head_line_height">3</integer>
+
+    <!-- First activity values -->
+    <integer name="login__login_form_width">300</integer>
+    <integer name="login__login_form_height">50</integer>
+    <integer name="login__separator_height">7</integer>
+
+    <!-- Menu activity values -->
+    <integer name="menu__header_line_height">3</integer>
+    <integer name="menu__item_menu_height">60</integer>
+    <integer name="menu__item_menu_width">450</integer>
+    <integer name="menu__item_menu_end_start_line_height">3</integer>
+    <integer name="menu__item_menu_separate_line_height">20</integer>
+    <integer name="menu__item_menu_text_tab_width">20</integer>
+    <!-- Menu activity text values -->
+    <dimen name="menu__item_menu_text_size">14sp</dimen>
+
+    <!-- Journal activity values -->
+    <integer name="journal__group_dialog_height">400</integer>
+    <integer name="journal__group_dialog_width">550</integer>
+    <!-- Journal activity text values -->
+    <dimen name="journal__group_title_dialog_text_size">15sp</dimen>
+
+    <!-- Looking journal activity values -->
+    <integer name="looking_journal__evolution_size">50</integer>
+    <integer name="looking_journal__selector_group_height">50</integer>
+    <integer name="looking_journal__selector_group_width">250</integer>
+    <integer name="looking_journal__on_group_dialog_separate_line_height">2</integer>
+    <integer name="looking_journal__on_group_dialog_separate_transparent_line_height">2</integer>
+    <integer name="looking_journal__on_group_dialog_element_separate_line_size">1</integer>
+    <integer name="looking_journal__on_group_dialog_element_group_height">55</integer>
+    <integer name="looking_journal__on_group_dialog_element_group_width">70</integer>
+    <integer name="looking_journal__journal_end_line_width">4</integer>
+    <integer name="looking_journal__on_date_dialog_element_width">100</integer>
+    <integer name="looking_journal__on_date_dialog_element_height">50</integer>
+    <!-- Looking journal activity text values -->
+    <dimen name="looking_journal__group_element_text_size">11sp</dimen>
+    <dimen name="looking_journal__selector_group_text_size">15sp</dimen>
+    <dimen name="looking_journal__student_element_text_size">14sp</dimen>
+    <dimen name="looking_journal__date_element_text_size">11sp</dimen>
+    <dimen name="looking_journal__evolution_element_text_size">20sp</dimen>
+    <dimen name="looking_journal__on_date_dialog_element_text_size">10sp</dimen>
+
+
+    <!-- SearchProfile activity values -->
+    <integer name="search__profile_user_slider_element_height">100</integer>
+    <integer name="search__profile_user_slider_element_width">700</integer>
+    <integer name="search__profile_user_slider_element_photo_height">120</integer>
+    <integer name="search__profile_user_slider_element_photo_width">120</integer>
+    <integer name="search__profile_user_slider_names_separate_line_width">60</integer>
+    <integer name="search__profile_user_slider_divide_height">3</integer>
+    <integer name="search__profile_user_slider_separate_line_info_width">10</integer>
+    <!-- SearchProfile activity text values -->
+    <dimen name="search__profile_user_slider_names_text_size">20sp</dimen>
+
+
+    <!-- ExtendUserInfo activity values -->
+    <integer name="extend_profile__photo_width">450</integer>
+    <integer name="extend_profile__photo_height">450</integer>
+    <integer name="extend_profile__separate_names_line_width">10</integer>
+    <integer name="extend_profile__separate_main_info_line_height">3</integer>
+    <integer name="extend_profile__separate_names_transparent_line_height">10</integer>
+    <integer name="extend_profile__lessons_element_height">100</integer>
+    <integer name="extend_profile__cyan_horizontal_line_height">2</integer>
+    <integer name="extend_profile__transparent_horizontal_line_height">10</integer>
+    <integer name="extend_profile__bold_logic_horizontal_line_height">2</integer>
+
+    <!-- ExtendUserInfo activity text values -->
+    <dimen name="extend_profile__names_text_size">18sp</dimen>
+    <dimen name="extend_profile__lessons_text_size">14sp</dimen>
+
+    <!-- messages activity text values -->
+    <integer name="light_messages_photo_height">100</integer>
+    <integer name="light_messages_photo_width">100</integer>
+
 </resources>

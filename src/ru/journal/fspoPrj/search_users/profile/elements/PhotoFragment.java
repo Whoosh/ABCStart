@@ -38,13 +38,14 @@ public class PhotoFragment extends Fragment {
         this.userInfo = userInfo;
         startDownloadPhoto();
         mainLayout.setOrientation(LinearLayout.VERTICAL);
-        mainLayout.setGravity(Gravity.CENTER);
+        mainLayout.setGravity(Gravity.BOTTOM);
     }
 
     private void initElements() {
         parent = getActivity();
         mainLayout = new LinearLayout(parent);
         photo = new ImageView(parent);
+        photo.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mainLayout.addView(photo);
     }
 
