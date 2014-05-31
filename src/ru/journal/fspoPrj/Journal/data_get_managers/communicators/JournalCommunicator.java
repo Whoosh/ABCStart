@@ -36,4 +36,6 @@ public interface JournalCommunicator {
     void sendGroupVisitsQuery(GroupLesson lesson);
 
     void setCallerLink(JournalActivity parentCaller);
+
+    GroupLesson getLesson(String string, Group selectedGroup, int semester);
 }

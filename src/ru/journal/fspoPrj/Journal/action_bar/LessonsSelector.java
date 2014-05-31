@@ -62,7 +62,7 @@ public class LessonsSelector implements ActionMode.Callback {
                 }
             }
             return lessonList[0].getShortName();
-        } catch (NullPointerException ex) {
+        } catch (Exception ex) {
             Logger.printError(ex, getClass());
             return currentSelectedLesson;
         }

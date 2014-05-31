@@ -3,8 +3,7 @@ package ru.journal.fspoPrj.journal.looking_journal;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import org.jetbrains.annotations.NotNull;
@@ -18,14 +17,15 @@ import ru.journal.fspoPrj.journal.looking_journal.elements.main_table.TableWithM
 import ru.journal.fspoPrj.journal.looking_journal.elements.student_list.StudentList;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 
-public class LookingJournalActivity extends JournalActivity {
+public class LookingJournalActivity extends JournalActivity implements View.OnCreateContextMenuListener {
 
+    public static final int MIN_COUNT_SEMESTER_SUB_MENU = 1;
+    public static final String EMPTY = "";
     protected LinearLayout datePlusMatrix;
 
     @Override
     public void initElements() {
         super.initElements();
-
         datePlusMatrix = new LinearLayout(this);
 
         LinearLayout groupSelectorPlusStudents = new LinearLayout(this);
@@ -106,9 +106,44 @@ public class LookingJournalActivity extends JournalActivity {
                 selectedSemester = jC.getFirstPossiblySemester(selectedGroup);
                 semesterButton.setSelectedSemester(selectedSemester);
             }
-            sendVisitsQueryByGroupSelect(jC.getLessons(group, selectedSemester));
+            registerForContextMenu(groupButton);
+            openContextMenu(groupButton);
         }
     }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getTitle().toString().contains(SEMESTER_TITLE)) {
+            selectedSemester = Integer.valueOf(item.getTitle().toString().replace(SEMESTER_TITLE, EMPTY));
+            semesterButton.setSelectedSemester(selectedSemester);
+        } else {
+            selectedLesson = jC.getLesson(item.getTitle().toString(), selectedGroup, selectedSemester);
+            sendVisitsQueryByGroupSelect(jC.getLessons(selectedGroup, selectedSemester));
+        }
+        lessonsSelector.setLessonTitle(selectedLesson);
+        return super.onContextItemSelected(item);
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        Integer[] semesters = jC.getAllSemesters(selectedGroup);
+        if (semesters.length > MIN_COUNT_SEMESTER_SUB_MENU) {
+            for (Integer semester : semesters) {
+                SubMenu semesterMenu = menu.addSubMenu(SEMESTER_TITLE + semester.toString());
+                for (GroupLesson lesson : jC.getLessons(selectedGroup, semester)) {
+                    semesterMenu.add(lesson.getShortName());
+                }
+            }
+        } else {
+            menu.setHeaderTitle(SEMESTER_TITLE + jC.getFirstPossiblySemester(selectedGroup));
+            for (GroupLesson lesson : jC.getLessons(selectedGroup, selectedSemester)) {
+                menu.add(lesson.getShortName());
+            }
+        }
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
 
     @Override
     public void semesterSelected(int semester) {

@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.settings_form;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,9 +9,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import org.jetbrains.annotations.NotNull;
+import ru.journal.fspoPrj.login_form.FirstActivity;
 import ru.journal.fspoPrj.public_code.configs.GlobalConfig;
 import ru.journal.fspoPrj.public_code.custom_desing_elements.lines.HorizontalLine;
 import ru.journal.fspoPrj.settings_form.config.Config;
+import ru.journal.fspoPrj.settings_form.elements.BackBar;
 import ru.journal.fspoPrj.settings_form.elements.ProxyManager;
 import ru.journal.fspoPrj.settings_form.elements.SettingsHead;
 import ru.journal.fspoPrj.settings_form.elements.ThemeManager;
@@ -33,6 +36,7 @@ public class MainSettingsActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         GlobalConfig.setCurrentThemeFor(this);
         super.onCreate(savedInstanceState);
+        startActionMode(new BackBar(this));
         setElements();
         loadOldInformation();
     }
@@ -118,10 +122,16 @@ public class MainSettingsActivity extends Activity {
 
         scrollView.addView(scrollableList);
 
-        headViewPlusScrollableList.addView(new SettingsHead(this));
-        headViewPlusScrollableList.addView(Config.getHeaderLine(this));
         headViewPlusScrollableList.addView(scrollView);
 
         setContentView(headViewPlusScrollableList);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent starter = new Intent();
+        starter.setClass(this, FirstActivity.class);
+        startActivity(starter);
+        super.onBackPressed();
     }
 }

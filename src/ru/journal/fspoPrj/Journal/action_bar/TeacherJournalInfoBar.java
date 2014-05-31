@@ -14,7 +14,7 @@ public class TeacherJournalInfoBar implements ActionMode.Callback, View.OnClickL
     private static final int REFRESH_BUTTON_ID = 12;
     private static final String EMPTY = "";
     private static final String REFRESH = "Обновить";
-    private static final String SEMESTER = " - Семестр ";
+    private static final String SEMESTER = " семестр - ";
     private ActionMode actionMode;
     private Activity callerParent;
     private TeacherLessons teacherLessons;
@@ -42,11 +42,12 @@ public class TeacherJournalInfoBar implements ActionMode.Callback, View.OnClickL
         }
         if (teacherLessons != null) {
             for (TeacherLesson lesson : teacherLessons.getLessons()) {
-                SubMenu subMenu = menu.addSubMenu(lesson.getName() + SEMESTER + lesson.getSemester());
+                SubMenu subMenu = menu.addSubMenu(lesson.getShortName() + SEMESTER + lesson.getSemester());
                 for (TeacherGroup group : lesson.getGroups()) {
                     subMenu.add(group.getGroupName()).setActionView(new LessonElement(callerParent, group));
                 }
             }
+            menu.setQwertyMode(true);
         }
         return true;
     }

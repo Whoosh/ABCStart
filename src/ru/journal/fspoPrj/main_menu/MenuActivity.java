@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationCommunicator;
 import ru.journal.fspoPrj.login_form.data_get_managers.AuthorizationExecutor;
 import ru.journal.fspoPrj.main_menu.config.Config;
+import ru.journal.fspoPrj.main_menu.elements.BackBar;
 import ru.journal.fspoPrj.main_menu.elements.ListMenu;
 import ru.journal.fspoPrj.main_menu.elements.MenuHead;
 import ru.journal.fspoPrj.server_java.might_info.Tools.ToolKitsManager;
@@ -33,6 +34,7 @@ public class MenuActivity extends Activity {
         } else {
             listMenu = new ListMenu(toolKits, this);
         }
+        startActionMode(new BackBar(this));
         initMainLayout();
     }
 
@@ -69,8 +71,8 @@ public class MenuActivity extends Activity {
 
         LinearLayout mainLay = new LinearLayout(this);
         mainLay.setOrientation(LinearLayout.VERTICAL);
-        mainLay.addView(new MenuHead(this));
-        mainLay.addView(Config.getHeaderLine(this));
+        //mainLay.addView(new MenuHead(this));
+        //mainLay.addView(Config.getHeaderLine(this));
         mainLay.addView(scrollViewForFunctionList);
         mainLay.setBackgroundResource(Config.getMenuBackground());
 

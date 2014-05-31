@@ -3,6 +3,8 @@ package ru.journal.fspoPrj.journal;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -32,6 +34,8 @@ public abstract class JournalActivity extends Activity implements
 
     public static final String EMPTY = "";
 
+    protected static final String SEMESTER_TITLE = "Семестр - ";
+
     protected static JournalCommunicator jC;
     protected static Group selectedGroup;
     protected static GroupLesson selectedLesson;
@@ -53,7 +57,6 @@ public abstract class JournalActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         if (selectedGroup == null) {
             selectedGroup = new Group();
         }
@@ -82,6 +85,10 @@ public abstract class JournalActivity extends Activity implements
 
         semesterButton = new SemesterButton(this);
         semesterDialog = new SemesterDialog();
+        if (jC != null && jC.getSortedGroups() != null && jC.getVisits() == null) {
+            groupDialog.setGroups(jC.getSortedGroups());
+            handleGroupClick();
+        }
     }
 
     public void setJournalCommunicator(Class<? extends JournalCommunicator> communicator, JournalActivity journalActivity) {
@@ -99,6 +106,7 @@ public abstract class JournalActivity extends Activity implements
         switch (resultCode) {
             case JournalCommunicator.GROUPS_LIST_QUERY: {
                 groupDialog.setGroups(jC.getSortedGroups());
+                handleGroupClick();
             }
             break;
             case JournalCommunicator.LIGHT_VISITS_QUERY: {
@@ -119,9 +127,24 @@ public abstract class JournalActivity extends Activity implements
     }
 
     protected void handleSemesterClick() {
-        semesterDialogOpened();
-        semesterDialog.show(getFragmentManager(), EMPTY);
+        semesterButton.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+                contextMenu.clear();
+                for (Integer semester : jC.getAllSemesters(selectedGroup)) {
+                    contextMenu.add(SEMESTER_TITLE + semester).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+                            semesterSelected(Integer.valueOf(menuItem.getTitle().toString().replace(SEMESTER_TITLE, EMPTY)));
+                            return true;
+                        }
+                    });
+                }
+            }
+        });
+        openContextMenu(semesterButton);
     }
+
 
     protected void handleGroupClick() {
         if (groupButton.isRefreshState()) {
