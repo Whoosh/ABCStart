@@ -40,7 +40,8 @@ public class SerifTextView extends TextView {
         this.text = text;
         super.setTextColor(getSerifTextColor());
         super.setText(text);
-        super.setTextSize(textSize);
+        // FIXME
+        //     super.setTextSize(textSize);
         super.setTypeface(Typeface.SERIF);
         super.setGravity(gravity);
     }

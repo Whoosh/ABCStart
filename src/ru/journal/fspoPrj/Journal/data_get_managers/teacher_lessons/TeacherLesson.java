@@ -13,12 +13,15 @@ public class TeacherLesson implements Serializable {
     private final String name;
     private final int lessonID;
     private final int semester;
+    private final String shortName;
+
     private TeacherGroup[] groups;
 
     public TeacherLesson(JSONObject element) {
         name = TeacherLessonKey.NAME.getStringValue(element);
         lessonID = TeacherLessonKey.LESSON_ID.getIntValue(element);
         semester = TeacherLessonKey.SEMESTER.getIntValue(element);
+        shortName = TeacherLessonKey.SHORT_NAME.getStringValue(element);
         makeTeacherGroups(element);
     }
 
@@ -38,6 +41,10 @@ public class TeacherLesson implements Serializable {
         return name;
     }
 
+    public String getShortName() {
+        return shortName;
+    }
+
     public int getLessonID() {
         return lessonID;
     }
@@ -55,7 +62,8 @@ public class TeacherLesson implements Serializable {
         LESSON_ID("lesson_id"),
         SEMESTER("semester"),
         NAME("name"),
-        LESSONS_GROUP("lessonGroups");
+        LESSONS_GROUP("lessonGroups"),
+        SHORT_NAME("shortname");
 
         private final String key;
 

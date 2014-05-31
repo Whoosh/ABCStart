@@ -18,7 +18,6 @@ public class ChatMessageCommunicator extends ServerCommunicator {
     private Activity parent;
     private String chatID;
     private ChatInfoBuffer chatInfoBuffer;
-    private String searchedUserID = "";
 
     public ChatMessageCommunicator(Activity parent) {
         this.parent = parent;
@@ -32,7 +31,7 @@ public class ChatMessageCommunicator extends ServerCommunicator {
     }
 
     public String getChatID() {
-        return searchedUserID;
+        return chatID;
     }
 
     public ChatInfoBuffer getChatMessages() {
@@ -69,7 +68,7 @@ public class ChatMessageCommunicator extends ServerCommunicator {
     }
 
     public void setSearchedUserID(String searchedUserID) {
-        this.searchedUserID = searchedUserID;
+        this.chatID = searchedUserID;
     }
 
     public void sendMessageQuery(String message, String receiverID) {
@@ -80,14 +79,14 @@ public class ChatMessageCommunicator extends ServerCommunicator {
 
     public String getChatMemberID() {
         if (chatInfoBuffer == null)
-            return searchedUserID;
+            return chatID;
         if (chatInfoBuffer.getChatMessages().size() > 0) {
             if (chatInfoBuffer.getChatMessages().get(0).isMyMessage())
                 return chatInfoBuffer.getChatMessages().get(0).getTOIDString();
             else
                 return chatInfoBuffer.getChatMessages().get(0).getFromIDString();
         } else {
-            return searchedUserID;
+            return chatID;
         }
     }
 }

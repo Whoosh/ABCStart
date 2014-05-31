@@ -43,8 +43,6 @@ public class FirstActivity extends Activity implements View.OnClickListener, Aut
         }
         super.onCreate(savedInstanceState);
 
-        System.err.println("SIZE IS  = "+getResources().getString(R.string.string_el_size));
-
         menuShower = new MenuShower(this);
         authorizationCommunicator.setAuthCallBack(this);
 

@@ -14,13 +14,13 @@ public enum Functions {
 
     LOOK_JOURNALS("Журналы групп", LookingJournalActivity.class, R.drawable.ic_journal),
 
-    USERS_PROFILES("Пользователи", SearchAllProfilesActivity.class, R.drawable.ic_people),
+    USERS_PROFILES("Пользователи", SearchAllProfilesActivity.class, R.drawable.ic_people_menu),
 
     LESSONS_MANAGER("Мои журналы", TeacherJournalActivity.class, R.drawable.ic_lessons),
 
     ERROR_INFORMER("Связь с автором", BugReportInformerActivity.class, R.drawable.ic_some_wrong),
 
-    TEACHERS("Преподователи", SearchAllProfilesActivity.class, R.drawable.ic_people),
+    TEACHERS("Преподователи", SearchAllProfilesActivity.class, R.drawable.ic_people_menu),
 
     MESSAGES("Сообщения", MainMessageActivity.class, R.drawable.ic_chat),
 

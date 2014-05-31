@@ -204,7 +204,7 @@ public class TeacherJournalActivity extends Activity implements
     @Override
     public void onGroupSelected(TeacherGroup group) {
         if (group.equals(jC.getSelectedGroup())) return;
-        lessonLabel.setSelectedLesson(group);
+        lessonLabel.setSelectedLesson(group, jC.getTeacherJournal());
         jC.setTeacherGroup(group);
         jC.sendVisitsQueryByGroup(group);
     }

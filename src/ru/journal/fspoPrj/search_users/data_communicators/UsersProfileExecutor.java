@@ -51,8 +51,8 @@ public class UsersProfileExecutor extends MainExecutor {
 
     private void prepareInfo(JSONObject jsonObject) {
         try {
-            addStudentsOnList(jsonObject.getJSONObject(STUDENTS_KEY));
             addTeachersOnList(jsonObject.getJSONArray(TEACHERS_KEY));
+            addStudentsOnList(jsonObject.getJSONObject(STUDENTS_KEY));
         } catch (JSONException e) {
             Logger.printError(e, getClass());
         }

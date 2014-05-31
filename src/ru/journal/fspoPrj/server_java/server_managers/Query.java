@@ -27,9 +27,7 @@ public class Query implements Callable<String> {
     }
 
     private String sendQuery(String queryString) {
-
         StringBuilder result = new StringBuilder(EMPTY);
-
         try {
             Socket socket = new Socket(ServerCommunicator.HOST, ServerCommunicator.PORT);
             PrintWriter query = new PrintWriter(socket.getOutputStream());
@@ -47,6 +45,7 @@ public class Query implements Callable<String> {
         } catch (IOException e) {
             Logger.printError(e, getClass());
         }
+        System.out.println(result);
         return result.substring(result.indexOf(JSON_START_SCOPE));
     }
 }

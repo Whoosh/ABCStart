@@ -97,10 +97,7 @@ public class ChatMessageActivity extends Activity implements ChatButtonFragment.
                 case ChatMessageCommunicator.SEND_MESSAGE_QUERY: {
                     Toast.makeText(this, MESSAGE_SEND, Toast.LENGTH_SHORT).show();
                     chatSenderFragment.clearOldMessage();
-                    if (!cMC.getChatID().equals(EMPTY)) {
-                        String b = cMC.getChatID();
-                        cMC = new ChatMessageCommunicator(this, b);
-                    }
+                    cMC = new ChatMessageCommunicator(this, cMC.getChatID());
                 }
                 break;
             }
