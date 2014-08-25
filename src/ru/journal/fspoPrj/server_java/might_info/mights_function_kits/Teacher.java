@@ -7,8 +7,11 @@ public class Teacher extends ToolKitsManager {
 
     public Teacher() {
         super(
-                Functions.LOOK_JOURNALS,
+                Functions.LESSONS_MANAGER,
                 Functions.USERS_PROFILES,
-                Functions.ERROR_INFORMER); // TODO
+                Functions.ERROR_INFORMER,
+                Functions.LOOK_JOURNALS,
+                Functions.MESSAGES
+        );
     }
 }

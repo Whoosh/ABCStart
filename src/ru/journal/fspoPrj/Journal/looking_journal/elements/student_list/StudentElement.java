@@ -13,7 +13,6 @@ public class StudentElement extends TextView {
     public StudentElement(Context context, String student) {
         super(context);
         setText(student);
-        setTextSize(Config.getStudentElementTextSize());
         setGravity(Gravity.CENTER_VERTICAL);
         setLayoutParams(new ViewGroup.LayoutParams(Config.getStudentElementWidth(), Config.getStudentElementHeight()));
         setBackgroundDrawable(new EndLine(Config.getStudentElementWidth(), Config.getStudentElementHeight()));

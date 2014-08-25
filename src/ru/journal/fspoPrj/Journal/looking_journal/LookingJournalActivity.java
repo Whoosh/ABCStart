@@ -97,18 +97,16 @@ public class LookingJournalActivity extends JournalActivity implements View.OnCr
 
     @Override
     public void groupSelected(String groupNumber) {
-        Group group = jC.getGroup(groupNumber);
-        if (!selectedGroup.equals(group)) {
-            selectedGroup = group;
-            semesterDialog.setAllPossiblySemesters(jC.getAllSemesters(group));
-            groupButton.setSelectedGroup(group);
-            if (jC.getLessons(group, selectedSemester).length == 0) {
-                selectedSemester = jC.getFirstPossiblySemester(selectedGroup);
-                semesterButton.setSelectedSemester(selectedSemester);
-            }
-            registerForContextMenu(groupButton);
-            openContextMenu(groupButton);
+        groupDialog.setOpenStatus(false);
+        selectedGroup = jC.getGroup(groupNumber);
+        semesterDialog.setAllPossiblySemesters(jC.getAllSemesters(selectedGroup));
+        groupButton.setSelectedGroup(selectedGroup);
+        if (jC.getLessons(selectedGroup, selectedSemester).length == 0) {
+            selectedSemester = jC.getFirstPossiblySemester(selectedGroup);
+            semesterButton.setSelectedSemester(selectedSemester);
         }
+        registerForContextMenu(groupButton);
+        openContextMenu(groupButton);
     }
 
     @Override
@@ -143,7 +141,6 @@ public class LookingJournalActivity extends JournalActivity implements View.OnCr
         }
         super.onCreateContextMenu(menu, v, menuInfo);
     }
-
 
     @Override
     public void semesterSelected(int semester) {

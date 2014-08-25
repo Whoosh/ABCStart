@@ -27,7 +27,6 @@ public class DateElement extends TextView {
         setText(date.getDMDate());
         setBackgroundColor(cellColor);
         setGravity(Gravity.CENTER);
-        setTextSize(Config.getDateSliderTextSize());
         setLayoutParams(new ViewGroup.LayoutParams(Config.getSliderDateElementWidth(), Config.getSliderDateElementHeight()));
     }
 

@@ -45,7 +45,6 @@ public class Query implements Callable<String> {
         } catch (IOException e) {
             Logger.printError(e, getClass());
         }
-        System.out.println(result);
         return result.substring(result.indexOf(JSON_START_SCOPE));
     }
 }

@@ -1,6 +1,7 @@
 package ru.journal.fspoPrj.journal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -85,10 +86,6 @@ public abstract class JournalActivity extends Activity implements
 
         semesterButton = new SemesterButton(this);
         semesterDialog = new SemesterDialog();
-        if (jC != null && jC.getSortedGroups() != null && jC.getVisits() == null) {
-            groupDialog.setGroups(jC.getSortedGroups());
-            handleGroupClick();
-        }
     }
 
     public void setJournalCommunicator(Class<? extends JournalCommunicator> communicator, JournalActivity journalActivity) {
@@ -145,8 +142,14 @@ public abstract class JournalActivity extends Activity implements
         openContextMenu(semesterButton);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        jC.setWorkingNow(false);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     protected void handleGroupClick() {
+        groupDialog.setOpenStatus(true);
         if (groupButton.isRefreshState()) {
             jC.resendLastQuery();
             groupButton.disableRefreshState();
@@ -156,7 +159,8 @@ public abstract class JournalActivity extends Activity implements
     }
 
     protected void restoreLessonStudents() {
-        lessonsSelector.setLessonTitle(selectedLesson);
+        if (jC.getVisits() != null)
+            lessonsSelector.setLessonTitle(selectedLesson);
         if (!selectedGroup.isEmpty() && selectedLesson != null) {
             lessonsSelector.restoreState(jC.getLessons(selectedGroup, selectedSemester));
             studentList.restoreState(jC.getStudents(selectedGroup));

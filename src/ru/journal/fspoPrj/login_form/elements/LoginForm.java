@@ -18,7 +18,6 @@ public class LoginForm extends EditText {
         setLayoutParams(new LinearLayout.LayoutParams(Config.getFormWidth(), Config.getFormHeight()));
         setBackgroundColor(Config.getFormColor());
         setTextColor(Config.getTextColor());
-        setTextSize(GlobalConfig.getDefaultTextSize());
         setText(EMPTY);
         setGravity(Gravity.CENTER_VERTICAL);
         setTypeface(Typeface.SERIF);
