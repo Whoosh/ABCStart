@@ -26,9 +26,21 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
     protected LightVisits lightVisits;
     protected JournalActivity parentCaller;
 
+    protected static boolean workingNow;
+
     public JournalsCommunicator(JournalActivity parentCaller) {
         this.parentCaller = parentCaller;
         sendGroupListQuery();
+    }
+
+    @Override
+    public boolean isWorkingNow() {
+        return workingNow;
+    }
+
+    @Override
+    public void setWorkingNow(boolean workingNow) {
+        JournalsCommunicator.workingNow = workingNow;
     }
 
     @Override
@@ -42,6 +54,7 @@ public abstract class JournalsCommunicator extends ServerCommunicator implements
 
     @Override
     protected MainExecutor makeExecutor() {
+        setWorkingNow(true);
         switch (lastQueryID) {
             case GROUPS_LIST_QUERY: {
                 return new GroupsListExecutor(groupsListKeyQuery, lessonListKeyQuery, GROUPS_LIST_QUERY);

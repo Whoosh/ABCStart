@@ -38,4 +38,8 @@ public interface JournalCommunicator {
     void setCallerLink(JournalActivity parentCaller);
 
     GroupLesson getLesson(String string, Group selectedGroup, int semester);
+
+    boolean isWorkingNow();
+
+    void setWorkingNow(boolean status);
 }

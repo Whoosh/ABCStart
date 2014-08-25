@@ -42,7 +42,7 @@ public class SerifTextView extends TextView {
         super.setText(text);
         // FIXME
         //     super.setTextSize(textSize);
-        super.setTypeface(Typeface.SERIF);
+        // super.setTypeface(Typeface.SERIF);
         super.setGravity(gravity);
     }
 

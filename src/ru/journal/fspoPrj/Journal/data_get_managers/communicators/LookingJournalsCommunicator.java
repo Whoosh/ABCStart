@@ -19,4 +19,5 @@ public class LookingJournalsCommunicator extends JournalsCommunicator {
         }
         return null;
     }
+
 }

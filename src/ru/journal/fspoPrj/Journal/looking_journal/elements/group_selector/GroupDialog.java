@@ -12,6 +12,7 @@ public class GroupDialog extends DialogFragment {
 
     private static final String GROUPS_KEY = "c_k";
     private String[] groups;
+    private static boolean openStatus;
 
     public GroupDialog() {
     }
@@ -57,6 +58,14 @@ public class GroupDialog extends DialogFragment {
         if (groups != null) {
             this.groups = groups;
         }
+    }
+
+    public boolean isOpen() {
+        return openStatus;
+    }
+
+    public void setOpenStatus(boolean openStatus) {
+        GroupDialog.openStatus = openStatus;
     }
 
     public static interface GroupSelectedCallBack {

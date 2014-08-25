@@ -141,7 +141,6 @@ public class MainWindow extends LinearLayout implements View.OnTouchListener {
         loginButton = new SerifTextView(context, ENTER_TITLE);
 
         saveMe.setTextColor(Config.getCheckBoxTextColor());
-        saveMe.setTextSize(GlobalConfig.getDefaultTextSize());
         saveMe.setText(CHECK_BOX_TITLE);
 
         loginButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));

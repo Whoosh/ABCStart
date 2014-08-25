@@ -27,7 +27,6 @@ public class GroupButton extends Button {
             selectedGroup = DEFAULT_TITLE;
         }
         setText(selectedGroup);
-        setTextSize(Config.getSelectorGroupTextSize());
         setLayoutParams(new LinearLayout.LayoutParams(Config.getSelectorGroupOrLabelWidth(), Config.getSelectorGroupOrLabelHeight()));
     }
 

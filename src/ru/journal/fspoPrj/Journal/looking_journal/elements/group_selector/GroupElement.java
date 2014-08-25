@@ -17,7 +17,6 @@ public class GroupElement extends Button {
         this.group = group;
         setOnClickListener(listener);
         setGravity(Gravity.CENTER);
-        setTextSize(Config.getGroupElementTextSize());
         setText(group);
         setLayoutParams(new ViewGroup.LayoutParams(Config.getOnDialogGroupElementWidth(), Config.getOnDialogGroupElementHeight()));
     }
