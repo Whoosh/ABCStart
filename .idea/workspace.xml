@@ -51,24 +51,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: ru.journal.fspoPrj" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\looking_journal\elements\data_slider\DateElement.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/data_slider/DateElement.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\looking_journal\elements\group_selector\GroupButton.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/group_selector/GroupButton.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\looking_journal\elements\group_selector\GroupDialog.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/group_selector/GroupDialog.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\looking_journal\elements\group_selector\GroupElement.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/group_selector/GroupElement.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\JournalActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/JournalActivity.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\data_get_managers\communicators\JournalCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/JournalCommunicator.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\data_get_managers\communicators\JournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/JournalsCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/LoginForm.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/LoginForm.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\looking_journal\LookingJournalActivity.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/LookingJournalActivity.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\data_get_managers\communicators\LookingJournalsCommunicator.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/data_get_managers/communicators/LookingJournalsCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/login_form/elements/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/Query.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/server_managers/Query.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/SerifTextView.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/public_code/custom_desing_elements/SerifTextView.java" />
-      <change type="MODIFICATION" beforePath="F:\MainBranch\ABCStart\src\ru\journal\fspoPrj\journal\looking_journal\elements\student_list\StudentElement.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/journal/looking_journal/elements/student_list/StudentElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/Teacher.java" afterPath="$PROJECT_DIR$/src/ru/journal/fspoPrj/server_java/might_info/mights_function_kits/Teacher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="68107b8a-5436-4382-9f85-4df0b154a036" name="Default" comment="" />
     <list id="9d9e7c13-7fc0-4fc7-bbf2-f60af901f5c7" name="Failed commit: Default" comment="Auto Commit Test" />
     <ignored path="First_prj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1196,7 +1179,7 @@
       <workItem from="1408792333431" duration="3862000" />
       <workItem from="1408842856046" duration="4405000" />
       <workItem from="1408868453807" duration="6701000" />
-      <workItem from="1408968668384" duration="966000" />
+      <workItem from="1408968668384" duration="1179000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Commit Test">
       <created>1385064827207</created>
@@ -1454,11 +1437,15 @@
       <created>1401500021733</created>
       <updated>1401500021733</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="old unstaged changes">
+      <created>1408971810054</created>
+      <updated>1408971810054</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3325797000" />
+    <option name="totallyTimeSpent" value="3326010000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1485,7 +1472,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20516717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20411393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1499,6 +1486,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19908814" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28517398" sideWeight="0.42535788" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22036473" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.0075987843" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3524962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1513,7 +1501,6 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25189108" sideWeight="0.670229" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2112462" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22036473" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1534,7 +1521,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="New  life to server logic. Some menu change." />
     <MESSAGE value=" drop bad idea" />
     <MESSAGE value="govnocomit editTable canvas bitmap ect.." />
     <MESSAGE value="... editTable canvas bitmap ect..&#10;" />
@@ -1559,7 +1545,8 @@
     <MESSAGE value="j save state" />
     <MESSAGE value="ton of sh*t" />
     <MESSAGE value="-" />
-    <option name="LAST_COMMIT_MESSAGE" value="-" />
+    <MESSAGE value="old unstaged changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="old unstaged changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
